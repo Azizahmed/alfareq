@@ -6,6 +6,7 @@ from uuid import UUID
 from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.db.models.agent_run import AgentRun
 from plugins.fluffy_avatars.models import AgentAvatarStyle
 
 
@@ -20,6 +21,23 @@ async def list_for(
         )
     )
     return list(result.scalars().all())
+
+
+async def latest_run_statuses(
+    db: AsyncSession, *, organization_id: UUID, agent_ids: list[UUID]
+) -> dict[UUID, str]:
+    """The status of each agent's most recent real run; test runs from the Builder do not count."""
+    result = await db.execute(
+        select(AgentRun.agent_id, AgentRun.status)
+        .where(
+            AgentRun.organization_id == organization_id,
+            AgentRun.agent_id.in_(agent_ids),
+            AgentRun.is_test.is_(False),
+        )
+        .distinct(AgentRun.agent_id)
+        .order_by(AgentRun.agent_id, AgentRun.created_at.desc())
+    )
+    return {row.agent_id: row.status for row in result.all()}
 
 
 async def upsert(

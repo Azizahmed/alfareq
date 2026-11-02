@@ -34,6 +34,16 @@
     scale: 1 0.1;
   }
 }
+@keyframes ff-wink {
+  0%,
+  100% {
+    scale: 1 1;
+  }
+  30%,
+  60% {
+    scale: 1 0.15;
+  }
+}
 @keyframes ff-dots {
   0%,
   100% {
@@ -76,6 +86,10 @@
   :root:not([data-motion="reduce"]) .ff-host[data-animate="always"] .ff-eye,
   :root:not([data-motion="reduce"]) .ff-host:hover .ff-eye {
     animation: ff-blink 3.2s ease-in-out infinite;
+  }
+  /* The wink: on hover, an idle face closes its right eye for a beat. */
+  :root:not([data-motion="reduce"]) .ff-host:hover svg[data-state="idle"] .ff-eye:last-child {
+    animation: ff-wink 1.6s ease-in-out 1;
   }
   :root:not([data-motion="reduce"]) .ff-host .ff-thinking circle {
     animation: ff-dots 1.2s ease-in-out infinite;

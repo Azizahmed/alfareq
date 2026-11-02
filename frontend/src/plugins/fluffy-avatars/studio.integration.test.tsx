@@ -39,7 +39,7 @@ const PROPS = { agentId: "a1", name: "Support copilot", slug: "support-copilot",
 describe("the avatar studio", () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    vi.mocked(apiClient.post).mockResolvedValue({ styles: {} });
+    vi.mocked(apiClient.post).mockResolvedValue({ styles: {}, states: {} });
   });
 
   it("is not offered to somebody who may not edit the agent", () => {
@@ -71,6 +71,7 @@ describe("the avatar studio", () => {
   it("offers the default face back only once a style is stored", async () => {
     vi.mocked(apiClient.post).mockResolvedValue({
       styles: { a1: { character: "malu", shape: null, colour: null, expression: "own" } },
+      states: { a1: "idle" },
     });
     vi.mocked(apiClient.delete).mockResolvedValue(undefined);
     render(<AvatarStudioButton {...PROPS} canEdit />, { wrapper });
@@ -91,6 +92,7 @@ describe("the agent's face", () => {
   it("is drawn from the handle until a stored style arrives, then from the style", async () => {
     vi.mocked(apiClient.post).mockResolvedValue({
       styles: { a1: { character: "fred", shape: null, colour: null, expression: "own" } },
+      states: { a1: "notification" },
     });
     const { container } = render(
       <AgentFluffyFace agentId="a1" slug="support-copilot" framed={false} thinking />,
@@ -102,5 +104,17 @@ describe("the agent's face", () => {
     expect(container.querySelector("svg.ff")).not.toBeNull();
     expect(container.querySelector('[data-animate="always"]')).not.toBeNull();
     await waitFor(() => expect(container.innerHTML).toContain("#f6c12b"));
+  });
+
+  it("shows what the agent is doing once it is not mid-turn", async () => {
+    vi.mocked(apiClient.post).mockResolvedValue({ styles: {}, states: { a2: "notification" } });
+    const { container } = render(
+      <AgentFluffyFace agentId="a2" slug="support-copilot" framed={false} />,
+      { wrapper },
+    );
+
+    await waitFor(() =>
+      expect(container.querySelector('svg[data-state="notification"]')).not.toBeNull(),
+    );
   });
 });

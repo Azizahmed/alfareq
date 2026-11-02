@@ -581,6 +581,8 @@ exclude = [
     "alembic/",
     "tests/",
     "cli/",
+    # Plugins' own tests, for the reason `tests/` is here.
+    "plugins/*/tests/",
 ]
 
 [tool.ty.rules]

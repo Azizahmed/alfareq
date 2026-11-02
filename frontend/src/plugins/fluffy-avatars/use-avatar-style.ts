@@ -4,20 +4,24 @@ import { toast } from "sonner";
 
 import { getErrorMessage } from "@/lib/api-error";
 
-import { loadStyle, resetStyle, saveStyle } from "./api";
+import { loadAvatar, resetStyle, saveStyle, type AgentAvatar } from "./api";
 import type { AvatarStyle } from "./catalog";
 
 /** The plugin's own key space, so nothing in core has to know it exists. */
 export const avatarStyleKey = (agentId: string) => ["plugins", "fluffy-avatars", agentId] as const;
 
-/** A style changes when somebody opens the studio, which is rare: five minutes is plenty. */
-const STALE_MS = 5 * 60 * 1000;
+/**
+ * A style changes when somebody opens the studio, which is rare; a state changes
+ * with the agent's runs. A minute keeps a parked or failed run from showing for
+ * long after somebody dealt with it, without a request per face per render.
+ */
+const STALE_MS = 60 * 1000;
 
-/** The agent's stored style; `data` is null when it has none and while it loads. */
-export function useAvatarStyle(agentId: string) {
+/** The agent's stored style and live state; `data` is undefined while it loads. */
+export function useAgentAvatar(agentId: string) {
   return useQuery({
     queryKey: avatarStyleKey(agentId),
-    queryFn: () => loadStyle(agentId),
+    queryFn: () => loadAvatar(agentId),
     staleTime: STALE_MS,
     // A failed lookup is a face drawn from the handle, which is what the agent
     // wore before anybody opened the studio - not worth three retries per face.
@@ -29,8 +33,12 @@ export function useAvatarStyle(agentId: string) {
 export function useAvatarStyleMutations(agentId: string) {
   const queryClient = useQueryClient();
   const tErrors = useTranslations("errors");
+  // The state is the server's to know, and a new style does not change it.
   const settle = (style: AvatarStyle | null) =>
-    queryClient.setQueryData(avatarStyleKey(agentId), style);
+    queryClient.setQueryData<AgentAvatar>(avatarStyleKey(agentId), (current) => ({
+      style,
+      state: current?.state ?? "idle",
+    }));
   const onError = (error: unknown) => toast.error(getErrorMessage(error, tErrors));
 
   const save = useMutation({

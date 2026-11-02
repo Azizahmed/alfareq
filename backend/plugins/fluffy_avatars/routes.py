@@ -26,7 +26,8 @@ async def lookup_avatar_styles(
     A POST because a page asks about every agent it draws at once, and that many
     ids do not fit a query string.
     """
-    return AvatarLookupRead(styles=await service.lookup(ctx, data.agent_ids))
+    styles, states = await service.lookup(ctx, data.agent_ids)
+    return AvatarLookupRead(styles=styles, states=states)
 
 
 @router.put("/agents/{agent_id}", response_model=AvatarStyleRead)

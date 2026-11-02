@@ -11,11 +11,11 @@ vi.mock("@/lib/api-client", () => ({
   },
 }));
 
-const { LOOKUP_LIMIT, loadStyle, resetStyle, saveStyle } = await import("./api");
+const { LOOKUP_LIMIT, loadAvatar, resetStyle, saveStyle } = await import("./api");
 
 const STYLE = { character: "malu", shape: null, colour: null, expression: "own" } as const;
 
-describe("loadStyle", () => {
+describe("loadAvatar", () => {
   beforeEach(() => vi.useFakeTimers());
   afterEach(() => {
     vi.useRealTimers();
@@ -23,11 +23,15 @@ describe("loadStyle", () => {
   });
 
   it("asks once for every agent drawn in the same tick", async () => {
-    post.mockResolvedValue({ styles: { a: STYLE } });
-    const asks = [loadStyle("a"), loadStyle("b"), loadStyle("a")];
+    post.mockResolvedValue({ styles: { a: STYLE }, states: { a: "failed" } });
+    const asks = [loadAvatar("a"), loadAvatar("b"), loadAvatar("a")];
     await vi.runAllTimersAsync();
 
-    expect(await Promise.all(asks)).toEqual([STYLE, null, STYLE]);
+    expect(await Promise.all(asks)).toEqual([
+      { style: STYLE, state: "failed" },
+      { style: null, state: "idle" },
+      { style: STYLE, state: "failed" },
+    ]);
     expect(post).toHaveBeenCalledTimes(1);
     expect(post).toHaveBeenCalledWith("/plugins/fluffy-avatars/agents/lookup", {
       agent_ids: ["a", "b"],
@@ -35,8 +39,8 @@ describe("loadStyle", () => {
   });
 
   it("splits a page with more agents than one lookup may name", async () => {
-    post.mockResolvedValue({ styles: {} });
-    const asks = Array.from({ length: LOOKUP_LIMIT + 1 }, (_, n) => loadStyle(`agent-${n}`));
+    post.mockResolvedValue({ styles: {}, states: {} });
+    const asks = Array.from({ length: LOOKUP_LIMIT + 1 }, (_, n) => loadAvatar(`agent-${n}`));
     await vi.runAllTimersAsync();
     await Promise.all(asks);
 
@@ -46,7 +50,7 @@ describe("loadStyle", () => {
 
   it("fails every ask in a batch whose lookup failed", async () => {
     post.mockRejectedValue(new Error("502"));
-    const ask = loadStyle("a");
+    const ask = loadAvatar("a");
     const asserted = expect(ask).rejects.toThrow("502");
     await vi.runAllTimersAsync();
     await asserted;

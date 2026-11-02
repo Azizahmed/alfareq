@@ -24,7 +24,7 @@ from plugins.fluffy_avatars import repository
 from plugins.fluffy_avatars.deps import get_fluffy_avatar_service
 from plugins.fluffy_avatars.models import AgentAvatarStyle
 from plugins.fluffy_avatars.schemas import LOOKUP_LIMIT, AvatarStyle
-from plugins.fluffy_avatars.service import FluffyAvatarService
+from plugins.fluffy_avatars.service import FluffyAvatarService, avatar_state
 
 pytestmark = pytest.mark.anyio
 
@@ -35,8 +35,8 @@ def a_ctx() -> AuthContext:
     return AuthContext(user_id=uuid.uuid4(), organization_id=ORG, role="member")
 
 
-def an_agent(agent_id: uuid.UUID) -> SimpleNamespace:
-    return SimpleNamespace(id=agent_id, organization_id=ORG)
+def an_agent(agent_id: uuid.UUID, status: str = "published") -> SimpleNamespace:
+    return SimpleNamespace(id=agent_id, organization_id=ORG, status=status)
 
 
 def a_row(agent_id: uuid.UUID, style: dict[str, Any]) -> AgentAvatarStyle:
@@ -67,6 +67,26 @@ class TestTheStyle:
             AvatarStyle.model_validate(fields)
 
 
+class TestTheState:
+    @pytest.mark.parametrize(
+        ("agent_status", "last_run", "state"),
+        [
+            ("draft", "failed", "asleep"),
+            ("archived", None, "asleep"),
+            ("published", "awaiting_approval", "notification"),
+            ("published", "awaiting_answer", "notification"),
+            ("published", "failed", "failed"),
+            ("published", "completed", "idle"),
+            ("published", "budget_exceeded", "idle"),
+            ("published", None, "idle"),
+        ],
+    )
+    def test_the_avatar_follows_the_agent(
+        self, agent_status: str, last_run: str | None, state: str
+    ) -> None:
+        assert avatar_state(agent_status, last_run) == state
+
+
 class TestTheService:
     @pytest.fixture
     def service(self) -> FluffyAvatarService:
@@ -78,12 +98,12 @@ class TestTheService:
         self, service: FluffyAvatarService, monkeypatch: pytest.MonkeyPatch
     ) -> None:
         visible, hidden = uuid.uuid4(), uuid.uuid4()
-        rows = [
-            a_row(visible, {"character": "fred", "expression": "own"}),
-            a_row(hidden, {"shape": "cloud", "colour": 1, "expression": "sad"}),
-        ]
-        listed = AsyncMock(return_value=rows)
+        listed = AsyncMock(
+            return_value=[a_row(visible, {"character": "fred", "expression": "own"})]
+        )
+        runs = AsyncMock(return_value={visible: "failed"})
         monkeypatch.setattr(repository, "list_for", listed)
+        monkeypatch.setattr(repository, "latest_run_statuses", runs)
 
         async def get(ctx: AuthContext, agent_id: uuid.UUID, **_: object) -> SimpleNamespace:
             if agent_id == hidden:
@@ -92,11 +112,24 @@ class TestTheService:
 
         service.agents.get = get
 
-        styles = await service.lookup(a_ctx(), [visible, hidden, visible])
+        styles, states = await service.lookup(a_ctx(), [visible, hidden, visible])
 
         assert list(styles) == [visible]
         assert styles[visible].character == "fred"
-        assert listed.await_args.kwargs == {"organization_id": ORG, "agent_ids": [visible, hidden]}
+        assert states == {visible: "failed"}
+        # Neither query is asked about an agent the caller may not see.
+        assert listed.await_args.kwargs == {"organization_id": ORG, "agent_ids": [visible]}
+        assert runs.await_args.kwargs == {"organization_id": ORG, "agent_ids": [visible]}
+
+    async def test_a_lookup_of_nothing_visible_reads_nothing(
+        self, service: FluffyAvatarService, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        listed = AsyncMock()
+        monkeypatch.setattr(repository, "list_for", listed)
+        service.agents.get = AsyncMock(side_effect=NotFoundError(message="Agent not found"))
+
+        assert await service.lookup(a_ctx(), [uuid.uuid4()]) == ({}, {})
+        assert listed.await_count == 0
 
     async def test_setting_a_style_needs_edit_access_and_stores_it(
         self, service: FluffyAvatarService, monkeypatch: pytest.MonkeyPatch
@@ -169,6 +202,12 @@ class TestTheRepository:
     async def test_list_and_delete_go_through_the_session(self) -> None:
         db = AsyncMock()
         db.execute.return_value.scalars = lambda: SimpleNamespace(all=lambda: ["row"])
+        agent_id = uuid.uuid4()
+        db.execute.return_value.all = lambda: [SimpleNamespace(agent_id=agent_id, status="failed")]
+
+        assert await repository.latest_run_statuses(
+            db, organization_id=ORG, agent_ids=[agent_id]
+        ) == {agent_id: "failed"}
 
         assert await repository.list_for(db, organization_id=ORG, agent_ids=[uuid.uuid4()]) == [
             "row"
@@ -199,7 +238,10 @@ class TestTheRoutes:
     ) -> None:
         http, service = client
         agent_id = uuid.uuid4()
-        service.lookup.return_value = {agent_id: AvatarStyle(character="cloe")}
+        service.lookup.return_value = (
+            {agent_id: AvatarStyle(character="cloe")},
+            {agent_id: "asleep"},
+        )
 
         response = await http.post(
             "/api/v1/plugins/fluffy-avatars/agents/lookup", json={"agent_ids": [str(agent_id)]}
@@ -207,6 +249,7 @@ class TestTheRoutes:
 
         assert response.status_code == 200
         assert response.json()["styles"][str(agent_id)]["character"] == "cloe"
+        assert response.json()["states"] == {str(agent_id): "asleep"}
 
     async def test_a_lookup_too_large_for_one_page_is_refused(
         self, client: tuple[AsyncClient, AsyncMock]

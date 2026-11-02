@@ -21,7 +21,7 @@ import type { AvatarState, AvatarStyle } from "./catalog";
 import { derivedStyle } from "./derive";
 import { StudioPickers } from "./studio-pickers";
 import { StudioPreview } from "./studio-preview";
-import { useAvatarStyle, useAvatarStyleMutations } from "./use-avatar-style";
+import { useAgentAvatar, useAvatarStyleMutations } from "./use-avatar-style";
 
 function bodyKey(style: AvatarStyle): string {
   return style.character ?? `${style.shape}-${style.colour}`;
@@ -86,7 +86,7 @@ function StudioDialog({ agentId, name, slug, colorSlot, stored, onClose }: Studi
 export function AvatarStudioButton(props: AgentAvatarToolsSlotProps) {
   const t = useTranslations("fluffyAvatars");
   const [open, setOpen] = useState(false);
-  const stored = useAvatarStyle(props.agentId).data ?? null;
+  const stored = useAgentAvatar(props.agentId).data?.style ?? null;
   if (!props.canEdit) return null;
   return (
     <>

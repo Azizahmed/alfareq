@@ -8,7 +8,21 @@
  */
 import { apiClient } from "@/lib/api-client";
 
-import type { AvatarStyle } from "./catalog";
+import type { AvatarState, AvatarStyle } from "./catalog";
+
+/** The states the server decides; `thinking` is the console's, which knows a turn is in flight. */
+export type LiveState = Extract<AvatarState, "idle" | "notification" | "asleep" | "failed">;
+
+/** What a lookup knows about one agent: its stored style, if any, and what it is doing. */
+export interface AgentAvatar {
+  style: AvatarStyle | null;
+  state: LiveState;
+}
+
+interface LookupResponse {
+  styles: Record<string, AvatarStyle>;
+  states: Record<string, LiveState>;
+}
 
 const BASE = "/plugins/fluffy-avatars/agents";
 
@@ -19,7 +33,7 @@ export const LOOKUP_LIMIT = 200;
 const BATCH_WINDOW_MS = 10;
 
 interface Waiter {
-  resolve: (style: AvatarStyle | null) => void;
+  resolve: (avatar: AgentAvatar) => void;
   reject: (error: unknown) => void;
 }
 
@@ -31,12 +45,12 @@ async function send(batch: Map<string, Waiter[]>): Promise<void> {
   for (let start = 0; start < ids.length; start += LOOKUP_LIMIT) {
     const chunk = ids.slice(start, start + LOOKUP_LIMIT);
     try {
-      const { styles } = await apiClient.post<{ styles: Record<string, AvatarStyle> }>(
-        `${BASE}/lookup`,
-        { agent_ids: chunk },
-      );
+      const { styles, states } = await apiClient.post<LookupResponse>(`${BASE}/lookup`, {
+        agent_ids: chunk,
+      });
       for (const id of chunk)
-        for (const waiter of batch.get(id) ?? []) waiter.resolve(styles[id] ?? null);
+        for (const waiter of batch.get(id) ?? [])
+          waiter.resolve({ style: styles[id] ?? null, state: states[id] ?? "idle" });
     } catch (error) {
       for (const id of chunk) for (const waiter of batch.get(id) ?? []) waiter.reject(error);
     }
@@ -50,8 +64,8 @@ function flush(): void {
   void send(batch);
 }
 
-/** One agent's style, or null when it has none - fetched alongside every other ask this tick. */
-export function loadStyle(agentId: string): Promise<AvatarStyle | null> {
+/** One agent's style and state - fetched alongside every other ask this tick. */
+export function loadAvatar(agentId: string): Promise<AgentAvatar> {
   return new Promise((resolve, reject) => {
     const waiters = pending.get(agentId) ?? [];
     waiters.push({ resolve, reject });

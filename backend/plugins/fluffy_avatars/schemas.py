@@ -41,6 +41,10 @@ Expression = Literal[
     "sleepy",
 ]
 
+AvatarState = Literal["idle", "notification", "asleep", "failed"]
+"""What the agent is doing, as the avatar draws it. `thinking` is the console's
+own to decide - it knows a turn is in flight - so the server never answers it."""
+
 LOOKUP_LIMIT = 200
 """How many agents one lookup may ask about: more than any page draws at once."""
 
@@ -83,6 +87,7 @@ class AvatarLookupRequest(BaseSchema):
 
 
 class AvatarLookupRead(BaseSchema):
-    """The styles of those agents that have one and that the caller may see."""
+    """For the agents the caller may see: the styles of those that have one, and every one's state."""
 
     styles: dict[UUID, AvatarStyle]
+    states: dict[UUID, AvatarState] = Field(default_factory=dict)
