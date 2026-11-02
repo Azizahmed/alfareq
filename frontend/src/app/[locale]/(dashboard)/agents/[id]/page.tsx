@@ -41,6 +41,7 @@ import {
 } from "@/components/agents/agent-map";
 import { MODE_LABEL } from "@/components/agents/agent-map-nodes";
 import { entryForConnection } from "@/lib/mcp-servers";
+import { pluginSlot } from "@/lib/plugin-slots";
 import { askedToTest, readTestPanel, writeTestPanel } from "@/lib/test-panel-state";
 import { toMapDelegates } from "@/components/agents/agent-map-tree";
 import { AgentStatusBadge } from "@/components/agents/status-badge";
@@ -210,6 +211,9 @@ function toolChoice(
 }
 
 /** The Builder's tabs, as `?tab=` names them; anything else is the first. */
+/** A plugin's controls beside the portrait - the avatar studio, for one. */
+const AvatarTools = pluginSlot("agent-avatar-tools");
+
 const BUILDER_TABS = new Set(["build", "toolbox", "mcp", "limits", "availability", "history"]);
 
 export default function AgentBuilderPage({ params }: PageProps) {
@@ -909,6 +913,15 @@ export default function AgentBuilderPage({ params }: PageProps) {
                   </button>
                 )}
               </span>
+              {AvatarTools && (
+                <AvatarTools
+                  agentId={id}
+                  name={agent.name}
+                  slug={agent.slug}
+                  colorSlot={agent.avatar_color ?? null}
+                  canEdit={canEdit}
+                />
+              )}
               {/* One line, whatever the width: the actions wrap under it before
                 the name is broken, and a name longer than the column ends in
                 an ellipsis with the whole of it on hover. */}

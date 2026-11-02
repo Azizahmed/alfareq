@@ -1,0 +1,96 @@
+/*
+ * The avatars' motion: a breath and a blink on hover, all the time while the
+ * agent works (`data-animate="always"`), and nothing at all under reduced
+ * motion - the console's own `data-motion` switch or the system's.
+ */
+.ff-host svg {
+  overflow: visible;
+}
+.ff-body {
+  transform-origin: 50% 90%;
+  transform-box: view-box;
+}
+.ff-eye {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes ff-breathe {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.04, 0.96);
+  }
+}
+@keyframes ff-blink {
+  0%,
+  90%,
+  100% {
+    scale: 1 1;
+  }
+  95% {
+    scale: 1 0.1;
+  }
+}
+@keyframes ff-dots {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes ff-pop {
+  0% {
+    transform: scale(0.82, 1.14);
+  }
+  45% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.97, 1.03);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@keyframes ff-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root:not([data-motion="reduce"]) .ff-host[data-animate="always"] .ff-body,
+  :root:not([data-motion="reduce"]) :hover > .ff-host .ff-body,
+  :root:not([data-motion="reduce"]) .ff-host:hover .ff-body {
+    animation: ff-breathe 2.4s ease-in-out infinite;
+  }
+  :root:not([data-motion="reduce"]) .ff-host[data-animate="always"] .ff-eye,
+  :root:not([data-motion="reduce"]) .ff-host:hover .ff-eye {
+    animation: ff-blink 3.2s ease-in-out infinite;
+  }
+  :root:not([data-motion="reduce"]) .ff-host .ff-thinking circle {
+    animation: ff-dots 1.2s ease-in-out infinite;
+  }
+  :root:not([data-motion="reduce"]) .ff-host .ff-thinking circle:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  :root:not([data-motion="reduce"]) .ff-host .ff-thinking circle:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  :root:not([data-motion="reduce"]) .ff-host .ff-zzz {
+    animation: ff-float 2.6s ease-in-out infinite;
+  }
+  /* The studio's body transition: a squash and settle whenever the body changes. */
+  :root:not([data-motion="reduce"]) .ff-pop .ff-body {
+    animation: ff-pop 0.5s cubic-bezier(0.3, 1.4, 0.5, 1);
+  }
+}

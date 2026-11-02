@@ -12,7 +12,8 @@ import type { Metadata } from "next";
 
 import { APP_NAME } from "@/lib/constants";
 import { readPublicConfig } from "@/lib/public-config";
-import { defaultLocale, locales } from "@/i18n";
+import { defaultLocale, locales, type Locale } from "@/i18n";
+import { localeMeta } from "@/lib/locales";
 
 export const SITE = {
   name: APP_NAME,
@@ -62,11 +63,9 @@ export function siteOrigin(): string {
 }
 
 /** Map our locale codes → BCP-47 / Open Graph locale strings. */
-export const OG_LOCALE: Record<(typeof locales)[number], string> = {
-  en: "en_US",
-  pl: "pl_PL",
-  de: "de_DE",
-};
+export function ogLocale(locale: Locale): string {
+  return localeMeta(locale).ogLocale;
+}
 
 interface PageMetaInput {
   /** Page-specific title fragment. The template adds " | <brand>". */
@@ -124,8 +123,8 @@ export function pageMetadata(input: PageMetaInput): Metadata {
       url: canonical,
       siteName: brand,
       type: "website",
-      locale: OG_LOCALE[locale],
-      alternateLocale: SITE.locales.filter((l) => l !== locale).map((l) => OG_LOCALE[l]),
+      locale: ogLocale(locale),
+      alternateLocale: SITE.locales.filter((l) => l !== locale).map((l) => ogLocale(l)),
       images: [
         {
           url: ogImageUrl,

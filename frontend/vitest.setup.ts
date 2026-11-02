@@ -2,6 +2,13 @@ import "@testing-library/jest-dom/vitest";
 import { cleanup, configure } from "@testing-library/react";
 import { afterEach, vi } from "vitest";
 
+// The console's own tests describe the console as upstream ships it: no plugin
+// locale, no brand, no slot filled. A plugin's tests import its modules directly,
+// and `src/plugins/**/*.test.ts` take the real lists back with `vi.importActual`.
+vi.mock("@/plugins", () => ({ PLUGINS: [] }));
+vi.mock("@/plugins/locales", () => ({ PLUGIN_LOCALES: [] }));
+vi.mock("@/plugins/slots", () => ({ PLUGIN_SLOTS: [] }));
+
 /**
  * How long `findBy*` and `waitFor` keep looking, raised from Testing Library's
  * 1s default.

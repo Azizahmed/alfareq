@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 import { readBranding } from "@/lib/branding-server";
-import { LOGO_DATA_URI } from "@/lib/logo.generated";
+import { BUILT_IN_LOGO_DATA_URI } from "@/lib/branding";
 import { SITE } from "@/lib/seo";
 
 export const size = { width: 180, height: 180 };
@@ -28,7 +28,7 @@ export default async function AppleIcon() {
     // and a maskable crop both land on violet rather than on a white corner.
     return new ImageResponse(
       <div style={{ width: "100%", height: "100%", display: "flex", background: TILE }}>
-        <img src={LOGO_DATA_URI} alt="" width={180} height={180} />
+        <img src={BUILT_IN_LOGO_DATA_URI} alt="" width={180} height={180} />
       </div>,
       { ...size },
     );

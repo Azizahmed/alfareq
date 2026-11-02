@@ -13,6 +13,7 @@ from uuid import UUID
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
+from app.core.plugins import with_plugin_strings
 from app.repositories import member_repo, suggestion_repo, user_repo
 from app.services.notifications import NotificationService
 from app.services.proactive._welcome import direct_message
@@ -20,17 +21,26 @@ from app.services.proactive._welcome import direct_message
 LISTED = 5
 """How many a direct message names before it says how many more."""
 
-HEADING = {
-    "en": "{count} new from your watches:",
-    "pl": "Znaleziska z twoich obserwacji ({count}):",
-    "de": "Neu aus Ihren Beobachtungen ({count}):",
-}
-MORE = {"en": "…and {count} more.", "pl": "…i jeszcze {count}.", "de": "…und {count} weitere."}
-OPEN = {
-    "en": "All of it in your inbox: {url}",
-    "pl": "Wszystko w twoim inboksie: {url}",
-    "de": "Alles in Ihrem Posteingang: {url}",
-}
+HEADING = with_plugin_strings(
+    "proactive.briefing.heading",
+    {
+        "en": "{count} new from your watches:",
+        "pl": "Znaleziska z twoich obserwacji ({count}):",
+        "de": "Neu aus Ihren Beobachtungen ({count}):",
+    },
+)
+MORE = with_plugin_strings(
+    "proactive.briefing.more",
+    {"en": "…and {count} more.", "pl": "…i jeszcze {count}.", "de": "…und {count} weitere."},
+)
+OPEN = with_plugin_strings(
+    "proactive.briefing.open",
+    {
+        "en": "All of it in your inbox: {url}",
+        "pl": "Wszystko w twoim inboksie: {url}",
+        "de": "Alles in Ihrem Posteingang: {url}",
+    },
+)
 
 
 def _message(locale: str | None, titles: list[str], url: str) -> str:
@@ -38,8 +48,8 @@ def _message(locale: str | None, titles: list[str], url: str) -> str:
     lines = [HEADING[language].replace("{count}", str(len(titles)))]
     lines += [f"• {title}" for title in titles[:LISTED]]
     if len(titles) > LISTED:
-        lines.append(MORE[language].replace("{count}", str(len(titles) - LISTED)))
-    lines.append(OPEN[language].replace("{url}", url))
+        lines.append(MORE.get(language, MORE["en"]).replace("{count}", str(len(titles) - LISTED)))
+    lines.append(OPEN.get(language, OPEN["en"]).replace("{url}", url))
     return "\n".join(lines)
 
 

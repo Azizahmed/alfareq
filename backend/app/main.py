@@ -53,6 +53,7 @@ from app.services.rag.vectorstore import BaseVectorStore
 from app.repositories.channel_bot import get_active_polling_bot_ids, get_active_polling_bots
 from app.services.channel_bot import unseal_bot_token, unseal_slack_app_token
 from app.services.channels import register_adapter
+from app.core.plugins import plugin_routers
 from app.services import rate_limit
 from app.services import trigger_dedupe
 from app.services.channels import dedupe as channel_dedupe
@@ -574,6 +575,9 @@ OS for your agents.
     )
 
     app.include_router(api_router, prefix=settings.API_V1_STR)
+    # Each plugin's routes under `/api/v1/plugins/<id>`; `app/core/plugins.py`.
+    for prefix, router in plugin_routers():
+        app.include_router(router, prefix=f"{settings.API_V1_STR}{prefix}")
 
     # The platform's own MCP server (#2058), served beside the API rather than
     # under its prefix: an MCP client is pointed at `<host>/mcp`, and the OAuth

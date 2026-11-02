@@ -7,6 +7,7 @@ from alembic import context
 from sqlalchemy import engine_from_config, pool
 
 from app.core.config import settings
+from app.core.plugins import plugin_tables
 from app.db.base import Base
 from app.db.vector_tables import is_runtime_vector_table
 
@@ -71,6 +72,10 @@ def include_name(name: str | None, type_: str, parent_names: dict[str, str | Non
     table left the schema with the native semantic store (#1470).
     """
     if type_ == "table" and name is not None:
+        # A plugin's tables are its own migrations' business (`app/core/plugins.py`),
+        # and to the platform's models they would read as tables to drop.
+        if name in plugin_tables():
+            return False
         return not is_runtime_vector_table(name, metadata=target_metadata)
     return True
 

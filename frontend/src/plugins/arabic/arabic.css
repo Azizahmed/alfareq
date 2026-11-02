@@ -1,0 +1,95 @@
+/*
+ * Arabic typography. The faces cover the Arabic block only (unicode-range), so
+ * Latin text inside an Arabic page - ids, code, the product nouns kept in
+ * English - still falls through to the console's own Inter and Bricolage.
+ */
+@font-face {
+  font-family: "Alfareq Arabic";
+  src: url("./fonts/ibm-plex-sans-arabic-arabic-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E,
+    U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+}
+@font-face {
+  font-family: "Alfareq Arabic";
+  src: url("./fonts/ibm-plex-sans-arabic-arabic-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E,
+    U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+}
+@font-face {
+  font-family: "Alfareq Arabic";
+  src: url("./fonts/ibm-plex-sans-arabic-arabic-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E,
+    U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+}
+@font-face {
+  font-family: "Alfareq Arabic";
+  src: url("./fonts/ibm-plex-sans-arabic-arabic-700.woff2") format("woff2");
+  font-weight: 700 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E,
+    U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+}
+
+/*
+ * First in each stack, so an Arabic glyph is drawn by it and anything else falls
+ * past it to the console's own face. Under every locale, not only `ar`: an
+ * agent's Arabic answer inside the English console deserves the same face.
+ * These are the selectors `globals.css` sets a family on; unlayered, so they
+ * win over its `@layer` rules without `!important`.
+ */
+body,
+.font-body {
+  font-family: "Alfareq Arabic", var(--font-body), var(--font-body-ext), system-ui, sans-serif;
+}
+.font-display,
+.text-display-lg,
+.text-display-md,
+.prose-legal h2,
+.prose-legal h3 {
+  font-family:
+    "Alfareq Arabic", var(--font-display), var(--font-display-ext), system-ui, sans-serif;
+}
+
+/*
+ * Arabic has no letter-spacing: tracking pulls the joined letters of a word
+ * apart. The console tracks its uppercase eyebrows and display headings.
+ */
+:lang(ar) [class*="tracking-"] {
+  letter-spacing: normal;
+}
+
+/* Arabic script sits taller than Latin at the same size; give lines room. */
+:lang(ar) body {
+  line-height: 1.6;
+}
+
+/*
+ * Code, terminals, keys and ids read left to right in every locale. `bdi` and
+ * `unicode-bidi: plaintext` keep a mixed line from reordering its pieces.
+ */
+:lang(ar) pre,
+:lang(ar) code,
+:lang(ar) kbd,
+:lang(ar) samp,
+:lang(ar) .font-mono {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+:lang(ar) input,
+:lang(ar) textarea {
+  unicode-bidi: plaintext;
+}

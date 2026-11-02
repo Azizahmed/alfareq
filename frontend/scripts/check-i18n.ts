@@ -88,6 +88,8 @@ const FRONTEND = resolve(HERE, "..");
 const ROOT = resolve(FRONTEND, "..");
 const SRC = join(FRONTEND, "src");
 const CATALOG = join(FRONTEND, "messages", "en.json");
+/** A plugin's own English strings: `src/plugins/<id>/messages/en.json`. */
+const PLUGINS = join(SRC, "plugins");
 
 const SKIPPED_DIRS = ["/dev/"];
 const SKIPPED_NAMES = [".test.tsx", ".test.ts", ".spec.ts", ".stories.tsx", ".generated.ts"];
@@ -1079,9 +1081,41 @@ function print(headline: string, lines: string[], all: boolean, remedy?: string)
   if (remedy) console.log(`\n${remedy}`);
 }
 
+type Tree = { [key: string]: unknown };
+
+function mergeTrees(base: Tree, over: Tree): Tree {
+  const merged: Tree = { ...base };
+  for (const [key, value] of Object.entries(over)) {
+    const beneath = merged[key];
+    merged[key] =
+      typeof value === "object" && value !== null && typeof beneath === "object" && beneath !== null
+        ? mergeTrees(beneath as Tree, value as Tree)
+        : value;
+  }
+  return merged;
+}
+
+/** The console's catalog with every plugin's English strings laid over it. */
+export function withPluginCatalogs(catalog: Tree, root: string = PLUGINS): Tree {
+  let merged = catalog;
+  const entries = statSync(root, { throwIfNoEntry: false })?.isDirectory()
+    ? readdirSync(root, { withFileTypes: true })
+    : [];
+  const ids = entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
+  for (const id of ids.sort()) {
+    const path = join(root, id, "messages", "en.json");
+    if (statSync(path, { throwIfNoEntry: false })?.isFile()) {
+      merged = mergeTrees(merged, JSON.parse(readFileSync(path, "utf8")) as Tree);
+    }
+  }
+  return merged;
+}
+
 function main(argv: string[]): number {
   const all = argv.includes("--all");
-  const catalog: unknown = JSON.parse(readFileSync(CATALOG, "utf8"));
+  // A plugin's copy is held to the same rules as the console's, so its English
+  // catalog is read as part of this one (`src/lib/plugins.ts` merges it the same way).
+  const catalog: unknown = withPluginCatalogs(JSON.parse(readFileSync(CATALOG, "utf8")));
 
   // Two file sets, and the difference between them is what each rule can honestly
   // say. `sources` is everything: both halves read a `.ts` file because a hook's toast

@@ -1,7 +1,7 @@
 "use client";
 
 import { useBranding } from "@/components/branding/branding-provider";
-import { LOGO_DATA_URI } from "@/lib/logo.generated";
+import { BUILT_IN_LOGO_DATA_URI } from "@/lib/branding";
 import { cn } from "@/lib/utils";
 
 /**
@@ -45,7 +45,7 @@ export function BrandMark({ className, size = 24 }: { className?: string; size?:
     // drawing is what keeps the browser tab and the sidebar showing the same face.
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={LOGO_DATA_URI}
+      src={BUILT_IN_LOGO_DATA_URI}
       alt=""
       aria-hidden
       title={appName}

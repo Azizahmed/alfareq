@@ -18,6 +18,7 @@ import * as adminUser from "./admin/users/[userId]/route";
 import * as adminUsers from "./admin/users/route";
 import * as agent from "./agent/[[...path]]/route";
 import * as agents from "./agents/[[...path]]/route";
+import * as plugins from "./plugins/[[...path]]/route";
 import * as apiKeys from "./api-keys/[[...path]]/route";
 import * as assistant from "./assistant/[[...path]]/route";
 import * as approvals from "./approvals/[[...path]]/route";
@@ -117,6 +118,7 @@ const MOUNTED: [string, Record<string, unknown>][] = [
   ["admin/users/[userId]/detail", adminUserDetail],
   ["agent", agent],
   ["agents", agents],
+  ["plugins", plugins],
   ["api-keys", apiKeys],
   ["assistant", assistant],
   ["approvals", approvals],

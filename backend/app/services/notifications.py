@@ -54,8 +54,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.agents.capabilities.budget import BudgetScope
 from app.agents.spec import AgentSpec, AlertAudience, AlertSpec
-from app.core.config import settings
 from app.core.permissions import OrgRoleName
+from app.core.plugins import default_app_name
 from app.db.models.agent import Agent
 from app.db.models.agent_run import AgentRun, ToolApproval
 from app.db.models.artifact import Artifact
@@ -206,7 +206,7 @@ class NotificationService:
             "reason": reason,
             "spent": f"{run.cost_usd:.2f}" if run.cost_usd is not None else "0.00",
             "run_url": absolute_context_url(run_path),
-            "app_name": settings.PROJECT_NAME,
+            "app_name": default_app_name(),
         }
         await self._center.write(
             recipients=list(recipients),
@@ -321,7 +321,7 @@ class NotificationService:
             **agent_face(agent),
             "tools": ", ".join(tools) if tools else "a tool call",
             "approvals_url": absolute_context_url(approvals_path),
-            "app_name": settings.PROJECT_NAME,
+            "app_name": default_app_name(),
         }
         await self._center.write(
             recipients=list(recipients),
@@ -384,7 +384,7 @@ class NotificationService:
             render_context={
                 "agent_name": agent.name,
                 **agent_face(agent),
-                "app_name": settings.PROJECT_NAME,
+                "app_name": default_app_name(),
                 "run_url": absolute_context_url(run_path),
             },
             organization_id=run.organization_id,
@@ -431,7 +431,7 @@ class NotificationService:
                 "routine_name": name,
                 "excerpt": excerpt,
                 **agent_face(agent),
-                "app_name": settings.PROJECT_NAME,
+                "app_name": default_app_name(),
                 "run_url": absolute_context_url(path),
             },
             organization_id=run.organization_id,
@@ -474,7 +474,7 @@ class NotificationService:
                 "capability_name": capability_name,
                 "reason": reason,
                 "requester_name": requester_name,
-                "app_name": settings.PROJECT_NAME,
+                "app_name": default_app_name(),
                 "run_url": absolute_context_url(path),
             },
             organization_id=agent.organization_id,
@@ -509,7 +509,7 @@ class NotificationService:
             context_url=path,
             render_context={
                 "count": count,
-                "app_name": settings.PROJECT_NAME,
+                "app_name": default_app_name(),
                 "run_url": absolute_context_url(path),
             },
             organization_id=organization_id,
@@ -600,7 +600,7 @@ class NotificationService:
             render_context={
                 "agent_name": agent.name,
                 **agent_face(agent),
-                "app_name": settings.PROJECT_NAME,
+                "app_name": default_app_name(),
                 "run_url": absolute_context_url(run_path),
             },
             organization_id=run.organization_id,
@@ -648,7 +648,7 @@ class NotificationService:
             render_context={
                 "agent_name": agent.name,
                 **agent_face(agent),
-                "app_name": settings.PROJECT_NAME,
+                "app_name": default_app_name(),
                 "run_url": absolute_context_url(chat_path),
             },
             organization_id=run.organization_id,
@@ -696,7 +696,7 @@ class NotificationService:
                 "filename": doc.filename,
                 "collection_name": doc.collection_name,
                 "collection_id": str(doc.knowledge_base_id) if doc.knowledge_base_id else "",
-                "app_name": settings.PROJECT_NAME,
+                "app_name": default_app_name(),
                 "doc_url": absolute_context_url(doc_path),
             },
             organization_id=doc.organization_id,
@@ -744,7 +744,7 @@ class NotificationService:
             render_context={
                 "collection_name": collection_name,
                 "collection_id": str(collection_id) if collection_id else "",
-                "app_name": settings.PROJECT_NAME,
+                "app_name": default_app_name(),
                 "sync_url": absolute_context_url(collection_path),
             },
             organization_id=organization_id,
@@ -782,7 +782,7 @@ class NotificationService:
             render_context={
                 "collection_name": collection_name,
                 "collection_id": str(collection_id) if collection_id else "",
-                "app_name": settings.PROJECT_NAME,
+                "app_name": default_app_name(),
                 "sync_url": absolute_context_url(collection_path),
             },
             organization_id=organization_id,
@@ -1008,7 +1008,7 @@ class NotificationService:
             context_url=link_path,
             render_context={
                 "action": entry.action,
-                "app_name": settings.PROJECT_NAME,
+                "app_name": default_app_name(),
                 "url": absolute_context_url(link_path),
             },
             organization_id=entry.organization_id,
@@ -1051,7 +1051,7 @@ class NotificationService:
                 "kind": kind,
                 "organization_name": organization_name,
                 "reason": reason,
-                "app_name": settings.PROJECT_NAME,
+                "app_name": default_app_name(),
                 "url": absolute_context_url(link_path),
             },
             organization_id=None,
@@ -1088,7 +1088,7 @@ class NotificationService:
             context_url=link_path,
             render_context={
                 "action": entry.action,
-                "app_name": settings.PROJECT_NAME,
+                "app_name": default_app_name(),
                 "url": absolute_context_url(link_path),
             },
             organization_id=None,
@@ -1154,7 +1154,7 @@ class NotificationService:
             "runs": str(sum(row[3] for row in rows)),
             "agents": str(len({row[0] for row in rows})),
             "dashboard_url": absolute_context_url(dashboard_path),
-            "app_name": settings.PROJECT_NAME,
+            "app_name": default_app_name(),
         }
         written = await self._center.write(
             recipients=list(recipients),
@@ -1235,7 +1235,7 @@ class NotificationService:
             "runs": str(sum(row[3] for row in mine)),
             "agents": agent.name,
             "dashboard_url": absolute_context_url(dashboard_path),
-            "app_name": settings.PROJECT_NAME,
+            "app_name": default_app_name(),
         }
         written = await self._center.write(
             recipients=list(recipients),
@@ -1273,7 +1273,7 @@ class NotificationService:
         occurrence = f"{artifact.id}:{datetime.now(UTC).isoformat()}"
         render_context = {
             "artifact_id": str(artifact.id),
-            "app_name": settings.PROJECT_NAME,
+            "app_name": default_app_name(),
             "page_url": absolute_context_url(path),
             # Lets the old owner read this row after the switch took their access.
             "previous_owner_id": str(previous_owner_id) if previous_owner_id else None,
@@ -1331,7 +1331,7 @@ class NotificationService:
             "artifact_id": str(artifact.id),
             "request_id": str(request_id),
             "kind": kind,
-            "app_name": settings.PROJECT_NAME,
+            "app_name": default_app_name(),
             "page_url": absolute_context_url(path),
         }
         for user_id in recipients:
@@ -1392,7 +1392,7 @@ class NotificationService:
             render_context={
                 "workflow_id": str(workflow.id),
                 "rule_id": str(rule.id),
-                "app_name": settings.PROJECT_NAME,
+                "app_name": default_app_name(),
                 "page_url": absolute_context_url(path),
             },
             organization_id=workflow.organization_id,

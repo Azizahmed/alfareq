@@ -1,0 +1,70 @@
+{
+  "fluffyAvatars": {
+    "open": "Design avatar",
+    "title": "Avatar studio",
+    "description": "Pick a character, or a shape in a colour, and the face it wears. Everyone in the organization sees it wherever this agent appears.",
+    "character": "Character",
+    "shape": "Shape",
+    "expression": "Expression",
+    "colour": "Colour",
+    "colourHint": "A character keeps its own colour; pick a shape to tint it.",
+    "state": "State",
+    "stateHint": "A preview: the console shows the state the agent is actually in.",
+    "inTheApp": "In the app - hover a row",
+    "alwaysAnimate": "Always animate",
+    "pixels": "{size} px",
+    "swatch": "Colour {index}",
+    "reset": "Back to the default face",
+    "cancel": "Cancel",
+    "save": "Save avatar",
+    "characters": {
+      "nexo": "Nexo",
+      "vila": "Vila",
+      "cloe": "Cloe",
+      "malu": "Malu",
+      "yoshi": "Yoshi",
+      "fred": "Fred"
+    },
+    "shapes": {
+      "circle": "Circle",
+      "pebble": "Pebble",
+      "squircle": "Squircle",
+      "capsule": "Capsule",
+      "triangle": "Triangle",
+      "hexagon": "Hexagon",
+      "cloud": "Cloud",
+      "droplet": "Droplet",
+      "square": "Square",
+      "diamond": "Diamond",
+      "pentagon": "Pentagon"
+    },
+    "expressions": {
+      "own": "Own face",
+      "neutral": "Neutral",
+      "attentive": "Attentive",
+      "surprised": "Surprised",
+      "excited": "Excited",
+      "happy": "Happy",
+      "laughing": "Laughing",
+      "angry": "Angry",
+      "sad": "Sad",
+      "scared": "Scared",
+      "suspicious": "Suspicious",
+      "confused": "Confused",
+      "curious": "Curious",
+      "proud": "Proud",
+      "shy": "Shy",
+      "unimpressed": "Unimpressed",
+      "sleepy": "Sleepy"
+    },
+    "states": {
+      "idle": "Idle",
+      "wink": "Wink",
+      "wideEyes": "Wide eyes",
+      "thinking": "Thinking",
+      "notification": "Notification",
+      "asleep": "Asleep",
+      "failed": "Failed"
+    }
+  }
+}

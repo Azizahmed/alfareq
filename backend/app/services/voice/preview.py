@@ -17,7 +17,6 @@ import io
 import logging
 import wave
 from collections.abc import Awaitable, Callable
-from typing import Literal
 from uuid import UUID
 
 import anyio
@@ -31,19 +30,22 @@ from app.clients.redis import RedisClient
 from app.core.exceptions import BadRequestError, ExternalServiceError
 from app.core.field_errors import refused_field
 from app.core.permissions import AuthContext
+from app.core.plugins import with_plugin_strings
 from app.services import provider_keys, realtime_models, speech_to_text
 from app.services.organization_secret import OrganizationSecretService
 from app.services.voice.settings import resolve_voice
 
 logger = logging.getLogger(__name__)
 
-PreviewLocale = Literal["en", "pl", "de"]
-
-PREVIEW_LINES: dict[PreviewLocale, str] = {
-    "en": "Hi, this is how I sound. Ask me anything, and I'll answer out loud.",
-    "pl": "Cześć, tak brzmi mój głos. Zapytaj mnie o cokolwiek, a odpowiem na głos.",
-    "de": "Hallo, so klingt meine Stimme. Frag mich etwas, und ich antworte laut.",
-}
+PREVIEW_LINES: dict[str, str] = with_plugin_strings(
+    "voice.preview",
+    {
+        "en": "Hi, this is how I sound. Ask me anything, and I'll answer out loud.",
+        "pl": "Cześć, tak brzmi mój głos. Zapytaj mnie o cokolwiek, a odpowiem na głos.",
+        "de": "Hallo, so klingt meine Stimme. Frag mich etwas, und ich antworte laut.",
+    },
+)
+"""The sentence per console language; a plugin's locale brings its own (`app/core/plugins.py`)."""
 
 CACHE_SECONDS = 7 * 24 * 3600
 """A voice does not change from one day to the next; a week keeps the cache small."""
@@ -98,7 +100,7 @@ class VoicePreviewService:
         self.redis = redis
         self._speak = speak
 
-    async def preview(self, ctx: AuthContext, block: VoiceSpec, *, locale: PreviewLocale) -> bytes:
+    async def preview(self, ctx: AuthContext, block: VoiceSpec, *, locale: str) -> bytes:
         """The voice saying the preview sentence.
 
         In the section's own language where a sentence is written in it, and in
@@ -119,7 +121,7 @@ class VoicePreviewService:
                 details={"reason": "incomplete"},
             )
         language = resolved.language or locale
-        said: PreviewLocale = _preview_locale(language) or locale
+        said = _preview_locale(language) or locale
         if language not in speech_to_text.LANGUAGES:
             raise refused_field("language", f"'{language}' is not a language calls accept")
         problem = await provider_keys.key_problem(
@@ -167,7 +169,7 @@ class VoicePreviewService:
         context = {"provider": resolved.provider, "model": resolved.model}
         try:
             with anyio.fail_after(PREVIEW_TIMEOUT_SECONDS):
-                pcm, rate = await self._speak(model, PREVIEW_LINES[said])
+                pcm, rate = await self._speak(model, PREVIEW_LINES.get(said, PREVIEW_LINES["en"]))
         except TimeoutError as exc:
             raise ExternalServiceError(
                 message="The voice provider did not answer in time.",
@@ -189,7 +191,7 @@ class VoicePreviewService:
         return audio
 
 
-def _preview_locale(language: str) -> PreviewLocale | None:
+def _preview_locale(language: str) -> str | None:
     for locale in PREVIEW_LINES:
         if locale == language:
             return locale
