@@ -332,5 +332,1244 @@
     "body": "يسمح هذا النشر بـ {limit, plural, =1 {agent واحد} =2 {اثنين من الـ agents} few {# agents} other {# agent}} لكل مؤسسة، ولدى هذه المؤسسة {held}. أرشف agent لم تعد تشغّله لإفساح المجال لآخر جديد، أو اطلب من أحد المسؤولين رفع الحد.",
     "bodyReached": "يسمح هذا النشر بـ {limit, plural, =1 {agent واحد} =2 {اثنين من الـ agents} few {# agents} other {# agent}} لكل مؤسسة، وقد بلغته هذه المؤسسة. أرشف agent لم تعد تشغّله لإفساح المجال لآخر جديد، أو اطلب من أحد المسؤولين رفع الحد.",
     "emptyGallery": "لم تتم مشاركة أي من الـ agents في هذه المؤسسة معك، وهي تضم بالفعل العدد الأقصى الذي يسمح به هذا النشر."
+  },
+  "auth": {
+    "agreeToTerms": "بإنشاء حساب، فإنك توافق على <terms>الشروط</terms> و<privacy>سياسة الخصوصية</privacy>.",
+    "atLeast8Characters": "8 أحرف على الأقل",
+    "backSign": "العودة إلى تسجيل الدخول",
+    "backSign2": "العودة إلى تسجيل الدخول",
+    "checkYourInbox": "تحقق من بريدك الوارد",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "continueWithGithub": "المتابعة باستخدام GitHub",
+    "continueWithGoogle": "المتابعة باستخدام Google",
+    "continueWithProvider": "المتابعة باستخدام {provider}",
+    "continueWithMicrosoft": "المتابعة باستخدام Microsoft",
+    "createHeading": "أنشئ <em>مساحة عملك.</em>",
+    "creatingAccount": "جارٍ إنشاء الحساب...",
+    "dropYourEmailBelow": "اكتب بريدك الإلكتروني أدناه - وسنرسل لك رابطًا لمرة واحدة لتعيين كلمة مرور جديدة.",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "name@company.com",
+    "emailRequired": "البريد الإلكتروني مطلوب",
+    "forgotHeading": "يحدث هذا <em>لأفضلنا.</em>",
+    "forgotPasswordPrompt": "نسيت كلمة المرور؟",
+    "forgotShort": "نسيتها؟",
+    "getStarted": "لنبدأ الإعداد",
+    "hasAccount": "لديك حساب بالفعل؟",
+    "linkSentHeading": "أُرسل الرابط. <em>إنه في الطريق.</em>",
+    "loggedOut": "تم تسجيل الخروج",
+    "loggingIn": "جارٍ تسجيل الدخول...",
+    "login": "تسجيل الدخول",
+    "loginFailedPleaseTry": "فشل تسجيل الدخول. حاول مرة أخرى.",
+    "loginTimedOut": "لم يستجب الخادم في الوقت المحدد. تحقق من اتصالك وحاول مرة أخرى.",
+    "loginSuccess": "تم تسجيل الدخول بنجاح",
+    "emailChange": {
+      "confirming": "جارٍ تأكيد هذا العنوان…",
+      "errorHeading": "تعذّر تأكيد هذا العنوان",
+      "errorInvalid": "هذا الرابط غير صالح، أو انتهت صلاحيته، أو استُخدم من قبل.",
+      "errorMissingToken": "لا يحتوي هذا الرابط على token. اطلب التغيير مرة أخرى من ملفك الشخصي.",
+      "signIn": "الانتقال إلى تسجيل الدخول",
+      "success": "تم تأكيد العنوان",
+      "successHint": "أصبح هذا هو عنوان حسابك. سجّل الدخول به من هنا."
+    },
+    "magicLink": {
+      "errorHeading": "تعذّر تسجيل دخولك",
+      "errorInvalid": "رابط الدخول غير صالح أو انتهت صلاحيته.",
+      "errorMissingToken": "لم يُرفق token. اطلب رابط تسجيل دخول جديدًا.",
+      "requestNewLink": "اطلب رابطًا جديدًا",
+      "signInWithPassword": "تسجيل الدخول بكلمة المرور",
+      "success": "تم تسجيل الدخول",
+      "successHint": "جارٍ تحويلك إلى مساحة عملك…",
+      "verifying": "جارٍ تسجيل دخولك…",
+      "verifyingHint": "انتظر قليلًا ريثما نتحقق من رابط الدخول."
+    },
+    "n8Chars": "8 أحرف فأكثر",
+    "n8Chars2": "8 أحرف فأكثر",
+    "nameOptional": "الاسم (اختياري)",
+    "namePlaceholder": "بماذا نناديك؟",
+    "noAccount": "ليس لديك حساب؟",
+    "orSignInWith": "أو سجّل الدخول باستخدام",
+    "orSignUpWith": "أو أنشئ حسابًا باستخدام",
+    "password": "كلمة المرور",
+    "passwordMismatch": "كلمتا المرور غير متطابقتين",
+    "passwordMustBeAt": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+    "passwordsDoNotMatch2": "كلمتا المرور غير متطابقتين",
+    "passwordsDoNotMatch3": "كلمتا المرور غير متطابقتين",
+    "pleaseEnterValidEmail": "أدخل عنوان بريد إلكتروني صالحًا",
+    "pleaseEnterValidEmail2": "أدخل عنوان بريد إلكتروني صالحًا",
+    "privacyPolicy": "سياسة الخصوصية",
+    "redirecting": "جارٍ التحويل...",
+    "register": "إنشاء حساب",
+    "registerSuccess": "تم إنشاء الحساب بنجاح",
+    "registrationFailedPleaseTry": "فشل إنشاء الحساب. حاول مرة أخرى.",
+    "repeatPassword": "أعد كتابة كلمة المرور",
+    "resetLinkSent": "إذا كان هناك حساب مرتبط بـ <strong>{email}</strong>، فسيصلك رابط إعادة التعيين خلال لحظات. تنتهي صلاحيته بعد ساعة واحدة.",
+    "resetPassword": {
+      "backToSignIn": "العودة إلى تسجيل الدخول",
+      "confirm": "تأكيد",
+      "eyebrow": "إعادة تعيين كلمة المرور",
+      "heading": "عيّن كلمة مرور جديدة",
+      "intro": "اختر كلمة مرور لم تستخدمها في مكان آخر: 8 أحرف فأكثر، بأحرف كبيرة وصغيرة وأرقام.",
+      "invalidLink": "رابط إعادة التعيين غير صالح أو انتهت صلاحيته.",
+      "minLength": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+      "newPassword": "كلمة المرور الجديدة",
+      "passwordsDontMatch": "كلمتا المرور غير متطابقتين",
+      "passwordsMatch": "متطابقتان",
+      "strengthFair": "مقبولة",
+      "strengthGood": "جيدة",
+      "strengthStrong": "قوية",
+      "strengthWeak": "ضعيفة",
+      "submit": "تحديث كلمة المرور",
+      "submitting": "جارٍ التحديث…",
+      "successToast": "تم تحديث كلمة المرور. سجّل الدخول للمتابعة."
+    },
+    "sendResetLink": "إرسال رابط إعادة التعيين",
+    "sending": "جارٍ الإرسال…",
+    "signInFailedRedirecting": "فشل تسجيل الدخول. جارٍ التحويل…",
+    "signInHeading": "سجّل الدخول إلى <em>مساحة عملك.</em>",
+    "signUpWithGithub": "إنشاء حساب باستخدام GitHub",
+    "signUpWithGoogle": "إنشاء حساب باستخدام Google",
+    "signUpWithProvider": "إنشاء حساب باستخدام {provider}",
+    "signUpWithMicrosoft": "إنشاء حساب باستخدام Microsoft",
+    "somethingWentWrongPlease": "حدث خطأ ما. حاول مرة أخرى.",
+    "welcomeBack": "أهلًا بعودتك",
+    "workspace": "مساحة العمل.",
+    "signupInviteOnly": "التسجيل في هذا النشر بالدعوة فقط. يمكنك إنشاء حساب بعنوان دعاه أحدهم.",
+    "signupDomainsAllowed": "لا يمكن التسجيل هنا إلا بعناوين من {domains}.",
+    "signupClosedHeading": "التسجيل مغلق",
+    "signupClosedBody": "لا يقبل {app} حسابات جديدة. اطلب من أحد المسؤولين دعوتك.",
+    "signupWithInvitation": "أنت تسجّل بدعوة، لذا لا تنطبق عليك قيود التسجيل في هذا النشر.",
+    "directorySignIn": "تسجيل الدخول باستخدام {provider}",
+    "directoryUsername": "اسم المستخدم في {provider}",
+    "useEmailInstead": "استخدم البريد الإلكتروني وكلمة المرور بدلًا من ذلك",
+    "nativeLogoutFailed": "تم تسجيل الخروج، لكن التطبيق لم يتمكن من مسح صلاحية الوصول المحلية."
+  },
+  "settings": {
+    "builtCommands": "الأوامر المدمجة",
+    "cancel": "إلغاء",
+    "commandNamePlaceholder": "الاسم",
+    "create3": "إنشاء",
+    "createOneSendLong": "أنشئ أمرًا لإرسال prompt طويل ببضع ضغطات.",
+    "delete": "حذف",
+    "delete2": "حذف",
+    "disableAnyYouDon": "عطّل ما لا تريد رؤيته في لوحة الأوامر.",
+    "edit": "تعديل",
+    "edit2": "تعديل",
+    "enabled": "مفعّل",
+    "failedDelete3": "تعذّر الحذف",
+    "failedSaveCommand": "تعذّر حفظ الأمر",
+    "failedToggle": "تعذّر التبديل",
+    "failedToggle2": "تعذّر التبديل",
+    "local": "محلي",
+    "lowercaseLettersDigitsHyphens": "أحرف إنجليزية صغيرة وأرقام وشرطات. 32 حرفًا كحد أقصى.",
+    "modelAdded": "أُضيف {label}",
+    "modelRemoved": "أُزيل النموذج",
+    "modelUpdated": "حُدّث {label}",
+    "modelInUse": "ما زال {label} مستخدمًا من {names}{hidden, plural, =0 {} one { ومن agent واحد لا يمكنك رؤيته} two { ومن اثنين من الـ agents لا يمكنك رؤيتهما} few { ومن # agents لا يمكنك رؤيتها} other { ومن # agent لا يمكنك رؤيتها}}. انقلها إلى نموذج آخر أولًا، أو غيّر مفتاح هذا النموذج بدلًا من حذفه. {archived, plural, =0 {} one {أحدها مؤرشف: احذفه، أو استعده وانقله.} other {# منها مؤرشفة: احذفها، أو استعدها وانقلها.}}",
+    "modelInUseHidden": "ما زال {label} مستخدمًا من {count, plural, one {agent واحد} two {اثنين من الـ agents} few {# agents} other {# agent}} لا يمكنك رؤيتها. اطلب من أحد المسؤولين نقلها إلى نموذج آخر أولًا.",
+    "name": "الاسم",
+    "nameMustBeLowercase": "يجب أن يتكون الاسم من أحرف إنجليزية صغيرة وأرقام وشرطات (32 حرفًا كحد أقصى).",
+    "newCommand": "أمر جديد",
+    "newCustomCommand": "أمر مخصص جديد",
+    "noCustomCommandsYet": "لا توجد أوامر مخصصة بعد",
+    "prompt": "الـ Prompt",
+    "promptCannotBeEmpty": "لا يمكن أن يكون الـ prompt فارغًا.",
+    "retry": "إعادة المحاولة",
+    "save2": "حفظ",
+    "saving4": "جارٍ الحفظ…",
+    "sentAsRegularUserMessage": "يُرسل كرسالة عادية منك عندما تكتب <cmd>/{name}</cmd>.",
+    "slashShortcuts": "اختصارات بالشرطة المائلة لـ prompts تكتبها كثيرًا. كتابة <cmd>/name</cmd> في المحادثة ترسل الـ prompt المحفوظ.",
+    "summarizeConversationAsChecklist": "لخّص المحادثة في قائمة مهام قابلة للتنفيذ.",
+    "todo": "مهام",
+    "yourCustomCommands": "أوامرك المخصصة"
+  },
+  "profile": {
+    "changePassword": "تغيير كلمة المرور",
+    "currentPassword": "كلمة المرور الحالية",
+    "deleteAccount": "حذف الحساب",
+    "email": "البريد الإلكتروني",
+    "name": "الاسم",
+    "newPassword": "كلمة المرور الجديدة",
+    "personalInfo": "المعلومات الشخصية",
+    "title": "الملف الشخصي"
+  },
+  "notifications": {
+    "markAllRead": "تعليم الكل كمقروء",
+    "loadMore": "تحميل المزيد",
+    "failedLoad": "تعذّر تحميل الإشعارات",
+    "unreadCount": "{count, plural, =1 {إشعار واحد غير مقروء} =2 {إشعاران غير مقروءين} few {# إشعارات غير مقروءة} other {# إشعارًا غير مقروء}}",
+    "rowUnread": "غير مقروء",
+    "rowRead": "مقروء",
+    "empty": {
+      "title": "لا توجد إشعارات بعد",
+      "description": "ستظهر هنا تنبيهات الـ budget والموافقات وإخفاقات الـ runs وغيرها."
+    },
+    "clearAll": "مسح الكل",
+    "dismissRow": "تجاهل",
+    "triggerLabel": "الإشعارات{count, plural, =0 {} other {، # غير مقروء}}"
+  },
+  "inbox": {
+    "title": "صندوق الوارد",
+    "description": "ما أحضرته لك المنصة من تلقاء نفسها: ما وجدته متابعاتك وما اقترحته المراجعة الليلية.",
+    "filterLabel": "عرض",
+    "filter": {
+      "all": "الكل",
+      "urgent": "عاجل",
+      "watches": "من المتابعات",
+      "suggestions": "اقتراحات",
+      "done": "منجز"
+    },
+    "empty": {
+      "title": "لا شيء بانتظارك هنا",
+      "description": "ما تجده متابعاتك وما تقترحه المراجعة الليلية يصل إلى هنا.",
+      "watches": "إعداد متابعة"
+    },
+    "doneEmpty": "لم يُرَد على شيء بعد",
+    "waiting": "{count, plural, =0 {لا شيء بانتظارك} =1 {عنصر واحد بانتظارك} =2 {عنصران بانتظارك} few {# عناصر بانتظارك} other {# عنصرًا بانتظارك}}",
+    "sourceAt": "{source} · {when}",
+    "source": {
+      "routine": "فكرة مهمة دورية",
+      "agent": "فكرة agent",
+      "profile": "الملف الشخصي",
+      "role_pack": "حزمة مهام دورية",
+      "finding": "متابعة"
+    }
+  },
+  "members": {
+    "emailPlaceholder": "colleague@example.com",
+    "failedCreateLink": "تعذّر إنشاء الرابط",
+    "failedInvite": "تعذّر إرسال الدعوة",
+    "failedRemove": "تعذّرت إزالة العضو",
+    "failedRevoke": "تعذّر إلغاء الدعوة",
+    "failedRole": "تعذّر تحديث الدور",
+    "joined": "انضم",
+    "memberRemoved": "أُزيل العضو",
+    "pendingInvitations": "الدعوات المعلّقة",
+    "revoke": "إلغاء",
+    "revokeSuccess": "أُلغيت الدعوة",
+    "roleUpdated": "حُدّث الدور",
+    "sendInvite": "إرسال دعوة",
+    "sending": "جارٍ الإرسال...",
+    "title": "الأعضاء",
+    "you": "(أنت)"
+  },
+  "organizations": {
+    "accessLost": "لم تعد لديك صلاحية الوصول إلى تلك المؤسسة.",
+    "accessLostSwitched": "لم تعد لديك صلاحية الوصول إلى تلك المؤسسة. انتقلت إلى {name}.",
+    "accessLostLink": "هذا الرابط لمؤسسة لم تعد لديك صلاحية الوصول إليها.",
+    "accessLostLinkSwitched": "هذا الرابط لمؤسسة لم تعد لديك صلاحية الوصول إليها. نعرض {name} بدلًا منها.",
+    "created": "أُنشئت المؤسسة",
+    "creating": "جارٍ الإنشاء...",
+    "deleted": "حُذفت المؤسسة",
+    "description": "أدِر مؤسساتك وتنقّل بينها.",
+    "failedDelete": "تعذّر حذف المؤسسة",
+    "failedUpdate": "تعذّر تحديث المؤسسة",
+    "namePlaceholder": "فريقي",
+    "personal": "شخصية",
+    "title": "المؤسسات",
+    "updated": "حُدّثت المؤسسة"
+  },
+  "orgs": {
+    "noMembersYet": "لا يوجد أعضاء بعد.",
+    "nobodyHereMatches": "لا يوجد أحد هنا يطابق ذلك.",
+    "scoped": "(محدود النطاق)",
+    "searchPeople": "ابحث عن أشخاص…",
+    "you": "(أنت)"
+  },
+  "invitations": {
+    "acceptSuccess": "انضممت إلى المؤسسة!",
+    "description": "تمت دعوتك للانضمام إلى مؤسسة.",
+    "failedTitle": "تعذّر قبول الدعوة",
+    "goDashboard": "الانتقال إلى لوحة المعلومات",
+    "redirecting": "جارٍ تحويلك إلى مؤسساتك...",
+    "title": "دعوة إلى فريق"
+  },
+  "agentPin": {
+    "toDock": "تثبيت في شريط Dock",
+    "toTray": "تثبيت في شريط النظام",
+    "unpin": "إلغاء التثبيت",
+    "dockHint": "انقر بزر الفأرة الأيمن على أيقونة AgenticOS في شريط Dock لبدء محادثة جديدة مع هذا الـ agent.",
+    "trayHint": "محادثة جديدة مع هذا الـ agent من قائمة AgenticOS في شريط النظام.",
+    "toHomeScreen": "إضافة إلى الشاشة الرئيسية",
+    "onHomeScreen": "على شاشتك الرئيسية. اضغط عليه لبدء محادثة جديدة.",
+    "inLongPress": "لا يستطيع المشغّل تثبيته، لذا وضعناه في قائمة الضغط المطوّل على أيقونة AgenticOS.",
+    "failed": "تعذّرت إضافة الـ agent إلى الشاشة الرئيسية.",
+    "toWidget": "تثبيت في أداة",
+    "inWidget": "تم التثبيت. أضف أداة الـ agents المثبّتة إلى شاشتك الرئيسية؛ ستجد الـ agent أيضًا في قائمة أيقونة AgenticOS وفي الاختصارات."
+  },
+  "liveUpdates": {
+    "changedElsewhere": "غيّر {actor} هذا {surface} أثناء تعديلك له. أعد التحميل لرؤية نسخته، أو احتفظ بتغييراتك للحفظ فوقها.",
+    "reload": "إعادة التحميل",
+    "keepMine": "الاحتفاظ بتغييراتي",
+    "surface": {
+      "console": "من لوحة التحكم",
+      "api_key": "بمفتاح API",
+      "mcp": "عبر MCP",
+      "assistant": "عبر المهندس المعماري"
+    }
+  },
+  "voiceGlow": {
+    "title": "توهج الصوت",
+    "vivid": "قوي",
+    "subtle": "خفيف",
+    "off": "متوقف",
+    "reducedMotion": "متوقف ما دامت الحركة المخفّضة مفعّلة"
+  },
+  "ragStatus": {
+    "cancelled": "أُلغي",
+    "done": "اكتمل",
+    "error": "فشل",
+    "processing": "قيد المعالجة",
+    "running": "قيد التشغيل"
+  },
+  "dashboard": {
+    "actions": {
+      "newChat": "محادثة جديدة"
+    },
+    "activeSessions": "الجلسات النشطة",
+    "allOtherSessionsRevoked": "أُلغيت كل الجلسات الأخرى",
+    "breadcrumb": "مسار التنقل",
+    "cancel": "إلغاء",
+    "couldnTLoadYour": "تعذّر تحميل جلساتك",
+    "current": "الحالية",
+    "devicesCurrentlySignedYour": "الأجهزة المسجّل دخولها إلى حسابك حاليًا.",
+    "errors": {
+      "description": "فشل الطلب. لم يتأثر باقي الصفحة - كل بطاقة تفشل وحدها.",
+      "retry": "إعادة المحاولة",
+      "title": "تعذّر تحميل هذا"
+    },
+    "everyDeviceSignedYour": "سيُسجَّل خروج كل جهاز مسجّل دخوله إلى حسابك، عدا هذا الجهاز.",
+    "failedRevokeSession": "تعذّر إلغاء الجلسة",
+    "failedRevokeSessions": "تعذّر إلغاء الجلسات",
+    "lastActive": "آخر نشاط {when}",
+    "noSessionDataAvailable": "لا تتوفر بيانات عن الجلسات.",
+    "period": {
+      "1d": "اليوم",
+      "30d": "آخر 30 يومًا",
+      "7d": "آخر 7 أيام",
+      "90d": "آخر 90 يومًا",
+      "custom": "نطاق مخصص",
+      "label": "الفترة",
+      "lm": "الشهر الماضي",
+      "tm": "هذا الشهر"
+    },
+    "revokeAll": "إلغاء الكل",
+    "revokeAllOtherSessions": "إلغاء كل الجلسات الأخرى؟",
+    "revokeAllOthers": "إلغاء كل الجلسات الأخرى",
+    "revokeSession": "إلغاء الجلسة",
+    "revokeSession2": "إلغاء الجلسة",
+    "sections": {
+      "attention": "يحتاج إلى انتباه",
+      "deployment": "النشر",
+      "people": "الأشخاص والجودة",
+      "sandboxes": "حيث تشغّل الـ agents الشيفرة",
+      "usage": "الاستخدام والتكلفة",
+      "workspace": "مساحة عملك"
+    },
+    "sectionsFilter": {
+      "all": "كل الأقسام",
+      "label": "الأقسام"
+    },
+    "seeAll": "عرض الكل",
+    "sessionRevoked": "أُلغيت الجلسة",
+    "states": {
+      "loading": "جارٍ التحميل"
+    },
+    "title": "لوحة المعلومات",
+    "whatThisShows": "ما الذي تعرضه {title}",
+    "unknownDevice": "جهاز غير معروف",
+    "edit": {
+      "customize": "تخصيص",
+      "subtitle": "رتّب لوحة معلوماتك - اسحب البطاقات لإعادة ترتيبها بين الأقسام، وغيّر أحجامها، ولوّن الأقسام واطوِها، أو أضف المزيد.",
+      "banner": "اسحب بطاقاتك وغيّر أحجامها ورتّبها، ثم اضغط حفظ للاحتفاظ بالترتيب أو إلغاء للتراجع عنه.",
+      "addWidget": "إضافة أداة",
+      "saveAsPreset": "حفظ باسم…",
+      "addTitle": "إضافة أداة",
+      "addDescription": "اختر بطاقة لتظهر في لوحة معلوماتك، جاهزة لتسحبها إلى مكانها. مرّر المؤشر فوق صف لمعاينتها ببيانات حية - ويمكنك إضافة البطاقة نفسها أكثر من مرة.",
+      "searchPlaceholder": "ابحث في الأدوات…",
+      "searchLabel": "البحث في الأدوات",
+      "noResults": "لا توجد أدوات تطابق “{query}”.",
+      "groups": {
+        "platform": "المنصة",
+        "attention": "يحتاج إلى انتباه",
+        "usage": "الاستخدام والتحليلات",
+        "people": "الأشخاص",
+        "sandboxes": "بيئات الـ Sandbox",
+        "workspace": "مساحة عملك"
+      },
+      "sizeBadge": "{cols} × {rows}",
+      "preview": "معاينة حية",
+      "previewHint": "مرّر المؤشر فوق بطاقة لمعاينتها هنا.",
+      "reset": "إعادة إلى الافتراضي",
+      "cancel": "إلغاء",
+      "save": "حفظ",
+      "addSection": "إضافة قسم",
+      "addToSection": "إضافة إلى قسم",
+      "topSection": "الأعلى",
+      "newSection": "قسم جديد",
+      "untitledSection": "قسم بلا عنوان",
+      "sectionLabel": "اسم القسم",
+      "sectionPlaceholder": "اسم القسم",
+      "removeSection": "إزالة القسم",
+      "collapse": "طيّ {title}",
+      "expand": "توسيع {title}",
+      "accents": {
+        "neutral": "بلا لون",
+        "violet": "بنفسجي",
+        "blue": "أزرق",
+        "green": "أخضر",
+        "amber": "كهرماني",
+        "rose": "وردي"
+      },
+      "customColour": "لون مخصص",
+      "hide": "إخفاء {title}",
+      "moveUp": "نقل {title} إلى الأعلى",
+      "moveDown": "نقل {title} إلى الأسفل",
+      "moveSectionUp": "نقل القسم {title} إلى الأعلى",
+      "moveSectionDown": "نقل القسم {title} إلى الأسفل",
+      "narrower": "تضييق {title}",
+      "wider": "توسيع عرض {title}",
+      "shorter": "تقصير {title}",
+      "taller": "زيادة ارتفاع {title}",
+      "emptySection": "أفلت بطاقة هنا، أو أضف واحدة إلى هذا القسم.",
+      "emptyDraft": "لا توجد بطاقات بعد - أضف واحدة، أو ألغِ للاحتفاظ بلوحة معلوماتك الحالية.",
+      "emptyTitle": "لوحة معلوماتك فارغة",
+      "emptyDescription": "لقد أخفيت كل البطاقات. أعِد بعضها، أو ارجع إلى الترتيب الافتراضي.",
+      "saveFailed": "تعذّر حفظ لوحة معلوماتك. حاول مرة أخرى.",
+      "resetFailed": "تعذّرت إعادة تعيين لوحة معلوماتك. حاول مرة أخرى.",
+      "tempSaveTitle": "الاحتفاظ بهذا الترتيب نهائيًا؟",
+      "tempSaveDescription": "الحفظ يجعل هذا الترتيب لوحة معلوماتك النشطة، لكنه ليس قالبًا محفوظًا. ستستبدله إعادة التعيين إلى الافتراضي أو تطبيق ترتيب آخر، وسيضيع هذا الترتيب. احفظه كقالب دائم للاحتفاظ به والعودة إليه في أي وقت.",
+      "tempSaveAsTemplate": "حفظ كقالب",
+      "tempSaveKeep": "تطبيقه الآن فقط",
+      "alreadyPlaced": "{count, plural, =1 {على الصفحة} other {على الصفحة ×#}}",
+      "optionsFor": "إعدادات {title}"
+    },
+    "presets": {
+      "menu": "الترتيبات",
+      "heading": "لوحات المعلومات المحفوظة",
+      "default": "الترتيب الافتراضي",
+      "newBlank": "ترتيب فارغ جديد",
+      "empty": "لا توجد لوحات معلومات محفوظة بعد. رتّب واحدة، ثم اختر حفظ باسم… للاحتفاظ بها هنا.",
+      "saveTitle": "حفظ لوحة المعلومات هذه",
+      "saveDescription": "احتفظ بالترتيب الحالي باسم يمكنك العودة إليه.",
+      "nameLabel": "الاسم",
+      "namePlaceholder": "مراجعة يوم الإثنين",
+      "saved": "تم حفظ “{name}”.",
+      "saveFailed": "تعذّر حفظ لوحة المعلومات هذه. قد يكون الاسم مستخدمًا بالفعل.",
+      "applyFailed": "تعذّر الانتقال إلى لوحة المعلومات تلك. حاول مرة أخرى.",
+      "delete": "حذف {name}",
+      "deleted": "تم حذف “{name}”.",
+      "deleteFailed": "تعذّر حذف لوحة المعلومات تلك. حاول مرة أخرى."
+    },
+    "ratings": {
+      "likes": "مفيد",
+      "dislikes": "غير مفيد",
+      "likesCount": "{count, plural, =1 {تقييم مفيد واحد} =2 {تقييمان مفيدان} few {# تقييمات مفيدة} other {# تقييمًا مفيدًا}}",
+      "dislikesCount": "{count, plural, =1 {تقييم واحد غير مفيد} =2 {تقييمان غير مفيدين} few {# تقييمات غير مفيدة} other {# تقييمًا غير مفيد}}"
+    },
+    "styles": {
+      "area": "مساحة",
+      "bars": "أعمدة",
+      "donut": "حلقة",
+      "list": "قائمة",
+      "meter": "مقياس",
+      "table": "جدول",
+      "tiles": "مربعات"
+    },
+    "options": {
+      "window": "النافذة الزمنية",
+      "style": "النمط",
+      "agent": "الـ Agent",
+      "person": "الشخص",
+      "followPage": "عامل تصفية الصفحة",
+      "allAgents": "كل الـ agents",
+      "everyone": "الجميع",
+      "oneAgent": "agent واحد",
+      "onePerson": "شخص واحد",
+      "reset": "اتبع الصفحة مجددًا"
+    },
+    "pageStatus": "الحالة",
+    "startChecklist": {
+      "title": "ابدأ من هنا",
+      "progress": "أُنجز {done} من {total}",
+      "next": "الخطوة التالية",
+      "dismiss": "إخفاء قائمة البدء",
+      "steps": {
+        "agent": "ابنِ agent",
+        "publish": "انشره",
+        "knowledge": "امنحه قاعدة معرفة",
+        "departments": "أضف أقسامك",
+        "teammate": "ادعُ زميلًا",
+        "channel": "ضع agent حيث يتحدث فريقك",
+        "profile": "عرّف الـ agents بنفسك",
+        "chat": "ابدأ محادثة",
+        "routine": "أعدّ مهمة دورية",
+        "connection": "اربط خدمة"
+      },
+      "agentAsk": "ساعدني في بناء أول agent لي. اسألني عمّا أريده أن يفعل.",
+      "hints": {
+        "profile": "دورك وعملك، لتناسبك الإجابات.",
+        "chat": "اسأل AgenticOS عن أي شيء يخص عملك.",
+        "routine": "دع agent ينجز مهمة وفق جدول زمني.",
+        "connection": "بريدك أو تقويمك أو ملفاتك، بحسابك الخاص.",
+        "agent": "يبني المهندس المعماري واحدًا معك.",
+        "publish": "ليستخدمه الناس في المحادثة وفي القنوات.",
+        "knowledge": "المستندات التي يجيب منها.",
+        "departments": "المجموعات تحدد من يرى أي agent.",
+        "teammate": "قيمة الـ agents أكبر حين تُشارك.",
+        "channel": "Slack أو Teams أو Telegram أو Mattermost."
+      },
+      "left": "{count, plural, =1 {بقيت خطوة واحدة} =2 {بقيت خطوتان} few {بقيت # خطوات} other {بقيت # خطوة}}",
+      "ratio": "{done}/{total}",
+      "start": "ابدأ",
+      "doneHeading": "منجزة بالفعل",
+      "showAll": "عرض كل الخطوات ({count})",
+      "showLess": "عرض خطوات أقل"
+    },
+    "views": {
+      "label": "عرض لوحة المعلومات",
+      "me": {
+        "label": "أنا",
+        "description": "الـ agents الخاصة بك ومحادثاتك وما ينتظر قرارك."
+      },
+      "org": {
+        "label": "المؤسسة",
+        "description": "كيف تستخدم المؤسسة الـ agents - ما الذي جرى تشغيله، وكم كلّف، وما الذي يحتاج إلى انتباه."
+      },
+      "group": {
+        "label": "المجموعة",
+        "description": "كيف تستخدم مجموعة واحدة الـ agents - runs أعضائها وإنفاقهم وعاداتهم.",
+        "pick": "اختر مجموعة"
+      },
+      "deployment": {
+        "label": "النشر",
+        "description": "النشر بأكمله - كل المؤسسات والخدمات وجودة الإجابات."
+      }
+    },
+    "greeting": {
+      "morning": "صباح الخير",
+      "afternoon": "مساء الخير",
+      "evening": "مساء الخير",
+      "morningNamed": "صباح الخير يا {name}",
+      "afternoonNamed": "مساء الخير يا {name}",
+      "eveningNamed": "مساء الخير يا {name}",
+      "summary": "عملت الـ agents الخاصة بك <b>{runs, plural, =0 {ولا مرة} =1 {مرة واحدة} =2 {مرتين} few {# مرات} other {# مرة}}</b> في هذه الفترة. {waiting, plural, =0 {لا شيء ينتظر قرارك.} =1 {<b>قرار واحد</b> ينتظرك.} =2 {<b>قراران</b> ينتظرانك.} few {<b># قرارات</b> تنتظرك.} other {<b># قرارًا</b> ينتظرك.}}"
+    },
+    "discover": {
+      "title": "اكتشف AgenticOS",
+      "subtitle": "ما تستطيع الـ agents فعله ويسهل أن يفوتك.",
+      "previous": "النصائح السابقة",
+      "next": "المزيد من النصائح",
+      "dismissAll": "إخفاء النصائح",
+      "dismiss": "إخفاء النصيحة {title}",
+      "tips": {
+        "mentions": {
+          "title": "وجّه الـ agent بـ @",
+          "body": "اكتب @ في المحادثة لتمنح الـ agent أحد خوادمه أو قدراته أو الـ skills أو زملائه. يظهر كشارة، ويستخدم الـ agent ذلك تحديدًا.",
+          "cta": "جرّبها في المحادثة"
+        },
+        "commands": {
+          "title": "اختصارات بـ /",
+          "body": "اكتب / في المحادثة للأوامر - التلخيص، الشرح، البدء من جديد - أو اكتب أوامرك الخاصة في الإعدادات ← أوامر الشرطة المائلة.",
+          "cta": "افتح المحادثة"
+        },
+        "mcp": {
+          "title": "استخدمه من Claude Code أو Cursor",
+          "body": "AgenticOS خادم MCP أيضًا: اربط Claude Code أو Codex أو Cursor، وابنِ الـ agents وشغّلها واقرأ نتائجها دون مغادرتها.",
+          "cta": "اربط تطبيقًا"
+        },
+        "subagents": {
+          "title": "دع الـ agents تعمل كفريق",
+          "body": "امنح agent قدرة الـ Subagents ليوزّع أجزاء المهمة على زملاء - باحث ومراجع - وتابعهم وهم يتناقشون فيها.",
+          "cta": "افتح agent"
+        },
+        "sandbox": {
+          "title": "امنح agent حاسوبه الخاص",
+          "body": "مع الـ Sandbox يكتب الـ agent الملفات ويشغّل الشيفرة ويحتفظ بعمله بين المحادثات - بعيدًا وبأمان عن أنظمتك.",
+          "cta": "فعّله"
+        },
+        "apps": {
+          "title": "حوّل الإجابات إلى تطبيقات",
+          "body": "تنشر الـ agents التقارير ولوحات المعلومات والأدوات الصغيرة كتطبيقات يفتحها الناس برابط - وتحدّثها حين تتغير الأرقام.",
+          "cta": "اطّلع على تطبيقاتك"
+        },
+        "routines": {
+          "title": "شغّل الـ agents وفق جدول",
+          "body": "تبدأ المهام الدورية agent كل صباح، أو عند استدعاء webhook، أو عند وصول بريد، وترسل ما وجده حيث يقرأ فريقك.",
+          "cta": "أنشئ مهمة دورية"
+        },
+        "channels": {
+          "title": "قابل فريقك حيث يتحدث",
+          "body": "ضع agent في Slack أو Telegram أو Mattermost، ليسأله الناس مباشرة في المحادثة التي هم فيها.",
+          "cta": "أضف تطبيق محادثة"
+        },
+        "browser": {
+          "title": "دع agent يستخدم متصفحًا",
+          "body": "مع متصفح الويب ينقر الـ agent ويملأ النماذج ويقرأ الصفحات التي تتطلب تسجيل دخول - ويمكنك تولي التحكم في أي لحظة.",
+          "cta": "امنحه متصفحًا"
+        },
+        "knowledge": {
+          "title": "أجب من مستنداتك",
+          "body": "ارفع الأدلة أو العقود أو محركًا كاملًا، لتجيب الـ agents منها وتُظهر الصفحة التي جاءت منها كل إجابة.",
+          "cta": "أضف معرفة"
+        },
+        "skills": {
+          "title": "علّمها طريقة عمل فريقك",
+          "body": "الـ Skills إرشادات مكتوبة - قالب عرض أو قائمة تهيئة لموظف جديد - يحمّلها الـ agent حين تحتاجها المهمة.",
+          "cta": "اكتب skill"
+        }
+      }
+    },
+    "quietGroup": {
+      "title": "لم تشغّل {name} شيئًا في هذه الفترة",
+      "body": "{count, plural, =0 {لا يوجد فيها أحد بعد - أضف أشخاصًا وشارك معها agent.} =1 {لم يشغّل عضوها الوحيد أي agent. شارك agent مع المجموعة ليظهر في محادثاته.} other {لم يشغّل أي من أعضائها الـ # أي agent. شارك agent مع المجموعة ليظهر في محادثاتهم.}}",
+      "openGroup": "افتح المجموعة",
+      "widen": "اعرض آخر 90 يومًا"
+    },
+    "appSession": "AgenticOS لـ {platform} {version}",
+    "pushOn": "الإشعارات الفورية",
+    "pushOnHint": "يتلقى هذا الجهاز الإشعارات الفورية",
+    "widgets": {
+      "summary": {
+        "title": "هذه الفترة بنظرة سريعة",
+        "description": "الـ runs، وكيف انتهت، وكم كلّفت، وعدد من استخدمها.",
+        "runs": "الـ Runs",
+        "completed": "المكتملة",
+        "completedOf": "{total, plural, =1 {من run واحد} =2 {من اثنين من الـ runs} few {من # runs} other {من # run}}",
+        "spend": "الإنفاق",
+        "people": "الأشخاص النشطون",
+        "ofMembers": "{total, plural, =1 {من عضو واحد} =2 {من عضوين} few {من # أعضاء} other {من # عضوًا}}",
+        "delta": "مقارنة بالفترة السابقة",
+        "empty": {
+          "title": "لم يُشغَّل شيء في هذه الفترة",
+          "description": "اختر نافذة زمنية أوسع، أو امنح agent واجهة لتبدأ الأرقام من هنا."
+        },
+        "spendLabel": "أُنفق {amount}"
+      },
+      "active-users": {
+        "empty": {
+          "description": "يبدأ الاعتماد بأول run لأول شخص.",
+          "title": "لم يشغّل أحد أي شيء"
+        },
+        "subline": "شغّلوا agent في هذه الفترة",
+        "title": "الأشخاص النشطون",
+        "description": "كم من الفريق شغّل agent في هذه الفترة.",
+        "ofMembers": "{total, plural, =1 {من عضو واحد} =2 {من عضوين} few {من # أعضاء} other {من # عضوًا}}",
+        "ran": "شغّلوا agent",
+        "didNot": "لم يشغّلوا"
+      },
+      "agents": {
+        "empty": {
+          "description": "لم يُنشر شيء في هذه المؤسسة بعد.",
+          "title": "لا توجد agents منشورة"
+        },
+        "idle": "منشورة لكنها خاملة في هذه الفترة:",
+        "title": "الـ Agents: المعتمدة والمنسية",
+        "description": "أي الـ agents معتمدة، وأيها منسية."
+      },
+      "approvals": {
+        "empty": {
+          "description": "حُسمت كل الموافقات. هذه البطاقة تؤدي دورها حين تكون فارغة.",
+          "title": "لا شيء بانتظار قرار"
+        },
+        "more": "{count} أخرى في قائمة الانتظار",
+        "review": "مراجعة",
+        "title": "بانتظار قرار",
+        "waiting": "بالانتظار منذ {ago}",
+        "description": "Runs متوقفة عند استدعاء أداة، بانتظار قرار.",
+        "someAgent": "أحد الـ agents",
+        "forPerson": "لـ {email} · بالانتظار منذ {ago}"
+      },
+      "budget-headroom": {
+        "empty": {
+          "description": "عيّن حدًا للمؤسسة - يظهر المتبقي هنا قبل أن يظهر budget_exceeded.",
+          "title": "لم يُعيَّن حد شهري"
+        },
+        "headline": "من الحد الشهري {cap} - المتبقي {left}",
+        "title": "المتبقي من الـ budget",
+        "description": "كم بقي من الـ budget الشهري، للمؤسسة ولأي agent له حد خاص. ظهور budget_exceeded في المخطط الدائري هو العَرَض؛ وهذا هو السبب.",
+        "moreCapped": "{count, plural, =1 {agent آخر له حد} =2 {اثنان آخران من الـ agents لهما حد} few {# agents أخرى لها حد} other {# agent آخر لها حد}}"
+      },
+      "conversations": {
+        "continue": "متابعة",
+        "empty": {
+          "description": "ابدأ واحدة من بطاقة agent - وستجدها بانتظارك هنا.",
+          "title": "لا توجد محادثات بعد"
+        },
+        "title": "تابع من حيث توقفت",
+        "untitled": "محادثة بلا عنوان",
+        "description": "تابع محادثة حديثة من حيث توقفت."
+      },
+      "health": {
+        "empty": {
+          "description": "لم يستجب فحص الحالة بعد.",
+          "title": "لا توجد تقارير من الخدمات"
+        },
+        "status": {
+          "healthy": "سليمة",
+          "not_checked": "لم تُفحص",
+          "unconfigured": "غير مُعدّة",
+          "unhealthy": "متوقفة"
+        },
+        "title": "حالة الخدمات",
+        "description": "هل تستجيب قاعدة البيانات وقائمة الانتظار ومخزن المتجهات.",
+        "services": {
+          "database": "قاعدة البيانات",
+          "redis": "Redis",
+          "vector_store": "مخزن المتجهات",
+          "model_access": "الوصول إلى النماذج",
+          "scheduler": "المهام المجدولة"
+        }
+      },
+      "knowledge-freshness": {
+        "empty": {
+          "description": "تعرض المجموعات المتزامنة من Drive أو S3 حداثتها هنا.",
+          "title": "لا توجد مصادر مزامنة"
+        },
+        "failing": "متعثرة",
+        "fresh": "حديثة",
+        "neverSynced": "لم تُزامن قط",
+        "synced": "زُومنت منذ {ago}",
+        "title": "مزامنة المعرفة",
+        "description": "أي مجموعات المعرفة توقفت عن المزامنة."
+      },
+      "latency": {
+        "empty": {
+          "description": "يحتاج زمن الاستجابة إلى run واحد مكتمل على الأقل.",
+          "title": "لا توجد runs مكتملة"
+        },
+        "p50": "الوسيط (p50)",
+        "p95": "أبطأ 5% (p95)",
+        "title": "زمن الاستجابة",
+        "viewSlowest": "افتح هذه الـ runs، الأبطأ أولًا",
+        "description": "كم تستغرق الـ runs، عند الوسيط وعند الطرف الأبطأ.",
+        "tail": "تستغرق أبطأ 5% منها {ratio}× الوسيط"
+      },
+      "mcp-health": {
+        "checked": "فُحص منذ {ago}",
+        "down": "متوقف",
+        "downSince": "متوقف منذ {ago}",
+        "empty": {
+          "description": "اربط واحدًا من الكتالوج - وستظهر حالته هنا.",
+          "title": "لا توجد خوادم MCP مرتبطة"
+        },
+        "title": "التكاملات",
+        "unchecked": "لم يُفحص بعد",
+        "description": "هل ما زالت خوادم MCP المرتبطة تستجيب. الخادم الذي يتوقف بصمت يأخذ أدواته من كل agent يستخدمه."
+      },
+      "members": {
+        "empty": {
+          "description": "ادعُ أحدًا - الاعتماد يحتاج إلى أشخاص.",
+          "title": "أنت وحدك"
+        },
+        "roles": {
+          "admin": "مسؤول",
+          "builder": "منشئ",
+          "member": "عضو",
+          "operator": "مشغّل",
+          "owner": "مالك",
+          "viewer": "مُطّلع"
+        },
+        "title": "الأعضاء",
+        "description": "من في المؤسسة، بحسب الدور.",
+        "unit": "{count, plural, =1 {عضو} =2 {عضوان} few {أعضاء} other {عضوًا}}"
+      },
+      "model-mix": {
+        "empty": {
+          "description": "يظهر توزيع النماذج مع أول run.",
+          "title": "لا توجد runs في هذه الفترة"
+        },
+        "modelRepaired": "{model} · أُصلح {repaired}",
+        "notRecorded": "غير مسجّل",
+        "title": "النماذج وراء الـ runs",
+        "description": "أي النماذج تقف وراء الـ runs، كما سجّل كل run نموذجه.",
+        "unit": "runs"
+      },
+      "my-activity": {
+        "empty": {
+          "description": "شغّل أي agent - سيظهر سجلك هنا، ولك وحدك.",
+          "title": "لا توجد runs لك بعد"
+        },
+        "pending": "{count} من الـ runs الخاصة بك بانتظار قرار أحدهم",
+        "title": "نشاطك",
+        "unit": "runs شغّلتها في هذه الفترة",
+        "description": "الـ runs الخاصة بك، وما ينتظر قرارًا."
+      },
+      "my-agents": {
+        "empty": {
+          "description": "لم تتم مشاركة أي شيء معك بعد - اطلب من أحد المنشئين، أو أنشئ واحدًا بنفسك.",
+          "title": "لا توجد agents بعد"
+        },
+        "openChat": "فتح المحادثة",
+        "runs": "{count} runs",
+        "shared": "مشترك",
+        "sharedTitle": "الـ Agents المشتركة معك",
+        "title": "الـ Agents الخاصة بك",
+        "yours": "خاص بك",
+        "description": "الـ agents التي تبنيها وتلك المشتركة معك."
+      },
+      "my-quality": {
+        "empty": {
+          "description": "قيّم الإجابات بإعجاب أو عدم إعجاب - وسيظهر اتجاهك هنا.",
+          "title": "لا توجد إجابات مقيّمة بعد"
+        },
+        "subline": "من {count} إجابة مقيّمة في محادثاتك",
+        "title": "جودة الإجابات في محادثاتك",
+        "description": "كيف تُقيَّم الإجابات في محادثاتك."
+      },
+      "my-top-agents": {
+        "empty": {
+          "description": "شغّل أي agent - وستظهر المفضلة لديك هنا.",
+          "title": "لا توجد runs لك بعد"
+        },
+        "subline": "الـ runs الخاصة بك في هذه الفترة - لا أحد غيرك.",
+        "title": "الـ Agents الأكثر استخدامًا لديك",
+        "description": "الـ agents التي تستخدمها أكثر من غيرها."
+      },
+      "org-ratings": {
+        "empty": {
+          "description": "تقييمات الإجابات تظهر هنا.",
+          "title": "لا توجد تقييمات بعد"
+        },
+        "subline": "من {count} إجابة مقيّمة كانت إيجابية في هذه الفترة",
+        "title": "جودة الإجابات",
+        "description": "كيف تُقيَّم الإجابات في أنحاء المؤسسة.",
+        "bySurface": "{surface}: {percent}% إيجابية"
+      },
+      "outcomes": {
+        "attention": "احتاج run واحد من كل {n} إلى انتباه في هذه الفترة",
+        "completed": "مكتملة",
+        "empty": {
+          "description": "يظهر توزيع النتائج مع أول run.",
+          "title": "لا توجد runs في هذه الفترة"
+        },
+        "status": {
+          "awaiting_approval": "بانتظار الموافقة",
+          "budget_exceeded": "تجاوز الـ budget",
+          "completed": "مكتمل",
+          "failed": "فشل",
+          "other": "قيد التشغيل أو أُلغي"
+        },
+        "title": "النتائج",
+        "description": "كيف انتهت الـ runs - مكتملة، فاشلة، تجاوزت الـ budget، بالانتظار."
+      },
+      "platform": {
+        "active24h": "{count} نشطون خلال 24 ساعة",
+        "agents": "الـ Agents",
+        "conversations": "المحادثات",
+        "empty": {
+          "description": "نشر جديد: لا مؤسسات سوى مؤسسة الإعداد الأولي، ولا runs.",
+          "title": "لا شيء هنا بعد"
+        },
+        "organizations": "المؤسسات",
+        "title": "المنصة بنظرة سريعة",
+        "users": "المستخدمون",
+        "description": "أعداد على مستوى النشر: المؤسسات والأشخاص والـ agents والمحادثات.",
+        "messages": "{count, plural, =1 {رسالة واحدة} =2 {رسالتان} few {# رسائل} other {# رسالة}}"
+      },
+      "platform-ratings": {
+        "empty": {
+          "description": "لم يقيّم أحد أي إجابة في أي مكان من النشر.",
+          "title": "لا توجد تقييمات بعد"
+        },
+        "subline": "تقييمات إيجابية - {count} تقييمًا عبر كل المؤسسات",
+        "title": "جودة الإجابات على مستوى النشر",
+        "description": "كيف تُقيَّم الإجابات في النشر بأكمله."
+      },
+      "recent-failures": {
+        "budgetExceeded": "تجاوز الـ budget أثناء التشغيل",
+        "empty": {
+          "description": "انتهى كل run في هذه الفترة بلا أخطاء.",
+          "title": "لا توجد إخفاقات"
+        },
+        "failed": "فشل",
+        "open": "فتح الـ runs",
+        "title": "الإخفاقات الأخيرة",
+        "unknownAgent": "agent غير معروف",
+        "description": "الـ runs التي فشلت أو نفد الـ budget الخاص بها، الأحدث أولًا.",
+        "timesFailed": "{count, plural, =1 {مرة واحدة} =2 {مرتان} few {# مرات} other {# مرة}}"
+      },
+      "runs": {
+        "delta": "مقارنة بالفترة السابقة",
+        "empty": {
+          "description": "انشر agent وامنحه واجهة - وسيظهر الاعتماد هنا.",
+          "title": "لا توجد runs في هذه الفترة"
+        },
+        "title": "الـ Runs عبر الزمن",
+        "unit": "runs",
+        "description": "كم run جرى خلال الفترة، يومًا بيوم."
+      },
+      "sandbox-capacity": {
+        "elsewhere": "يعمل على Daytona - تُحتسب بيئات الـ sandbox تلك في ذلك الحساب، لا هنا.",
+        "empty": {
+          "description": "سجّل واحدًا ليظهر هنا ما تبقى من سعة لتشغيل الشيفرة.",
+          "title": "لم يُسجَّل مضيف sandbox"
+        },
+        "hostUncounted": "لا يمكن عرض مدى امتلاء المضيف نفسه هنا - إن رُفض طلبك بينما تُظهر هذه البطاقة سعة متاحة، فقد ملأ أحد غيرك المضيف.",
+        "openOfTenantLimit": "{used} من {limit}",
+        "openUncapped": "{count, plural, =1 {واحد مفتوح} =2 {اثنان مفتوحان} few {# مفتوحة} other {# مفتوحًا}}",
+        "title": "سعة الـ Sandbox",
+        "description": "كم من سعة الـ sandbox مستخدم: بيئات الـ sandbox المفتوحة مقابل الحد المطبّق على هذه المؤسسة، وهو الرقم الذي يأتي منه الخطأ 429."
+      },
+      "sandbox-policy": {
+        "ceilings": {
+          "hostOpen": "المفتوحة، على مستوى المضيف",
+          "hostResident": "المقيمة، على مستوى المضيف",
+          "perOrganization": "هذه المؤسسة"
+        },
+        "default": "افتراضي",
+        "elsewhere": {
+          "description": "لا ينشر Daytona قائمة سماح خاصة به - ما يسمح به إعداد في ذلك الحساب.",
+          "title": "بيئات الـ Sandbox تعمل على Daytona"
+        },
+        "empty": {
+          "description": "سجّل واحدًا لتظهر هنا بيئات التشغيل التي يسمح بها.",
+          "title": "لم يُسجَّل مضيف sandbox"
+        },
+        "noMemoryCeiling": "بلا حد",
+        "noRuntime": "لا تسمح هذه الخدمة بأي بيئة تشغيل، لذا لا يستطيع أي agent تشغيل شيفرة عليها.",
+        "title": "بيئات تشغيل الـ Sandbox",
+        "description": "ما يسمح مضيف الـ sandbox للـ agents بتشغيله. هذه حدود تضعها الخدمة عند بدئها، لا أعداد قيد الاستخدام - ويمكن رسم حد المؤسسة وحده ككسر."
+      },
+      "sandbox-sessions": {
+        "activityOf": "عرض ما جرى في الـ sandbox {id}",
+        "elsewhere": {
+          "description": "تظهر الجلسات المفتوحة هناك في لوحة معلومات ذلك الحساب، لا هنا.",
+          "title": "بيئات الـ Sandbox تعمل على Daytona"
+        },
+        "empty": {
+          "description": "سجّل واحدًا لتظهر هنا بيئات الـ sandbox التي تفتحها الـ agents.",
+          "title": "لم يُسجَّل مضيف sandbox"
+        },
+        "hideActivity": "إخفاء",
+        "idle": {
+          "hours": "خامل منذ {count} س",
+          "minutes": "خامل منذ {count} د",
+          "seconds": "خامل منذ {count} ث"
+        },
+        "memoryOfLimit": "{used} من {limit}",
+        "noActivity": "لم يُسجَّل شيء لهذا الـ sandbox بعد.",
+        "nothingRunning": "لا شيء قيد التشغيل. يُفتح الـ sandbox أول مرة يشغّل فيها agent شيفرة.",
+        "runningOn": "على {name}",
+        "sampleUsage": "الذاكرة",
+        "sampleUsageHint": "عيّنة من الذاكرة والمعالج - طلب واحد إلى المضيف لكل sandbox",
+        "scope": {
+          "agent": "مشترك عبر الـ agent بأكمله",
+          "channel": "مشترك في قناة واحدة",
+          "conversation": "مشترك في محادثة واحدة",
+          "run": "لـ run واحد فقط",
+          "unknown": "نطاق لا يعرفه هذا الإصدار",
+          "user": "مشترك لشخص واحد"
+        },
+        "showActivity": "النشاط",
+        "title": "بيئات الـ Sandbox المفتوحة",
+        "tookMs": "{ms} مللي ثانية",
+        "unattributed": "لم يُسجَّل agent",
+        "description": "جلسات الـ sandbox التي تعمل الآن."
+      },
+      "shared-with-you": {
+        "agents": "الـ Agents",
+        "collections": "المجموعات",
+        "empty": {
+          "description": "حين يشاركك أحد agent أو مجموعة أو skill، يُحتسب هنا.",
+          "title": "لم تتم مشاركة شيء بعد"
+        },
+        "skills": "الـ Skills",
+        "title": "المشترك معك",
+        "description": "الـ agents والمعرفة والـ skills المشتركة معك."
+      },
+      "spend": {
+        "delta": "مقارنة بالفترة السابقة",
+        "empty": {
+          "description": "تظهر تكلفة النماذج هنا run تلو الآخر.",
+          "title": "لم يُنفق شيء بعد"
+        },
+        "monthToDate": "هذا الشهر حتى الآن: {amount}",
+        "notRecorded": "غير مسجّل",
+        "title": "الإنفاق",
+        "unit": "في هذه الفترة",
+        "description": "كم كلّفت الفترة، والشهر الجاري حتى اليوم. رقم الشهر يطابق الفاتورة، لذا يتجاهل عامل تصفية الفترة عمدًا.",
+        "split": "{models} على النماذج · {ingestion} على الفهرسة",
+        "spentLabel": "أُنفق {amount}"
+      },
+      "surfaces": {
+        "empty": {
+          "description": "تظهر هنا ساحة التجربة ومحادثة الويب والـ API وSlack وTelegram وMattermost والأداة المضمّنة.",
+          "title": "لا توجد runs في هذه الفترة"
+        },
+        "names": {
+          "api": "HTTP API",
+          "embed": "الأداة المضمّنة",
+          "mattermost": "Mattermost",
+          "playground": "ساحة التجربة",
+          "schedule": "الجدول الزمني",
+          "slack": "Slack",
+          "telegram": "Telegram",
+          "web": "محادثة الويب",
+          "workflow": "سير العمل",
+          "follow_ups": "المتابعات",
+          "proactive": "استباقي"
+        },
+        "title": "من أين تأتي الـ runs",
+        "description": "من أين تأتي الـ runs - محادثة الويب، الـ API، القنوات.",
+        "unit": "runs"
+      },
+      "top-orgs": {
+        "agents": "الـ Agents",
+        "empty": {
+          "description": "لا توجد سوى مؤسسة الإعداد الأولي.",
+          "title": "لا توجد مؤسسات بعد"
+        },
+        "members": "الأعضاء",
+        "organization": "المؤسسة",
+        "title": "أنشط المؤسسات",
+        "description": "أكثر المؤسسات نشاطًا في هذا النشر.",
+        "owner": "المالك",
+        "noOwner": "بلا مالك"
+      },
+      "top-people": {
+        "columns": {
+          "cost": "التكلفة",
+          "lastRun": "آخر run",
+          "person": "الشخص",
+          "runs": "الـ Runs"
+        },
+        "empty": {
+          "description": "أول run لأول شخص يضع اسمًا هنا.",
+          "title": "لم يشغّل أحد أي شيء"
+        },
+        "others": "{count, plural, =1 {شغّل شخص آخر agent واحدًا على الأقل} =2 {شغّل شخصان آخران agent واحدًا على الأقل} few {شغّل # أشخاص آخرين agent واحدًا على الأقل} other {شغّل # شخصًا آخر agent واحدًا على الأقل}}",
+        "title": "من يستخدمه",
+        "description": "الأكثر استخدامًا، بحسب عدد الـ runs، مع التكلفة إلى جانبها.",
+        "disclosure": "كل من يملك صلاحية runs:view يرى هذا - المنشئون والمشغّلون إضافة إلى المالكين والمسؤولين."
+      },
+      "version-compare": {
+        "empty": {
+          "description": "انشر إصدارًا جديدًا - تظهر المقارنة حين يكون للإصدارين runs في الفترة.",
+          "title": "لم يُشغَّل سوى إصدار واحد"
+        },
+        "metric": {
+          "completed": "معدل النجاح",
+          "cost": "التكلفة لكل run",
+          "p95": "زمن الاستجابة p95",
+          "ratings": "التقييمات الإيجابية",
+          "runs": "الـ Runs"
+        },
+        "subline": "{agent} - {current} (الحالي) مقابل {previous}، فقط الـ runs التي نفّذت كل إصدار",
+        "title": "من إصدار إلى آخر",
+        "description": "هل يتصرف الإصدار الجديد من الـ agent أفضل من السابق."
+      },
+      "routines": {
+        "title": "المهام الدورية",
+        "description": "ما يعمل دون أن يجلس أحد إلى لوحة المفاتيح، الأقرب أولًا، وكيف جرى آخرها.",
+        "unnamed": "مهمة دورية بلا عنوان",
+        "cost": "${cost}",
+        "nextFire": "التالية {at} ({zone})",
+        "paused": "متوقفة مؤقتًا",
+        "neverRun": "لم تُشغَّل بعد",
+        "fired": "انطلقت",
+        "succeeded": "نجحت",
+        "ratedDown": "قُيّمت سلبًا",
+        "status": {
+          "failed": "فشلت",
+          "budget_exceeded": "تجاوزت الـ budget",
+          "guardrail_blocked": "أوقفها حاجز حماية",
+          "loop_stopped": "أُوقفت عن التكرار",
+          "running": "قيد التشغيل",
+          "cancelled": "أُلغيت",
+          "awaiting_approval": "بانتظار الموافقة"
+        },
+        "empty": {
+          "title": "لا شيء يعمل من تلقاء نفسه بعد",
+          "description": "الجدول الزمني يشغّل agent على مدار الساعة؛ والمشغّل يشغّله حين يصل شيء ما."
+        }
+      },
+      "channels": {
+        "title": "القنوات",
+        "description": "قنوات المراسلة التي يمكن الوصول إلى الـ agents عبرها، وهل كل باب مفتوح.",
+        "platforms": {
+          "telegram": "Telegram",
+          "slack": "Slack",
+          "mattermost": "Mattermost"
+        },
+        "webhook": "يستمع",
+        "polling": "يستطلع",
+        "switchedOff": "متوقف",
+        "empty": {
+          "title": "لا توجد قنوات بعد",
+          "description": "سجّل bot لتصبح الـ agents الخاصة به متاحة من Slack أو Telegram أو Mattermost."
+        }
+      },
+      "knowledge": {
+        "title": "المعرفة",
+        "description": "كم مما رُفع مفهرس فعلًا وقابل للاسترجاع.",
+        "collections": "المجموعات",
+        "documents": "المستندات",
+        "chunks": "المقاطع",
+        "notIndexed": "{count, plural, =1 {واحد غير مفهرس} =2 {اثنان غير مفهرسين} few {# غير مفهرسة} other {# غير مفهرس}}",
+        "empty": {
+          "title": "لا توجد مجموعات بعد",
+          "description": "أنشئ واحدة وارفع مستندًا - وما يستطيع الـ agent قراءته يظهر هنا."
+        }
+      },
+      "activity-rhythm": {
+        "title": "متى يجري العمل",
+        "description": "الـ runs بحسب يوم الأسبوع والساعة، بتوقيت UTC - حيث تكون فترات الهدوء.",
+        "weekdays": {
+          "0": "الأحد",
+          "1": "الإثنين",
+          "2": "الثلاثاء",
+          "3": "الأربعاء",
+          "4": "الخميس",
+          "5": "الجمعة",
+          "6": "السبت"
+        },
+        "cell": "{day} {hour}:00 UTC · {count, plural, =1 {run واحد} =2 {اثنان من الـ runs} few {# runs} other {# run}}",
+        "hourTick": "{hour}س",
+        "empty": {
+          "title": "لم يُشغَّل شيء في هذه الفترة",
+          "description": "يظهر الإيقاع حين توجد runs لتوزيعها عليه."
+        }
+      },
+      "notifications": {
+        "title": "الإشعارات",
+        "description": "أحدث إشعاراتك.",
+        "empty": {
+          "title": "لا شيء هنا بعد",
+          "description": "ستظهر الإشعارات هنا."
+        }
+      },
+      "artifacts": {
+        "title": "التطبيقات",
+        "description": "أحدث التطبيقات التي نشرتها الـ agents الخاصة بك.",
+        "empty": {
+          "title": "لم يُنشر شيء بعد",
+          "description": "تظهر هنا التقارير ولوحات المعلومات التي ينشرها الـ agent."
+        }
+      },
+      "department-spend": {
+        "title": "الإنفاق بحسب القسم",
+        "description": "ما شغّله أفراد كل قسم هذا الشهر، مقابل حده. الشخص المنتمي إلى قسمين يُحتسب في كليهما.",
+        "ofCap": "{spent} / {cap}",
+        "empty": {
+          "title": "لا توجد أقسام بعد",
+          "description": "أنشئ أقسامًا في صفحة الأقسام لرؤية الإنفاق بحسب الفريق."
+        }
+      },
+      "department-quality": {
+        "title": "جودة الإجابات بحسب القسم",
+        "description": "كيف قيّم أفراد كل قسم الإجابات في هذه الفترة، الأقل فائدة أولًا. الشخص المنتمي إلى قسمين يُحتسب في كليهما.",
+        "row": "{percent}% مفيدة · {total, plural, =1 {تقييم واحد} =2 {تقييمان} few {# تقييمات} other {# تقييمًا}}",
+        "empty": {
+          "title": "لا توجد تقييمات للأقسام بعد",
+          "description": "حين يقيّم أفراد قسم ما الإجابات، يظهر هنا مدى فائدتها، قسمًا تلو الآخر."
+        }
+      },
+      "my-summary": {
+        "title": "فترتك",
+        "description": "الـ runs الخاصة بك، وكم منها اكتمل، وما ينتظر قرارًا، وكم كلّف.",
+        "runs": "الـ Runs الخاصة بك",
+        "finished": "المكتملة",
+        "finishedOf": "من {total} runs",
+        "waiting": "بانتظارك",
+        "review": "راجعها",
+        "nothingWaiting": "لا شيء بانتظارك",
+        "spent": "المُنفق",
+        "spentLabel": "أُنفق {amount}"
+      },
+      "projects": {
+        "title": "المشاريع",
+        "description": "مشاريعك، الأحدث تعديلًا أولًا.",
+        "empty": {
+          "title": "لا توجد مشاريع بعد",
+          "description": "يحتفظ المشروع بتعليمات وملفات تتشاركها كل المحادثات فيه."
+        }
+      },
+      "recent-visuals": {
+        "title": "المرئيات الأخيرة",
+        "description": "المخططات والشروحات والمشاهد التي رسمتها لك الـ agents مؤخرًا.",
+        "app": "تطبيق",
+        "empty": {
+          "title": "لم يُرسم شيء بعد",
+          "description": "اطلب من agent لديه المرئيات أن يرسم شيئًا - مخططًا أو شرحًا أو مشهدًا ثلاثي الأبعاد - وسيظهر هنا."
+        }
+      },
+      "background-jobs": {
+        "title": "المهام في الخلفية",
+        "description": "ما أنهته قائمة المهام خلال الـ 24 ساعة الماضية، وكم منها تعطّل.",
+        "empty": {
+          "title": "لم ينتهِ شيء بعد",
+          "description": "لم تنتهِ أي مهمة في الخلفية خلال الـ 24 ساعة الماضية."
+        }
+      },
+      "voice-minutes": {
+        "title": "دقائق المكالمات الصوتية",
+        "description": "دقائق المكالمات في الفترة، وأي الـ agents استقبلتها.",
+        "minutes": "{minutes} دقيقة",
+        "calls": "{count, plural, one {مكالمة واحدة} two {مكالمتان} few {# مكالمات} other {# مكالمة}}",
+        "empty": {
+          "title": "لا توجد مكالمات صوتية بعد",
+          "description": "تظهر الدقائق هنا حين يتصل الأعضاء أو الزوار بـ agent."
+        },
+        "deletedAgent": "agent محذوف"
+      },
+      "tables": {
+        "title": "الجداول",
+        "description": "جداولك، الأحدث إعادة تسمية أو هيكلة أولًا.",
+        "empty": {
+          "title": "لا توجد جداول بعد",
+          "description": "أنشئ جدولًا وسيظهر هنا."
+        }
+      },
+      "workflows": {
+        "title": "سير العمل",
+        "description": "ما فعلته الـ runs الفعلية لسير العمل خلال الفترة، الأكثر نشاطًا أولًا، وكم run ينتظر شخصًا الآن.",
+        "empty": {
+          "title": "لا توجد runs لسير العمل في هذه الفترة",
+          "description": "انشر سير عمل وابدأه، وستظهر الـ runs الخاصة به هنا."
+        },
+        "needsYou": "{count, plural, one {run واحد ينتظرك} two {اثنان من الـ runs ينتظرانك} few {# runs تنتظرك} other {# run تنتظرك}}",
+        "runs": "الـ Runs",
+        "succeeded": "نجح {count, number}",
+        "failed": "فشلت",
+        "cost": "التكلفة",
+        "row": "{runs, plural, one {run واحد} two {اثنان من الـ runs} few {# runs} other {# run}}",
+        "rowFailed": "{runs, plural, one {run واحد} two {اثنان من الـ runs} few {# runs} other {# run}}، فشل منها {failed, number}"
+      },
+      "approval-outcomes": {
+        "title": "نتائج الموافقات",
+        "description": "كيف قرر الناس ما سألتهم عنه سير العمل خلال الفترة: موافقة كما اقتُرح، أو تعديل، أو رفض، وكم استغرق ذلك.",
+        "empty": {
+          "title": "لا توجد طلبات موافقة في هذه الفترة",
+          "description": "سير العمل الذي فيه خطوة موافقة يعرض بياناته هنا حين يُسأل أحد."
+        },
+        "unchanged": "موافقة كما اقتُرح",
+        "edited": "عُدّل",
+        "editedCaption": "وسيط التغيير {ratio}",
+        "decideTime": "وقت اتخاذ القرار",
+        "notMeasured": "لم يُقَس التغيير",
+        "rowRequests": "{requests, plural, one {طلب واحد} two {طلبان} few {# طلبات} other {# طلبًا}}",
+        "row": "{requests, plural, one {طلب واحد} two {طلبان} few {# طلبات} other {# طلبًا}}، {rate} وُوفق عليها كما اقتُرحت"
+      },
+      "workflow-logs": {
+        "title": "سجلات سير العمل",
+        "description": "أحدث الأسطر التي كتبها سير العمل في سجلاته، وكم أضافت الـ 24 ساعة الماضية - الـ runs الفعلية فقط.",
+        "empty": {
+          "title": "لا توجد أسطر في السجل بعد",
+          "description": "خطوة سير العمل التي فيها سجل سريع تكتب هنا في كل مرة تعمل فيها."
+        },
+        "lastDay": "الأسطر، آخر 24 ساعة",
+        "errors": "الأخطاء"
+      },
+      "suggestions": {
+        "title": "الموجز",
+        "description": "ما وجدته متابعاتك وما اقترحته المراجعة الليلية - ما لا يحتمل الانتظار أولًا.",
+        "empty": {
+          "title": "لم يُقترح شيء بعد",
+          "description": "تظهر هنا نتائج متابعاتك واقتراحات المراجعة الليلية.",
+          "descriptionOff": "الاستباقية متوقفة في مؤسستك."
+        },
+        "more": "{count, plural, =1 {عنصر آخر في صندوق الوارد} =2 {عنصران آخران في صندوق الوارد} few {# عناصر أخرى في صندوق الوارد} other {# عنصرًا آخر في صندوق الوارد}}"
+      }
+    }
   }
 }
