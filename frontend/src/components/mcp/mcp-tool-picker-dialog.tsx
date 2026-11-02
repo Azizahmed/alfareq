@@ -94,7 +94,7 @@ export function McpToolPickerDialog({
             <Button
               variant="ghost"
               size="sm"
-              className="ml-auto"
+              className="ms-auto"
               onClick={() =>
                 setChecked((previous) => {
                   const next = new Set(previous);

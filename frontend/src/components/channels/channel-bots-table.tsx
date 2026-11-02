@@ -90,7 +90,7 @@ export function ChannelBotsTable({
       {
         key: "bot",
         header: t("columnBot"),
-        className: "pl-5",
+        className: "ps-5",
         cell: (bot) => (
           <div className={cn("flex items-center gap-3", paused(bot))}>
             <ChannelPlatformIcon platform={bot.platform} />
@@ -161,7 +161,7 @@ export function ChannelBotsTable({
         key: "actions",
         header: t("columnActions"),
         align: "right",
-        className: "w-32 pr-5",
+        className: "w-32 pe-5",
         cell: (bot) => (
           <div className={cn("flex justify-end gap-1", paused(bot))}>
             <Button

@@ -85,7 +85,7 @@ export function OfflineBanner() {
           href={href}
           // A line of its own on a phone, under the notice, rather than a
           // column beside it the notice wraps around.
-          className="text-foreground inline-flex shrink-0 items-center gap-1.5 text-xs font-medium hover:underline max-sm:basis-full max-sm:pl-7"
+          className="text-foreground inline-flex shrink-0 items-center gap-1.5 text-xs font-medium hover:underline max-sm:basis-full max-sm:ps-7"
         >
           <Send className="h-3.5 w-3.5" aria-hidden />
           {t("outboxWaiting", { count: waiting })}

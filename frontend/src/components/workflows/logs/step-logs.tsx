@@ -19,7 +19,7 @@ export function StepLogs({
   const locale = useLocale();
   if (entries.length === 0) return null;
   return (
-    <ul className="border-border mt-1 space-y-1 border-l-2 pl-2" data-testid="step-logs">
+    <ul className="border-border mt-1 space-y-1 border-s-2 ps-2" data-testid="step-logs">
       {entries.map((entry) => (
         <li key={entry.id} className="text-xs">
           <span className="text-muted-foreground">

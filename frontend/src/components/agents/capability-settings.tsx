@@ -419,7 +419,7 @@ export function CapabilityDetail({
           )}
           {onToggleEnabled && (
             <Switch
-              className="ml-auto"
+              className="ms-auto"
               checked={binding.enabled === true}
               // `readOnly`, never `disabled`: the latter also means "this
               // capability is off", and a switch disabled by its own state is a
@@ -1067,7 +1067,7 @@ function ToolRow({ binding, tool, contract, onChange, disabled }: ToolRowProps) 
         "space-y-3 p-3",
         // A page where every row looks the same is a page where nobody notices
         // the row somebody changed.
-        changed && "border-brand bg-brand/5 border-l-2",
+        changed && "border-brand bg-brand/5 border-s-2",
       )}
     >
       <div className="flex flex-wrap items-center gap-2">
@@ -1380,7 +1380,7 @@ function CapabilityGuideNotes({ capabilityId }: { capabilityId: string }) {
     <dl className="grid gap-x-4 gap-y-2 text-xs sm:grid-cols-[auto_minmax(0,1fr)]">
       <dt className="text-muted-foreground font-medium">{t("capabilityForExample")}</dt>
       <dd>
-        <ul className="list-disc space-y-0.5 pl-4">
+        <ul className="list-disc space-y-0.5 ps-4">
           {guide.examples.map((example) => (
             <li key={example}>{example}</li>
           ))}

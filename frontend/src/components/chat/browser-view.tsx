@@ -108,7 +108,7 @@ export function StepTimeline({ browse }: { browse: Browse }) {
   const running = isRunning(browse);
   return (
     <ol className="relative space-y-3">
-      <span className="bg-foreground/10 absolute top-3 bottom-3 left-3 w-px" aria-hidden />
+      <span className="bg-foreground/10 absolute start-3 top-3 bottom-3 w-px" aria-hidden />
       {browse.steps.map((step, index) => (
         <li key={step.step} className="relative">
           <ActionLine step={step} live={running && index === browse.steps.length - 1} />

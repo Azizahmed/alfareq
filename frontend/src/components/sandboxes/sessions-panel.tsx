@@ -147,7 +147,7 @@ export function SessionsPanel({ connections }: SessionsPanelProps) {
     () => [
       {
         key: "session",
-        className: "pl-5",
+        className: "ps-5",
         header: t("session"),
         sortable: true,
         sortValue: (session) => nameOf(session) ?? session.session_id,
@@ -239,7 +239,7 @@ export function SessionsPanel({ connections }: SessionsPanelProps) {
       },
       {
         key: "activity",
-        className: "pr-5",
+        className: "pe-5",
         header: t("activity"),
         align: "right",
         cell: (session) => (
@@ -340,7 +340,7 @@ export function SessionsPanel({ connections }: SessionsPanelProps) {
           loading={isLoading}
           error={
             error === null ? undefined : (
-              <span className="inline-flex items-start gap-2 text-left">
+              <span className="inline-flex items-start gap-2 text-start">
                 <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
                 {error}
               </span>
@@ -361,7 +361,7 @@ export function SessionsPanel({ connections }: SessionsPanelProps) {
               with five columns and three hundred rows, read rather than glanced at,
               and a `max-w-3xl` box turned every target into an ellipsis. */}
           <DialogContent className={DIALOG_WINDOW}>
-            <DialogHeader className="gap-1 pr-8">
+            <DialogHeader className="gap-1 pe-8">
               <DialogTitle className="text-base">
                 {watched === null
                   ? t("activity")

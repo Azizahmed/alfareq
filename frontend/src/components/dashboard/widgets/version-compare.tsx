@@ -54,10 +54,10 @@ export function VersionCompareWidget({
           </p>
           <table className="w-full text-sm">
             <thead>
-              <tr className="text-muted-foreground text-left text-xs">
+              <tr className="text-muted-foreground text-start text-xs">
                 <th className="pb-1 font-normal" />
-                <th className="pb-1 text-right font-normal">v{previous.version}</th>
-                <th className="pb-1 text-right font-normal">v{current.version}</th>
+                <th className="pb-1 text-end font-normal">v{previous.version}</th>
+                <th className="pb-1 text-end font-normal">v{current.version}</th>
               </tr>
             </thead>
             <tbody>
@@ -83,9 +83,9 @@ export function VersionCompareWidget({
                 ] as const
               ).map(([metric, before, after]) => (
                 <tr key={metric} className="border-foreground/8 border-t">
-                  <td className="text-muted-foreground py-1.5 pr-2 text-xs">{metric}</td>
-                  <td className="py-1.5 text-right tabular-nums">{before}</td>
-                  <td className="text-foreground py-1.5 text-right font-medium tabular-nums">
+                  <td className="text-muted-foreground py-1.5 pe-2 text-xs">{metric}</td>
+                  <td className="py-1.5 text-end tabular-nums">{before}</td>
+                  <td className="text-foreground py-1.5 text-end font-medium tabular-nums">
                     {after}
                   </td>
                 </tr>

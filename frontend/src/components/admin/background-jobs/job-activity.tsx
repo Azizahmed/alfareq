@@ -133,12 +133,12 @@ export function KindActivityTable({ kinds }: { kinds: KindActivity[] }) {
     <div className="-mx-1 overflow-x-auto">
       <table className="w-full min-w-[40rem] text-sm">
         <thead>
-          <tr className="text-muted-foreground text-left text-xs">
+          <tr className="text-muted-foreground text-start text-xs">
             <th className="px-1 pb-2 font-medium">{t("kind")}</th>
             <th className="px-1 pb-2 font-medium">{t("columns.finished")}</th>
-            <th className="px-1 pb-2 text-right font-medium">{t("columns.dead")}</th>
-            <th className="px-1 pb-2 text-right font-medium">{t("columns.run")}</th>
-            <th className="px-1 pb-2 text-right font-medium">{t("columns.wait")}</th>
+            <th className="px-1 pb-2 text-end font-medium">{t("columns.dead")}</th>
+            <th className="px-1 pb-2 text-end font-medium">{t("columns.run")}</th>
+            <th className="px-1 pb-2 text-end font-medium">{t("columns.wait")}</th>
           </tr>
         </thead>
         <tbody className="divide-border divide-y">
@@ -156,27 +156,27 @@ export function KindActivityTable({ kinds }: { kinds: KindActivity[] }) {
                       style={{ width: `${(kind.finished / busiest) * 100}%` }}
                     />
                   </div>
-                  <span className="w-12 text-right tabular-nums">
+                  <span className="w-12 text-end tabular-nums">
                     {kind.finished.toLocaleString(locale)}
                   </span>
                 </div>
               </td>
               <td
                 className={cn(
-                  "px-1 py-2.5 text-right tabular-nums",
+                  "px-1 py-2.5 text-end tabular-nums",
                   kind.dead > 0 ? "text-destructive font-medium" : "text-muted-foreground",
                 )}
               >
                 {kind.dead.toLocaleString(locale)}
               </td>
-              <td className="px-1 py-2.5 text-right tabular-nums">
+              <td className="px-1 py-2.5 text-end tabular-nums">
                 {formatSeconds(kind.run_p50_seconds)}
                 <span className="text-muted-foreground">
                   {" "}
                   / {formatSeconds(kind.run_p95_seconds)}
                 </span>
               </td>
-              <td className="px-1 py-2.5 text-right tabular-nums">
+              <td className="px-1 py-2.5 text-end tabular-nums">
                 {formatSeconds(kind.wait_p95_seconds)}
               </td>
             </tr>

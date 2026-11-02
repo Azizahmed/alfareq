@@ -25,7 +25,7 @@ export const SURFACE_LABEL: Record<ExposureSurface, string> = {
 };
 
 const TILE =
-  "flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-left transition-colors";
+  "flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-start transition-colors";
 
 /**
  * Every chat app the platform answers on, whether or not the organization has
@@ -120,7 +120,7 @@ export function ExposureChannelTiles({
                         nothing; this is the one place that says so before
                         somebody wonders why the handle is silent. */}
                     {!bot.is_active && (
-                      <span className="text-muted-foreground shrink-0 pl-3 text-xs">
+                      <span className="text-muted-foreground shrink-0 ps-3 text-xs">
                         {t("inactive")}
                       </span>
                     )}

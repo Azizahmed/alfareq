@@ -188,7 +188,9 @@ export async function generateMetadata(): Promise<Metadata> {
       icon: faviconUrl
         ? [{ url: faviconUrl }]
         : [{ url: `/icon?v=${BUILT_IN_LOGO_VERSION}`, sizes: "32x32", type: "image/png" }],
-      apple: [{ url: `/apple-icon?v=${BUILT_IN_LOGO_VERSION}`, sizes: "180x180", type: "image/png" }],
+      apple: [
+        { url: `/apple-icon?v=${BUILT_IN_LOGO_VERSION}`, sizes: "180x180", type: "image/png" },
+      ],
     },
     manifest: "/manifest.webmanifest",
   };

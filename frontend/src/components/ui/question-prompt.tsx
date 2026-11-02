@@ -93,7 +93,7 @@ export function QuestionPrompt({ questions, disabled = false, onComplete }: Ques
                 disabled={disabled}
                 onClick={() => setStep(step - 1)}
                 aria-label={t("previousQuestion")}
-                className="text-muted-foreground hover:text-foreground -ml-1 rounded-md p-0.5"
+                className="text-muted-foreground hover:text-foreground -ms-1 rounded-md p-0.5"
               >
                 <ChevronLeft className="h-4 w-4" />
               </button>

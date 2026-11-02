@@ -94,7 +94,7 @@ export function CanvasNoteCard({ data, selected }: NodeProps<CanvasNoteNode>) {
           position="bottom-right"
           minWidth={180}
           minHeight={100}
-          className="text-muted-foreground/60 hover:text-foreground !top-auto !right-1 !bottom-1 !left-auto !size-5 !translate-x-0 !translate-y-0 !rounded !border-0 !bg-transparent"
+          className="text-muted-foreground/60 hover:text-foreground !start-auto !end-1 !top-auto !bottom-1 !size-5 !translate-x-0 !translate-y-0 !rounded !border-0 !bg-transparent"
         >
           <MoveDownRight aria-hidden="true" className="size-3.5" />
         </NodeResizeControl>
@@ -106,7 +106,7 @@ export function CanvasNoteCard({ data, selected }: NodeProps<CanvasNoteNode>) {
             variant="ghost"
             size="icon"
             aria-label={t("noteActions")}
-            className="nodrag touch:opacity-100 absolute top-1.5 right-1.5 z-10 size-7 opacity-0 group-focus-within:opacity-100 group-hover:opacity-100 data-[state=open]:opacity-100"
+            className="nodrag touch:opacity-100 absolute end-1.5 top-1.5 z-10 size-7 opacity-0 group-focus-within:opacity-100 group-hover:opacity-100 data-[state=open]:opacity-100"
           >
             <MoreHorizontal aria-hidden="true" className="size-4" />
           </Button>
@@ -137,7 +137,7 @@ export function CanvasNoteCard({ data, selected }: NodeProps<CanvasNoteNode>) {
               <DropdownMenuSeparator />
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>
-                  <Palette className="mr-2 size-4" />
+                  <Palette className="me-2 size-4" />
                   {t("noteColor")}
                 </DropdownMenuSubTrigger>
                 <DropdownMenuSubContent>
@@ -152,7 +152,7 @@ export function CanvasNoteCard({ data, selected }: NodeProps<CanvasNoteNode>) {
                       >
                         <span
                           aria-hidden="true"
-                          className={cn("mr-2 size-3 rounded-full", TINTS[option].swatch)}
+                          className={cn("me-2 size-3 rounded-full", TINTS[option].swatch)}
                         />
                         {t(`noteColors.${option}`)}
                       </DropdownMenuRadioItem>
@@ -162,7 +162,7 @@ export function CanvasNoteCard({ data, selected }: NodeProps<CanvasNoteNode>) {
               </DropdownMenuSub>
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>
-                  <Scaling className="mr-2 size-4" />
+                  <Scaling className="me-2 size-4" />
                   {t("noteSize")}
                 </DropdownMenuSubTrigger>
                 <DropdownMenuSubContent>

@@ -289,7 +289,7 @@ export function CreateSkillDialog({ open, onOpenChange, onCreated }: CreateSkill
                   }}
                   aria-current={openPath === null && !adding}
                   className={cn(
-                    "flex w-full items-center gap-1.5 rounded px-2 py-1.5 text-left transition-colors",
+                    "flex w-full items-center gap-1.5 rounded px-2 py-1.5 text-start transition-colors",
                     openPath === null && !adding
                       ? "bg-accent text-foreground"
                       : "hover:bg-accent/60",

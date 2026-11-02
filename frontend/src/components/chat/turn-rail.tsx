@@ -190,7 +190,7 @@ export function TurnRail({ entries, className }: TurnRailProps) {
       // the "near" - a wider box to reach than the ticks themselves - and a
       // keyboard focus inside shows it too.
       className={cn(
-        "pointer-events-auto absolute top-1/2 left-0 z-20 hidden -translate-y-1/2 flex-col items-center gap-1 px-2 py-10 opacity-0 transition-opacity duration-200 focus-within:opacity-100 hover:opacity-100 @min-[68rem]/chat:flex",
+        "pointer-events-auto absolute start-0 top-1/2 z-20 hidden -translate-y-1/2 flex-col items-center gap-1 px-2 py-10 opacity-0 transition-opacity duration-200 focus-within:opacity-100 hover:opacity-100 @min-[68rem]/chat:flex",
         className,
       )}
     >
@@ -210,7 +210,7 @@ export function TurnRail({ entries, className }: TurnRailProps) {
             {hovered === index && (
               // Opening away from the edge the rail is pinned to, which is the
               // only side with room for it.
-              <span className="bg-popover text-popover-foreground border-border absolute left-6 z-10 flex w-72 items-start gap-2.5 rounded-2xl border p-2.5 shadow-xl">
+              <span className="bg-popover text-popover-foreground border-border absolute start-6 z-10 flex w-72 items-start gap-2.5 rounded-2xl border p-2.5 shadow-xl">
                 {entry.agentId !== undefined ? (
                   <AgentAvatar
                     agentId={entry.agentId}

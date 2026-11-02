@@ -15,8 +15,8 @@ const MAX_SHOWN = 3;
  * pointed at, so every face can be seen whole.
  */
 const TUCK = {
-  sm: { two: "-ml-3 group-hover/stack:-ml-2", more: "-ml-4 group-hover/stack:-ml-3" },
-  md: { two: "-ml-5 group-hover/stack:-ml-4", more: "-ml-6 group-hover/stack:-ml-5" },
+  sm: { two: "-ms-3 group-hover/stack:-ms-2", more: "-ms-4 group-hover/stack:-ms-3" },
+  md: { two: "-ms-5 group-hover/stack:-ms-4", more: "-ms-6 group-hover/stack:-ms-5" },
 } as const;
 
 /**
@@ -52,7 +52,7 @@ export function ConversationAgents({
 
   const shown = agents.slice(0, MAX_SHOWN);
   const extra = agents.length - shown.length;
-  const compactTuck = size === "md" ? (shown.length > 2 ? "-ml-[34px]" : "-ml-8") : "-ml-5";
+  const compactTuck = size === "md" ? (shown.length > 2 ? "-ms-[34px]" : "-ms-8") : "-ms-5";
 
   return (
     <span

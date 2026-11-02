@@ -123,7 +123,7 @@ export function LiveRefreshButton({ artifactId, bridge }: LiveRefreshButtonProps
       <Button
         size="sm"
         variant="outline"
-        className="rounded-r-none"
+        className="rounded-e-none"
         title={updatedAt ?? t("refresh")}
         disabled={status.fetching}
         onClick={() => void refresh()}
@@ -136,7 +136,7 @@ export function LiveRefreshButton({ artifactId, bridge }: LiveRefreshButtonProps
           <Button
             size="sm"
             variant="outline"
-            className="rounded-l-none border-l-0 px-1.5"
+            className="rounded-s-none border-s-0 px-1.5"
             aria-label={t("refreshAutomatically")}
           >
             <ChevronDown className="h-3.5 w-3.5" aria-hidden />

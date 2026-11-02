@@ -554,7 +554,7 @@
   .skip-link {
     position: fixed;
     top: 0.75rem;
-    left: 0.75rem;
+    inset-inline-start: 0.75rem;
     z-index: 100;
     transform: translateY(-200%);
     transition: transform var(--duration-fast) var(--ease-out);
@@ -1298,17 +1298,17 @@
   }
   .prose-legal ul {
     list-style: disc;
-    padding-left: 1.5em;
+    padding-inline-start: 1.5em;
   }
   .prose-legal ol {
     list-style: decimal;
-    padding-left: 1.5em;
+    padding-inline-start: 1.5em;
   }
   .prose-legal li::marker {
     color: oklch(from var(--color-foreground) l c h / 0.4);
   }
   .prose-legal li {
-    padding-left: 0.25em;
+    padding-inline-start: 0.25em;
   }
   .prose-legal strong {
     color: var(--color-foreground);
@@ -1338,8 +1338,8 @@
     border-radius: 0;
   }
   .prose-legal blockquote {
-    border-left: 3px solid var(--color-brand);
-    padding-left: 1.25em;
+    border-inline-start: 3px solid var(--color-brand);
+    padding-inline-start: 1.25em;
     color: oklch(from var(--color-foreground) l c h / 0.7);
     font-style: italic;
   }
@@ -1776,7 +1776,7 @@ body .tour-spotlight {
 .tour-spotlight-beacon {
   position: absolute;
   top: 0;
-  right: 0;
+  inset-inline-end: 0;
   width: 12px;
   height: 12px;
   border-radius: 9999px;
@@ -2731,7 +2731,11 @@ body .tour-spotlight {
 /* The agent's message while it is spoken: a rule in the agent's colours. */
 .voice-live-rule {
   background: linear-gradient(var(--color-border), var(--color-border)) left / 2px 100% no-repeat;
-  padding-left: 10px;
+  padding-inline-start: 10px;
+}
+/* A background position has no logical keyword: the rule moves to the right edge. */
+[dir="rtl"] .voice-live-rule {
+  background-position: right;
 }
 /* The agent's step in the stepped level meter. */
 .voice-meter-agent {

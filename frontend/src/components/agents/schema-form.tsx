@@ -375,7 +375,7 @@ function SchemaField({
                 disabled={disabled}
                 onClick={() => onChange(choice)}
                 className={cn(
-                  "flex min-h-14 flex-col items-start gap-1.5 rounded-xl border px-3 py-3 text-left text-sm transition-colors disabled:opacity-50",
+                  "flex min-h-14 flex-col items-start gap-1.5 rounded-xl border px-3 py-3 text-start text-sm transition-colors disabled:opacity-50",
                   selected === choice
                     ? "border-foreground/40 bg-foreground/5"
                     : "border-border hover:bg-muted",
@@ -521,7 +521,7 @@ function SchemaField({
             spellCheck={false}
             className={cn(
               "font-mono text-xs",
-              masked && "pr-10",
+              masked && "pe-10",
               // No `type="password"` on a textarea, so the masking is the font.
               // It hides the value from a shoulder and from a screenshot, which
               // is what this masking is for, and the reveal beside it is how the
@@ -542,7 +542,7 @@ function SchemaField({
                 revealed ? t("hideNamed", { name: label }) : t("showNamed", { name: label })
               }
               aria-pressed={revealed}
-              className="text-muted-foreground hover:text-foreground absolute top-1 right-1 rounded-md p-2 disabled:pointer-events-none disabled:opacity-50"
+              className="text-muted-foreground hover:text-foreground absolute end-1 top-1 rounded-md p-2 disabled:pointer-events-none disabled:opacity-50"
             >
               {revealed ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             </button>
@@ -566,7 +566,7 @@ function SchemaField({
             onChange={(event) =>
               onChange(event.target.value === "" ? undefined : event.target.value)
             }
-            className={cn(masked && "pr-10 font-mono")}
+            className={cn(masked && "pe-10 font-mono")}
             {...invalid}
           />
           {/* A key is pasted, and a paste that went wrong is invisible behind
@@ -582,7 +582,7 @@ function SchemaField({
                 revealed ? t("hideNamed", { name: label }) : t("showNamed", { name: label })
               }
               aria-pressed={revealed}
-              className="text-muted-foreground hover:text-foreground absolute top-1/2 right-1 -translate-y-1/2 rounded-md p-2 disabled:pointer-events-none disabled:opacity-50"
+              className="text-muted-foreground hover:text-foreground absolute end-1 top-1/2 -translate-y-1/2 rounded-md p-2 disabled:pointer-events-none disabled:opacity-50"
             >
               {revealed ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             </button>

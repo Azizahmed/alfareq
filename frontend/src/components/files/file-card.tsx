@@ -199,7 +199,7 @@ export function FileCard({
       <div
         className={cn(
           CHIP,
-          onRemove !== undefined && "pr-8",
+          onRemove !== undefined && "pe-8",
           onOpen !== undefined && "hover:border-foreground/30 transition-colors",
           className,
         )}
@@ -209,7 +209,7 @@ export function FileCard({
             type="button"
             onClick={onOpen}
             aria-label={t("openFile", { name })}
-            className="flex min-w-0 flex-1 items-center gap-2.5 rounded-md text-left"
+            className="flex min-w-0 flex-1 items-center gap-2.5 rounded-md text-start"
           >
             {compactBody}
           </button>
@@ -224,7 +224,7 @@ export function FileCard({
             type="button"
             onClick={onRemove}
             aria-label={removeLabel ?? t("removeFile", { name })}
-            className="hover:bg-muted text-muted-foreground hover:text-foreground absolute top-1/2 right-1 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded"
+            className="hover:bg-muted text-muted-foreground hover:text-foreground absolute end-1 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded"
           >
             <X className="h-3.5 w-3.5" />
           </button>
@@ -234,13 +234,13 @@ export function FileCard({
   }
 
   return (
-    <div className={cn(CARD, onRemove !== undefined && "pr-7", className)}>
+    <div className={cn(CARD, onRemove !== undefined && "pe-7", className)}>
       {onOpen !== undefined ? (
         <button
           type="button"
           onClick={onOpen}
           title={t("openFile", { name })}
-          className="hover:border-foreground/30 -m-2 flex flex-col gap-1.5 rounded-lg border border-transparent p-2 text-left transition-colors"
+          className="hover:border-foreground/30 -m-2 flex flex-col gap-1.5 rounded-lg border border-transparent p-2 text-start transition-colors"
         >
           {body}
         </button>
@@ -255,7 +255,7 @@ export function FileCard({
           type="button"
           onClick={onRemove}
           aria-label={removeLabel ?? t("removeFile", { name })}
-          className="hover:bg-muted text-muted-foreground hover:text-foreground absolute top-1.5 right-1.5 rounded p-0.5"
+          className="hover:bg-muted text-muted-foreground hover:text-foreground absolute end-1.5 top-1.5 rounded p-0.5"
         >
           <X className="h-3 w-3" />
         </button>

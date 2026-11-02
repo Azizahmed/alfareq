@@ -136,7 +136,7 @@ export function ChatControls({
             <span
               data-testid="override-dot"
               aria-hidden
-              className="bg-foreground absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full"
+              className="bg-foreground absolute end-1.5 top-1.5 h-1.5 w-1.5 rounded-full"
             />
           )}
         </button>
@@ -237,7 +237,7 @@ export function ChatControls({
                       onApprovalModeChange?.(mode);
                     }}
                     className={cn(
-                      "focus-visible:ring-ring flex w-full items-start gap-2.5 rounded-lg px-3 py-2.5 text-left transition-colors outline-none focus-visible:ring-2 focus-visible:ring-inset",
+                      "focus-visible:ring-ring flex w-full items-start gap-2.5 rounded-lg px-3 py-2.5 text-start transition-colors outline-none focus-visible:ring-2 focus-visible:ring-inset",
                       approvalMode === mode
                         ? "bg-foreground/[0.06] text-foreground"
                         : "text-foreground/70 hover:bg-foreground/[0.04]",

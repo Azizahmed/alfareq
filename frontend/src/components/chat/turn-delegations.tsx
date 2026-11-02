@@ -132,11 +132,11 @@ export function TurnDelegations({
           {team.map((item, index) => (
             <span
               key={item.delegate.slug}
-              className={cn("relative", (parent !== undefined || index > 0) && "-ml-1.5")}
+              className={cn("relative", (parent !== undefined || index > 0) && "-ms-1.5")}
             >
               <DelegateFace who={item.delegate} className="ring-background h-5 w-5 ring-2" />
               {item.status === "completed" && (
-                <span className="bg-success ring-background absolute -right-0.5 -bottom-0.5 grid size-2.5 place-items-center rounded-full ring-2">
+                <span className="bg-success ring-background absolute -end-0.5 -bottom-0.5 grid size-2.5 place-items-center rounded-full ring-2">
                   <Check className="text-background h-1.5 w-1.5" strokeWidth={4} aria-hidden />
                 </span>
               )}

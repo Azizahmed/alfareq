@@ -67,8 +67,10 @@ export function SheetContent({ children, className, side = "left" }: SheetConten
           side === "bottom"
             ? "slide-in-from-bottom data-[state=closed]:slide-out-to-bottom inset-x-0 bottom-[max(0px,calc(100dvh-var(--app-height,100dvh)))] max-h-[calc(var(--app-height,100dvh)-var(--shell-inset-top,0px)-1rem)] rounded-t-2xl pb-[var(--safe-bottom)]"
             : "top-0 h-[var(--app-height,100dvh)] w-72",
-          side === "left" && "slide-in-from-left data-[state=closed]:slide-out-to-left left-0",
-          side === "right" && "slide-in-from-right data-[state=closed]:slide-out-to-right right-0",
+          side === "left" &&
+            "slide-in-from-left data-[state=closed]:slide-out-to-left rtl:slide-in-from-right rtl:data-[state=closed]:slide-out-to-right start-0",
+          side === "right" &&
+            "slide-in-from-right data-[state=closed]:slide-out-to-right rtl:slide-in-from-left rtl:data-[state=closed]:slide-out-to-left end-0",
           className,
         )}
       >

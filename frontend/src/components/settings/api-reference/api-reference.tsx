@@ -78,7 +78,7 @@ export function ApiReference() {
         <nav aria-label={t("groups")} className="space-y-3 lg:sticky lg:top-4 lg:w-56 lg:shrink-0">
           <div className="relative">
             <Search
-              className="text-muted-foreground pointer-events-none absolute top-1/2 left-2.5 h-4 w-4 -translate-y-1/2"
+              className="text-muted-foreground pointer-events-none absolute start-2.5 top-1/2 h-4 w-4 -translate-y-1/2"
               aria-hidden
             />
             <Input
@@ -86,7 +86,7 @@ export function ApiReference() {
               onChange={(event) => setQuery(event.target.value)}
               placeholder={t("search")}
               aria-label={t("search")}
-              className="pl-8"
+              className="ps-8"
             />
           </div>
           <ul className="flex flex-wrap gap-1 lg:flex-col lg:gap-0.5">

@@ -40,7 +40,7 @@ export function StepName({
       <button
         type="button"
         title={t("stepRenameHint")}
-        className="group/name hover:bg-accent/60 focus-visible:ring-ring -mx-1.5 inline-flex min-h-8 max-w-full items-center gap-2 rounded-md px-1.5 text-left outline-none focus-visible:ring-2"
+        className="group/name hover:bg-accent/60 focus-visible:ring-ring -mx-1.5 inline-flex min-h-8 max-w-full items-center gap-2 rounded-md px-1.5 text-start outline-none focus-visible:ring-2"
         onClick={() => setDraft(node.label ?? name)}
       >
         <span className="min-w-0 truncate">{name}</span>

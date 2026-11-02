@@ -163,7 +163,7 @@ export function WorkspaceFiles({
           >
             <FolderOpen className="size-4" aria-hidden />
             {count > 0 && (
-              <span className="bg-foreground text-background absolute -top-0.5 -right-0.5 flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px]">
+              <span className="bg-foreground text-background absolute -end-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px]">
                 {count}
               </span>
             )}
@@ -181,10 +181,10 @@ export function WorkspaceFiles({
             transition={{ duration: reduceMotion ? 0 : 0.2, ease: "easeOut" }}
             className={cn(
               "h-full shrink-0 overflow-hidden",
-              overlay && "bg-background shadow-card absolute inset-y-0 right-0 z-20 max-w-[85%]",
+              overlay && "bg-background shadow-card absolute inset-y-0 end-0 z-20 max-w-[85%]",
             )}
           >
-            <div className="border-border flex h-full min-h-0 w-72 flex-col border-l">
+            <div className="border-border flex h-full min-h-0 w-72 flex-col border-s">
               <div className="shrink-0 space-y-1 p-4 pb-3">
                 <div className="flex items-center justify-between gap-2">
                   <p className="flex items-center gap-2 text-sm font-medium">

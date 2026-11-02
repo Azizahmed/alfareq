@@ -73,7 +73,7 @@ const LIST_BESIDE_RUN = `${PINNED_COLUMN} lg:overflow-y-auto lg:rounded-xl lg:pb
  */
 function TabCount({ children }: { children: React.ReactNode }) {
   return (
-    <span className="bg-foreground/10 text-foreground/80 ml-2 rounded-full px-2 py-0.5 text-xs font-medium tabular-nums">
+    <span className="bg-foreground/10 text-foreground/80 ms-2 rounded-full px-2 py-0.5 text-xs font-medium tabular-nums">
       {children}
     </span>
   );
@@ -346,7 +346,7 @@ export default function RunsPage() {
                 // scrolled past above it. Cancelling that padding and adding 8px
                 // back puts its top edge 8px from the window.
                 //
-                // `-mr-4` is the same trick sideways, and only where there are two
+                // `-me-4` is the same trick sideways, and only where there are two
                 // columns: `main`'s `sm:px-6` plus its scrollbar left about forty
                 // pixels of nothing to the right of the panel while the table ran
                 // flush to the left edge. Sixteen of those are given back, which
@@ -358,7 +358,7 @@ export default function RunsPage() {
                     // flex item with no width of its own shrank to its content,
                     // and the panel's content is clipped by `overflow-hidden` -
                     // it collapsed to its 2px border and a phone saw a blank page.
-                    `w-full lg:-mr-4 lg:w-auto lg:pb-0 ${PINNED_COLUMN}`,
+                    `w-full lg:-me-4 lg:w-auto lg:pb-0 ${PINNED_COLUMN}`,
                   )}
                 >
                   <RunDetailPanel runId={focusedRunId} onFocusRun={focusRun} />

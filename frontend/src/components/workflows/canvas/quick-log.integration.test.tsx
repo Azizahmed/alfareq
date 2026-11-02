@@ -303,12 +303,12 @@ describe("a step's quick log", () => {
     const strip = within(card("i")).getByRole("button", { name: /Quick log of/ });
     expect(strip).toHaveTextContent("Log");
     // Docked outside the card's right side, its full height; the card's corners give way.
-    expect(strip).toHaveClass("left-full", "-top-px", "-bottom-px");
-    expect(card("i")).toHaveClass("rounded-r-none");
+    expect(strip).toHaveClass("start-full", "-top-px", "-bottom-px");
+    expect(card("i")).toHaveClass("rounded-e-none");
     // Only the logged output carries a mark; its row reaches across the strip.
     const marks = within(card("i")).getAllByRole("img", { name: "Writes a log line" });
     expect(marks).toHaveLength(1);
-    expect(marks[0]!.closest("li")).toHaveClass("-mr-[21px]", "pr-[33px]");
+    expect(marks[0]!.closest("li")).toHaveClass("-me-[21px]", "pe-[33px]");
     // A step with one unlabelled output gets the strip and no row to dot.
     expect(within(card("h")).getByRole("button", { name: /Quick log of/ })).toBeInTheDocument();
     expect(within(card("h")).queryByRole("img", { name: "Writes a log line" })).toBeNull();

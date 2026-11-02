@@ -161,7 +161,7 @@ export function NodePicker({ offered, onPick, draggable = false }: NodePickerPro
           <span className="text-muted-foreground border-border rounded border px-1 text-[10px] font-medium tracking-wide">
             {t("appMcpBadge")}
           </span>
-          <span className="text-muted-foreground max-w-32 text-right text-xs break-words">
+          <span className="text-muted-foreground max-w-32 text-end text-xs break-words">
             {groupLabel ?? action.connectionName}
           </span>
         </span>
@@ -251,7 +251,7 @@ export function NodePicker({ offered, onPick, draggable = false }: NodePickerPro
                       name={label(group.category)}
                     />
                     {label(group.category)}
-                    <ChevronRight className="ml-auto size-4" />
+                    <ChevronRight className="ms-auto size-4" />
                   </Command.Item>
                 ))}
               {found.map((row) =>

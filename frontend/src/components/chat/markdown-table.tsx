@@ -33,7 +33,7 @@ export function MarkdownTable({ children, ...props }: ComponentProps<"table">) {
       <div className="border-foreground/10 overflow-x-auto rounded-lg border">
         <table
           ref={table}
-          className="w-full border-collapse text-sm [&_th:last-child]:pr-11"
+          className="w-full border-collapse text-sm [&_th:last-child]:pe-11"
           {...props}
         >
           {children}
@@ -50,7 +50,7 @@ export function MarkdownTable({ children, ...props }: ComponentProps<"table">) {
         // which hides what overflows it. The last header keeps room for it. On
         // hover or focus, and always where nothing can hover: a control a phone
         // can never reveal is a control a phone does not have.
-        className="bg-popover border-foreground/10 hover:bg-muted touch:opacity-100 absolute top-1.5 right-1.5 h-7 w-7 border p-0 opacity-0 shadow-sm transition-opacity group-focus-within/table:opacity-100 group-hover/table:opacity-100"
+        className="bg-popover border-foreground/10 hover:bg-muted touch:opacity-100 absolute end-1.5 top-1.5 h-7 w-7 border p-0 opacity-0 shadow-sm transition-opacity group-focus-within/table:opacity-100 group-hover/table:opacity-100"
       >
         {copied ? (
           <Check className="text-success h-3.5 w-3.5" aria-hidden />

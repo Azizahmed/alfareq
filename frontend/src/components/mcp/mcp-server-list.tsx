@@ -685,7 +685,7 @@ export function McpServerList({
                 )
               }
             >
-              <Plus className="mr-1 h-3.5 w-3.5" />
+              <Plus className="me-1 h-3.5 w-3.5" />
               {t("addCustomServer")}
             </Button>
           )}
@@ -746,7 +746,7 @@ export function McpServerList({
                     onClick={() => connect(defaultScope(row, canManageOrganization), row)}
                     disabled={busyId === row.key}
                   >
-                    <Plug className="mr-1 h-3.5 w-3.5" />
+                    <Plug className="me-1 h-3.5 w-3.5" />
                     {busyId === row.key ? t("redirecting") : t("connectAction")}
                   </Button>
                 </>

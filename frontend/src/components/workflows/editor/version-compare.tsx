@@ -85,7 +85,7 @@ export function VersionComparison({
                   </span>
                 </p>
                 {step.fields.length > 0 && (
-                  <ul className="text-muted-foreground space-y-0.5 pl-2 text-xs">
+                  <ul className="text-muted-foreground space-y-0.5 ps-2 text-xs">
                     {step.fields.map((field) => (
                       <li key={fieldText(field)}>{fieldText(field)}</li>
                     ))}

@@ -45,7 +45,7 @@ export function StandaloneRunTimeline({ runId }: { runId: string }) {
         {manifest.transcript.map((message, index) => {
           const text = JSON.stringify(message, null, 2);
           return (
-            <li key={index} className="border-border space-y-2 border-l-2 pl-4">
+            <li key={index} className="border-border space-y-2 border-s-2 ps-4">
               <div className="flex items-center justify-between gap-2">
                 <span className="text-muted-foreground text-xs">
                   {t(message.kind === "response" ? "standaloneResponse" : "standaloneRequest")}

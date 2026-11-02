@@ -146,7 +146,7 @@ export function SkillWorkbench({
               }}
               aria-current={openId === null && !adding}
               className={cn(
-                "flex w-full items-center gap-1.5 rounded px-2 py-1.5 text-left transition-colors",
+                "flex w-full items-center gap-1.5 rounded px-2 py-1.5 text-start transition-colors",
                 openId === null && !adding ? "bg-accent text-foreground" : "hover:bg-accent/60",
               )}
             >
@@ -212,7 +212,7 @@ export function SkillWorkbench({
       )}
 
       <DialogFooter>
-        <div className="flex items-center gap-2 sm:mr-auto">
+        <div className="flex items-center gap-2 sm:me-auto">
           <ShareResourceButton
             resourceType="skill"
             resourceId={skill.id}

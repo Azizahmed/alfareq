@@ -76,7 +76,7 @@ export function NotificationsWidget({ title, hint, seeAll, options }: DashboardW
               </>
             );
             const rowClassName =
-              "hover:bg-muted/60 flex items-start gap-3 rounded-md px-1 py-1.5 text-left text-sm";
+              "hover:bg-muted/60 flex items-start gap-3 rounded-md px-1 py-1.5 text-start text-sm";
             // Fire-and-forget: nothing here needs the outcome, but an
             // unhandled rejection (a row the read-time gate has since
             // hidden, a dropped connection) must not reach the console as

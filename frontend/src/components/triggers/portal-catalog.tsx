@@ -338,7 +338,7 @@ export function PortalCatalog({ canRun, canManageConnections }: PortalCatalogPro
                       canManageConnections &&
                       (item.portal.connect_blocked_by === "oauth_app_secret" ? (
                         <Button size="sm" variant="outline" onClick={() => setAddingSecret(item)}>
-                          <KeyRound className="mr-1 h-3.5 w-3.5" />
+                          <KeyRound className="me-1 h-3.5 w-3.5" />
                           {t("addCredentials")}
                         </Button>
                       ) : (
@@ -352,7 +352,7 @@ export function PortalCatalog({ canRun, canManageConnections }: PortalCatalogPro
                       ))}
                     {item.action === "create" && canRun && (
                       <Button size="sm" variant="outline" onClick={() => setDialog(item)}>
-                        <Sparkles className="mr-1 h-3.5 w-3.5" />
+                        <Sparkles className="me-1 h-3.5 w-3.5" />
                         {t("createAction")}
                       </Button>
                     )}
@@ -363,7 +363,7 @@ export function PortalCatalog({ canRun, canManageConnections }: PortalCatalogPro
                         disabled={busyKey === item.portal.key}
                         onClick={() => connect(item)}
                       >
-                        <Plug className="mr-1 h-3.5 w-3.5" />
+                        <Plug className="me-1 h-3.5 w-3.5" />
                         {busyKey === item.portal.key ? t("redirecting") : t("connectAction")}
                       </Button>
                     )}
@@ -374,7 +374,7 @@ export function PortalCatalog({ canRun, canManageConnections }: PortalCatalogPro
                         disabled={busyKey === item.portal.key}
                         onClick={() => connect(item)}
                       >
-                        <RefreshCw className="mr-1 h-3.5 w-3.5" />
+                        <RefreshCw className="me-1 h-3.5 w-3.5" />
                         {busyKey === item.portal.key ? t("redirecting") : t("reauthorizeAction")}
                       </Button>
                     )}
@@ -408,7 +408,7 @@ export function PortalCatalog({ canRun, canManageConnections }: PortalCatalogPro
                 <div className="mt-auto">
                   <div className="border-border mt-3 flex flex-wrap items-center gap-1.5 border-t pt-3">
                     <Button size="sm" variant="outline" onClick={() => setAdvanced(true)}>
-                      <Sparkles className="mr-1 h-3.5 w-3.5" />
+                      <Sparkles className="me-1 h-3.5 w-3.5" />
                       {t("createAction")}
                     </Button>
                   </div>

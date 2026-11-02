@@ -233,7 +233,7 @@ export function SourcesPanel({ contained = false }: { contained?: boolean }) {
         "bg-background border-border flex flex-col",
         contained
           ? "absolute inset-0 z-40"
-          : "fixed top-0 right-0 z-50 h-full w-full border-l shadow-xl sm:w-[420px]",
+          : "fixed end-0 top-0 z-50 h-full w-full border-s shadow-xl sm:w-[420px]",
       )}
     >
       {/* Header. Inside a widget it is the widget's own back-arrow header, the
@@ -258,7 +258,7 @@ export function SourcesPanel({ contained = false }: { contained?: boolean }) {
         )}
         <h2 className="text-foreground flex-1 text-sm font-semibold">
           {t("sourcesHeading")}
-          <span className="text-muted-foreground ml-2 font-normal">({sources.length})</span>
+          <span className="text-muted-foreground ms-2 font-normal">({sources.length})</span>
         </h2>
         {!contained && (
           <button

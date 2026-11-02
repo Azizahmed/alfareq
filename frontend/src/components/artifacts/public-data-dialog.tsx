@@ -39,7 +39,7 @@ function PublicAudience({ shown }: { shown: ArtifactPublicDataDisclosure }) {
   return (
     <div className="space-y-1">
       <p className="font-medium">{t("audienceTitle")}</p>
-      <ul className="text-muted-foreground list-disc space-y-0.5 pl-5">
+      <ul className="text-muted-foreground list-disc space-y-0.5 ps-5">
         <li>{t("audienceAnyone")}</li>
         <li>{shown.password_protected ? t("audiencePassword") : t("audienceNoPassword")}</li>
         <li>

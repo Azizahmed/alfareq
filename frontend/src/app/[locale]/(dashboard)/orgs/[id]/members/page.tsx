@@ -210,7 +210,7 @@ export default function OrgMembersPage({ params }: PageProps) {
     const cols: Column<OrganizationMember>[] = [
       {
         key: "member",
-        className: "pl-5",
+        className: "ps-5",
         header: t("member"),
         cell: (m) => {
           const isSelf = m.user_id === user?.id;
@@ -316,7 +316,7 @@ export default function OrgMembersPage({ params }: PageProps) {
         key: "actions",
         header: "",
         align: "right",
-        className: "w-0 pr-5",
+        className: "w-0 pe-5",
         cell: (m) => {
           const isSelf = m.user_id === user?.id;
           const isOwner = m.role === "owner";
@@ -429,7 +429,7 @@ export default function OrgMembersPage({ params }: PageProps) {
         <TabsList data-tour="org-tabs">
           {sections.map((section) => (
             <TabsTrigger key={section.id} value={section.id} data-tour={`org-tab-${section.id}`}>
-              <section.icon className="mr-1.5 size-4 shrink-0" aria-hidden />
+              <section.icon className="me-1.5 size-4 shrink-0" aria-hidden />
               {t(section.label)}
             </TabsTrigger>
           ))}

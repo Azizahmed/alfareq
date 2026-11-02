@@ -152,9 +152,9 @@ export function FileViewer({ file, access, navigation, extraTabs = [], onClose }
             chrome above the file somebody opened the dialog to look at. The path
             belongs *in* the title, where it says which of two files called
             `mockup.html` this is; what kind of file it is belongs at the end of
-            that same line, opposite the name. `pr-10` keeps it clear of the close
+            that same line, opposite the name. `pe-10` keeps it clear of the close
             button in the corner. */}
-        <DialogHeader className="gap-0 pr-10">
+        <DialogHeader className="gap-0 pe-10">
           <div className="flex min-w-0 items-center justify-between gap-3">
             <DialogTitle className="flex min-w-0 items-baseline gap-2 text-base">
               <FileIcon

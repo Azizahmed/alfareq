@@ -189,7 +189,7 @@ export function UserDetailDrawer({
                 the deployment - including the ones that administered it. */}
             {subject.is_app_admin && (
               <Badge className="bg-brand text-brand-foreground border-transparent text-xs">
-                <Shield className="mr-1 h-3 w-3" />
+                <Shield className="me-1 h-3 w-3" />
                 {t("appAdmin")}
               </Badge>
             )}
@@ -358,7 +358,7 @@ export function UserDetailDrawer({
           {!isSelf && (
             <>
               <Button variant="outline" size="sm" onClick={handleImpersonate}>
-                <KeyRound className="mr-1.5 h-3.5 w-3.5" />
+                <KeyRound className="me-1.5 h-3.5 w-3.5" />
                 {t("impersonate")}
               </Button>
               {subject.is_active ? (
@@ -369,7 +369,7 @@ export function UserDetailDrawer({
                   onConfirm={() => onUpdate(subject.id, { is_active: false })}
                 >
                   <Button variant="ghost" size="sm">
-                    <UserX className="mr-1.5 h-3.5 w-3.5" />
+                    <UserX className="me-1.5 h-3.5 w-3.5" />
                     {t("suspend")}
                   </Button>
                 </Confirm>
@@ -381,7 +381,7 @@ export function UserDetailDrawer({
                   size="sm"
                   onClick={() => onUpdate(subject.id, { is_active: true })}
                 >
-                  <Mail className="mr-1.5 h-3.5 w-3.5" />
+                  <Mail className="me-1.5 h-3.5 w-3.5" />
                   {t("reactivate")}
                 </Button>
               )}
@@ -393,7 +393,7 @@ export function UserDetailDrawer({
                   onConfirm={() => onUpdate(subject.id, { is_app_admin: false })}
                 >
                   <Button variant="ghost" size="sm">
-                    <ShieldOff className="mr-1.5 h-3.5 w-3.5" />
+                    <ShieldOff className="me-1.5 h-3.5 w-3.5" />
                     {t("demote")}
                   </Button>
                 </Confirm>
@@ -405,7 +405,7 @@ export function UserDetailDrawer({
                   onConfirm={() => onUpdate(subject.id, { is_app_admin: true })}
                 >
                   <Button variant="ghost" size="sm">
-                    <Shield className="mr-1.5 h-3.5 w-3.5" />
+                    <Shield className="me-1.5 h-3.5 w-3.5" />
                     {t("promoteAdmin")}
                   </Button>
                 </Confirm>
@@ -418,9 +418,9 @@ export function UserDetailDrawer({
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-destructive hover:text-destructive ml-auto"
+                className="text-destructive hover:text-destructive ms-auto"
               >
-                <Trash2 className="mr-1.5 h-3.5 w-3.5" />
+                <Trash2 className="me-1.5 h-3.5 w-3.5" />
                 {t("delete")}
               </Button>
             </AlertDialogTrigger>

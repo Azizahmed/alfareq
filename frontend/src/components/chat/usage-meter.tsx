@@ -112,7 +112,7 @@ export function UsageMeter({
               data-testid="other-limit"
               aria-hidden
               className={cn(
-                "absolute top-1.5 right-1 h-1.5 w-1.5 rounded-full",
+                "absolute end-1 top-1.5 h-1.5 w-1.5 rounded-full",
                 otherLevel === "critical" ? "bg-destructive" : "bg-warning",
               )}
             />

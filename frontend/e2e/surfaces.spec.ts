@@ -152,7 +152,7 @@ test.describe("What the page offers a visitor", () => {
       const ask = hosted.getByRole("textbox", { name: "Ask a question…" });
       await expect(ask).toBeEnabled({ timeout: 30_000 });
       // A fresh context has consented to nothing, which used to put the cookie
-      // banner over the composer: `fixed bottom-4 right-4` against a page whose
+      // banner over the composer: `fixed bottom-4 end-4` against a page whose
       // bottom row is the composer, so Send and the microphone were unclickable
       // for thirty seconds of `subtree intercepts pointer events` (#644). Asserted
       // rather than left to the click, which only fails when the viewport happens

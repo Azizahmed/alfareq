@@ -55,7 +55,7 @@ export function SpendByPerson({ from, to }: { from: string; to: string }) {
     {
       key: "person",
       header: t("personColumn"),
-      className: "pl-5",
+      className: "ps-5",
       cell: (person) => (
         <span className="flex items-center gap-2">
           {/* The application's one way of drawing a person - the same face the
@@ -82,7 +82,7 @@ export function SpendByPerson({ from, to }: { from: string; to: string }) {
       key: "cost",
       header: t("cost"),
       align: "right",
-      className: "pr-5",
+      className: "pe-5",
       cell: (person) => (
         <span className="font-mono text-xs tabular-nums">
           ${Number(person.cost_usd).toFixed(4)}

@@ -79,7 +79,7 @@ export default function AdminUsersPage() {
       {
         key: "email",
         header: t("user"),
-        className: "pl-5",
+        className: "ps-5",
         sortable: true,
         cell: (u) => (
           <div className="flex min-w-0 items-center gap-3">
@@ -151,7 +151,7 @@ export default function AdminUsersPage() {
         key: "actions",
         header: "",
         align: "right",
-        className: "w-0 pr-5",
+        className: "w-0 pe-5",
         cell: (u) => (
           <Button
             variant="outline"

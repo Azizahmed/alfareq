@@ -334,7 +334,7 @@ function ComputerWorkOn({ agentEnabled }: { agentEnabled: boolean }) {
                           mode: grant.mode,
                         })
                       }
-                      className="min-w-0 flex-1 text-left"
+                      className="min-w-0 flex-1 text-start"
                       title={grant.path}
                     >
                       <span className="text-foreground block truncate text-xs font-medium">
@@ -424,7 +424,7 @@ function ComputerWorkOn({ agentEnabled }: { agentEnabled: boolean }) {
                     const mode = modes.find((mode) => mode === event.target.value);
                     if (mode && mode !== target?.mode) chooseFolder(mode);
                   }}
-                  className="border-foreground/12 bg-background text-foreground focus-visible:ring-ring h-9 w-full appearance-none rounded-lg border pr-8 pl-3 text-xs focus-visible:ring-2 focus-visible:outline-none disabled:opacity-50"
+                  className="border-foreground/12 bg-background text-foreground focus-visible:ring-ring h-9 w-full appearance-none rounded-lg border ps-3 pe-8 text-xs focus-visible:ring-2 focus-visible:outline-none disabled:opacity-50"
                   aria-describedby={modeHintId}
                 >
                   {modes.map((mode) => (
@@ -434,7 +434,7 @@ function ComputerWorkOn({ agentEnabled }: { agentEnabled: boolean }) {
                   ))}
                 </select>
                 <ChevronDown
-                  className="text-muted-foreground pointer-events-none absolute top-1/2 right-3 h-3.5 w-3.5 -translate-y-1/2"
+                  className="text-muted-foreground pointer-events-none absolute end-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
                   aria-hidden
                 />
               </span>

@@ -279,7 +279,7 @@ export function AddChannelDialog({
                   onClick={() => choosePlatform(option)}
                   aria-pressed={platform === option}
                   className={cn(
-                    "flex items-center gap-2.5 rounded-xl border px-3 py-2.5 text-left text-sm transition-colors",
+                    "flex items-center gap-2.5 rounded-xl border px-3 py-2.5 text-start text-sm transition-colors",
                     platform === option
                       ? "border-foreground bg-accent text-foreground"
                       : "border-input text-muted-foreground hover:text-foreground hover:bg-accent/60",

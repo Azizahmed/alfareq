@@ -139,7 +139,7 @@ export function AgentMap({
 
   return (
     <div className="relative">
-      <div className="absolute top-2 right-2 z-10 flex gap-1">
+      <div className="absolute end-2 top-2 z-10 flex gap-1">
         <Button
           type="button"
           variant="outline"

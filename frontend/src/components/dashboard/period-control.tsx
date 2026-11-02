@@ -187,7 +187,7 @@ function PeriodMenu({ period, onChange }: { period: Period; onChange: (period: P
                   onChange(resolvePreset(preset));
                   setOpen(false);
                 }}
-                className="hover:bg-accent flex items-center justify-between gap-3 rounded-md px-2 py-1.5 text-left text-sm"
+                className="hover:bg-accent flex items-center justify-between gap-3 rounded-md px-2 py-1.5 text-start text-sm"
               >
                 {t(`period.${preset}`)}
                 {period.preset === preset && <Check className="size-3.5" aria-hidden />}

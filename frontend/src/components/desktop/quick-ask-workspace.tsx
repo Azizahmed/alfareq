@@ -137,7 +137,7 @@ function Workspace() {
                 onClick={() => close(tab.key)}
                 aria-label={t("closeTab", { title: tab.title })}
                 title={t("closeTab", { title: tab.title })}
-                className="text-muted-foreground hover:text-foreground hover:bg-foreground/10 focus-visible:outline-ring mr-1 rounded-md p-1 opacity-0 transition-opacity duration-150 group-hover/tab:opacity-100 group-has-[:focus-visible]/tab:opacity-100 motion-reduce:transition-none [@media(hover:none)]:opacity-100"
+                className="text-muted-foreground hover:text-foreground hover:bg-foreground/10 focus-visible:outline-ring me-1 rounded-md p-1 opacity-0 transition-opacity duration-150 group-hover/tab:opacity-100 group-has-[:focus-visible]/tab:opacity-100 motion-reduce:transition-none [@media(hover:none)]:opacity-100"
               >
                 <X className="size-3" aria-hidden />
               </button>

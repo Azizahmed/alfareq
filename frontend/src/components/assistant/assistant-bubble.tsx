@@ -89,7 +89,7 @@ export function AssistantBubble({
       ref={root}
       role="status"
       className={cn(
-        "group bg-background border-border bubble-rise fixed right-4 bottom-[calc(5.25rem+env(safe-area-inset-bottom))] z-50 w-[19rem] rounded-2xl border p-3.5 shadow-[0_10px_30px_rgb(20_22_28/0.10),0_2px_6px_rgb(20_22_28/0.06)] md:right-6 md:bottom-[6.5rem]",
+        "group bg-background border-border bubble-rise fixed end-4 bottom-[calc(5.25rem+env(safe-area-inset-bottom))] z-50 w-[19rem] rounded-2xl border p-3.5 shadow-[0_10px_30px_rgb(20_22_28/0.10),0_2px_6px_rgb(20_22_28/0.06)] md:end-6 md:bottom-[6.5rem]",
         !proactive && "hidden md:block",
       )}
     >
@@ -103,7 +103,7 @@ export function AssistantBubble({
             silencePage(path);
             onSilence();
           }}
-          className="text-muted-foreground hover:text-foreground hover:bg-accent ml-auto rounded-md p-1 transition-opacity focus-visible:opacity-100 md:opacity-0 md:group-hover:opacity-100"
+          className="text-muted-foreground hover:text-foreground hover:bg-accent ms-auto rounded-md p-1 transition-opacity focus-visible:opacity-100 md:opacity-0 md:group-hover:opacity-100"
         >
           <X className="h-3.5 w-3.5" />
         </button>
@@ -120,7 +120,7 @@ export function AssistantBubble({
       {/* The tail, pointing down at the face it speaks for. */}
       <span
         aria-hidden
-        className="bg-background border-border absolute right-6 -bottom-[7px] h-3.5 w-3.5 rotate-45 border-r border-b"
+        className="bg-background border-border absolute end-6 -bottom-[7px] h-3.5 w-3.5 rotate-45 border-e border-b"
       />
     </div>
   );

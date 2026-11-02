@@ -99,7 +99,7 @@ export function ChatWelcome({
               // A filled card rather than a hairline box: four outlines on a
               // blank page read as a form to fill in, not as places to start.
               className={cn(
-                "group bg-muted/60 hover:bg-muted focus-visible:ring-ring flex w-full items-start gap-3 rounded-2xl text-left transition-colors outline-none focus-visible:ring-2",
+                "group bg-muted/60 hover:bg-muted focus-visible:ring-ring flex w-full items-start gap-3 rounded-2xl text-start transition-colors outline-none focus-visible:ring-2",
                 compact ? "px-3 py-2.5" : "p-3.5 md:p-4",
               )}
             >
@@ -137,7 +137,7 @@ export function ChatWelcome({
                 type="button"
                 aria-label={t("unpin", { prompt: suggestion.title })}
                 onClick={suggestion.onRemove}
-                className="text-muted-foreground hover:text-foreground hover:bg-accent absolute top-2.5 right-2.5 rounded-md p-1"
+                className="text-muted-foreground hover:text-foreground hover:bg-accent absolute end-2.5 top-2.5 rounded-md p-1"
               >
                 <X className="h-3.5 w-3.5" />
               </button>

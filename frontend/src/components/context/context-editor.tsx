@@ -98,7 +98,7 @@ export function ContextEditor({
       )}
 
       <DialogFooter>
-        <div className="flex items-center gap-2 sm:mr-auto">
+        <div className="flex items-center gap-2 sm:me-auto">
           <ShareResourceButton
             resourceType="context"
             resourceId={file.id}

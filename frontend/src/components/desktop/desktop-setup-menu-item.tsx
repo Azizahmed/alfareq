@@ -15,7 +15,7 @@ export function DesktopSetupMenuItem() {
   if (!isDesktopShell(shell) || shell.window !== "main") return null;
   return (
     <DropdownMenuItem onSelect={() => window.dispatchEvent(new Event(OPEN_DESKTOP_SETUP))}>
-      <ListChecks className="mr-2 h-4 w-4 shrink-0" aria-hidden />
+      <ListChecks className="me-2 h-4 w-4 shrink-0" aria-hidden />
       {t("title")}
     </DropdownMenuItem>
   );

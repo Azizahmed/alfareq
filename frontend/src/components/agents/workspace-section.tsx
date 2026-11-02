@@ -152,7 +152,7 @@ export function WorkspaceSection({
               onClick={() => chooseBackend(option.id)}
               aria-pressed={backend === option.id}
               className={cn(
-                "flex flex-col gap-1 rounded-xl border px-3 py-3 text-left transition-colors",
+                "flex flex-col gap-1 rounded-xl border px-3 py-3 text-start transition-colors",
                 backend === option.id
                   ? "border-foreground/25 bg-accent"
                   : "hover:bg-accent/50 border-border",
@@ -398,7 +398,7 @@ function RuntimeField({ connection, runtime, disabled, onChange }: RuntimeFieldP
               // is a number beside an alias with nothing to weigh it against.
               trailing={
                 entry.mem_limit !== null && (
-                  <span className="text-muted-foreground ml-auto shrink-0 pl-3 text-xs">
+                  <span className="text-muted-foreground ms-auto shrink-0 ps-3 text-xs">
                     {entry.mem_limit}
                   </span>
                 )

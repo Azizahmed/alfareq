@@ -229,7 +229,7 @@ function ParseFacts({
           {t("characterCount", { count: characters })}
         </Fact>
       )}
-      {trailing !== undefined && <span className="ml-auto">{trailing}</span>}
+      {trailing !== undefined && <span className="ms-auto">{trailing}</span>}
     </div>
   );
 }

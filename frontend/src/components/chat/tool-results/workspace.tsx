@@ -122,7 +122,7 @@ function FileCardActions({
 
   return (
     <span className="flex shrink-0 items-center gap-1">
-      {error !== null && <span className="text-destructive mr-1 text-xs">{error}</span>}
+      {error !== null && <span className="text-destructive me-1 text-xs">{error}</span>}
       <Button variant="ghost" size="sm" className="h-7 text-xs" onClick={onOpen}>
         {t("open")}
       </Button>
@@ -259,10 +259,10 @@ export function WorkspaceToolResult({
 function TextPanel({ text }: { text: string }) {
   return (
     <div className="relative">
-      <pre className="bg-muted max-h-64 overflow-auto rounded-md p-3 pr-9 text-xs whitespace-pre-wrap">
+      <pre className="bg-muted max-h-64 overflow-auto rounded-md p-3 pe-9 text-xs whitespace-pre-wrap">
         {text}
       </pre>
-      <CopyButton text={text} className="absolute top-1 right-1 h-6 w-6 rounded-md" />
+      <CopyButton text={text} className="absolute end-1 top-1 h-6 w-6 rounded-md" />
     </div>
   );
 }

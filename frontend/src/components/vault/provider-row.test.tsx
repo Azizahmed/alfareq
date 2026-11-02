@@ -115,7 +115,7 @@ describe("what a select trigger inherits from the row", () => {
   });
 
   it("leaves a trailing badge in the list instead of repeating it in the trigger", async () => {
-    pickerWith(<Check data-testid="keyed" className="ml-auto h-3.5 w-3.5" />);
+    pickerWith(<Check data-testid="keyed" className="ms-auto h-3.5 w-3.5" />);
 
     expect(screen.queryByTestId("keyed")).toBeNull();
 

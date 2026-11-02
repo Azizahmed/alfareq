@@ -71,11 +71,11 @@ export function TriggersPanel({ agentId, canCreate, reachesPersonal = false }: T
         {canCreate && (
           <div className="flex flex-wrap gap-2 border-t pt-3">
             <Button variant="outline" size="sm" onClick={() => setCreatingSchedule(true)}>
-              <CalendarClock className="mr-2 h-4 w-4" />
+              <CalendarClock className="me-2 h-4 w-4" />
               {t("newSchedule")}
             </Button>
             <Button variant="outline" size="sm" onClick={() => setCreatingEvent(true)}>
-              <Zap className="mr-2 h-4 w-4" />
+              <Zap className="me-2 h-4 w-4" />
               {t("newEvent")}
             </Button>
           </div>

@@ -86,7 +86,7 @@ export default function AdminOrganizationsPage() {
       {
         key: "name",
         header: t("name"),
-        className: "pl-5",
+        className: "ps-5",
         sortable: true,
         cell: (org) => (
           <div className="flex min-w-0 items-center gap-3">
@@ -135,7 +135,7 @@ export default function AdminOrganizationsPage() {
         key: "created_at",
         header: t("created"),
         align: "right",
-        className: "pr-5",
+        className: "pe-5",
         sortable: true,
         cell: (org) => (
           <span className="text-muted-foreground text-xs">

@@ -164,11 +164,11 @@ function StatsBody({ stats, locale }: { stats: Stats; locale: string }) {
               <table className="w-full text-sm">
                 <thead className="text-muted-foreground text-xs">
                   <tr className="border-b">
-                    <th className="px-4 py-2 text-left font-medium">{t("step")}</th>
-                    <th className="px-4 py-2 text-right font-medium">{t("stepRuns")}</th>
-                    <th className="px-4 py-2 text-right font-medium">{t("stepFailed")}</th>
-                    <th className="px-4 py-2 text-right font-medium">{t("stepTime")}</th>
-                    <th className="px-4 py-2 text-right font-medium">{t("stepCost")}</th>
+                    <th className="px-4 py-2 text-start font-medium">{t("step")}</th>
+                    <th className="px-4 py-2 text-end font-medium">{t("stepRuns")}</th>
+                    <th className="px-4 py-2 text-end font-medium">{t("stepFailed")}</th>
+                    <th className="px-4 py-2 text-end font-medium">{t("stepTime")}</th>
+                    <th className="px-4 py-2 text-end font-medium">{t("stepCost")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -177,19 +177,19 @@ function StatsBody({ stats, locale }: { stats: Stats; locale: string }) {
                       <td className="max-w-64 truncate px-4 py-2">
                         {step.label ?? typeName(step.definition_id) ?? t("stepGone")}
                       </td>
-                      <td className="px-4 py-2 text-right tabular-nums">{step.runs}</td>
+                      <td className="px-4 py-2 text-end tabular-nums">{step.runs}</td>
                       <td
                         className={cn(
-                          "px-4 py-2 text-right tabular-nums",
+                          "px-4 py-2 text-end tabular-nums",
                           step.failed > 0 && "text-destructive",
                         )}
                       >
                         {step.failed}
                       </td>
-                      <td className="px-4 py-2 text-right tabular-nums">
+                      <td className="px-4 py-2 text-end tabular-nums">
                         {seconds(step.avg_seconds)}
                       </td>
-                      <td className="px-4 py-2 text-right tabular-nums">
+                      <td className="px-4 py-2 text-end tabular-nums">
                         {usd(step.cost_usd, locale)}
                       </td>
                     </tr>
@@ -278,14 +278,14 @@ function Approvals({
               <table className="w-full text-sm">
                 <thead className="text-muted-foreground text-xs">
                   <tr className="border-b">
-                    <th className="px-4 py-2 text-left font-medium">{t("step")}</th>
-                    <th className="px-4 py-2 text-right font-medium">{t("approvalsRequests")}</th>
-                    <th className="px-4 py-2 text-right font-medium">{t("approvalsUnchanged")}</th>
-                    <th className="px-4 py-2 text-right font-medium">{t("approvalsEdited")}</th>
-                    <th className="px-4 py-2 text-right font-medium">{t("approvalsRejected")}</th>
-                    <th className="px-4 py-2 text-right font-medium">{t("approvalsExpired")}</th>
-                    <th className="px-4 py-2 text-right font-medium">{t("approvalsMedianEdit")}</th>
-                    <th className="px-4 py-2 text-right font-medium">{t("approvalsDecideTime")}</th>
+                    <th className="px-4 py-2 text-start font-medium">{t("step")}</th>
+                    <th className="px-4 py-2 text-end font-medium">{t("approvalsRequests")}</th>
+                    <th className="px-4 py-2 text-end font-medium">{t("approvalsUnchanged")}</th>
+                    <th className="px-4 py-2 text-end font-medium">{t("approvalsEdited")}</th>
+                    <th className="px-4 py-2 text-end font-medium">{t("approvalsRejected")}</th>
+                    <th className="px-4 py-2 text-end font-medium">{t("approvalsExpired")}</th>
+                    <th className="px-4 py-2 text-end font-medium">{t("approvalsMedianEdit")}</th>
+                    <th className="px-4 py-2 text-end font-medium">{t("approvalsDecideTime")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -294,17 +294,17 @@ function Approvals({
                       <td className="max-w-64 truncate px-4 py-2">
                         {step.label ?? typeName(step.definition_id) ?? t("stepGone")}
                       </td>
-                      <td className="px-4 py-2 text-right tabular-nums">{step.requests}</td>
-                      <td className="px-4 py-2 text-right tabular-nums">
+                      <td className="px-4 py-2 text-end tabular-nums">{step.requests}</td>
+                      <td className="px-4 py-2 text-end tabular-nums">
                         {share(step.unchanged_rate, locale)}
                       </td>
-                      <td className="px-4 py-2 text-right tabular-nums">{step.approved_edited}</td>
-                      <td className="px-4 py-2 text-right tabular-nums">{step.rejected}</td>
-                      <td className="px-4 py-2 text-right tabular-nums">{step.expired}</td>
-                      <td className="px-4 py-2 text-right tabular-nums">
+                      <td className="px-4 py-2 text-end tabular-nums">{step.approved_edited}</td>
+                      <td className="px-4 py-2 text-end tabular-nums">{step.rejected}</td>
+                      <td className="px-4 py-2 text-end tabular-nums">{step.expired}</td>
+                      <td className="px-4 py-2 text-end tabular-nums">
                         {share(step.edit_ratio_median, locale)}
                       </td>
-                      <td className="px-4 py-2 text-right tabular-nums">
+                      <td className="px-4 py-2 text-end tabular-nums">
                         {seconds(step.decide_p50_seconds)}
                       </td>
                     </tr>

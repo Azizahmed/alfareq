@@ -92,7 +92,7 @@ export function AgentVersionPicker({ value, onChange, disabled, error }: AgentVe
                 className="flex-col items-start gap-0.5 [&>span]:max-w-full [&>span:first-child]:top-3"
                 trailing={
                   agent.description && (
-                    <span className="text-muted-foreground block w-full truncate pl-8 text-xs">
+                    <span className="text-muted-foreground block w-full truncate ps-8 text-xs">
                       {agent.description}
                     </span>
                   )
@@ -143,7 +143,7 @@ export function AgentVersionPicker({ value, onChange, disabled, error }: AgentVe
                 textValue={t("pickerVersionNumber", { version: version.version })}
                 trailing={
                   // When and why it was published, to pin the right one.
-                  <span className="text-muted-foreground ml-3 truncate text-xs">
+                  <span className="text-muted-foreground ms-3 truncate text-xs">
                     {[
                       version.created_at && formatDateTime(version.created_at, locale),
                       version.note,

@@ -200,7 +200,7 @@ function TemplateLibrary({
           </form>
         ) : (
           <>
-            <div className="max-h-[55dvh] space-y-4 overflow-y-auto pr-1">
+            <div className="max-h-[55dvh] space-y-4 overflow-y-auto pe-1">
               <div className="space-y-2">
                 <div className="flex items-center justify-between gap-2">
                   <h3 className="text-sm font-medium">{t("yourTemplates")}</h3>

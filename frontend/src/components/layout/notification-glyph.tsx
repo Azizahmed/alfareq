@@ -88,7 +88,7 @@ export function NotificationGlyph({ item }: { item: Notification }) {
         />
         {/* A solid disc under the tint: the tints are translucent, and over a
             face they would let it show through the icon. */}
-        <span className="bg-popover ring-popover absolute -right-1 -bottom-1 rounded-full ring-2">
+        <span className="bg-popover ring-popover absolute -end-1 -bottom-1 rounded-full ring-2">
           <span className={cn("grid h-4 w-4 place-items-center rounded-full", kind.tone)}>
             <Icon className="h-2.5 w-2.5" />
           </span>

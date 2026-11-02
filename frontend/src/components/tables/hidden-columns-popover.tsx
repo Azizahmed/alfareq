@@ -32,7 +32,7 @@ export function HiddenColumnsPopover({
           <button
             key={column.id}
             type="button"
-            className="hover:bg-accent flex w-full items-center justify-between rounded-md px-2 py-1.5 text-left text-sm"
+            className="hover:bg-accent flex w-full items-center justify-between rounded-md px-2 py-1.5 text-start text-sm"
             onClick={() => onShow(column)}
           >
             <span className="truncate">{column.label}</span>

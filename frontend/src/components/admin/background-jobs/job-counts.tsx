@@ -35,7 +35,7 @@ export function JobCounts({
           aria-pressed={selected === status}
           onClick={() => onSelect(selected === status ? undefined : status)}
           className={cn(
-            "border-border bg-card hover:bg-muted/60 rounded-xl border p-4 text-left transition-colors",
+            "border-border bg-card hover:bg-muted/60 rounded-xl border p-4 text-start transition-colors",
             selected === status && "ring-ring ring-2",
           )}
         >

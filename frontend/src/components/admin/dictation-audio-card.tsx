@@ -75,7 +75,7 @@ export function DictationAudioCard({ checked, disabled, onChange }: DictationAud
             <DialogDescription>{t("dialogIntro")}</DialogDescription>
           </DialogHeader>
 
-          <ul className="text-foreground list-disc space-y-2 pl-5 text-sm">
+          <ul className="text-foreground list-disc space-y-2 ps-5 text-sm">
             {RISKS.map((risk) => (
               <li key={risk}>{t(risk)}</li>
             ))}

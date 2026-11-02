@@ -165,7 +165,7 @@ export default function SystemHealthPage() {
               </div>
               <div className="flex flex-wrap items-center gap-2">
                 {health && (
-                  <span className="text-muted-foreground mr-1 text-xs">
+                  <span className="text-muted-foreground me-1 text-xs">
                     {t("checkedAt", { time: new Date(health.checked_at).toLocaleTimeString() })}
                   </span>
                 )}
@@ -238,7 +238,7 @@ export default function SystemHealthPage() {
                     </p>
                     <p className="text-muted-foreground mt-0.5 text-xs">{check.detail}</p>
                   </div>
-                  <div className="flex shrink-0 flex-col items-end gap-1 pl-1">
+                  <div className="flex shrink-0 flex-col items-end gap-1 ps-1">
                     <div className="flex items-center gap-2">
                       <span
                         aria-hidden

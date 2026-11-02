@@ -93,16 +93,16 @@ export function CapabilityCard({
         onClick={onFocus}
         aria-current={focused ? "true" : undefined}
         aria-label={entry.name}
-        className="relative block overflow-hidden border-b text-left"
+        className="relative block overflow-hidden border-b text-start"
       >
         <CapabilityArt id={entry.id} name={entry.name} off={!enabled} />
         {entry.recommended && (
-          <RecommendedBadge className="bg-background/90 absolute top-2 left-2 shadow-sm backdrop-blur" />
+          <RecommendedBadge className="bg-background/90 absolute start-2 top-2 shadow-sm backdrop-blur" />
         )}
       </button>
       <div className="flex flex-1 flex-col gap-1 px-3 py-2.5">
         <div className="flex items-start gap-2">
-          <button type="button" onClick={onFocus} className="min-w-0 flex-1 text-left">
+          <button type="button" onClick={onFocus} className="min-w-0 flex-1 text-start">
             <span className="flex items-center gap-1.5">
               <span className={cn("text-sm font-medium", !enabled && "text-muted-foreground")}>
                 {entry.name}
@@ -136,7 +136,7 @@ export function CapabilityCard({
             type="button"
             onClick={onFocus}
             aria-label={t("capabilitySettingsTitle", { name: entry.name })}
-            className="hover:text-foreground ml-auto flex items-center gap-1 rounded-md px-1.5 py-0.5 font-medium transition-colors"
+            className="hover:text-foreground ms-auto flex items-center gap-1 rounded-md px-1.5 py-0.5 font-medium transition-colors"
           >
             <Settings2 className="size-3" aria-hidden />
             {t("capabilityOpenSettings")}

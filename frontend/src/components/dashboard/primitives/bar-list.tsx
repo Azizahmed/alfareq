@@ -81,7 +81,7 @@ export function BarList({ items, className }: { items: BarListItem[]; className?
                   style={{ width: `${(item.value / max) * 100}%` }}
                 />
               </span>
-              <span className="text-muted-foreground shrink-0 text-right tabular-nums">
+              <span className="text-muted-foreground shrink-0 text-end tabular-nums">
                 {item.display ?? item.value.toLocaleString()}
               </span>
             </Row>

@@ -46,7 +46,7 @@ export function ImpersonationBanner() {
         {t("impersonationEndsAt", { time: endsAt })}
       </span>
       <Button variant="outline" size="sm" onClick={() => void end()} disabled={ending}>
-        {ending && <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" aria-hidden />}
+        {ending && <Loader2 className="me-1.5 h-3.5 w-3.5 animate-spin" aria-hidden />}
         {t("endImpersonation")}
       </Button>
     </div>

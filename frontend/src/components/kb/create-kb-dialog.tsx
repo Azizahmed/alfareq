@@ -294,7 +294,7 @@ export function CreateKBDialog({ open, onOpenChange, onCreated }: CreateKBDialog
                             // whatever the row draws, and the width is a comparison
                             // against the other options.
                             trailing={
-                              <span className="text-muted-foreground ml-auto shrink-0 pl-2 text-xs">
+                              <span className="text-muted-foreground ms-auto shrink-0 ps-2 text-xs">
                                 {t("dimensions", { count: entry.dim })}
                               </span>
                             }

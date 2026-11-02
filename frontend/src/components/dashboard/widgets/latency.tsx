@@ -54,11 +54,11 @@ export function LatencyWidget({ title, hint, period, seeAll, options }: Dashboar
                 <div aria-hidden className="my-auto space-y-1.5">
                   <div className="bg-muted relative h-2.5 overflow-hidden rounded-full">
                     <span
-                      className="absolute inset-y-0 left-0 opacity-35"
+                      className="absolute inset-y-0 start-0 opacity-35"
                       style={{ width: "100%", background: "var(--series-1)" }}
                     />
                     <span
-                      className="absolute inset-y-0 left-0 rounded-full"
+                      className="absolute inset-y-0 start-0 rounded-full"
                       style={{ width: `${(p50 / p95) * 100}%`, background: "var(--series-1)" }}
                     />
                   </div>

@@ -116,7 +116,7 @@ interface DataTableProps<T> {
 /** Rows drawn beyond each edge of the viewport, so a fast scroll never shows a gap. */
 const OVERSCAN = 8;
 
-const alignClass = { left: "text-left", right: "text-right", center: "text-center" } as const;
+const alignClass = { left: "text-start", right: "text-end", center: "text-center" } as const;
 
 function compare(a: string | number | null, b: string | number | null, dir: "asc" | "desc") {
   if (a === null || b === null) return a === b ? 0 : a === null ? 1 : -1;

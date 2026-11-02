@@ -171,7 +171,7 @@ function IndustryTemplates({
   return (
     <>
       <Button variant="ghost" size="sm" className="self-start" onClick={onBack}>
-        <ArrowLeft className="mr-2 size-4" />
+        <ArrowLeft className="me-2 size-4" />
         {t("back")}
       </Button>
 

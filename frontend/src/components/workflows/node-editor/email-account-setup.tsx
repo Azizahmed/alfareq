@@ -63,7 +63,7 @@ export function EmailAccountSetup({
             key={action.key}
             type="button"
             variant="outline"
-            className="h-auto w-full justify-start py-2 text-left whitespace-normal"
+            className="h-auto w-full justify-start py-2 text-start whitespace-normal"
             onClick={() => setSelected(action)}
           >
             <Mail className="size-4 shrink-0" aria-hidden />

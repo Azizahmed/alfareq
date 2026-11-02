@@ -22,7 +22,7 @@ export function SkillCard({ skill, onOpen }: SkillCardProps) {
       <button
         type="button"
         onClick={onOpen}
-        className="flex w-full flex-1 flex-col rounded-[inherit] text-left focus-visible:outline-offset-[-2px]"
+        className="flex w-full flex-1 flex-col rounded-[inherit] text-start focus-visible:outline-offset-[-2px]"
       >
         <DocPeek
           sheets={skill.file_count}

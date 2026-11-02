@@ -81,10 +81,10 @@ describe("who answered in a conversation", () => {
 
   it("passes a caller's class through, because it is laid out by its parent", () => {
     const { container } = render(
-      <ConversationAgents agents={[agent("Support")]} className="ml-auto" />,
+      <ConversationAgents agents={[agent("Support")]} className="ms-auto" />,
     );
 
-    expect(container.firstElementChild).toHaveClass("ml-auto");
+    expect(container.firstElementChild).toHaveClass("ms-auto");
   });
 
   it("tucks three faces closer than two, and spreads them when pointed at", () => {
@@ -92,11 +92,11 @@ describe("who answered in a conversation", () => {
       <ConversationAgents agents={[agent("A"), agent("B")]} showName={false} />,
     );
     const second = () => container.querySelectorAll<HTMLElement>("[data-agent-avatar]")[1]!;
-    expect(second().className).toContain("-ml-3");
+    expect(second().className).toContain("-ms-3");
 
     rerender(<ConversationAgents agents={[agent("A"), agent("B"), agent("C")]} showName={false} />);
-    expect(second().className).toContain("-ml-4");
-    expect(second().className).toContain("group-hover/stack:-ml-3");
+    expect(second().className).toContain("-ms-4");
+    expect(second().className).toContain("group-hover/stack:-ms-3");
     // The first face never moves: the stack opens to the right of it.
     expect(
       container.querySelectorAll<HTMLElement>("[data-agent-avatar]")[0]!.className,
@@ -120,10 +120,10 @@ it("keeps full-size rail faces overlapping within 40px and hides older overflow"
     "Third-id",
   ]);
   for (const face of faces) expect(face).toHaveClass("w-9");
-  expect(faces[1]).toHaveClass("-ml-[34px]");
-  expect(faces[2]).toHaveClass("-ml-[34px]");
+  expect(faces[1]).toHaveClass("-ms-[34px]");
+  expect(faces[2]).toHaveClass("-ms-[34px]");
   expect(faces[0]).toHaveClass("z-30");
-  expect(faces[1]).not.toHaveClass("group-hover/stack:ml-0.5");
+  expect(faces[1]).not.toHaveClass("group-hover/stack:ms-0.5");
   // 3 * 36px - 2 * 34px = 40px, with the most recent face in front.
   expect(screen.queryByText(/^\+/)).toBeNull();
   expect(screen.getByTitle("Newest → Recent → Third → Old → Oldest")).toBeInTheDocument();
@@ -140,5 +140,5 @@ it("overlaps two full-size faces without shrinking either one", () => {
   );
   const faces = container.querySelectorAll<HTMLElement>("[data-agent-avatar]");
   expect(faces[0]).toHaveClass("w-9");
-  expect(faces[1]).toHaveClass("w-9", "-ml-8");
+  expect(faces[1]).toHaveClass("w-9", "-ms-8");
 });

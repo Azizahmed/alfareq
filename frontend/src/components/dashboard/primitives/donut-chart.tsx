@@ -92,7 +92,7 @@ export function DonutChart({
                   {formatShare(row.share, locale)}
                 </span>
               ) : null}
-              <span className="text-foreground w-8 shrink-0 text-right font-medium tabular-nums">
+              <span className="text-foreground w-8 shrink-0 text-end font-medium tabular-nums">
                 {row.value.toLocaleString(locale)}
               </span>
             </li>

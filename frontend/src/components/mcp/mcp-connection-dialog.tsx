@@ -340,7 +340,7 @@ function ConnectionForm({
                     disabled={draft.existing !== null}
                     onClick={() => setScope(option)}
                     className={cn(
-                      "flex flex-col items-start gap-1 rounded-lg border p-3 text-left text-sm transition-colors",
+                      "flex flex-col items-start gap-1 rounded-lg border p-3 text-start text-sm transition-colors",
                       scope === option
                         ? "border-foreground/30 bg-accent text-foreground"
                         : "border-input text-muted-foreground hover:text-foreground",

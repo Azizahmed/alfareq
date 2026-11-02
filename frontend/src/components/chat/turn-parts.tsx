@@ -200,7 +200,7 @@ export function ThinkingBlock({
           and the underscores literally, in a face that says "this is output"
           about the one part of a turn that is prose. Still the muted, smaller,
           scrollable aside it was; only the text is read properly now. */}
-      <div className="text-muted-foreground border-foreground/10 mt-2 max-h-72 overflow-y-auto border-l pl-3.5 text-[13px] leading-relaxed">
+      <div className="text-muted-foreground border-foreground/10 mt-2 max-h-72 overflow-y-auto border-s ps-3.5 text-[13px] leading-relaxed">
         <MarkdownContent content={text} />
       </div>
     </details>
@@ -264,7 +264,7 @@ export function AskUserBlock({
 }) {
   const t = useTranslations("chat");
   return (
-    <div className="border-foreground/10 text-muted-foreground space-y-1.5 border-l pl-3.5 text-[13px]">
+    <div className="border-foreground/10 text-muted-foreground space-y-1.5 border-s ps-3.5 text-[13px]">
       <div className="flex items-center gap-2">
         <MessageCircleQuestion className="h-3.5 w-3.5 shrink-0 opacity-60" aria-hidden />
         {/* Who asked, where a delegate did. The main agent asking is the ordinary
@@ -356,7 +356,7 @@ export function TextBubble({
     >
       <MarkdownContent content={visible} onCiteClick={onCiteClick} streaming={flowing} />
       {showCursor && (
-        <span className="stream-cursor ml-1 inline-block h-4 w-1.5 animate-pulse rounded-full bg-current" />
+        <span className="stream-cursor ms-1 inline-block h-4 w-1.5 animate-pulse rounded-full bg-current" />
       )}
     </div>
   );

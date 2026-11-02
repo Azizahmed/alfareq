@@ -109,7 +109,7 @@ export function SuggestionList({
       id={id}
       role="listbox"
       aria-label={t("templateSuggestions")}
-      className="bg-popover text-popover-foreground border-border absolute top-full left-0 z-30 mt-1 max-h-56 w-full max-w-md overflow-y-auto rounded-md border p-1 shadow-md"
+      className="bg-popover text-popover-foreground border-border absolute start-0 top-full z-30 mt-1 max-h-56 w-full max-w-md overflow-y-auto rounded-md border p-1 shadow-md"
     >
       {suggestions.map((suggestion, index) => (
         <li

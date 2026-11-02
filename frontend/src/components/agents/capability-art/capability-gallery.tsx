@@ -112,7 +112,7 @@ function Shelf({
         <span className="text-muted-foreground text-xs">
           {t("capabilityShelfEnabled", { enabled: on, total: shelf.entries.length })}
         </span>
-        <div className="ml-auto hidden gap-1 sm:flex">
+        <div className="ms-auto hidden gap-1 sm:flex">
           <button
             type="button"
             onClick={() => page(-1)}

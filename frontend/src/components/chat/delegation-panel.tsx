@@ -148,12 +148,12 @@ function DelegationPanel({
   const delegate = delegateOf(delegation, agents);
 
   return (
-    <div className="border-foreground/10 border-l pl-3.5">
+    <div className="border-foreground/10 border-s ps-3.5">
       <button
         type="button"
         onClick={() => setOpen((previous) => !previous)}
         aria-expanded={open}
-        className="hover:text-foreground flex max-w-full min-w-0 items-center gap-2 rounded-md py-1 text-left"
+        className="hover:text-foreground flex max-w-full min-w-0 items-center gap-2 rounded-md py-1 text-start"
       >
         {/* A delegation that is still out wears the orb the step list gives a
             delegate tool: a constellation wiring itself, which is what handing
@@ -212,18 +212,18 @@ function DelegationPanel({
         <div className="space-y-2 pb-2">
           {/* What it was asked, first: a delegation whose brief nobody can see is a
               black box that costs money. */}
-          <p className="text-muted-foreground border-foreground/10 border-l pl-2.5 text-[12px] leading-relaxed">
+          <p className="text-muted-foreground border-foreground/10 border-s ps-2.5 text-[12px] leading-relaxed">
             {delegation.prompt}
           </p>
 
           {delegation.thinking !== "" && (
-            <pre className="text-muted-foreground border-foreground/10 max-h-40 overflow-y-auto border-l pl-2.5 text-xs leading-relaxed whitespace-pre-wrap">
+            <pre className="text-muted-foreground border-foreground/10 max-h-40 overflow-y-auto border-s ps-2.5 text-xs leading-relaxed whitespace-pre-wrap">
               {delegation.thinking}
             </pre>
           )}
 
           {delegation.steps.length > 0 && (
-            <div className="border-foreground/10 space-y-0.5 border-l pl-3.5">
+            <div className="border-foreground/10 space-y-0.5 border-s ps-3.5">
               {delegation.steps.map((step) => {
                 // The delegate's own tools - the only place a reader learns that the
                 // researcher searched a collection the parent cannot even see. A

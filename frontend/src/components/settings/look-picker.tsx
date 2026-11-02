@@ -61,7 +61,7 @@ export function LookPicker({ labelledBy, value, dark, onChange }: LookPickerProp
             onClick={() => onChange(look)}
             onKeyDown={(event) => onKeyDown(event, index)}
             className={cn(
-              "focus-visible:ring-ring flex flex-col gap-2.5 rounded-xl border p-2 text-left transition-colors outline-none focus-visible:ring-2",
+              "focus-visible:ring-ring flex flex-col gap-2.5 rounded-xl border p-2 text-start transition-colors outline-none focus-visible:ring-2",
               checked
                 ? "border-foreground/60 bg-accent/40"
                 : "hover:border-border hover:bg-accent/30 border-transparent",

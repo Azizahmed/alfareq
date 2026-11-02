@@ -93,3 +93,45 @@ body,
 :lang(ar) textarea {
   unicode-bidi: plaintext;
 }
+
+/*
+ * Icons that point along the line point the other way in Arabic: "next" is to
+ * the left. Lucide names each icon in a class, so this needs no change to the
+ * components drawing them. A chevron that is rotated is an expander pointing
+ * down, not along the line, and keeps its turn.
+ */
+[dir="rtl"]
+  :is(
+    .lucide-chevron-left,
+    .lucide-chevron-right,
+    .lucide-chevrons-left,
+    .lucide-chevrons-right,
+    .lucide-arrow-left,
+    .lucide-arrow-right,
+    .lucide-arrow-left-right,
+    .lucide-move-left,
+    .lucide-move-right,
+    .lucide-corner-down-left,
+    .lucide-corner-down-right,
+    .lucide-corner-up-left,
+    .lucide-corner-up-right,
+    .lucide-undo,
+    .lucide-redo,
+    .lucide-undo-2,
+    .lucide-redo-2,
+    .lucide-log-in,
+    .lucide-log-out,
+    .lucide-panel-left,
+    .lucide-panel-right,
+    .lucide-panel-left-close,
+    .lucide-panel-left-open,
+    .lucide-panel-right-close,
+    .lucide-panel-right-open,
+    .lucide-list-indent-increase,
+    .lucide-list-indent-decrease,
+    .lucide-text-align-start,
+    .lucide-reply,
+    .lucide-forward
+  ):not([class*="rotate-"]) {
+  transform: scaleX(-1);
+}

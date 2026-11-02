@@ -41,7 +41,7 @@ export function MarkdownQuote({ children, ...props }: ComponentProps<"blockquote
     <div className="group/quote relative my-3">
       <blockquote
         ref={quote}
-        className="border-brand/40 text-foreground/75 border-l-2 pr-10 pl-4 italic"
+        className="border-brand/40 text-foreground/75 border-s-2 ps-4 pe-10 italic"
         {...props}
       >
         {children}
@@ -54,7 +54,7 @@ export function MarkdownQuote({ children, ...props }: ComponentProps<"blockquote
         title={copied ? t("copied") : t("copyQuote")}
         aria-label={copied ? t("copiedToClipboard") : t("copyQuote")}
         // As on a table: on hover or focus, and always where nothing can hover.
-        className="bg-popover border-foreground/10 hover:bg-muted touch:opacity-100 absolute top-0 right-0 h-7 w-7 border p-0 opacity-0 shadow-sm transition-opacity group-focus-within/quote:opacity-100 group-hover/quote:opacity-100"
+        className="bg-popover border-foreground/10 hover:bg-muted touch:opacity-100 absolute end-0 top-0 h-7 w-7 border p-0 opacity-0 shadow-sm transition-opacity group-focus-within/quote:opacity-100 group-hover/quote:opacity-100"
       >
         {copied ? (
           <Check className="text-success h-3.5 w-3.5" aria-hidden />

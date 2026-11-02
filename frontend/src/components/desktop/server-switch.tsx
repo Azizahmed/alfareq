@@ -19,7 +19,7 @@ function ServerSwitchItem() {
   const change = useChangeServer();
   return (
     <DropdownMenuItem onSelect={() => change.mutate()} disabled={change.isPending}>
-      <Server className="mr-2 h-4 w-4 shrink-0" aria-hidden />
+      <Server className="me-2 h-4 w-4 shrink-0" aria-hidden />
       {t("change")}
     </DropdownMenuItem>
   );

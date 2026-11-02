@@ -83,15 +83,15 @@ export function RetentionForm({ policy, isSaving, saved, onSave }: RetentionForm
         <table className="w-full min-w-[34rem] text-sm">
           <thead>
             <tr className="border-b">
-              <th className="py-2 pr-4 text-left font-medium">{t("dataClass")}</th>
-              <th className="px-3 py-2 text-left font-medium">{t("keepForDays")}</th>
-              <th className="px-3 py-2 text-left font-medium">{t("whatSweeps")}</th>
+              <th className="py-2 pe-4 text-start font-medium">{t("dataClass")}</th>
+              <th className="px-3 py-2 text-start font-medium">{t("keepForDays")}</th>
+              <th className="px-3 py-2 text-start font-medium">{t("whatSweeps")}</th>
             </tr>
           </thead>
           <tbody>
             {RETENTION_CLASSES.map((name) => (
               <tr key={name} className="border-b last:border-0">
-                <td className="py-2 pr-4">{t(`classes.${name}`)}</td>
+                <td className="py-2 pe-4">{t(`classes.${name}`)}</td>
                 <td className="px-3 py-2">
                   <Input
                     type="number"

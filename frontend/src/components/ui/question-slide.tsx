@@ -149,7 +149,7 @@ export function QuestionSlide({
                   onMouseEnter={() => setFocusIdx(index)}
                   onClick={() => choose(option.label)}
                   className={cn(
-                    "flex w-full items-center gap-2.5 rounded-lg px-2 py-1.5 text-left transition-colors",
+                    "flex w-full items-center gap-2.5 rounded-lg px-2 py-1.5 text-start transition-colors",
                     focused ? "bg-foreground/[0.06]" : "hover:bg-foreground/[0.03]",
                   )}
                 >
@@ -170,7 +170,7 @@ export function QuestionSlide({
                   <span className="min-w-0 flex-1 truncate" title={option.description ?? undefined}>
                     <span className="text-foreground text-sm">{option.label}</span>
                     {option.description && (
-                      <span className="text-muted-foreground ml-2 text-xs">
+                      <span className="text-muted-foreground ms-2 text-xs">
                         {option.description}
                       </span>
                     )}
@@ -244,7 +244,7 @@ export function QuestionSlide({
                 {t("somethingElse")}
               </button>
             ) : null}
-            <span className="ml-auto flex items-center gap-3">
+            <span className="ms-auto flex items-center gap-3">
               {trailing}
               {multi && (
                 <button

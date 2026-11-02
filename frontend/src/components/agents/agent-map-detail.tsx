@@ -38,7 +38,7 @@ export function MapDetail({ title, icon: Icon, node, delegate, onClose }: MapDet
     <div
       role="region"
       aria-label={t("mapDetailRegion", { name: title })}
-      className="bg-card absolute bottom-2 left-2 z-10 w-64 rounded-lg border p-3 shadow-lg"
+      className="bg-card absolute start-2 bottom-2 z-10 w-64 rounded-lg border p-3 shadow-lg"
     >
       <div className="flex items-start gap-2">
         <Icon className="text-muted-foreground mt-0.5 h-4 w-4 shrink-0" />
@@ -47,7 +47,7 @@ export function MapDetail({ title, icon: Icon, node, delegate, onClose }: MapDet
           type="button"
           variant="ghost"
           size="icon"
-          className="-mt-1.5 -mr-1.5 h-7 w-7"
+          className="-me-1.5 -mt-1.5 h-7 w-7"
           aria-label={t("mapCloseDetail")}
           onClick={onClose}
         >

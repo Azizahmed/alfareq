@@ -33,7 +33,7 @@ export function NativeBrowser({
             }}
           />
         </div>
-        <div className="ml-auto flex shrink-0 items-center gap-0.5">
+        <div className="ms-auto flex shrink-0 items-center gap-0.5">
           <button
             type="button"
             aria-label={state?.held ? t("nativeReturn") : t("nativeTake")}

@@ -100,7 +100,7 @@ export const DIALOG_COLUMN =
  * was drawn over the right edge of every card and field the body held.
  */
 export const DIALOG_BODY =
-  "-my-1 -ml-1 -mr-4 min-h-0 flex-1 overflow-y-auto py-1 pl-1 pr-4 scrollbar-thin [scrollbar-gutter:stable]";
+  "-my-1 -ms-1 -me-4 min-h-0 flex-1 overflow-y-auto py-1 ps-1 pe-4 scrollbar-thin [scrollbar-gutter:stable]";
 
 /**
  * The right edge of any other scrolling box inside a dialog's padding: the box
@@ -108,7 +108,7 @@ export const DIALOG_BODY =
  * scrollbar runs beside the content rather than over it - what `DIALOG_BODY`
  * does for the body, for a list that scrolls on its own.
  */
-export const DIALOG_SCROLL_GUTTER = "-mr-4 pr-4 scrollbar-thin [scrollbar-gutter:stable]";
+export const DIALOG_SCROLL_GUTTER = "-me-4 pe-4 scrollbar-thin [scrollbar-gutter:stable]";
 
 /**
  * The same, at a fixed height rather than a ceiling.

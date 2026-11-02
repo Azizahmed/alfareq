@@ -94,7 +94,7 @@ export function ProjectChip({
       {projectId !== null && project && (
         // The agent picker's own chip beside it - its fill, its radius, a 24px
         // mark where the avatar sits - so the two read as one row of choices.
-        <span className="bg-foreground/[0.06] text-foreground inline-flex max-w-48 min-w-0 items-center gap-1.5 rounded-lg py-1 pr-1.5 pl-1">
+        <span className="bg-foreground/[0.06] text-foreground inline-flex max-w-48 min-w-0 items-center gap-1.5 rounded-lg py-1 ps-1 pe-1.5">
           <span className="bg-foreground/8 flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
             <FolderKanban className="h-3 w-3" aria-hidden />
           </span>

@@ -1319,7 +1319,7 @@ export default function AgentBuilderPage({ params }: PageProps) {
                       <Button
                         variant="link"
                         size="sm"
-                        className="ml-2 h-auto p-0"
+                        className="ms-2 h-auto p-0"
                         onClick={goToModel}
                       >
                         {t("goToModel")}
@@ -1386,27 +1386,27 @@ export default function AgentBuilderPage({ params }: PageProps) {
         <Tabs value={tab} onValueChange={setTab}>
           <TabsList>
             <TabsTrigger value="build" data-tour="agent-tab-build">
-              <SlidersHorizontal className="mr-1.5 size-4 shrink-0" aria-hidden />
+              <SlidersHorizontal className="me-1.5 size-4 shrink-0" aria-hidden />
               {t("build")}
             </TabsTrigger>
             <TabsTrigger value="toolbox" data-tour="agent-tab-toolbox">
-              <Wrench className="mr-1.5 size-4 shrink-0" aria-hidden />
+              <Wrench className="me-1.5 size-4 shrink-0" aria-hidden />
               {t("toolbox")}
             </TabsTrigger>
             <TabsTrigger value="mcp" data-tour="agent-tab-mcp">
-              <Plug className="mr-1.5 size-4 shrink-0" aria-hidden />
+              <Plug className="me-1.5 size-4 shrink-0" aria-hidden />
               {t("mcpServers")}
             </TabsTrigger>
             <TabsTrigger value="limits" data-tour="agent-tab-limits">
-              <ShieldCheck className="mr-1.5 size-4 shrink-0" aria-hidden />
+              <ShieldCheck className="me-1.5 size-4 shrink-0" aria-hidden />
               {t("limits")}
             </TabsTrigger>
             <TabsTrigger value="availability" data-tour="agent-tab-availability">
-              <Radio className="mr-1.5 size-4 shrink-0" aria-hidden />
+              <Radio className="me-1.5 size-4 shrink-0" aria-hidden />
               {t("availability")}
             </TabsTrigger>
             <TabsTrigger value="history" data-tour="agent-tab-history">
-              <History className="mr-1.5 size-4 shrink-0" aria-hidden />
+              <History className="me-1.5 size-4 shrink-0" aria-hidden />
               {t("history")}
             </TabsTrigger>
           </TabsList>
@@ -1764,7 +1764,7 @@ export default function AgentBuilderPage({ params }: PageProps) {
                   <div className="relative">
                     <span
                       aria-hidden
-                      className="text-muted-foreground pointer-events-none absolute inset-y-0 left-3 flex items-center text-sm"
+                      className="text-muted-foreground pointer-events-none absolute inset-y-0 start-3 flex items-center text-sm"
                     >
                       $
                     </span>
@@ -1785,7 +1785,7 @@ export default function AgentBuilderPage({ params }: PageProps) {
                       }
                       placeholder={t("noLimit")}
                       aria-describedby="monthly-hint"
-                      className="pl-7"
+                      className="ps-7"
                     />
                   </div>
                   <p id="monthly-hint" className="text-muted-foreground text-xs">

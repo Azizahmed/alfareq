@@ -42,10 +42,10 @@ function languageLabel(className: string | undefined): string | null {
 function orderedIndent(children: React.ReactNode, start: unknown): string {
   const items = Children.toArray(children).filter(isValidElement).length;
   const last = (typeof start === "number" ? start : 1) + Math.max(items - 1, 0);
-  if (last >= 1000) return "pl-12";
-  if (last >= 100) return "pl-10";
-  if (last >= 10) return "pl-8";
-  return "pl-6";
+  if (last >= 1000) return "ps-12";
+  if (last >= 100) return "ps-10";
+  if (last >= 10) return "ps-8";
+  return "ps-6";
 }
 
 /**
@@ -312,7 +312,7 @@ export const MarkdownContent = memo(function MarkdownContent({
       ul({ children, ...props }) {
         return (
           <ul
-            className="marker:text-muted-foreground mb-3 list-disc space-y-1 pl-5 last:mb-0"
+            className="marker:text-muted-foreground mb-3 list-disc space-y-1 ps-5 last:mb-0"
             {...props}
           >
             {children}
@@ -387,7 +387,7 @@ export const MarkdownContent = memo(function MarkdownContent({
         return (
           <th
             className={cn(
-              "border-foreground/10 text-muted-foreground border-b px-3 py-2 text-left align-bottom text-xs font-medium",
+              "border-foreground/10 text-muted-foreground border-b px-3 py-2 text-start align-bottom text-xs font-medium",
               textOf(children).length <= SHORT_HEADER ? "whitespace-nowrap" : "min-w-[9rem]",
             )}
             {...props}

@@ -114,7 +114,7 @@ function RAGSourceGroup({
         <span className="text-foreground truncate text-xs font-medium" title={source}>
           {source}
         </span>
-        <span className="text-muted-foreground ml-auto font-mono text-xs tracking-wider uppercase">
+        <span className="text-muted-foreground ms-auto font-mono text-xs tracking-wider uppercase">
           {t("chunkCount", { count: chunks.length })}
         </span>
         <ScoreDot score={bestScore} />
@@ -135,7 +135,7 @@ function RAGSourceGroup({
               <button
                 type="button"
                 onClick={() => onToggle(chunk.index)}
-                className="hover:bg-foreground/[0.02] flex w-full items-start gap-2.5 px-3 py-2 text-left transition-colors"
+                className="hover:bg-foreground/[0.02] flex w-full items-start gap-2.5 px-3 py-2 text-start transition-colors"
               >
                 <span className="bg-foreground/8 text-foreground/65 mt-0.5 inline-flex h-5 min-w-[1.5rem] shrink-0 items-center justify-center rounded px-1 font-mono text-xs tabular-nums">
                   {chunk.index}

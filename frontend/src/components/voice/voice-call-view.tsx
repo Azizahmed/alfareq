@@ -119,7 +119,7 @@ export function VoiceCallFeed({
         <AgentRow>
           <span
             role="status"
-            className="bg-foreground/[0.04] inline-flex items-center gap-1.5 rounded-full py-1 pr-3.5 pl-1.5"
+            className="bg-foreground/[0.04] inline-flex items-center gap-1.5 rounded-full py-1 ps-1.5 pe-3.5"
           >
             <ThinkingOrb state="breathing" size={20} className="h-7 w-7" />
             <span className="text-muted-foreground text-xs">{t("thinking")}</span>

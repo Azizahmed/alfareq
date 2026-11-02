@@ -937,7 +937,7 @@ export function ChatInput({
           <div className="flex min-w-0 items-center gap-1">{controlsSlot}</div>
         ) : null}
 
-        <div className="ml-auto flex shrink-0 items-center gap-1">
+        <div className="ms-auto flex shrink-0 items-center gap-1">
           {actionsSlot}
           {/* Beside Send and the call, as in ChatGPT; the `+` offers it too. A
               server recording takes the box over with its own bar, so this

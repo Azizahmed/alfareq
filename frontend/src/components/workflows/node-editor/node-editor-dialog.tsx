@@ -221,7 +221,7 @@ export function NodeEditorDialog({
         onDragOver={(event) => carriesField(event) && scrollNearEdge(event)}
         className={cn("gap-0 p-0 sm:p-0", withData ? DIALOG_WINDOW : [DIALOG_FORM, DIALOG_COLUMN])}
       >
-        <header className="border-border flex items-start gap-3 border-b px-5 pt-5 pr-14 pb-4 sm:px-6 sm:pr-14">
+        <header className="border-border flex items-start gap-3 border-b px-5 pe-14 pt-5 pb-4 sm:px-6 sm:pe-14">
           {node.definition_id === "mcp.call" ? (
             <McpStepIcon config={node.config} fallback={tile} />
           ) : pin?.kind === "agent" ? (
@@ -286,7 +286,7 @@ export function NodeEditorDialog({
                           type="button"
                           onClick={() => showField(field)}
                           className={cn(
-                            "flex items-start gap-2 text-left text-xs hover:underline",
+                            "flex items-start gap-2 text-start text-xs hover:underline",
                             store.problemsRevealed ? "text-destructive" : "text-muted-foreground",
                           )}
                         >
@@ -313,7 +313,7 @@ export function NodeEditorDialog({
           )}
         >
           {withInput && (
-            <div className="bg-muted/20 min-h-0 min-w-0 overflow-auto border-b p-5 lg:border-r lg:border-b-0 lg:p-6">
+            <div className="bg-muted/20 min-h-0 min-w-0 overflow-auto border-b p-5 lg:border-e lg:border-b-0 lg:p-6">
               <InputPane
                 graph={graph}
                 catalog={catalog}
@@ -326,7 +326,7 @@ export function NodeEditorDialog({
           <div
             className={cn(
               "bg-card min-h-0 min-w-0 space-y-5 p-5 sm:p-6",
-              withData && "overflow-auto border-b lg:border-r lg:border-b-0",
+              withData && "overflow-auto border-b lg:border-e lg:border-b-0",
             )}
           >
             {definition !== null && (

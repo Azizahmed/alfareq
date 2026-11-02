@@ -38,7 +38,7 @@ export function TestPanelPrompts({
       {pinned.map((entry) => (
         <span
           key={entry}
-          className="bg-muted flex max-w-full items-center gap-1 rounded-full py-0.5 pr-1 pl-2.5 text-xs"
+          className="bg-muted flex max-w-full items-center gap-1 rounded-full py-0.5 ps-2.5 pe-1 text-xs"
         >
           <button
             type="button"

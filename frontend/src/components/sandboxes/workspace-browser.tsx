@@ -173,7 +173,7 @@ function FlatFiles() {
             <SelectItem value="agent">{t("sortByAgent")}</SelectItem>
           </SelectContent>
         </Select>
-        <span className="text-muted-foreground ml-auto text-xs">
+        <span className="text-muted-foreground ms-auto text-xs">
           {t("fileCount", { count: listing.total })}
         </span>
       </div>

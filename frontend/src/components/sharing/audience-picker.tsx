@@ -86,7 +86,7 @@ export function AudiencePicker({
               )
             }
             className={cn(
-              "flex flex-col items-start gap-1 rounded-lg border p-3 text-left transition-colors disabled:opacity-50",
+              "flex flex-col items-start gap-1 rounded-lg border p-3 text-start transition-colors disabled:opacity-50",
               value.mode === option.mode ? "border-foreground/40 bg-accent" : "hover:bg-accent/50",
             )}
           >

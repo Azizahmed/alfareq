@@ -242,7 +242,7 @@ export default function ContextPage() {
                 setPage(0);
               }}
             />
-            <div className="flex flex-wrap items-center gap-1.5 sm:ml-auto">
+            <div className="flex flex-wrap items-center gap-1.5 sm:ms-auto">
               <span className="text-muted-foreground text-xs">{t("sort")}</span>
               <Chip
                 active={sort === "name"}

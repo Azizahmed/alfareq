@@ -123,7 +123,7 @@ export function ProjectFileEditor({ projectId, path }: { projectId: string; path
             )
           )}
           <DialogFooter className="mt-auto">
-            <span className="text-muted-foreground mr-auto self-center text-xs" role="status">
+            <span className="text-muted-foreground me-auto self-center text-xs" role="status">
               {dirty ? t("unsaved") : original ? t("saved") : t("textOnly")}
             </span>
             <Button variant="outline" disabled={save.isPending} onClick={close}>

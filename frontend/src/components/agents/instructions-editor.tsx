@@ -119,7 +119,7 @@ export function InstructionsEditor({
                 onMouseDown={(event) => event.preventDefault()}
                 onClick={() => choose(option.name, open!)}
                 className={cn(
-                  "flex w-full items-baseline gap-3 rounded-md px-2 py-1.5 text-left",
+                  "flex w-full items-baseline gap-3 rounded-md px-2 py-1.5 text-start",
                   index === active ? "bg-foreground/[0.06]" : "hover:bg-foreground/[0.03]",
                 )}
               >

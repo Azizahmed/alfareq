@@ -62,7 +62,7 @@ export function RunManifest({ runId }: { runId: string }) {
   return (
     <div className="space-y-5">
       {manifest.truncated && (
-        <p className="text-muted-foreground border-warning/40 border-l-2 pl-3 text-xs">
+        <p className="text-muted-foreground border-warning/40 border-s-2 ps-3 text-xs">
           {t("recordWasTrimmed")}
         </p>
       )}

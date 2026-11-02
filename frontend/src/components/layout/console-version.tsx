@@ -14,7 +14,7 @@ export function ConsoleVersion({ collapsed = false }: { collapsed?: boolean }) {
   const release = data?.latest;
   const update = release && isNewerRelease(version, release.version) ? release : null;
   const label = t("consoleVersion", { version });
-  const classes = cn("font-mono text-[11px] tabular-nums", !collapsed && "ml-auto");
+  const classes = cn("font-mono text-[11px] tabular-nums", !collapsed && "ms-auto");
   return (
     <span className={classes}>
       <span role="status" className="sr-only">
@@ -32,7 +32,7 @@ export function ConsoleVersion({ collapsed = false }: { collapsed?: boolean }) {
               <span
                 className={cn(
                   "bg-success size-1.5 shrink-0 rounded-full",
-                  collapsed && "absolute top-0 right-0",
+                  collapsed && "absolute end-0 top-0",
                 )}
                 aria-hidden
               />
@@ -61,7 +61,7 @@ export function ConsoleVersion({ collapsed = false }: { collapsed?: boolean }) {
           title={label}
           className={cn(
             "text-muted-foreground inline-flex min-h-8 items-center select-all",
-            !collapsed && "pr-2",
+            !collapsed && "pe-2",
           )}
         >
           v{version}

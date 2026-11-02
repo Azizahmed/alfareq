@@ -79,7 +79,7 @@ export function PublishedArtifactResult({ data }: { data: PublishedArtifactPaylo
       href={`${ROUTES.ARTIFACT_DETAIL(data.artifactId)}?version=${encodeURIComponent(data.versionId)}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="hover:bg-accent/40 my-1 flex items-center gap-3 rounded-xl border p-2 pr-3 transition-colors"
+      className="hover:bg-accent/40 my-1 flex items-center gap-3 rounded-xl border p-2 pe-3 transition-colors"
     >
       {/* The page itself, the way the Artifacts listing draws it: an icon and a
           title said a page existed, and nothing about whether it was the one

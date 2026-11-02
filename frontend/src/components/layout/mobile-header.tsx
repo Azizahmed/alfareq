@@ -41,7 +41,7 @@ export function MobileHeader() {
         <span className="sr-only">{t("toggleMenu")}</span>
       </Button>
       <BrandLink />
-      <div className="ml-auto flex items-center gap-1">
+      <div className="ms-auto flex items-center gap-1">
         <NotificationBell variant="icon" />
       </div>
     </header>

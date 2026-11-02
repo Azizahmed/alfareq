@@ -98,7 +98,7 @@ function VisualTile({ visual }: { visual: VisualListItem }) {
           <Icon className="text-muted-foreground size-7" aria-hidden />
         )}
         {visual.artifact_id !== null && (
-          <span className="bg-background/90 text-foreground absolute top-1.5 right-1.5 rounded-full px-1.5 py-0.5 text-[10px] font-medium">
+          <span className="bg-background/90 text-foreground absolute end-1.5 top-1.5 rounded-full px-1.5 py-0.5 text-[10px] font-medium">
             {t("app")}
           </span>
         )}

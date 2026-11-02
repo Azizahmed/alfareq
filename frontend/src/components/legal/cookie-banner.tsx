@@ -111,7 +111,7 @@ export function CookieBanner() {
     <div
       role="dialog"
       aria-labelledby="cookie-banner-title"
-      className="fixed inset-x-0 bottom-0 z-[55] p-4 md:right-4 md:bottom-4 md:left-auto md:max-w-md"
+      className="fixed inset-x-0 bottom-0 z-[55] p-4 md:start-auto md:end-4 md:bottom-4 md:max-w-md"
     >
       <div className="border-foreground/15 bg-card text-foreground rounded-2xl border shadow-2xl">
         <div className="flex items-start gap-3 p-5">
@@ -142,7 +142,7 @@ export function CookieBanner() {
             type="button"
             aria-label={t("close")}
             onClick={close}
-            className="text-muted-foreground hover:text-foreground hover:bg-foreground/5 -mt-1 -mr-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors"
+            className="text-muted-foreground hover:text-foreground hover:bg-foreground/5 -me-1 -mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors"
           >
             <X className="h-4 w-4" />
           </button>
@@ -209,7 +209,7 @@ export function CookieBanner() {
               <button
                 type="button"
                 onClick={() => setShowPrefs(true)}
-                className="text-muted-foreground hover:text-foreground ml-auto text-xs font-medium"
+                className="text-muted-foreground hover:text-foreground ms-auto text-xs font-medium"
               >
                 {t("preferences")}
               </button>

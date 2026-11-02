@@ -63,7 +63,7 @@ export function FormField({
         <Label htmlFor={controlId}>
           {label}
           {required && (
-            <span className="text-destructive ml-0.5" aria-hidden="true">
+            <span className="text-destructive ms-0.5" aria-hidden="true">
               *
             </span>
           )}

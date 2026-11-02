@@ -275,7 +275,7 @@ export function PortalTriggerDialog({
                     onClick={() => choosePreset(entry.key)}
                     aria-pressed={active}
                     className={cn(
-                      "flex w-full items-start gap-3 rounded-md border p-3 text-left transition-colors",
+                      "flex w-full items-start gap-3 rounded-md border p-3 text-start transition-colors",
                       active
                         ? "border-foreground/30 bg-accent"
                         : "border-input hover:border-foreground/30",

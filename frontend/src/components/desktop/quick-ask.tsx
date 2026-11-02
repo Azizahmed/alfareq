@@ -629,7 +629,7 @@ export function QuickAsk({
         }}
       />
       <header className="flex shrink-0 items-center gap-2 px-3 py-2" data-tauri-drag-region="deep">
-        <span className="text-muted-foreground mr-1 text-xs font-medium">{t("title")}</span>
+        <span className="text-muted-foreground me-1 text-xs font-medium">{t("title")}</span>
         {!signedOut && active && <AgentPicker />}
         <div className="flex-1" />
         {!signedOut && (
@@ -894,7 +894,7 @@ export function QuickAsk({
         (!selectedAgentId || dictation.state.reason === "mic_denied" || noDictation) && (
           <button
             type="button"
-            className="text-muted-foreground border-t px-4 py-2 text-left text-xs hover:underline"
+            className="text-muted-foreground border-t px-4 py-2 text-start text-xs hover:underline"
             onClick={() =>
               run("opening feature setup", () =>
                 openInConsole(

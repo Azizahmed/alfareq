@@ -108,7 +108,7 @@ function useChatColumns(): Column<ProjectChat>[] {
                 <span
                   role="status"
                   aria-label={tChat("sidebar.unread")}
-                  className="unread-dot ring-card absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full ring-2"
+                  className="unread-dot ring-card absolute -end-0.5 -top-0.5 h-2 w-2 rounded-full ring-2"
                 />
               )}
             </span>
@@ -211,17 +211,17 @@ function SeenBy({ readers, here }: { readers: ProjectChat["seen_by"]; here: Proj
         // The first face on top, so the live dot at its corner is not under the next.
         <span
           key={person.user_id}
-          className={cn("relative", index > 0 && "-ml-1.5")}
+          className={cn("relative", index > 0 && "-ms-1.5")}
           style={{ zIndex: shown.length - index }}
         >
           <PersonFace person={person} className="ring-card h-5 w-5 text-[8px] ring-2" />
           {present.has(person.user_id) && (
-            <span className="bg-success ring-card absolute -right-px -bottom-px h-2 w-2 rounded-full ring-2" />
+            <span className="bg-success ring-card absolute -end-px -bottom-px h-2 w-2 rounded-full ring-2" />
           )}
         </span>
       ))}
       {more > 0 && (
-        <span className="bg-muted text-muted-foreground ring-card -ml-1.5 grid h-5 min-w-5 place-items-center rounded-full px-1 text-[9px] font-medium ring-2">
+        <span className="bg-muted text-muted-foreground ring-card -ms-1.5 grid h-5 min-w-5 place-items-center rounded-full px-1 text-[9px] font-medium ring-2">
           {t("moreReaders", { count: more })}
         </span>
       )}

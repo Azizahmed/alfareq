@@ -203,7 +203,7 @@ export function FocusedRun({
               <Button
                 variant="outline"
                 size="sm"
-                className="mr-1"
+                className="me-1"
                 disabled={resume.isPending}
                 onClick={() => resume.mutate(run.id)}
               >

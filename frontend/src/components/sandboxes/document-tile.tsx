@@ -54,7 +54,7 @@ export function DocumentTile({
         type="button"
         onClick={onOpen}
         aria-label={tc("openNamed", { name })}
-        className="flex flex-1 flex-col rounded-t-[inherit] text-left focus-visible:outline-offset-[-2px]"
+        className="flex flex-1 flex-col rounded-t-[inherit] text-start focus-visible:outline-offset-[-2px]"
       >
         {/* Hidden on a phone, as a skill card's is: one tile per row, and a page
             of preview each made the list a scroll past pictures of text. */}
@@ -117,7 +117,7 @@ export function DocumentTile({
           size="icon"
           aria-label={tc("downloadNamed", { name })}
           onClick={onDownload}
-          className="text-muted-foreground ml-auto h-7 w-7 shrink-0"
+          className="text-muted-foreground ms-auto h-7 w-7 shrink-0"
         >
           <Download className="h-3.5 w-3.5" />
         </Button>

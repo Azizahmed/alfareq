@@ -163,7 +163,7 @@ function HistoryRow({
       aria-current={current || undefined}
       onClick={onOpen}
       className={cn(
-        "flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1 text-left transition-colors",
+        "flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1 text-start transition-colors",
         current ? "bg-accent" : "hover:bg-accent/60",
       )}
     >
@@ -179,7 +179,7 @@ function HistoryRow({
           <span
             role="status"
             aria-label={unreadLabel}
-            className="unread-dot ring-background absolute -top-px -right-px h-2 w-2 rounded-full ring-2"
+            className="unread-dot ring-background absolute -end-px -top-px h-2 w-2 rounded-full ring-2"
           />
         )}
       </span>

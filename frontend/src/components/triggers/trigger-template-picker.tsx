@@ -76,7 +76,7 @@ export function TriggerTemplatePicker({
           onClick={onScratch}
           aria-pressed={selectedKey === null}
           className={cn(
-            "rounded-md border p-2.5 text-left transition-colors",
+            "rounded-md border p-2.5 text-start transition-colors",
             selectedKey === null
               ? "border-foreground/30 bg-accent"
               : "border-input hover:border-foreground/30",
@@ -97,7 +97,7 @@ export function TriggerTemplatePicker({
               onClick={() => onPick(template)}
               aria-pressed={active}
               className={cn(
-                "flex items-start gap-2.5 rounded-md border p-2.5 text-left transition-colors",
+                "flex items-start gap-2.5 rounded-md border p-2.5 text-start transition-colors",
                 active
                   ? "border-foreground/30 bg-accent"
                   : "border-input hover:border-foreground/30",

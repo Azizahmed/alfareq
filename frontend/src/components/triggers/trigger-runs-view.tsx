@@ -173,7 +173,7 @@ function FireRow({ run }: { run: AgentRun }) {
       <Button variant="ghost" size="sm" asChild>
         <Link href={`${ROUTES.RUNS}?run=${run.id}`}>
           {t("openRun")}
-          <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+          <ArrowUpRight className="ms-1 h-3.5 w-3.5" />
         </Link>
       </Button>
     </li>

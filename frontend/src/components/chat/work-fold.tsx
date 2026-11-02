@@ -129,7 +129,7 @@ export function WorkFold({
         </span>
         {label}
       </button>
-      {open && <div className="mt-2 space-y-3 pl-1">{children}</div>}
+      {open && <div className="mt-2 space-y-3 ps-1">{children}</div>}
     </div>
   );
 }

@@ -103,7 +103,7 @@ export function ScheduleStep({
                 type="button"
                 onClick={() => setForm((f) => ({ ...f, sync_mode: mode.value }))}
                 className={cn(
-                  "rounded-xl border p-3 text-left transition-colors",
+                  "rounded-xl border p-3 text-start transition-colors",
                   active
                     ? "border-brand bg-brand/[0.06]"
                     : "border-foreground/10 bg-card hover:border-foreground/30",

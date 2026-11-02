@@ -137,7 +137,7 @@ export function OptionalSlider({
         />
         <span
           className={cn(
-            "w-32 shrink-0 text-right font-mono text-xs",
+            "w-32 shrink-0 text-end font-mono text-xs",
             isSet ? "text-foreground" : "text-muted-foreground",
           )}
         >

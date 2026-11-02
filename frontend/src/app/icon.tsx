@@ -8,5 +8,7 @@ export const contentType = "image/png";
 export const dynamic = "force-static";
 
 export default function Icon() {
-  return new ImageResponse(<img src={BUILT_IN_LOGO_DATA_URI} alt="" width={32} height={32} />, { ...size });
+  return new ImageResponse(<img src={BUILT_IN_LOGO_DATA_URI} alt="" width={32} height={32} />, {
+    ...size,
+  });
 }

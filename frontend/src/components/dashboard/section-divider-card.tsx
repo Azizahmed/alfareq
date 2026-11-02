@@ -122,7 +122,7 @@ export function SectionDividerCard({
         maxLength={60}
       />
 
-      <div className="ml-auto flex items-center gap-1" data-no-drag>
+      <div className="ms-auto flex items-center gap-1" data-no-drag>
         <button
           type="button"
           aria-label={t("edit.accents.neutral")}
@@ -181,7 +181,7 @@ export function SectionDividerCard({
         <Button
           variant="outline"
           size="icon"
-          className="bg-card/90 text-muted-foreground hover:text-destructive ml-1 size-7"
+          className="bg-card/90 text-muted-foreground hover:text-destructive ms-1 size-7"
           aria-label={t("edit.removeSection")}
           onClick={onRemove}
         >

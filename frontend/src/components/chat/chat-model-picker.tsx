@@ -237,7 +237,7 @@ export function ChatModelPicker({ value, agentModel, onChange }: ChatModelPicker
             type="button"
             variant="ghost"
             size="sm"
-            className="-ml-2 gap-2"
+            className="-ms-2 gap-2"
             aria-expanded={expanded}
             aria-controls={panelId}
             onClick={() => setExpanded((open) => !open)}
@@ -292,7 +292,7 @@ export function ChatModelPicker({ value, agentModel, onChange }: ChatModelPicker
                           // tick there reads as "selected" rather than "has a key".
                           trailing={
                             keyed && (
-                              <Check className="text-muted-foreground ml-auto h-3.5 w-3.5 shrink-0" />
+                              <Check className="text-muted-foreground ms-auto h-3.5 w-3.5 shrink-0" />
                             )
                           }
                         >

@@ -430,7 +430,7 @@ export function FileExplorer({
         <div className="border-border bg-card flex min-h-0 min-w-0 flex-col gap-3 overflow-y-auto rounded-xl border p-3">
           <div className="relative">
             <Search
-              className="text-muted-foreground absolute top-1/2 left-2 h-3.5 w-3.5 -translate-y-1/2"
+              className="text-muted-foreground absolute start-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
               aria-hidden
             />
             <Input
@@ -439,7 +439,7 @@ export function FileExplorer({
               aria-label={t("searchLabel")}
               placeholder={t("searchPlaceholder")}
               onChange={(event) => setQuery(event.target.value)}
-              className="h-8 pl-7 text-xs"
+              className="h-8 ps-7 text-xs"
             />
           </div>
 
@@ -451,7 +451,7 @@ export function FileExplorer({
               onDragLeave={leaveTarget}
               onDrop={(event) => dropIn(event, "")}
               className={cn(
-                "text-muted-foreground hover:bg-accent/60 flex items-center gap-2 rounded-lg px-2 py-2 text-left text-[13px] font-medium transition-colors duration-[var(--duration-fast)]",
+                "text-muted-foreground hover:bg-accent/60 flex items-center gap-2 rounded-lg px-2 py-2 text-start text-[13px] font-medium transition-colors duration-[var(--duration-fast)]",
                 dropTarget === "" && "bg-accent text-foreground ring-border ring-1",
               )}
             >
@@ -715,7 +715,7 @@ function FileList({
             onClick={() => onSelect(file.path)}
             aria-current={file.path === selected}
             className={cn(
-              "touch:min-h-11 flex min-h-9 min-w-0 flex-1 items-center gap-2 rounded-lg px-2 py-2 text-left",
+              "touch:min-h-11 flex min-h-9 min-w-0 flex-1 items-center gap-2 rounded-lg px-2 py-2 text-start",
               "focus-visible:outline-offset-[-2px]",
             )}
             title={file.path}

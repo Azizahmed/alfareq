@@ -66,7 +66,7 @@ function ColumnRow({
       disabled={disabled}
       onClick={onToggle}
       className={cn(
-        "flex w-full items-center gap-2 rounded-lg border p-2 text-left text-sm",
+        "flex w-full items-center gap-2 rounded-lg border p-2 text-start text-sm",
         checked ? "border-brand bg-brand/5" : "hover:border-foreground/20",
         disabled && "cursor-not-allowed opacity-60",
       )}
@@ -82,7 +82,7 @@ function ColumnRow({
       {type !== undefined && <ColumnTypeIcon type={type} />}
       <span className="truncate">{label}</span>
       {type !== undefined && (
-        <span className="text-muted-foreground ml-auto text-xs">{typeName(type)}</span>
+        <span className="text-muted-foreground ms-auto text-xs">{typeName(type)}</span>
       )}
     </button>
   );
@@ -245,7 +245,7 @@ export function TableColumnPicker({
               <summary className="text-muted-foreground flex cursor-pointer list-none items-center gap-2 text-xs [&::-webkit-details-marker]:hidden">
                 <ChevronDown className="size-3.5 transition-transform group-open:rotate-180" />
                 <span>{t("pickerColumnsLabel")}</span>
-                <span className="ml-auto">
+                <span className="ms-auto">
                   {value.column_ids === null ? t("pickerColumnsAll") : value.column_ids.length}
                 </span>
               </summary>

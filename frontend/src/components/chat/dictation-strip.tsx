@@ -476,7 +476,7 @@ export function DictationStrip({
                     {hint.message}
                   </p>
                   {hint.actions && (
-                    <div className="ml-auto flex flex-wrap gap-1.5">{hint.actions}</div>
+                    <div className="ms-auto flex flex-wrap gap-1.5">{hint.actions}</div>
                   )}
                 </motion.div>
               </AnimatePresence>

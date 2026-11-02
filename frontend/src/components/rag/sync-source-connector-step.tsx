@@ -59,7 +59,7 @@ export function ConnectorStep({
                   disabled={locked}
                   onClick={() => setForm((f) => ({ ...f, connector_type: conn.type, config: {} }))}
                   className={cn(
-                    "flex items-center gap-3 rounded-xl border p-3.5 text-left transition-colors",
+                    "flex items-center gap-3 rounded-xl border p-3.5 text-start transition-colors",
                     isSelected
                       ? "border-brand bg-brand/[0.06]"
                       : "border-foreground/10 bg-card hover:border-foreground/30",

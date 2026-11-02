@@ -113,7 +113,7 @@ export function SyncSourceLogs({ logsPath }: SyncSourceLogsProps) {
         {open ? <ChevronDown className="h-3.5 w-3.5" /> : <ChevronRight className="h-3.5 w-3.5" />}
         {t("syncHistory")}
         {loaded && logs.length > 0 && (
-          <span className="text-muted-foreground ml-1">({logs.length})</span>
+          <span className="text-muted-foreground ms-1">({logs.length})</span>
         )}
       </button>
 

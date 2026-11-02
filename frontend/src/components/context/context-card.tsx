@@ -18,7 +18,7 @@ export function ContextCard({ file, onOpen }: ContextCardProps) {
       <button
         type="button"
         onClick={onOpen}
-        className="flex w-full flex-1 flex-col rounded-[inherit] text-left focus-visible:outline-offset-[-2px]"
+        className="flex w-full flex-1 flex-col rounded-[inherit] text-start focus-visible:outline-offset-[-2px]"
       >
         <DocPeek className="h-32 max-sm:hidden">
           {file.excerpt ? (

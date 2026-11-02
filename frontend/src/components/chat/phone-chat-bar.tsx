@@ -43,7 +43,7 @@ export function PhoneChatBar() {
           {unread.count > 0 && (
             <span
               aria-hidden
-              className="bg-destructive ring-background absolute top-2 right-2 size-2 rounded-full ring-2"
+              className="bg-destructive ring-background absolute end-2 top-2 size-2 rounded-full ring-2"
             />
           )}
         </button>

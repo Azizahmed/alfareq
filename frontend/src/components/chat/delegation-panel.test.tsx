@@ -265,7 +265,7 @@ describe("DelegationPanels - nesting", () => {
     );
 
     fireEvent.click(screen.getByRole("button", { name: /Researcher/ }));
-    const parent = screen.getByText("Researcher").closest("div.border-l");
+    const parent = screen.getByText("Researcher").closest("div.border-s");
     expect(parent).not.toBeNull();
     expect(parent!).toContainElement(screen.getByText("Assistant"));
   });

@@ -181,7 +181,7 @@ export function InlineSecret({
               onChange={(event) => setValue(event.target.value)}
               placeholder={t("pasteHere")}
               autoComplete="off"
-              className="pr-10 font-mono"
+              className="pe-10 font-mono"
             />
             {/* The one moment this value can be checked: it is written once and
                 never shown again, and a paste that picked up a newline or half
@@ -191,7 +191,7 @@ export function InlineSecret({
               onClick={() => setRevealed((shown) => !shown)}
               aria-label={revealed ? t("hideKey") : t("showKey")}
               aria-pressed={revealed}
-              className="text-muted-foreground hover:text-foreground absolute top-1/2 right-1 -translate-y-1/2 rounded-md p-2"
+              className="text-muted-foreground hover:text-foreground absolute end-1 top-1/2 -translate-y-1/2 rounded-md p-2"
             >
               {revealed ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             </button>
@@ -232,7 +232,7 @@ export function InlineSecret({
             href={helpUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className="text-muted-foreground ml-auto text-xs underline underline-offset-4"
+            className="text-muted-foreground ms-auto text-xs underline underline-offset-4"
           >
             {t("whereDoIGet")}
           </a>

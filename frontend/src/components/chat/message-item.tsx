@@ -399,7 +399,7 @@ export const MessageItem = memo(function MessageItem({
               <span
                 className={cn(
                   "hover-reveal text-muted-foreground flex items-center gap-1.5 text-xs tabular-nums",
-                  isUser ? "pl-1.5" : "pr-1.5",
+                  isUser ? "ps-1.5" : "pe-1.5",
                 )}
               >
                 {new Date(message.timestamp).toLocaleTimeString([], {
@@ -540,7 +540,7 @@ function MessageBody({
           holds its shape while the word inside it changes. */}
       {showPlaceholder && (
         <div className="py-1" role="status" aria-live="polite">
-          <span className="bg-foreground/[0.04] inline-flex items-center gap-1.5 rounded-full py-1 pr-3.5 pl-1.5">
+          <span className="bg-foreground/[0.04] inline-flex items-center gap-1.5 rounded-full py-1 ps-1.5 pe-3.5">
             <ThinkingOrb state="breathing" size={20} className="h-7 w-7" />
             <span className="text-muted-foreground text-xs">{t("thinking")}</span>
           </span>
@@ -637,7 +637,7 @@ function FileChip({ filename, href }: { filename: string; href: string }) {
       target="_blank"
       rel="noopener noreferrer"
       title={filename}
-      className="border-foreground/15 bg-card hover:border-foreground/40 inline-flex max-w-xs items-center gap-2 rounded-xl border px-3 py-2 text-left transition-colors"
+      className="border-foreground/15 bg-card hover:border-foreground/40 inline-flex max-w-xs items-center gap-2 rounded-xl border px-3 py-2 text-start transition-colors"
     >
       <span className="bg-foreground/8 text-foreground/65 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg">
         <FileIcon name={filename} className="size-4" />

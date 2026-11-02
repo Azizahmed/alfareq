@@ -143,7 +143,7 @@ export function LoginForm() {
             ) : (
               <>
                 {t("login")}
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ms-2 h-4 w-4" />
               </>
             )}
           </Button>

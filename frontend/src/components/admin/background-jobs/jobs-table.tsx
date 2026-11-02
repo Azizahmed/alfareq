@@ -96,7 +96,7 @@ export function JobsTable({
         key: "actions",
         header: <span className="sr-only">{t("actions")}</span>,
         align: "right",
-        className: "pr-5",
+        className: "pe-5",
         cell: (job) =>
           job.status === "dead" ? (
             <Button size="sm" variant="outline" onClick={() => retry.mutate(job)}>

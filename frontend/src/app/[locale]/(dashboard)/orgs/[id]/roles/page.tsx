@@ -123,9 +123,9 @@ export default function RolesPage({ params }: PageProps) {
             <table className="w-full min-w-[46rem] text-sm">
               <thead>
                 <tr className="border-b">
-                  <th className="py-2 pr-4 text-left font-medium">{t("permission")}</th>
+                  <th className="py-2 pe-4 text-start font-medium">{t("permission")}</th>
                   {catalog.roles.map((role) => (
-                    <th key={role.name} className="px-3 py-2 text-left font-medium capitalize">
+                    <th key={role.name} className="px-3 py-2 text-start font-medium capitalize">
                       {role.name}
                     </th>
                   ))}
@@ -134,7 +134,7 @@ export default function RolesPage({ params }: PageProps) {
               <tbody>
                 {catalog.all_permissions.map((permission) => (
                   <tr key={permission} className="border-b last:border-0">
-                    <td className="py-2 pr-4 font-mono text-xs">
+                    <td className="py-2 pe-4 font-mono text-xs">
                       {permission}
                       {resourcePerms.has(permission) ? (
                         <span className="text-muted-foreground"> {t("scoped")}</span>

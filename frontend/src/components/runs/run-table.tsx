@@ -109,7 +109,7 @@ export function RunTable({
     {
       key: "status",
       header: t("status"),
-      className: "pl-5",
+      className: "ps-5",
       cell: (run) => (
         <div className="space-y-1">
           <div className="flex items-center gap-1.5">
@@ -255,7 +255,7 @@ export function RunTable({
       key: "cost",
       header: t("cost"),
       align: "right",
-      className: "max-sm:pr-5",
+      className: "max-sm:pe-5",
       sortable,
       // A call is one row (#54): its reconnects' runs are summed into it.
       cell: (run) => (
@@ -319,7 +319,7 @@ export function RunTable({
       hideBelow: "sm",
       header: "",
       align: "right",
-      className: "pr-5",
+      className: "pe-5",
       // The chat behind the run, one click away (#765) - only when there is a
       // conversation to open, and only on the reader's own runs: the chat page
       // lists its owner's threads, so anybody else's link would land on an

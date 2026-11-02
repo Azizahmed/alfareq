@@ -157,7 +157,7 @@ function IndustrySkills({
     <>
       <div className="flex items-center justify-between gap-4">
         <Button variant="ghost" size="sm" onClick={onBack}>
-          <ArrowLeft className="mr-2 size-4" />
+          <ArrowLeft className="me-2 size-4" />
           {t("back")}
         </Button>
         <Button

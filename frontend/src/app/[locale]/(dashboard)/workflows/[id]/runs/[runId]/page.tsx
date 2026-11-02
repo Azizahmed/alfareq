@@ -368,7 +368,7 @@ export default function WorkflowRunPage({ params }: PageProps) {
                 <li key={node.id} className="space-y-0.5 py-2">
                   <button
                     type="button"
-                    className="hover:bg-muted/50 focus-visible:ring-ring flex w-full items-center justify-between gap-2 rounded-lg px-2 py-2 text-left outline-none focus-visible:ring-2"
+                    className="hover:bg-muted/50 focus-visible:ring-ring flex w-full items-center justify-between gap-2 rounded-lg px-2 py-2 text-start outline-none focus-visible:ring-2"
                     onClick={() => inspectNode(node.node_instance_id)}
                   >
                     <span className="min-w-0">

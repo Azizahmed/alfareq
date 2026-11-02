@@ -58,7 +58,7 @@ export function TableListView({
           <button
             type="button"
             onClick={() => onOpenRecord(record)}
-            className="hover:bg-accent/50 focus-visible:ring-ring flex w-full flex-col gap-2 px-5 py-4 text-left transition-colors outline-none focus-visible:ring-2 focus-visible:ring-inset"
+            className="hover:bg-accent/50 focus-visible:ring-ring flex w-full flex-col gap-2 px-5 py-4 text-start transition-colors outline-none focus-visible:ring-2 focus-visible:ring-inset"
           >
             <span className="text-foreground flex min-w-0 items-center gap-2 text-sm font-medium">
               <FileText className="text-muted-foreground size-4 shrink-0" aria-hidden />

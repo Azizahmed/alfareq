@@ -32,7 +32,7 @@ const ContextMenuSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <ChevronRight className="text-muted-foreground ml-auto" />
+    <ChevronRight className="text-muted-foreground ms-auto" />
   </ContextMenuPrimitive.SubTrigger>
 ));
 ContextMenuSubTrigger.displayName = ContextMenuPrimitive.SubTrigger.displayName;
@@ -105,7 +105,7 @@ ContextMenuSeparator.displayName = ContextMenuPrimitive.Separator.displayName;
 function ContextMenuShortcut({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) {
   return (
     <span
-      className={cn("text-muted-foreground ml-auto pl-4 text-xs tracking-widest", className)}
+      className={cn("text-muted-foreground ms-auto ps-4 text-xs tracking-widest", className)}
       {...props}
     />
   );

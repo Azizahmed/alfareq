@@ -266,11 +266,11 @@ export function DecidedWorkflowApproval({ approval }: { approval: WorkflowApprov
         {approval.edited && <Badge variant="outline">{t("stepApprovalEdited")}</Badge>}
       </div>
       {approval.note !== null && (
-        <p className="text-foreground/80 mt-1 truncate pl-8 text-sm" title={approval.note}>
+        <p className="text-foreground/80 mt-1 truncate ps-8 text-sm" title={approval.note}>
           {approval.note}
         </p>
       )}
-      <p className="text-muted-foreground mt-1 pl-8 text-xs">
+      <p className="text-muted-foreground mt-1 ps-8 text-xs">
         {formatDate(approval.decided_at ?? approval.created_at, locale)}
       </p>
     </li>

@@ -446,10 +446,7 @@ function WorkflowCard({
     !readOnly &&
     !connecting && (
       <span
-        className={cn(
-          "absolute top-1/2 -translate-y-1/2",
-          beyondStrip ? "-right-[53px]" : "-right-8",
-        )}
+        className={cn("absolute top-1/2 -translate-y-1/2", beyondStrip ? "-end-[53px]" : "-end-8")}
       >
         <QuickAdd
           catalog={catalog}
@@ -470,12 +467,12 @@ function WorkflowCard({
         "group bg-card text-card-foreground relative rounded-xl border shadow-sm transition-shadow",
         sizedWidth == null ? "w-60" : "w-full",
         // A quick log's strip is docked to the right side: the card's corners there give way to it.
-        logged !== null && "rounded-r-none",
+        logged !== null && "rounded-e-none",
         // Taller than it needs: the ports sit at the bottom, the text at the top. A row
         // the estimate misses (Connect to, run counts) grows the card, never spills out.
         sizedHeight != null && "flex min-h-full flex-col",
         // A run starts here: the card's left end is rounded like a start cap, in either style.
-        family === "start" && "rounded-l-[2rem]",
+        family === "start" && "rounded-s-[2rem]",
         selected ? "border-primary/40" : "hover:shadow-md",
         // Beside a docked strip the rings go on the overlay below, around both.
         logged === null && ring,
@@ -506,7 +503,7 @@ function WorkflowCard({
         <span
           aria-hidden="true"
           data-testid="card-ring"
-          className={cn("pointer-events-none absolute -inset-px -right-5 rounded-xl", ring)}
+          className={cn("pointer-events-none absolute -inset-px -end-5 rounded-xl", ring)}
         />
       )}
       {/* A step the catalog does not know has no outputs to log. */}
@@ -571,7 +568,7 @@ function WorkflowCard({
           className={cn(
             "flex h-[22px] items-center gap-1.5 px-3 text-[11px] font-semibold",
             // Square where a docked strip meets the card, as the card's own corners are.
-            logged !== null ? "rounded-tl-[11px]" : "rounded-t-[11px]",
+            logged !== null ? "rounded-ss-[11px]" : "rounded-t-[11px]",
             band.tone === "person" && style === "colour"
               ? "bg-[var(--domain-admin-subtle)] text-[var(--domain-admin)]"
               : "bg-muted text-foreground",
@@ -581,7 +578,7 @@ function WorkflowCard({
           <span className="truncate">{t(`waits.${band.key}`, band.values)}</span>
         </div>
       )}
-      <div className={cn("flex items-start gap-2.5 p-3", family === "start" && "pl-3.5")}>
+      <div className={cn("flex items-start gap-2.5 p-3", family === "start" && "ps-3.5")}>
         {pin?.kind === "agent" ? (
           <AgentTile agentId={pin.id} fallback={tile} />
         ) : pin?.kind === "inline_agent" ? (
@@ -752,8 +749,8 @@ function WorkflowCard({
               className={cn(
                 // Under a quick log the row reaches across the docked strip (20px and its
                 // border), so the handle and the "+" sit on the strip's outer edge.
-                "relative flex items-center justify-end gap-1 pl-3 text-xs",
-                logged === null ? "pr-3" : "-mr-[21px] pr-[33px]",
+                "relative flex items-center justify-end gap-1 ps-3 text-xs",
+                logged === null ? "pe-3" : "-me-[21px] pe-[33px]",
                 isErrorPort(port) ? "text-destructive" : "text-muted-foreground",
               )}
             >
@@ -765,7 +762,7 @@ function WorkflowCard({
                   role="img"
                   aria-label={t("quickLogMark")}
                   title={t("quickLogMark")}
-                  className="bg-primary absolute right-[13px] h-0.5 w-1.5 rounded-full"
+                  className="bg-primary absolute end-[13px] h-0.5 w-1.5 rounded-full"
                 />
               )}
               <span>{port.label}</span>

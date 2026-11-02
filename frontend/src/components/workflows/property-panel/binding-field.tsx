@@ -191,7 +191,7 @@ export function BindingField({
             )}
           </span>
           {current !== undefined && (
-            <span className="text-muted-foreground ml-auto shrink-0 text-xs">
+            <span className="text-muted-foreground ms-auto shrink-0 text-xs">
               {t(`dataType.${plainType(current.candidate.typeToken)}`)}
             </span>
           )}
@@ -296,7 +296,7 @@ export function BindingField({
         />
       ) : (
         <div className={own["type"] === "boolean" ? "flex items-start gap-3" : "relative"}>
-          <div className={cn("min-w-0", own["type"] === "boolean" ? "flex-1" : "[&_label]:pr-16")}>
+          <div className={cn("min-w-0", own["type"] === "boolean" ? "flex-1" : "[&_label]:pe-16")}>
             <SchemaForm
               schema={singleFieldSchema(name, schema, required)}
               value={literalValue === undefined ? {} : { [name]: literalValue }}
@@ -311,7 +311,7 @@ export function BindingField({
             />
           </div>
           {!disabled && (
-            <div className={own["type"] === "boolean" ? "shrink-0" : "absolute top-0 right-0"}>
+            <div className={own["type"] === "boolean" ? "shrink-0" : "absolute end-0 top-0"}>
               {menu}
             </div>
           )}

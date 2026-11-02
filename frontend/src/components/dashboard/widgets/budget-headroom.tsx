@@ -136,10 +136,10 @@ export function HeadroomBar({
 }) {
   const share = cap > 0 ? Math.min(used / cap, 1) : 0;
   return (
-    <div className={cn("h-2 overflow-hidden rounded-r-sm", QUIET_SURFACE, className)}>
+    <div className={cn("h-2 overflow-hidden rounded-e-sm", QUIET_SURFACE, className)}>
       <div
         className={cn(
-          "h-full rounded-r-sm",
+          "h-full rounded-e-sm",
           share >= 0.9 ? "bg-destructive" : share >= 0.7 ? "bg-warning" : MARK_CLASS,
         )}
         style={{ width: `${share * 100}%` }}

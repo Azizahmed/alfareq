@@ -406,12 +406,12 @@ export function DashboardEditor({
     <div className="space-y-4">
       <div className="border-border bg-muted flex flex-wrap items-center gap-2 rounded-lg border p-3">
         <p className="text-muted-foreground text-sm">{t("edit.banner")}</p>
-        <div className="ml-auto flex flex-wrap items-center gap-2">
+        <div className="ms-auto flex flex-wrap items-center gap-2">
           <div className="flex items-center">
             <Button
               variant="outline"
               size="sm"
-              className="gap-1.5 rounded-r-none"
+              className="gap-1.5 rounded-e-none"
               disabled={busy}
               onClick={() => openAdd(bottomTarget)}
             >
@@ -423,7 +423,7 @@ export function DashboardEditor({
                 <Button
                   variant="outline"
                   size="sm"
-                  className="rounded-l-none border-l-0 px-2"
+                  className="rounded-s-none border-s-0 px-2"
                   disabled={busy}
                   aria-label={t("edit.addToSection")}
                 >

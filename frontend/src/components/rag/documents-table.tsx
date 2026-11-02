@@ -75,7 +75,7 @@ export function DocumentsTable({
     () => [
       {
         key: "filename",
-        className: "pl-5",
+        className: "ps-5",
         header: t("name"),
         cell: (doc) => (
           <div className="flex min-w-0 items-center gap-3">
@@ -118,7 +118,7 @@ export function DocumentsTable({
         key: "actions",
         header: "",
         align: "right",
-        className: "w-0 pr-5",
+        className: "w-0 pe-5",
         cell: (doc) => {
           const dlBusy = downloadingId === doc.id;
           return (

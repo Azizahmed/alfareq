@@ -248,33 +248,33 @@ describe("rendering an answer", () => {
 
     const ul = container.querySelector("ul");
     const ol = container.querySelector("ol");
-    expect(ul?.className).toContain("pl-5");
+    expect(ul?.className).toContain("ps-5");
     expect(`${ul?.className} ${ol?.className}`).not.toMatch(/\bml-/);
   });
 
   it("widens an ordered list's indent to fit the widest number it draws", () => {
     // The 120-item list that found this: two digits fit 32px, three did not.
     const short = markdown(["1. one", "2. two"].join("\n"));
-    expect(short.container.querySelector("ol")).toHaveClass("pl-6");
+    expect(short.container.querySelector("ol")).toHaveClass("ps-6");
     short.unmount();
 
     // The two-digit band: covered here deterministically so it does not depend on
     // some other suite happening to render a 10-99 item list (#1264).
     const tens = markdown(Array.from({ length: 15 }, (_, i) => `${i + 1}. item`).join("\n"));
-    expect(tens.container.querySelector("ol")).toHaveClass("pl-8");
+    expect(tens.container.querySelector("ol")).toHaveClass("ps-8");
     tens.unmount();
 
     const long = markdown(Array.from({ length: 120 }, (_, i) => `${i + 1}. item`).join("\n"));
-    expect(long.container.querySelector("ol")).toHaveClass("pl-10");
+    expect(long.container.querySelector("ol")).toHaveClass("ps-10");
     long.unmount();
 
     // A list that starts high is as wide as one that runs there.
     const offset = markdown(["99. ninety-nine", "100. one hundred"].join("\n"));
-    expect(offset.container.querySelector("ol")).toHaveClass("pl-10");
+    expect(offset.container.querySelector("ol")).toHaveClass("ps-10");
     offset.unmount();
 
     const thousands = markdown("1000. item");
-    expect(thousands.container.querySelector("ol")).toHaveClass("pl-12");
+    expect(thousands.container.querySelector("ol")).toHaveClass("ps-12");
   });
 
   it("opens an external link in a new tab that cannot reach back", () => {

@@ -60,7 +60,7 @@ export function RunTimeline({ runId }: { runId: string }) {
     return (
       <ol className="space-y-4" role="status" aria-label={ts("loading")}>
         {[0, 1, 2].map((turn) => (
-          <li key={turn} className="border-border space-y-2 border-l-2 pl-4" aria-hidden>
+          <li key={turn} className="border-border space-y-2 border-s-2 ps-4" aria-hidden>
             <Skeleton className="h-4 w-48" />
             <Skeleton className="h-16 w-full" />
           </li>
@@ -196,7 +196,7 @@ function TimelineGroup({
         type="button"
         aria-expanded={open}
         onClick={() => setOpen((was) => !was)}
-        className="hover:bg-muted/40 flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-xs transition-colors"
+        className="hover:bg-muted/40 flex w-full items-center gap-2 rounded-lg px-3 py-2 text-start text-xs transition-colors"
       >
         <ChevronRight
           className={cn("h-3.5 w-3.5 shrink-0 transition-transform", open && "rotate-90")}
@@ -209,7 +209,7 @@ function TimelineGroup({
           {t("turnsInRun", { count: group.items.length })}
         </span>
         {stamp !== undefined && (
-          <span className="text-muted-foreground ml-auto">{formatDateTime(stamp, locale)}</span>
+          <span className="text-muted-foreground ms-auto">{formatDateTime(stamp, locale)}</span>
         )}
       </button>
       {open && (
@@ -267,7 +267,7 @@ function TimelineTurn({
   return (
     <li
       className={cn(
-        "relative border-l-2 pl-4",
+        "relative border-s-2 ps-4",
         ownTurn ? "border-primary" : "border-border opacity-70",
       )}
     >
@@ -317,7 +317,7 @@ function TimelineTurn({
             ) : part.type === "ask_user" ? (
               <div
                 key={part.id}
-                className="border-foreground/10 text-muted-foreground space-y-1 border-l pl-3 text-sm"
+                className="border-foreground/10 text-muted-foreground space-y-1 border-s ps-3 text-sm"
               >
                 <div className="font-medium">
                   {part.askedBy ? t("askedUserBy", { name: part.askedBy }) : t("askedUser")}
@@ -349,7 +349,7 @@ function TimelineTurn({
       {/* The words somebody left with a thumb down - the complaint, beside the
           answer it judged. */}
       {item.rating_comment && (
-        <blockquote className="text-muted-foreground border-destructive/40 mt-2 border-l-2 pl-3 text-sm italic">
+        <blockquote className="text-muted-foreground border-destructive/40 mt-2 border-s-2 ps-3 text-sm italic">
           {item.rating_comment}
         </blockquote>
       )}
@@ -440,7 +440,7 @@ function CopyablePanel({
           `touch:` because a device that cannot hover raises no
           `focus-visible` on a tap either: without it there is nothing to
           reveal the control and nothing to tell somebody where to tap. */}
-      <div className="touch:opacity-100 absolute top-1 right-1 opacity-0 transition-opacity group-hover/copy:opacity-100 focus-within:opacity-100">
+      <div className="touch:opacity-100 absolute end-1 top-1 opacity-0 transition-opacity group-hover/copy:opacity-100 focus-within:opacity-100">
         <CopyButton text={text} className="opacity-100" />
       </div>
     </div>
@@ -469,7 +469,7 @@ function RawToolCall({ toolCall }: { toolCall: ToolCall }) {
           {toolDisplayName(toolCall.name, tTools)}
         </span>
         <span className="text-muted-foreground truncate font-mono">{toolCall.name}</span>
-        <span className="text-muted-foreground ml-auto flex shrink-0 items-center gap-1.5">
+        <span className="text-muted-foreground ms-auto flex shrink-0 items-center gap-1.5">
           <span
             aria-hidden
             className={cn(

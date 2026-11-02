@@ -48,7 +48,7 @@ export function AddPhone() {
 
   return (
     <SectionCard title={t("title")} description={t("description")}>
-      <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-start sm:text-left">
+      <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-start sm:text-start">
         <div className="bg-muted flex size-[224px] shrink-0 items-center justify-center rounded-xl">
           {live ? (
             <QrCode

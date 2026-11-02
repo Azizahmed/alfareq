@@ -74,7 +74,7 @@ export function LineDiff({
                   <td className="text-muted-foreground w-6 px-2 py-0.5 text-center select-none">
                     {row.kind === "added" ? "+" : row.kind === "removed" ? "−" : ""}
                   </td>
-                  <td className="w-full py-0.5 pr-2 whitespace-pre-wrap">{row.text}</td>
+                  <td className="w-full py-0.5 pe-2 whitespace-pre-wrap">{row.text}</td>
                 </tr>
               ),
             )}

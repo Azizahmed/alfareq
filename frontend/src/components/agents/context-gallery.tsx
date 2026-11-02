@@ -142,7 +142,7 @@ export function ContextGallery({
                 disabled={disabled}
                 onClick={() => onToggle(file.id)}
                 className={cn(
-                  "flex w-full items-start gap-3 p-4 text-left transition-colors",
+                  "flex w-full items-start gap-3 p-4 text-start transition-colors",
                   isOn ? "bg-foreground/[0.04]" : "hover:bg-muted/40",
                   disabled && "cursor-not-allowed opacity-60",
                 )}

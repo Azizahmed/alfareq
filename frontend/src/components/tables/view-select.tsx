@@ -182,7 +182,7 @@ export function ViewSelect({
             onValueChange={(id) => onSelect(id === "__default__" ? null : id)}
           >
             <SelectTrigger
-              className="h-full w-40 rounded-r-none border-0 bg-transparent text-sm shadow-none"
+              className="h-full w-40 rounded-e-none border-0 bg-transparent text-sm shadow-none"
               aria-label={t("selectViewFor", { kind })}
             >
               <SelectValue placeholder={t("unsavedView")} />
@@ -206,7 +206,7 @@ export function ViewSelect({
               }}
               aria-label={t("newView")}
               title={t("newView")}
-              className="border-border text-muted-foreground hover:bg-accent hover:text-foreground focus-visible:ring-ring flex w-8 items-center justify-center rounded-r-lg border-l outline-none focus-visible:ring-2"
+              className="border-border text-muted-foreground hover:bg-accent hover:text-foreground focus-visible:ring-ring flex w-8 items-center justify-center rounded-e-lg border-s outline-none focus-visible:ring-2"
             >
               <Plus className="h-4 w-4" />
             </button>

@@ -93,12 +93,12 @@ function InboxCount({ collapsed }: { collapsed: boolean }) {
   const label = t("inboxCount", { count: suggestions.length });
   return collapsed ? (
     <span
-      className="bg-muted-foreground absolute top-1 right-1 h-1.5 w-1.5 rounded-full"
+      className="bg-muted-foreground absolute end-1 top-1 h-1.5 w-1.5 rounded-full"
       aria-label={label}
     />
   ) : (
     <span
-      className="text-muted-foreground ml-auto px-1 text-xs font-medium tabular-nums"
+      className="text-muted-foreground ms-auto px-1 text-xs font-medium tabular-nums"
       aria-label={label}
     >
       {suggestions.length}
@@ -216,7 +216,7 @@ function NavGroupBlock({
             onClick={() => toggleGroup(key)}
             disabled={holdsActive}
             aria-expanded={open}
-            className="text-muted-foreground hover:text-foreground disabled:hover:text-muted-foreground touch:min-h-11 flex h-7 items-center gap-1 rounded-md px-2.5 text-left text-xs font-medium transition-colors disabled:cursor-default"
+            className="text-muted-foreground hover:text-foreground disabled:hover:text-muted-foreground touch:min-h-11 flex h-7 items-center gap-1 rounded-md px-2.5 text-start text-xs font-medium transition-colors disabled:cursor-default"
           >
             <span className="flex-1">{t(group.labelKey)}</span>
             <ChevronRight
@@ -264,7 +264,7 @@ export function AppSidebar() {
     <aside
       data-collapsed={collapsed ? "" : undefined}
       className={cn(
-        "bg-sidebar hidden shrink-0 border-r md:flex md:flex-col",
+        "bg-sidebar hidden shrink-0 border-e md:flex md:flex-col",
         mounted && "transition-[width] duration-200",
         collapsed ? "w-14" : "w-[240px]",
       )}

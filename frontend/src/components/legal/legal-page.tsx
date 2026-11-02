@@ -75,7 +75,6 @@ export async function LegalPage({ title, summary, lastUpdated, locale, children 
   );
 }
 
-
 function formatDate(iso: string, locale: Locale): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return iso;
