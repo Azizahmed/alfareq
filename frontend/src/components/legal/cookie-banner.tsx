@@ -261,7 +261,9 @@ function Toggle({
         <span
           aria-hidden
           className={`bg-card absolute top-0.5 h-4 w-4 rounded-full shadow transition-transform ${
-            checked ? "translate-x-[1.125rem]" : "translate-x-0.5"
+            checked
+              ? "translate-x-[1.125rem] rtl:-translate-x-[1.125rem]"
+              : "translate-x-0.5 rtl:-translate-x-0.5"
           }`}
         />
       </span>

@@ -31,7 +31,8 @@ export function StudioPreview({
 }: StudioPreviewProps) {
   const t = useTranslations("fluffyAvatars");
   return (
-    <div className="flex flex-col gap-5">
+    // Held in view while the pickers beside it scroll.
+    <div className="flex flex-col gap-5 md:sticky md:top-0 md:self-start">
       <div className="bg-muted/40 flex aspect-square items-center justify-center rounded-2xl">
         <div key={bodyKey} className="ff-pop size-40">
           <FluffyFace style={style} state={state} animate={alwaysAnimate} />
