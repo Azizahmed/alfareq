@@ -1,6 +1,6 @@
 /**
- * The plugin's backend, `/api/v1/plugins/fluffy-avatars`, through the console's
- * own proxy (`src/app/api/plugins/[[...path]]/route.ts`).
+ * The plugin's backend routes, reached through the console's own proxy for
+ * plugins (the catch-all route under `src/app/api/plugins`).
  *
  * Lookups are batched: every avatar on a page asks for its own agent, and one
  * request per face would be a hundred requests on the agents list. Asks made in
