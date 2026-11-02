@@ -13,4 +13,4 @@ is not loaded, and an upstream update never touches a plugin's files.
 
 A plugin is a folder, `src/plugins/<id>/`, with the same id as its backend half
 in `backend/plugins/<id>/`. The full guide - the slots, the backend hooks,
-migrations and how updating from upstream works - is `docs/plugins.md`.
+migrations and how updating from upstream works - is `PLUGINS.md` at the repository root.

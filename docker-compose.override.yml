@@ -52,6 +52,7 @@ services:
     volumes:
       - ./backend/app:/app/app:ro
       - ./backend/cli:/app/cli:ro
+      - ./backend/plugins:/app/plugins:ro
       - ./emails:/app/emails:ro
     environment:
       - DEBUG=true
@@ -87,6 +88,7 @@ services:
     pull_policy: never
     volumes:
       - ./backend/app:/app/app:ro
+      - ./backend/plugins:/app/plugins:ro
     environment:
       - DEBUG=true
       # One ingest child rather than two: each holds an imported application,

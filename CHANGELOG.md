@@ -19,6 +19,28 @@ Two things are versioned separately from this file and worth knowing about:
 
 ## [Unreleased]
 
+### Added
+
+- Plugins: a deployment can add to the platform without editing it, so the
+  upstream code keeps updating by a plain merge. A backend plugin in
+  `backend/plugins/<name>/` can mount routes under `/api/v1/plugins/<id>`, add a
+  console language, translate the text the server writes, name the deployment
+  and keep tables in its own migration history; a frontend plugin in
+  `frontend/src/plugins/<id>/` can add a locale, its own strings, a brand and
+  components in named slots. `PLUGINS_DISABLED` switches a backend plugin off.
+  `agenticos db upgrade` runs the plugins' migrations after the platform's, and
+  `agenticos db plugin-migrate` writes one. See `PLUGINS.md`.
+- Right-to-left languages: the console is laid out in logical properties and
+  mirrors when a locale says `dir: "rtl"`. `bun run check:rtl` refuses a physical
+  direction class.
+- Arabic (`ar`), as a plugin: right to left, with IBM Plex Sans Arabic. The
+  shell, sign-in, account pages and dashboard are translated; the rest falls
+  back to English.
+- The Alfareq brand (الفريق in Arabic), as a plugin: the built-in name and mark.
+- Furry character avatars for agents, as a plugin, with an avatar studio on the
+  agent page: six characters, eleven shapes, sixteen expressions, twelve
+  colours, and states that follow the agent.
+
 ## [1.35.2] - 2026-11-02
 
 ### Changed
