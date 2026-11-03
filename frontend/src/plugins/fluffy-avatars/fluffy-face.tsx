@@ -16,8 +16,13 @@ export interface FluffyFaceProps {
   framed?: boolean;
   /** Move all the time rather than on hover, as an agent at work does. */
   animate?: boolean;
+  /** Greet: alive, and a wink or two, where a conversation opens on this face. */
+  greet?: boolean;
   className?: string;
 }
+
+/** States that are something happening, so the face moves without a hover. */
+const LIVE_STATES: ReadonlySet<AvatarState> = new Set(["thinking", "writing", "notification"]);
 
 /**
  * One furry avatar, sized by its container.
@@ -30,6 +35,7 @@ export function FluffyFace({
   state = "idle",
   framed = false,
   animate = false,
+  greet = false,
   className,
 }: FluffyFaceProps) {
   // Filter and gradient ids are global to the document; React's id is unique per
@@ -42,7 +48,8 @@ export function FluffyFace({
   return (
     <span
       aria-hidden
-      data-animate={animate || state === "thinking" ? "always" : "hover"}
+      data-animate={animate || greet || LIVE_STATES.has(state) ? "always" : "hover"}
+      data-greet={greet || undefined}
       className={cn("ff-host block h-full w-full", className)}
       // Our own drawing: every value comes from the tables in `catalog.ts`.
       dangerouslySetInnerHTML={{ __html: markup }}

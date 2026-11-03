@@ -1,6 +1,6 @@
 /**
  * What an avatar can be: six characters, eleven shapes, sixteen expressions,
- * twelve colours and an eye size, previewed in seven states and five body transitions. The backend validates the same lists
+ * twelve colours and an eye size, previewed in eight states and five body transitions. The backend validates the same lists
  * (`backend/plugins/fluffy_avatars/schemas.py`), and `catalog.test.ts` holds the
  * two equal.
  */
@@ -49,6 +49,7 @@ export const STATES = [
   "wink",
   "wideEyes",
   "thinking",
+  "writing",
   "notification",
   "asleep",
   "failed",

@@ -8,7 +8,7 @@ import {
 import { MARK_DATA_URI, MARK_VERSION } from "./mark.generated";
 
 const brand: PluginBrand = {
-  appName: "Alfareq",
+  appName: "Alfareeq",
   localizedNames: { ar: "الفريق" },
   logoDataUri: MARK_DATA_URI,
   logoVersion: MARK_VERSION,
@@ -22,7 +22,7 @@ const brand: PluginBrand = {
 const UPSTREAM_NAME = /\bAgenticOS\b/g;
 
 /**
- * The deployment is Alfareq - الفريق in Arabic.
+ * The deployment is Alfareeq - الفريق in Arabic.
  *
  * Built-ins only: the name and mark a fresh deployment shows, and the product's
  * name inside the console's sentences. `/admin/settings` still overrides the

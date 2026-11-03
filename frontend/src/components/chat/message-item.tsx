@@ -48,6 +48,7 @@ import { KeptImage } from "./kept-image";
 import { isRenderSafeImage } from "@/lib/file-kinds";
 import { FileCard, FileIcon } from "@/components/files";
 import { extractSources, toolCallsOf } from "@/lib/chat-sources";
+import { turnActivity } from "@/lib/turn-activity";
 import type { DelegateRef } from "@/lib/delegations";
 import { publishedApps, PublishedArtifactResult } from "./tool-results/artifact";
 import { TurnFiles } from "./turn-files";
@@ -166,11 +167,17 @@ export const MessageItem = memo(function MessageItem({
   const apps = !isUser ? publishedApps(toolCallsOf(message)) : [];
   const onCiteClick = hasSources ? (index: number) => openSources(sources, index) : undefined;
 
+  const activity = isUser ? undefined : turnActivity(message);
   const avatar = (
     <div
       className={cn(
-        "z-10 flex flex-shrink-0 items-center justify-center overflow-hidden rounded-full",
+        "z-10 flex flex-shrink-0 items-center justify-center rounded-full",
         compact ? "h-6 w-6" : isUser ? "h-7 w-7" : "h-9 w-9",
+        // While the agent works its face is the thing to watch: larger, and
+        // unclipped so what it is doing - the thought, the pencil - shows past
+        // its edge. It settles back once the turn has ended.
+        !compact && agent && activity ? "h-14 w-14 overflow-visible" : "overflow-hidden",
+        "transition-[width,height] duration-300 ease-out motion-reduce:transition-none",
         // A fill only behind the fallback icon. A face or a picture brings its
         // own disc, and a dark one behind it showed as a thin ring wherever the
         // two edges did not quite meet.
@@ -194,6 +201,7 @@ export const MessageItem = memo(function MessageItem({
           colorSlot={agent.avatar_color}
           size="md"
           thinking={Boolean(message.isStreaming)}
+          activity={activity}
           className="h-full w-full border-0"
         />
       ) : (

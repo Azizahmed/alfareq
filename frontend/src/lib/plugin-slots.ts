@@ -13,6 +13,13 @@ import type { ComponentType } from "react";
 
 import { PLUGIN_SLOTS } from "@/plugins/slots";
 
+/**
+ * What the agent is visibly doing where its face is drawn. `thinking` while a
+ * turn reasons or calls tools, `writing` while its answer streams in, and
+ * `greeting` where a conversation opens on it with nothing said yet.
+ */
+export type AgentActivity = "thinking" | "writing" | "greeting";
+
 /** The generated face an agent wears when it has no uploaded picture. */
 export interface AgentFaceSlotProps {
   agentId: string;
@@ -22,6 +29,10 @@ export interface AgentFaceSlotProps {
   colorSlot?: number | null;
   /** True while a turn is in flight. */
   thinking?: boolean;
+  /** Finer than `thinking`, where the caller knows it; absent where it does not. */
+  activity?: AgentActivity;
+  /** The face stands for something unread - a notification nobody has opened. */
+  attention?: boolean;
   /** False where the console draws the face without a disc behind it (chat). */
   framed: boolean;
   className?: string;

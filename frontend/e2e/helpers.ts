@@ -246,7 +246,7 @@ export const DASHBOARD_GREETING = /Good (morning|afternoon|evening)/;
 /**
  * A message as the console serves it in English: the catalog with the installed
  * plugins' rewrites applied. A brand plugin renames the product inside sentences
- * ("Welcome to Alfareq"), so a spec asserting copy that names the product reads
+ * ("Welcome to Alfareeq"), so a spec asserting copy that names the product reads
  * it from here and holds with the plugin installed or not.
  */
 export function servedCopy(path: string): string {

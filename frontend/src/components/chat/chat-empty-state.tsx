@@ -119,7 +119,8 @@ function Welcome({ agent, starters, onPick }: WelcomeProps) {
             slug={agent.slug}
             hasAvatar={agent.has_avatar}
             colorSlot={agent.avatar_color}
-            size="lg"
+            size="xl"
+            activity="greeting"
           />
         ) : (
           <WelcomeIcon icon={Sparkles} />

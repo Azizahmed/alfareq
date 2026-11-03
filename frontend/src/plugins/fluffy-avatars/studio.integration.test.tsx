@@ -6,7 +6,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { apiClient } from "@/lib/api-client";
 
-import { AgentFluffyFace } from "./agent-face";
+import { AgentFluffyFace, faceState } from "./agent-face";
 import { AvatarStudioButton } from "./studio";
 
 vi.mock("@/lib/api-client", () => ({
@@ -128,6 +128,31 @@ describe("the agent's face", () => {
     expect(container.querySelector("svg.ff")).not.toBeNull();
     expect(container.querySelector('[data-animate="always"]')).not.toBeNull();
     await waitFor(() => expect(container.innerHTML).toContain("#f6c12b"));
+  });
+
+  it("writes while the answer streams, greets an opening chat and lights up on news", async () => {
+    vi.mocked(apiClient.post).mockResolvedValue({ styles: {}, states: {} });
+    const { container: writing } = render(
+      <AgentFluffyFace agentId="a3" slug="s" framed={false} thinking activity="writing" />,
+      { wrapper },
+    );
+    const { container: greeting } = render(
+      <AgentFluffyFace agentId="a3" slug="s" framed={false} activity="greeting" />,
+      { wrapper },
+    );
+
+    expect(writing.querySelector('svg[data-state="writing"]')).not.toBeNull();
+    expect(writing.querySelector('[data-animate="always"]')).not.toBeNull();
+    expect(greeting.querySelector("[data-greet]")).not.toBeNull();
+    expect(greeting.querySelector('[data-animate="always"]')).not.toBeNull();
+  });
+
+  it("puts what the agent is doing now before what the lookup knows", () => {
+    expect(faceState({ activity: "writing", thinking: true }, "failed")).toBe("writing");
+    expect(faceState({ thinking: true }, "asleep")).toBe("thinking");
+    expect(faceState({ attention: true }, "failed")).toBe("notification");
+    expect(faceState({ activity: "greeting" }, "asleep")).toBe("asleep");
+    expect(faceState({}, undefined)).toBe("idle");
   });
 
   it("shows what the agent is doing once it is not mid-turn", async () => {

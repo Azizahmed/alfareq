@@ -36,14 +36,18 @@ Two things are versioned separately from this file and worth knowing about:
 - Arabic (`ar`), as a plugin: right to left, with IBM Plex Sans Arabic, and
   every console message translated. The page mirrors as soon as the language
   is switched, without a reload.
-- The Alfareq brand (الفريق in Arabic), as a plugin: the built-in name and mark.
+- The Alfareeq brand (الفريق in Arabic), as a plugin: the built-in name and
+  its mark, two linked capsules on a dark tile.
   The console offers English and Arabic: the brand hides Polish and German
   (`HIDDEN_LOCALES`), so `/pl/...` and `/de/...` are no longer served and an
   account that had chosen one of them reads the console in English.
 - Furry character avatars for agents, as a plugin, with an avatar studio on the
   agent page: six characters, eleven shapes, sixteen expressions, twelve
   colours, an eye size, five body transitions to preview, and states that
-  follow the agent.
+  follow the agent. In chat the face grows while the agent works and shows
+  what it is doing - thinking, then writing with a pencil as the answer
+  streams in - greets the person on an empty chat, and lights up on an unread
+  notification.
 
 ## [1.38.2] - 2026-11-03
 

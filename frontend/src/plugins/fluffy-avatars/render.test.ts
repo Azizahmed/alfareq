@@ -60,7 +60,14 @@ describe("fluffySvg", () => {
     expect(svg("wink")).toMatch(/height="6.4"/);
     expect(svg("wideEyes")).toContain('height="29.4"');
     expect(svg("failed")).not.toContain("#7c3aed");
-    expect(svg("idle")).not.toMatch(/ff-thinking|ff-ping|ff-zzz/);
+    expect(svg("writing")).toContain('class="ff-pencil"');
+    expect(svg("writing")).toContain('class="ff-ink"');
+    expect(svg("idle")).not.toMatch(/ff-thinking|ff-ping|ff-zzz|ff-pencil/);
+  });
+
+  it("drops the eyes to the page while writing", () => {
+    const eyeY = (markup: string) => Number(markup.match(/class="ff-eye"[^>]*y="([\d.]+)"/)?.[1]);
+    expect(eyeY(svg("writing"))).toBeGreaterThan(eyeY(svg("idle")));
   });
 
   it("puts a soft disc behind a framed face only", () => {
