@@ -7,6 +7,9 @@ import {
   type Page,
 } from "@playwright/test";
 
+import en from "../messages/en.json";
+import { rewriteWithPlugins, type Messages } from "../src/lib/plugins";
+
 /**
  * Shared vocabulary for the E2E suite.
  *
@@ -238,6 +241,23 @@ export async function signInAs(
  * the heading opens on the date above the greeting.
  */
 export const DASHBOARD_GREETING = /Good (morning|afternoon|evening)/;
+
+/**
+ * A message as the console serves it in English: the catalog with the installed
+ * plugins' rewrites applied. A brand plugin renames the product inside sentences
+ * ("Welcome to Alfareq"), so a spec asserting copy that names the product reads
+ * it from here and holds with the plugin installed or not.
+ */
+export function servedCopy(path: string): string {
+  const value = path
+    .split(".")
+    .reduce<unknown>(
+      (node, key) => (node as Messages)[key],
+      rewriteWithPlugins(en as Messages, "en"),
+    );
+  if (typeof value !== "string") throw new Error(`No English message at ${path}`);
+  return value;
+}
 
 export function pageHeading(page: Page, name?: string | RegExp): Locator {
   return page.getByRole("heading", { level: 1, name });
