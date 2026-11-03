@@ -163,6 +163,7 @@ export default defineConfig({
         // with what applies that preference app-wide (#1797).
         "src/components/ui/voice-glow.tsx",
         "src/components/layout/account-preferences.tsx",
+        "src/components/layout/locale-direction.tsx",
         "src/components/layout/account-locale.tsx",
         "src/components/layout/account-time-zone.tsx",
         "src/components/settings/appearance-settings.tsx",
