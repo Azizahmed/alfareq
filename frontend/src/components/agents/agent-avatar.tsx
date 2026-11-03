@@ -3,7 +3,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui";
 import { ArchitectMark } from "@/components/assistant/architect-mark";
 import { AvatarFace } from "@/components/ui/avatar-face";
-import { pluginSlot } from "@/lib/plugin-slots";
+import { pluginSlot, type AgentActivity } from "@/lib/plugin-slots";
 import { cn } from "@/lib/utils";
 import { useArchitectMarkStore } from "@/stores/architect-mark-store";
 
@@ -50,6 +50,14 @@ export interface AgentAvatarProps {
    * where a turn is actually in flight - it costs inline SVG per face.
    */
   thinking?: boolean;
+  /**
+   * What the agent is doing, for a face that can show more than "busy": a
+   * plugin's face draws each; the console's own reads anything but `greeting`
+   * as thinking.
+   */
+  activity?: AgentActivity;
+  /** The face stands for something unread; only a plugin's face draws it. */
+  attention?: boolean;
   /** Unframed portrait treatment shared across the console. */
   unframed?: boolean;
   className?: string;
@@ -76,16 +84,26 @@ export function AgentAvatar({
   colorSlot,
   size = "md",
   version,
-  thinking,
+  thinking: thinkingFlag,
+  activity,
+  attention,
   className,
   unframed = true,
 }: AgentAvatarProps) {
+  const thinking = thinkingFlag || (activity !== undefined && activity !== "greeting");
   const wearsMark = useArchitectMarkStore((state) => state.agentId === agentId);
   if (wearsMark) return <ArchitectMark className={cn(SIZES[size], className)} />;
   return (
     <Avatar
       data-agent-avatar={agentId}
-      className={cn(SIZES[size], "shrink-0", className, unframed && "ring-0")}
+      className={cn(
+        SIZES[size],
+        "shrink-0",
+        className,
+        unframed && "ring-0",
+        // What the face is doing - a thought, a pencil - is drawn past the disc.
+        activity && !hasAvatar && "overflow-visible",
+      )}
     >
       {hasAvatar && (
         <AvatarImage
@@ -109,6 +127,8 @@ export function AgentAvatar({
             slug={slug}
             colorSlot={colorSlot}
             thinking={thinking}
+            activity={activity}
+            attention={attention}
             framed={!unframed}
           />
         ) : (

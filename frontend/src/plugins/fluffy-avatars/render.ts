@@ -327,13 +327,31 @@ function eyes(face: Face, state: AvatarState, shape: Shape, size: number): strin
     right = { kind: "arc", w: 12, up: false };
   }
   if (state === "wink") right = { kind: "line", w: 12, rot: -8 };
-  return eyeMarkup(left, 50 - gap, eyeY, size) + eyeMarkup(right, 50 + gap, eyeY, size);
+  // Writing, the eyes drop to the page in its lower corner, where the pencil is.
+  const [dx, dy] = state === "writing" ? [2.5, 5] : [0, 0];
+  return (
+    eyeMarkup(left, 50 - gap + dx, eyeY + dy, size) +
+    eyeMarkup(right, 50 + gap + dx, eyeY + dy, size)
+  );
 }
 
 function overlay(state: AvatarState, colour: string): string {
   if (state === "thinking") {
     const dot = shade(colour, -0.15);
     return `<g class="ff-thinking"><circle cx="70" cy="9" r="3.2" fill="${dot}"/><circle cx="80" cy="7" r="3.6" fill="${dot}"/><circle cx="90" cy="5" r="4" fill="${dot}"/></g>`;
+  }
+  if (state === "writing") {
+    const ink = shade(colour, -0.35);
+    return [
+      // The line being written, drawn in by CSS and then started again.
+      `<path class="ff-ink" d="M40 95q4-5 8 0t8 0t8 0t8 0" pathLength="100" fill="none" stroke="${ink}" stroke-width="2.6" stroke-linecap="round"/>`,
+      `<g class="ff-pencil"><g transform="rotate(35 84 82)">`,
+      '<rect x="80" y="60" width="8.5" height="24" rx="1.6" fill="#ffc83d" stroke="#2b2b2b" stroke-width="1.3"/>',
+      '<rect x="80" y="57" width="8.5" height="5" rx="1.6" fill="#ff8fa3" stroke="#2b2b2b" stroke-width="1.3"/>',
+      '<path d="M80 84l4.25 8l4.25-8z" fill="#f3d9b1" stroke="#2b2b2b" stroke-width="1.3" stroke-linejoin="round"/>',
+      '<path d="M83 89.6l1.25 2.4l1.25-2.4z" fill="#2b2b2b"/>',
+      "</g></g>",
+    ].join("");
   }
   if (state === "notification") {
     return `<circle class="ff-ping" cx="82" cy="20" r="8.5" fill="#2f8cff" stroke="#ffffff" stroke-width="3"/>`;

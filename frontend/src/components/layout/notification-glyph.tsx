@@ -84,6 +84,7 @@ export function NotificationGlyph({ item }: { item: Notification }) {
           hasAvatar={item.agent.has_avatar}
           colorSlot={item.agent.avatar_color}
           size="sm"
+          attention={item.read_at === null}
           className="h-8 w-8"
         />
         {/* A solid disc under the tint: the tints are translucent, and over a

@@ -103,6 +103,30 @@ describe("AgentAvatar", () => {
     expect(idle.querySelector("g.mo-expr")).toBeNull();
   });
 
+  it("reads an activity other than greeting as thinking on the console's own face", () => {
+    const { container: writing } = render(
+      <AgentAvatar agentId="a1" slug="support" activity="writing" />,
+    );
+    const { container: greeting } = render(
+      <AgentAvatar agentId="a1" slug="support" activity="greeting" />,
+    );
+
+    expect(writing.querySelector("g.mo-expr")).not.toBeNull();
+    expect(greeting.querySelector("g.mo-expr")).toBeNull();
+  });
+
+  it("lets a busy face draw past its disc, and keeps an uploaded picture clipped", () => {
+    const { container: busy } = render(
+      <AgentAvatar agentId="a1" slug="support" activity="writing" />,
+    );
+    const { container: picture } = render(
+      <AgentAvatar agentId="a1" slug="support" activity="writing" hasAvatar />,
+    );
+
+    expect(busy.firstElementChild).toHaveClass("overflow-visible");
+    expect(picture.firstElementChild).toHaveClass("overflow-hidden");
+  });
+
   it("renders at the size it was asked for", () => {
     const { container } = render(<AgentAvatar agentId="a1" slug="support" size="xl" />);
 

@@ -77,7 +77,10 @@ German. Hiding is the console's, which is where a person chooses.
 
 The slots are `agent-face` (the face an agent wears without an uploaded
 picture) and `agent-avatar-tools` (controls beside the portrait on the agent
-page). A slot is a contract - its props are what core promises - so one is added
+page). `agent-face` is told what the agent is doing where the caller knows it:
+`activity` is `thinking` or `writing` through a chat turn (from
+`src/lib/turn-activity.ts`) and `greeting` on an empty chat, and `attention`
+marks a notification nobody has read. A slot is a contract - its props are what core promises - so one is added
 only when a plugin needs it.
 
 A plugin's English strings live in `<id>/messages/en.json`; `make lint` reads
