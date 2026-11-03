@@ -128,7 +128,7 @@ requires-dist = [
     { name = "cryptography", specifier = ">=50.0.2" },
     { name = "fastapi", specifier = ">=0.143.2" },
     { name = "fastmcp", specifier = ">=4.1.2" },
-    { name = "genai-prices", specifier = ">=0.1.10" },
+    { name = "genai-prices", specifier = ">=0.2.1" },
     { name = "google-auth", extras = ["requests"], specifier = ">=2.62.0" },
     { name = "greenlet", specifier = ">=3.5.5" },
     { name = "gssapi", marker = "extra == 'kerberos'", specifier = ">=1.9.0" },
@@ -140,7 +140,7 @@ requires-dist = [
     { name = "ldap3", specifier = ">=2.9.1" },
     { name = "liteparse", specifier = ">=2.16.0" },
     { name = "llama-cloud", specifier = ">=2.18.0" },
-    { name = "logfire", extras = ["fastapi", "asyncpg", "redis", "httpx"], specifier = ">=5.2.0" },
+    { name = "logfire", extras = ["fastapi", "asyncpg", "redis", "httpx"], specifier = ">=5.4.0" },
     { name = "markdown-it-py", specifier = ">=4.0.0" },
     { name = "mcp", specifier = ">=2.3.0" },
     { name = "mem0ai", specifier = ">=2.2.1" },
@@ -154,9 +154,9 @@ requires-dist = [
     { name = "pydantic", extras = ["email"], specifier = ">=2.14.1" },
     { name = "pydantic-ai-backend", extras = ["console", "remote", "workspaces", "daytona"], specifier = ">=0.2.39" },
     { name = "pydantic-ai-harness", extras = ["e2b", "repair-tool-arguments"], specifier = ">=0.64.0" },
-    { name = "pydantic-ai-skills", specifier = ">=2.1.0" },
-    { name = "pydantic-ai-slim", extras = ["mcp"], specifier = ">=2.61.0" },
-    { name = "pydantic-ai-slim", extras = ["openrouter", "anthropic", "google", "duckduckgo", "web-fetch", "groq", "mistral", "cohere", "huggingface", "xai", "openai-realtime", "google-realtime", "xai-realtime"], specifier = ">=2.61.0" },
+    { name = "pydantic-ai-skills", specifier = ">=2.1.1" },
+    { name = "pydantic-ai-slim", extras = ["mcp"], specifier = ">=2.64.0" },
+    { name = "pydantic-ai-slim", extras = ["openrouter", "anthropic", "google", "duckduckgo", "web-fetch", "groq", "mistral", "cohere", "huggingface", "xai", "openai-realtime", "google-realtime", "xai-realtime"], specifier = ">=2.64.0" },
     { name = "pydantic-monty", specifier = ">=1.1.0" },
     { name = "pydantic-settings", specifier = ">=2.16.0" },
     { name = "pyjwt", specifier = ">=2.15.1" },
@@ -1396,15 +1396,15 @@ wheels = [
 
 [[package]]
 name = "genai-prices"
-version = "0.1.13"
+version = "0.2.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "httpx2" },
     { name = "pydantic", extra = ["email"] },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ad/de/119c7ba00b9ddbf629de34cf390ab472da6d7bc5df0c51cdbec900280a74/genai_prices-0.1.13.tar.gz", hash = "sha256:76c9e2dd3917fdacdf3bc562297c4591384142ea2283c477e1512fafa4e3a384", size = 134622, upload-time = "2026-10-15T09:47:04.739Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/48/1f/f5748da2ef5ce0a3d7735cbfc499cc76d8333876fd4d5942bf72e03e01f7/genai_prices-0.2.1.tar.gz", hash = "sha256:d3c19682e63ae3827e7d166fc92c0f69943f446aa58725f38090301ca1cae36d", size = 159033, upload-time = "2026-10-30T19:03:16.883Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/41/5a/b6b7d55148d367d07bcd3efdf24e3086ad199ea5109d0c335a872dfaac95/genai_prices-0.1.13-py3-none-any.whl", hash = "sha256:6d2b40760a2f7f5e207bac9b98de0af80e60c58ead497872a5331a7cee610477", size = 142541, upload-time = "2026-10-15T09:47:03.424Z" },
+    { url = "https://files.pythonhosted.org/packages/6c/0d/5af9dc89b77ae76eaeacde63bb6cbb2d0be9562f82fd2fa476909f431e16/genai_prices-0.2.1-py3-none-any.whl", hash = "sha256:b438753161537f2e2a5c937887721467dd5a24297a52ae77f946f541ce22c3a0", size = 168200, upload-time = "2026-10-30T19:03:15.339Z" },
 ]
 
 [[package]]
@@ -3258,7 +3258,7 @@ skills = [
 
 [[package]]
 name = "pydantic-ai-skills"
-version = "2.1.0"
+version = "2.1.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
@@ -3266,9 +3266,9 @@ dependencies = [
     { name = "pydantic-ai-slim" },
     { name = "pyyaml" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/66/ca/20eab3731a7bc58b119373dacd9fb4a7ff3cf77cee1e847561eab679f51d/pydantic_ai_skills-2.1.0.tar.gz", hash = "sha256:a02e763ca1a1fba81c9c4720c91644a684ef615e54c399231df0f52a828533d7", size = 9230413, upload-time = "2026-10-04T00:51:13.324Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/04/54/c9fb0a051f8ab56036dbc32ff247725313888fec1a424f91b4a3d12c1178/pydantic_ai_skills-2.1.1.tar.gz", hash = "sha256:fcd0964f602998b44515878e71b7593d8e6172b27dcfefbf1f4c03cff294f60b", size = 9237395, upload-time = "2026-10-28T02:53:03.511Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/26/4c/c59ed1497545533476a5e20c946eae741e5af29dfab1b230f2b316b349ef/pydantic_ai_skills-2.1.0-py3-none-any.whl", hash = "sha256:dfe10255348d79ff9ed1e2a66a5536f6f35ff6ad0727f58601bf124eb1f5d679", size = 74790, upload-time = "2026-10-04T00:51:11.166Z" },
+    { url = "https://files.pythonhosted.org/packages/1c/55/a97a0dbf75e3a07c1d9989ede1f55bc6a4d6b7dc8aaf3a8b228e78356d4a/pydantic_ai_skills-2.1.1-py3-none-any.whl", hash = "sha256:324a92aa59b11d5d5968bb204bf3bc42a75e5d81ecc0de7d11e64e5d72ed5d02", size = 74783, upload-time = "2026-10-28T02:53:01.616Z" },
 ]
 
 [[package]]
