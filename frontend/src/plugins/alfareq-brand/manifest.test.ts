@@ -22,9 +22,14 @@ describe("the Alfareeq brand", () => {
     expect(rewrite?.(messages, "en")?.a).toBe("Discover Alfareeq");
   });
 
-  it("ships the mark generated from the SVG beside it", () => {
-    const svg = readFileSync(resolve(__dirname, "assets/alfareq-mark.svg"), "utf8");
+  it("ships the mark and the logo generated from the SVGs beside it", () => {
+    const read = (name: string) => readFileSync(resolve(__dirname, "assets", name), "utf8");
     const generated = readFileSync(resolve(__dirname, "mark.generated.ts"), "utf8");
-    expect(generated).toBe(markModule(svg));
+    expect(generated).toBe(markModule(read("alfareq-mark.svg"), read("alfareq-wordmark.svg")));
+  });
+
+  it("hands the console the whole logo, about six and a half times as wide as it is tall", () => {
+    expect(alfareqBrand.brand?.wordmark?.dataUri).toMatch(/^data:image\/svg\+xml,/);
+    expect(alfareqBrand.brand?.wordmark?.aspectRatio).toBeCloseTo(6.48, 1);
   });
 });

@@ -17,7 +17,7 @@
 
 import { APP_NAME } from "@/lib/constants";
 import { LOGO_DATA_URI, LOGO_VERSION } from "@/lib/logo.generated";
-import { brandNameFor, pluginBrand } from "@/lib/plugins";
+import { brandNameFor, pluginBrand, type PluginBrand } from "@/lib/plugins";
 import { SITE } from "@/lib/seo";
 
 /**
@@ -32,6 +32,20 @@ export const BUILT_IN_LOGO_DATA_URI = PLUGIN_BRAND?.logoDataUri ?? LOGO_DATA_URI
 
 /** Changes with the built-in mark, so a browser holding the old favicon asks again. */
 export const BUILT_IN_LOGO_VERSION = PLUGIN_BRAND?.logoVersion ?? LOGO_VERSION;
+
+/**
+ * A brand plugin's whole logo, while it is still the deployment's identity: not
+ * once an administrator has uploaded a logo or named the deployment, which the
+ * logo would contradict.
+ */
+export function builtInWordmark(
+  branding: Pick<Branding, "appName" | "logoUrl">,
+): NonNullable<PluginBrand["wordmark"]> | null {
+  const wordmark = PLUGIN_BRAND?.wordmark;
+  if (!wordmark || branding.logoUrl) return null;
+  const names = [PLUGIN_BRAND.appName, ...Object.values(PLUGIN_BRAND.localizedNames ?? {})];
+  return names.includes(branding.appName) ? wordmark : null;
+}
 
 /** The built-in name in `locale`: a brand plugin may write it differently per language. */
 export function builtInAppName(locale: string | null = null): string {

@@ -15,13 +15,11 @@
 
 import { SidebarNav } from "@/components/layout/app-sidebar";
 import { SidebarShell } from "@/components/layout/sidebar-shell";
-import { BrandMark } from "@/components/branding/brand-mark";
+import { BrandLockup } from "@/components/branding/brand-lockup";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle } from "@/components/ui";
-import { useBranding } from "@/components/branding/branding-provider";
 import { useSidebarStore } from "@/stores";
 
 export function Sidebar() {
-  const { appName } = useBranding();
   const { isOpen, close } = useSidebarStore();
 
   return (
@@ -31,8 +29,7 @@ export function Sidebar() {
           {/* The mark beside the name, as the bar it slides over and the
               desktop column both draw it. */}
           <SheetTitle className="flex items-center gap-2 text-sm font-bold tracking-tight">
-            <BrandMark />
-            {appName}
+            <BrandLockup />
           </SheetTitle>
           <SheetClose onClick={close} />
         </SheetHeader>

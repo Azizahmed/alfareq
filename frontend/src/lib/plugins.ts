@@ -25,6 +25,12 @@ export interface PluginBrand {
   logoDataUri?: string;
   /** Changes with the mark, so a browser holding the old favicon asks again. */
   logoVersion?: string;
+  /**
+   * The whole logo, name included, where the console writes the name beside the
+   * mark: the sidebar, the mobile menu, the sign-in header. One colour, drawn in
+   * the text colour of the theme, so its fill does not matter.
+   */
+  wordmark?: { dataUri: string; aspectRatio: number };
 }
 
 export interface FrontendPlugin {

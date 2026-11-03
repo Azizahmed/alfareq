@@ -1,7 +1,6 @@
 "use client";
 
-import { BrandMark } from "@/components/branding/brand-mark";
-import { useBranding } from "@/components/branding/branding-provider";
+import { BrandLockup } from "@/components/branding/brand-lockup";
 import { ThinkingOrb } from "@/components/ui/thinking-orb";
 import { useOnScreenKeyboard } from "@/hooks/use-on-screen-keyboard";
 import { useTranslations } from "next-intl";
@@ -17,7 +16,6 @@ import { useTranslations } from "next-intl";
  */
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   const t = useTranslations("pages.auth");
-  const { appName } = useBranding();
   useOnScreenKeyboard();
 
   return (
@@ -34,8 +32,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           {/* Not a link: the root redirects straight back here, so a brand mark
               that navigates would be a no-op. */}
           <span className="inline-flex items-center gap-2 text-base font-semibold tracking-tight">
-            <BrandMark size={22} />
-            {appName}
+            <BrandLockup markSize={22} />
           </span>
         </header>
         <div className="flex flex-1 items-center justify-center px-6 py-10 sm:px-10">

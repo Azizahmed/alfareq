@@ -36,8 +36,10 @@ Two things are versioned separately from this file and worth knowing about:
 - Arabic (`ar`), as a plugin: right to left, with IBM Plex Sans Arabic, and
   every console message translated. The page mirrors as soon as the language
   is switched, without a reload.
-- The Alfareeq brand (الفريق in Arabic), as a plugin: the built-in name and
-  its mark, two linked capsules on a dark tile.
+- The Alfareeq brand (الفريق in Arabic), as a plugin: the built-in name, its
+  mark, and the logo itself - traced from the supplied artwork, the Q with an
+  agent's eyes - shown in place of the mark and the written name in the
+  sidebar, the mobile menu and the sign-in header, in the theme's text colour.
   The console offers English and Arabic: the brand hides Polish and German
   (`HIDDEN_LOCALES`), so `/pl/...` and `/de/...` are no longer served and an
   account that had chosen one of them reads the console in English.

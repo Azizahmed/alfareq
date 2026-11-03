@@ -5,13 +5,19 @@ import {
   type PluginBrand,
 } from "@/lib/plugins";
 
-import { MARK_DATA_URI, MARK_VERSION } from "./mark.generated";
+import {
+  MARK_DATA_URI,
+  MARK_VERSION,
+  WORDMARK_ASPECT_RATIO,
+  WORDMARK_DATA_URI,
+} from "./mark.generated";
 
 const brand: PluginBrand = {
   appName: "Alfareeq",
   localizedNames: { ar: "الفريق" },
   logoDataUri: MARK_DATA_URI,
   logoVersion: MARK_VERSION,
+  wordmark: { dataUri: WORDMARK_DATA_URI, aspectRatio: WORDMARK_ASPECT_RATIO },
 };
 
 /**

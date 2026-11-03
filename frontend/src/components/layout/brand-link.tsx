@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 
+import { BrandLockup } from "@/components/branding/brand-lockup";
 import { BrandMark } from "@/components/branding/brand-mark";
 import { useBranding } from "@/components/branding/branding-provider";
 import { ROUTES } from "@/lib/constants";
@@ -27,8 +28,7 @@ export function BrandLink({ markOnly = false }: { markOnly?: boolean }) {
       aria-label={markOnly ? appName : undefined}
       className="focus-visible:ring-ring flex items-center gap-2 rounded-md text-sm font-bold tracking-tight outline-none focus-visible:ring-1"
     >
-      <BrandMark />
-      {markOnly ? null : appName}
+      {markOnly ? <BrandMark /> : <BrandLockup />}
     </Link>
   );
 }

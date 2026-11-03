@@ -65,7 +65,7 @@ hand in the migration.
 
 | List | Holds | Effect |
 |---|---|---|
-| `index.ts` | manifests | `catalogs` (a whole locale), `messages` (the plugin's own strings, under every locale), `rewriteMessages`, `brand` |
+| `index.ts` | manifests | `catalogs` (a whole locale), `messages` (the plugin's own strings, under every locale), `rewriteMessages`, `brand` (name, mark, and an optional `wordmark` that replaces mark + name while no administrator has set their own) |
 | `locales.ts` | `LocaleMeta` rows | A new language: label, flag, `dir`, Open Graph and date tags. `<html dir>` follows it |
 | `locales.ts` | `HIDDEN_LOCALES` | Core languages the console stops offering and routing: gone from the switchers and the tour, and `/pl/...` answers 404. Their catalogs stay and keep updating with upstream; an account that saved one is left in English. English cannot be hidden |
 | `slots.ts` | components | Fills a named place (`src/lib/plugin-slots.ts`) |

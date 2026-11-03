@@ -10,6 +10,7 @@ vi.mock("@/plugins", () => ({
         localizedNames: { ar: "الفريق" },
         logoDataUri: "data:image/svg+xml,mark",
         logoVersion: "abc123",
+        wordmark: { dataUri: "data:image/svg+xml,logo", aspectRatio: 6.5 },
       },
     },
   ],
@@ -42,6 +43,14 @@ describe("a brand plugin", () => {
   it("never wins over the name an administrator set", () => {
     const overrides = { app_name: "Acme AI" } as Parameters<typeof branding.resolveBranding>[0];
     expect(branding.resolveBranding(overrides, "ar").appName).toBe("Acme AI");
+  });
+
+  it("offers its whole logo only while the name and the logo are still its own", () => {
+    const logo = { dataUri: "data:image/svg+xml,logo", aspectRatio: 6.5 };
+    expect(branding.builtInWordmark({ appName: "Alfareq", logoUrl: null })).toEqual(logo);
+    expect(branding.builtInWordmark({ appName: "الفريق", logoUrl: null })).toEqual(logo);
+    expect(branding.builtInWordmark({ appName: "Acme AI", logoUrl: null })).toBeNull();
+    expect(branding.builtInWordmark({ appName: "Alfareq", logoUrl: "/api/logo" })).toBeNull();
   });
 
   it("is resolved on the server in the request's locale, also when the API is down", async () => {
