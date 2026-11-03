@@ -66,7 +66,8 @@ describe.each(CATALOGS)("the Arabic catalog of %s", (_, arabic, english) => {
       const rendered = /<\w+>/.test(message)
         ? t.rich(path as never, values as never)
         : t(path as never, values as never);
-      expect(rendered, path).toBeTruthy();
+      // An English source left empty on purpose (a blank template) stays empty.
+      if (lookup(english, path) !== "") expect(rendered, path).toBeTruthy();
     }
     expect(errors).toEqual([]);
   });
