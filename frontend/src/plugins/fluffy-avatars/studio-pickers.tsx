@@ -70,9 +70,7 @@ export function StudioPickers({ style, state, onStyle, onState }: StudioPickersP
             key={id}
             label={t(`characters.${id}`)}
             selected={style.character === id}
-            onSelect={() =>
-              onStyle({ character: id, shape: null, colour: null, expression: style.expression })
-            }
+            onSelect={() => onStyle({ ...style, character: id, shape: null, colour: null })}
           >
             <FluffyFace style={{ character: id, shape: null, colour: null, expression: "own" }} />
           </Choice>
@@ -84,9 +82,7 @@ export function StudioPickers({ style, state, onStyle, onState }: StudioPickersP
             key={shape}
             label={t(`shapes.${shape}`)}
             selected={style.shape === shape}
-            onSelect={() =>
-              onStyle({ character: null, shape, colour: tint, expression: style.expression })
-            }
+            onSelect={() => onStyle({ ...style, character: null, shape, colour: tint })}
           >
             <FluffyFace style={{ character: null, shape, colour: tint, expression: "own" }} />
           </Choice>

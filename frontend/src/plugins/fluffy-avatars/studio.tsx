@@ -17,8 +17,9 @@ import {
 import { DIALOG_BODY, DIALOG_BROAD, DIALOG_COLUMN } from "@/lib/dialog-sizes";
 import type { AgentAvatarToolsSlotProps } from "@/lib/plugin-slots";
 
-import type { AvatarState, AvatarStyle } from "./catalog";
+import type { AvatarState, AvatarStyle, Transition } from "./catalog";
 import { derivedStyle } from "./derive";
+import { StudioMotion } from "./studio-motion";
 import { StudioPickers } from "./studio-pickers";
 import { StudioPreview } from "./studio-preview";
 import { useAgentAvatar, useAvatarStyleMutations } from "./use-avatar-style";
@@ -38,6 +39,7 @@ function StudioDialog({ agentId, name, slug, colorSlot, stored, onClose }: Studi
   const [draft, setDraft] = useState<AvatarStyle>(stored ?? derivedStyle(slug, colorSlot));
   const [state, setState] = useState<AvatarState>("idle");
   const [alwaysAnimate, setAlwaysAnimate] = useState(false);
+  const [transition, setTransition] = useState<Transition>("pop");
   const { save, reset } = useAvatarStyleMutations(agentId);
   const busy = save.isPending || reset.isPending;
 
@@ -54,10 +56,19 @@ function StudioDialog({ agentId, name, slug, colorSlot, stored, onClose }: Studi
             state={state}
             name={name}
             bodyKey={bodyKey(draft)}
+            transition={transition}
             alwaysAnimate={alwaysAnimate}
             onAlwaysAnimate={setAlwaysAnimate}
           />
-          <StudioPickers style={draft} state={state} onStyle={setDraft} onState={setState} />
+          <div className="flex flex-col gap-5">
+            <StudioPickers style={draft} state={state} onStyle={setDraft} onState={setState} />
+            <StudioMotion
+              transition={transition}
+              onTransition={setTransition}
+              eyeSize={draft.eye_size ?? 1}
+              onEyeSize={(size) => setDraft({ ...draft, eye_size: size })}
+            />
+          </div>
         </div>
         <DialogFooter className="gap-2">
           {stored && (

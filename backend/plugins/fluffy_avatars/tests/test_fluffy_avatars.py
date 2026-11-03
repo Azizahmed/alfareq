@@ -48,6 +48,10 @@ class TestTheStyle:
         style = AvatarStyle(character="malu", expression="happy")
         assert (style.shape, style.colour) == (None, None)
 
+    def test_a_style_stored_before_the_eye_slider_reads_at_the_usual_size(self) -> None:
+        assert AvatarStyle.model_validate({"character": "vita"}).eye_size == 1.0
+        assert AvatarStyle(character="vita", eye_size=1.3).eye_size == 1.3
+
     def test_a_shape_takes_a_colour(self) -> None:
         assert AvatarStyle(shape="hexagon", colour=5).colour == 5
 
@@ -60,6 +64,9 @@ class TestTheStyle:
             {"shape": "circle", "colour": 12},
             {"shape": "star"},
             {"character": "malu", "expression": "smug"},
+            {"character": "vila"},
+            {"character": "malu", "eye_size": 0.5},
+            {"character": "malu", "eye_size": 2},
         ],
     )
     def test_a_style_that_does_not_say_one_thing_is_refused(self, fields: dict[str, Any]) -> None:
@@ -150,7 +157,13 @@ class TestTheService:
         assert stored == {
             "agent_id": agent_id,
             "organization_id": ORG,
-            "style": {"character": None, "shape": "diamond", "colour": 7, "expression": "own"},
+            "style": {
+                "character": None,
+                "shape": "diamond",
+                "colour": 7,
+                "expression": "own",
+                "eye_size": 1.0,
+            },
         }
         assert style.shape == "diamond"
 
@@ -164,7 +177,7 @@ class TestTheService:
         monkeypatch.setattr(repository, "delete_for", deleted)
 
         with pytest.raises(NotFoundError):
-            await service.set_style(a_ctx(), uuid.uuid4(), AvatarStyle(character="vila"))
+            await service.set_style(a_ctx(), uuid.uuid4(), AvatarStyle(character="vita"))
         with pytest.raises(NotFoundError):
             await service.reset(a_ctx(), uuid.uuid4())
         assert upsert.await_count == deleted.await_count == 0
@@ -280,7 +293,13 @@ class TestTheRoutes:
         assert put.status_code == 200
         assert put.json() == {
             "agent_id": str(agent_id),
-            "style": {"character": None, "shape": "cloud", "colour": 2, "expression": "sleepy"},
+            "style": {
+                "character": None,
+                "shape": "cloud",
+                "colour": 2,
+                "expression": "sleepy",
+                "eye_size": 1.0,
+            },
         }
         assert deleted.status_code == 204
         assert service.reset.await_args.args[1] == agent_id

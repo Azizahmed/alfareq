@@ -7,7 +7,7 @@ from pydantic import Field, model_validator
 
 from app.schemas.base import BaseSchema
 
-Character = Literal["nexo", "vila", "cloe", "malu", "yoshi", "fred"]
+Character = Literal["nexo", "vita", "cloe", "malu", "yoshi", "fred"]
 Shape = Literal[
     "circle",
     "pebble",
@@ -45,6 +45,10 @@ AvatarState = Literal["idle", "notification", "asleep", "failed"]
 """What the agent is doing, as the avatar draws it. `thinking` is the console's
 own to decide - it knows a turn is in flight - so the server never answers it."""
 
+EYE_SIZE_MIN = 0.7
+EYE_SIZE_MAX = 1.6
+"""The studio's eye-size slider, end to end; the console clamps to the same range."""
+
 LOOKUP_LIMIT = 200
 """How many agents one lookup may ask about: more than any page draws at once."""
 
@@ -66,6 +70,12 @@ class AvatarStyle(BaseSchema):
     )
     expression: Expression = Field(
         default="own", description="The face; `own` is the character's or the shape's default"
+    )
+    eye_size: float = Field(
+        default=1.0,
+        ge=EYE_SIZE_MIN,
+        le=EYE_SIZE_MAX,
+        description="The eyes' scale; a style stored before the slider existed reads as 1",
     )
 
     @model_validator(mode="after")

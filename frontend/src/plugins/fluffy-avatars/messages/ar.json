@@ -19,7 +19,7 @@
     "save": "حفظ الصورة الرمزية",
     "characters": {
       "nexo": "نيكسو",
-      "vila": "فيلا",
+      "vita": "فيتا",
       "cloe": "كلوي",
       "malu": "مالو",
       "yoshi": "يوشي",
@@ -65,6 +65,17 @@
       "notification": "تنبيه",
       "asleep": "نائم",
       "failed": "فشل"
-    }
+    },
+    "transition": "انتقال الجسم",
+    "transitionHint": "كيف تتحرك الصورة حين يتغير جسمها. معاينة فقط: لا تُحفظ.",
+    "transitions": {
+      "flip": "قلب",
+      "pop": "قفزة",
+      "warp": "التواء",
+      "dissolve": "تلاشٍ",
+      "cut": "قطع"
+    },
+    "eyeSize": "حجم العينين",
+    "eyeSizeValue": "{value, number, ::.00}"
   }
 }

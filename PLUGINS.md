@@ -109,9 +109,9 @@ is generated from `frontend/src/plugins/alfareq-brand/assets/alfareq-mark.svg`
 with `bun run src/plugins/alfareq-brand/gen-mark.ts`; `assets/` also has the
 wordmark as SVG and PNG for uploading elsewhere.
 
-**Avatars.** Six characters (Nexo, Vila, Cloe, Malu, Yoshi, Fred), eleven
-shapes, sixteen expressions plus each character's own, twelve colours and seven
-states. An agent with no stored style wears one derived from its handle. The
+**Avatars.** Six characters (Nexo, Vita, Cloe, Malu, Yoshi, Fred), eleven
+shapes, sixteen expressions plus each character's own, twelve colours, an eye
+size, and seven states and five body transitions to preview them in. An agent with no stored style wears one derived from its handle. The
 studio is the palette button beside the agent's portrait, for people who can
 edit the agent; everyone who can see the agent sees the style. A picture
 uploaded the platform's way still takes precedence.

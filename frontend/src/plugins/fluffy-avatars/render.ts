@@ -7,10 +7,13 @@
  * from the tables in `catalog.ts`, never from a request, so injecting it is
  * injecting our own drawing.
  *
- * The fur is two SVG filters on one path: fractal noise displacing the edge (the
- * fuzz) and a finer noise blended into the fill (the strands), over a radial
- * gradient that lights the body from the top left. Everything is drawn in a
- * 100x100 box and scales with the element.
+ * The fur is one SVG filter on one path, matched by eye against the plush in the
+ * reference video: fine noise pushes the edge out into hairs with a faint halo of
+ * loose fibres past it, and the surface takes ridged noise as tufts - combed by a
+ * finer noise so their edges read as strands - laid in by soft light over a
+ * radial gradient lit from the top left. The eyes are cream felt with a fine
+ * grain and a soft shadow into the fur. Everything is drawn in a 100x100 box and
+ * scales with the element.
  */
 import {
   CHARACTERS,
@@ -18,6 +21,7 @@ import {
   SHAPE_FACE,
   type AvatarState,
   type AvatarStyle,
+  type Character,
   type Face,
   type Shape,
 } from "./catalog";
@@ -45,9 +49,9 @@ function roundedPolygon(points: readonly Point[], r: number): string {
   return `${d}Z`;
 }
 
-function regular(sides: number, cx: number, cy: number, radius: number): Point[] {
+function regular(sides: number, cx: number, cy: number, radius: number, start = -90): Point[] {
   return Array.from({ length: sides }, (_, k) => {
-    const angle = (-90 + (360 / sides) * k) * (Math.PI / 180);
+    const angle = (start + (360 / sides) * k) * (Math.PI / 180);
     return [cx + radius * Math.cos(angle), cy + radius * Math.sin(angle)] as const;
   });
 }
@@ -78,7 +82,8 @@ const BODIES: Record<Shape, { d: string; eyeY: number; gap: number }> = {
     eyeY: 64,
     gap: 14,
   },
-  hexagon: { d: roundedPolygon(regular(6, 50, 52, 41), 11), eyeY: 52, gap: 16 },
+  // Flat on top and bottom, as the studio draws it; Vita turns it onto a corner.
+  hexagon: { d: roundedPolygon(regular(6, 50, 52, 42, 0), 11), eyeY: 52, gap: 16 },
   cloud: {
     d: "M27 82A15 15 0 0 1 15 56A17 17 0 0 1 33 35A19 19 0 0 1 68 31A17 17 0 0 1 86 54A15 15 0 0 1 74 82Z",
     eyeY: 58,
@@ -192,28 +197,41 @@ const FACES: Record<Face, readonly [Eye, Eye]> = {
   ],
 };
 
-const EYE_FILL = "#fbf7ee";
+/** Cream felt, lit from the top left like the fur around it. */
+const EYE_FILL = "#fbf6ec";
+const EYE_SHADE = "#dcd2c0";
 
 /** The tables above are drawn at this scale: big eyes are most of the character. */
 const EYE_SCALE = 1.4;
 
-function eyeMarkup(eye: Eye, cx: number, cy: number): string {
-  const k = EYE_SCALE;
+/** The studio's eye-size slider: how far a style may shrink or grow the eyes. */
+export const EYE_SIZE_MIN = 0.7;
+export const EYE_SIZE_MAX = 1.6;
+
+function eyeMarkup(eye: Eye, cx: number, cy: number, size: number): string {
+  const k = EYE_SCALE * size;
   if (eye.kind === "pill") {
     const x = cx + (eye.dx ?? 0) * k;
     const y = cy + (eye.dy ?? 0) * k;
     const [w, h] = [eye.w * k, eye.h * k];
-    return `<rect class="ff-eye" x="${x - w / 2}" y="${y - h / 2}" width="${w}" height="${h}" rx="${w / 2}" fill="${EYE_FILL}" transform="rotate(${eye.rot ?? 0} ${x} ${y})"/>`;
+    return `<rect class="ff-eye" x="${x - w / 2}" y="${y - h / 2}" width="${w}" height="${h}" rx="${w / 2}" stroke="none" transform="rotate(${eye.rot ?? 0} ${x} ${y})"/>`;
   }
   if (eye.kind === "line") {
     const y = cy + (eye.dy ?? 0) * k;
     const w = eye.w * k;
-    return `<rect class="ff-eye" x="${cx - w / 2}" y="${y - 3.2}" width="${w}" height="6.4" rx="3.2" fill="${EYE_FILL}" transform="rotate(${eye.rot ?? 0} ${cx} ${y})"/>`;
+    return `<rect class="ff-eye" x="${cx - w / 2}" y="${y - 3.2 * size}" width="${w}" height="${6.4 * size}" rx="${3.2 * size}" stroke="none" transform="rotate(${eye.rot ?? 0} ${cx} ${y})"/>`;
   }
   const y = cy + (eye.dy ?? 0) * k + (eye.up ? 3 : -3);
   const half = (eye.w * k) / 2;
   const sweep = eye.up ? 1 : 0;
-  return `<path class="ff-eye" d="M${cx - half} ${y}A${half} ${half * 0.85} 0 0 ${sweep} ${cx + half} ${y}" fill="none" stroke="${EYE_FILL}" stroke-width="6" stroke-linecap="round"/>`;
+  return `<path class="ff-eye" d="M${cx - half} ${y}A${half} ${half * 0.85} 0 0 ${sweep} ${cx + half} ${y}" fill="none" stroke-width="${6 * size}" stroke-linecap="round"/>`;
+}
+
+/** A component transfer applying one linear curve to R, G and B. */
+function grey(slope: number, intercept: number): string {
+  return ["R", "G", "B"]
+    .map((c) => `<feFunc${c} type="linear" slope="${slope}" intercept="${intercept}"/>`)
+    .join("");
 }
 
 /** Mix a `#rrggbb` toward white (amount > 0) or black (amount < 0). */
@@ -243,22 +261,29 @@ export interface ResolvedAvatar {
   shape: Shape;
   colour: string;
   face: Face;
+  /** Degrees the body is turned, for a character whose body sits on a corner. */
+  turn?: number;
+  /** The eyes' scale, 1 by default. */
+  eyeSize?: number;
 }
 
 /** A stored style as something drawable: the character's body, or the shape in its colour. */
 export function resolveStyle(style: AvatarStyle, fallbackColour: string): ResolvedAvatar {
   if (style.character) {
-    const character = CHARACTERS[style.character];
+    const character: Character = CHARACTERS[style.character];
     return {
       shape: character.shape,
       colour: character.colour,
       face: style.expression === "own" ? character.face : style.expression,
+      turn: character.turn,
+      eyeSize: style.eye_size,
     };
   }
   return {
     shape: style.shape ?? "circle",
     colour: (style.colour === null ? undefined : COLOURS[style.colour]) ?? fallbackColour,
     face: style.expression === "own" ? SHAPE_FACE : style.expression,
+    eyeSize: style.eye_size,
   };
 }
 
@@ -270,7 +295,7 @@ function stateFace(face: Face, state: AvatarState): Face {
   return face;
 }
 
-function eyes(face: Face, state: AvatarState, shape: Shape): string {
+function eyes(face: Face, state: AvatarState, shape: Shape, size: number): string {
   const { eyeY, gap } = BODIES[shape];
   let [left, right] = FACES[face];
   if (state === "wideEyes") {
@@ -282,7 +307,7 @@ function eyes(face: Face, state: AvatarState, shape: Shape): string {
     right = { kind: "arc", w: 12, up: false };
   }
   if (state === "wink") right = { kind: "line", w: 12, rot: -8 };
-  return eyeMarkup(left, 50 - gap, eyeY) + eyeMarkup(right, 50 + gap, eyeY);
+  return eyeMarkup(left, 50 - gap, eyeY, size) + eyeMarkup(right, 50 + gap, eyeY, size);
 }
 
 function overlay(state: AvatarState, colour: string): string {
@@ -316,28 +341,60 @@ export function fluffySvg(
   const base = state === "failed" ? desaturate(avatar.colour) : avatar.colour;
   const face = stateFace(avatar.face, state);
   const body = BODIES[avatar.shape];
+  const eyeSize = Math.min(EYE_SIZE_MAX, Math.max(EYE_SIZE_MIN, avatar.eyeSize ?? 1));
   const disc = framed ? `<circle cx="50" cy="50" r="50" fill="${shade(base, 0.82)}"/>` : "";
+  const turn = avatar.turn ? ` transform="rotate(${avatar.turn} 50 52)"` : "";
   return [
     `<svg class="ff" viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true" focusable="false" data-state="${state}">`,
     "<defs>",
-    `<radialGradient id="${id}-g" cx="36%" cy="28%" r="78%">`,
-    `<stop offset="0" stop-color="${shade(base, 0.38)}"/>`,
+    // Soft studio light from the top left: plush reads as evenly lit, not glossy.
+    `<radialGradient id="${id}-g" cx="38%" cy="30%" r="75%">`,
+    `<stop offset="0" stop-color="${shade(base, 0.24)}"/>`,
     `<stop offset="0.5" stop-color="${base}"/>`,
-    `<stop offset="1" stop-color="${shade(base, -0.38)}"/>`,
+    `<stop offset="1" stop-color="${shade(base, -0.45)}"/>`,
     "</radialGradient>",
-    `<filter id="${id}-f" x="-12%" y="-12%" width="124%" height="124%" color-interpolation-filters="sRGB">`,
-    '<feTurbulence type="fractalNoise" baseFrequency="0.62" numOctaves="2" seed="4" result="edge"/>',
-    '<feDisplacementMap in="SourceGraphic" in2="edge" scale="7" xChannelSelector="R" yChannelSelector="G" result="body"/>',
-    '<feTurbulence type="fractalNoise" baseFrequency="1.1 1.6" numOctaves="3" seed="9" result="grain"/>',
+    `<linearGradient id="${id}-e" x1="0" y1="0" x2="0.6" y2="1">`,
+    `<stop offset="0" stop-color="${EYE_FILL}"/><stop offset="1" stop-color="${EYE_SHADE}"/>`,
+    "</linearGradient>",
+    `<filter id="${id}-f" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">`,
+    // The rim: fine, high-frequency noise pushes the edge out into hairs, and a
+    // breath of blur keeps them hairs rather than pixels.
+    '<feTurbulence type="fractalNoise" baseFrequency="1.5" numOctaves="3" seed="3" result="hairs"/>',
+    '<feDisplacementMap in="SourceGraphic" in2="hairs" scale="8" xChannelSelector="R" yChannelSelector="G" result="rim"/>',
+    '<feGaussianBlur in="rim" stdDeviation="0.3" result="fur"/>',
+    // A translucent halo of loose fibres just past the rim.
+    '<feGaussianBlur in="rim" stdDeviation="1" result="halo"/>',
+    '<feComponentTransfer in="halo" result="haze"><feFuncA type="linear" slope="0.4"/></feComponentTransfer>',
+    // The surface: tufts (ridged noise, darker in the creases between them), then
+    // fine hairs over the tufts - both greys, laid into the colour by soft light.
+    '<feTurbulence type="turbulence" baseFrequency="0.42" numOctaves="2" seed="5" result="tufts"/>',
+    '<feColorMatrix in="tufts" type="saturate" values="0" result="tuftGrey"/>',
+    '<feTurbulence type="fractalNoise" baseFrequency="2.2 1.2" numOctaves="2" seed="9" result="grain"/>',
+    // Combed by the hair noise, the tufts' edges become strands rather than blobs.
+    '<feDisplacementMap in="tuftGrey" in2="grain" scale="5" xChannelSelector="R" yChannelSelector="G" result="combed"/>',
+    `<feComponentTransfer in="combed" result="tuftTone">${grey(2.6, -0.3)}</feComponentTransfer>`,
+    '<feBlend in="tuftTone" in2="fur" mode="soft-light" result="tufted"/>',
     '<feColorMatrix in="grain" type="saturate" values="0" result="grey"/>',
-    '<feComposite in="grey" in2="body" operator="in" result="strands"/>',
-    '<feBlend in="strands" in2="body" mode="overlay" result="furry"/>',
-    '<feComposite in="furry" in2="body" operator="in"/>',
+    `<feComponentTransfer in="grey" result="tone">${grey(1.1, -0.12)}</feComponentTransfer>`,
+    '<feBlend in="tone" in2="tufted" mode="soft-light" result="plush"/>',
+    '<feColorMatrix in="plush" type="saturate" values="1.25" result="rich"/>',
+    '<feComposite in="rich" in2="fur" operator="in" result="body"/>',
+    '<feMerge><feMergeNode in="haze"/><feMergeNode in="body"/></feMerge>',
+    "</filter>",
+    // Felt eyes: a fine grain in the cream, and a soft shadow into the fur beneath.
+    `<filter id="${id}-s" x="-30%" y="-30%" width="160%" height="170%" color-interpolation-filters="sRGB">`,
+    '<feTurbulence type="fractalNoise" baseFrequency="2.8" numOctaves="2" seed="7" result="felt"/>',
+    '<feColorMatrix in="felt" type="saturate" values="0" result="feltGrey"/>',
+    `<feComponentTransfer in="feltGrey" result="feltTone">${grey(0.6, 0.2)}</feComponentTransfer>`,
+    '<feBlend in="feltTone" in2="SourceGraphic" mode="soft-light" result="felted"/>',
+    '<feComposite in="felted" in2="SourceGraphic" operator="in" result="eyes"/>',
+    `<feDropShadow in="SourceAlpha" dx="0.4" dy="1.1" stdDeviation="0.9" flood-color="${shade(base, -0.6)}" flood-opacity="0.55" result="shadow"/>`,
+    '<feMerge><feMergeNode in="shadow"/><feMergeNode in="eyes"/></feMerge>',
     "</filter>",
     "</defs>",
     disc,
-    `<g class="ff-body"><path d="${body.d}" fill="url(#${id}-g)" filter="url(#${id}-f)"/>`,
-    `<g class="ff-eyes">${eyes(face, state, avatar.shape)}</g></g>`,
+    `<g class="ff-body"><path d="${body.d}" fill="url(#${id}-g)" filter="url(#${id}-f)"${turn}/>`,
+    `<g class="ff-eyes" filter="url(#${id}-s)" fill="url(#${id}-e)" stroke="url(#${id}-e)">${eyes(face, state, avatar.shape, eyeSize)}</g></g>`,
     overlay(state, base),
     "</svg>",
   ].join("");

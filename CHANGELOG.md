@@ -39,7 +39,8 @@ Two things are versioned separately from this file and worth knowing about:
 - The Alfareq brand (الفريق in Arabic), as a plugin: the built-in name and mark.
 - Furry character avatars for agents, as a plugin, with an avatar studio on the
   agent page: six characters, eleven shapes, sixteen expressions, twelve
-  colours, and states that follow the agent.
+  colours, an eye size, five body transitions to preview, and states that
+  follow the agent.
 
 ## [1.35.2] - 2026-11-02
 

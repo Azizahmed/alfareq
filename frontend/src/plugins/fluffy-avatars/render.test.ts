@@ -69,6 +69,33 @@ describe("fluffySvg", () => {
   });
 });
 
+describe("the eyes and the body", () => {
+  const malu = (eye_size?: number) =>
+    fluffySvg(
+      resolveStyle({ ...BASE, character: "malu", expression: "neutral", eye_size }, "#000000"),
+      {
+        id: "e",
+      },
+    );
+  const height = (markup: string) =>
+    Number(markup.match(/class="ff-eye"[^>]*height="([\d.]+)"/)?.[1]);
+
+  it("scales the eyes by the style's size, within the slider's range", () => {
+    expect(height(malu(1.5))).toBeCloseTo(height(malu()) * 1.5);
+    expect(height(malu(9))).toBeCloseTo(height(malu()) * 1.6);
+    expect(height(malu(0.1))).toBeCloseTo(height(malu()) * 0.7);
+  });
+
+  it("stands Vita's hexagon on a corner and leaves the bare shape flat", () => {
+    expect(
+      fluffySvg(resolveStyle({ ...BASE, character: "vita" }, "#000000"), { id: "v" }),
+    ).toContain('transform="rotate(30 50 52)"');
+    expect(
+      fluffySvg(resolveStyle({ ...BASE, shape: "hexagon", colour: 4 }, "#000000"), { id: "h" }),
+    ).not.toContain("rotate(30");
+  });
+});
+
 describe("shade", () => {
   it("mixes toward white and toward black", () => {
     expect(shade("#808080", 1)).toBe("#ffffff");

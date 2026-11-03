@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { Switch } from "@/components/ui";
 
-import type { AvatarState, AvatarStyle } from "./catalog";
+import type { AvatarState, AvatarStyle, Transition } from "./catalog";
 import { FluffyFace } from "./fluffy-face";
 
 /** The three sizes the console draws an agent at: a list row, a message, a card. */
@@ -14,8 +14,9 @@ interface StudioPreviewProps {
   style: AvatarStyle;
   state: AvatarState;
   name: string;
-  /** Changes with the body, so the preview replays its squash-and-settle. */
+  /** Changes with the body, so the preview replays its transition. */
   bodyKey: string;
+  transition: Transition;
   alwaysAnimate: boolean;
   onAlwaysAnimate: (value: boolean) => void;
 }
@@ -26,6 +27,7 @@ export function StudioPreview({
   state,
   name,
   bodyKey,
+  transition,
   alwaysAnimate,
   onAlwaysAnimate,
 }: StudioPreviewProps) {
@@ -34,7 +36,7 @@ export function StudioPreview({
     // Held in view while the pickers beside it scroll.
     <div className="flex flex-col gap-5 md:sticky md:top-0 md:self-start">
       <div className="bg-muted/40 flex aspect-square items-center justify-center rounded-2xl">
-        <div key={bodyKey} className="ff-pop size-40">
+        <div key={bodyKey} className={`ff-enter-${transition} size-40`}>
           <FluffyFace style={style} state={state} animate={alwaysAnimate} />
         </div>
       </div>

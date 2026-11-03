@@ -1,6 +1,6 @@
 /**
  * What an avatar can be: six characters, eleven shapes, sixteen expressions,
- * twelve colours and seven states. The backend validates the same lists
+ * twelve colours and an eye size, previewed in seven states and five body transitions. The backend validates the same lists
  * (`backend/plugins/fluffy_avatars/schemas.py`), and `catalog.test.ts` holds the
  * two equal.
  */
@@ -75,21 +75,23 @@ export interface Character {
   shape: Shape;
   colour: string;
   face: Face;
+  /** Degrees to turn the body: Vita stands its hexagon on a corner. */
+  turn?: number;
 }
 
 /** A character keeps its own colour; picking a shape instead is what tints. */
 export const CHARACTERS = {
   nexo: { shape: "squircle", colour: "#f25a24", face: "angry" },
-  vila: { shape: "hexagon", colour: "#36c26a", face: "neutral" },
-  cloe: { shape: "triangle", colour: "#ef3d8f", face: "attentive" },
-  malu: { shape: "circle", colour: "#7c3aed", face: "attentive" },
+  vita: { shape: "hexagon", colour: "#36c26a", face: "suspicious", turn: 30 },
+  cloe: { shape: "triangle", colour: "#ef3d8f", face: "proud" },
+  malu: { shape: "circle", colour: "#7c3aed", face: "confused" },
   yoshi: { shape: "capsule", colour: "#ef3b3b", face: "unimpressed" },
-  fred: { shape: "cloud", colour: "#f6c12b", face: "happy" },
+  fred: { shape: "hexagon", colour: "#f6c12b", face: "surprised" },
 } as const satisfies Record<string, Character>;
 export type CharacterId = keyof typeof CHARACTERS;
 export const CHARACTER_IDS = [
   "nexo",
-  "vila",
+  "vita",
   "cloe",
   "malu",
   "yoshi",
@@ -99,10 +101,16 @@ export const CHARACTER_IDS = [
 /** The face a bare shape wears when its style says `own`. */
 export const SHAPE_FACE: Face = "neutral";
 
+/** How the studio's portrait moves when its body changes. A preview, like the state: not stored. */
+export const TRANSITIONS = ["flip", "pop", "warp", "dissolve", "cut"] as const;
+export type Transition = (typeof TRANSITIONS)[number];
+
 /** One agent's stored choices, as the plugin's API answers them. */
 export interface AvatarStyle {
   character: CharacterId | null;
   shape: Shape | null;
   colour: number | null;
   expression: Expression;
+  /** The eyes' scale; a style saved before the slider existed draws at 1. */
+  eye_size?: number;
 }

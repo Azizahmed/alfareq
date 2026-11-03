@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { ReactNode } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -66,6 +66,30 @@ describe("the avatar studio", () => {
       }),
     );
     await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+  });
+
+  it("saves the eye size, while the body transition stays a preview", async () => {
+    vi.mocked(apiClient.put).mockResolvedValue({ style: {} });
+    render(<AvatarStudioButton {...PROPS} canEdit />, { wrapper });
+
+    await userEvent.click(screen.getByRole("button", { name: "Design avatar" }));
+    await userEvent.click(await screen.findByRole("button", { name: "Vita" }));
+    await userEvent.click(screen.getByRole("button", { name: "Warp" }));
+    expect(screen.getByRole("button", { name: "Warp" })).toHaveAttribute("aria-pressed", "true");
+    expect(document.querySelector(".ff-enter-warp")).not.toBeNull();
+    fireEvent.change(screen.getByLabelText("Eye size"), { target: { value: "1.3" } });
+    expect(screen.getByText("1.30")).toBeInTheDocument();
+    await userEvent.click(screen.getByRole("button", { name: "Save avatar" }));
+
+    await waitFor(() =>
+      expect(apiClient.put).toHaveBeenCalledWith("/plugins/fluffy-avatars/agents/a1", {
+        character: "vita",
+        shape: null,
+        colour: null,
+        expression: "own",
+        eye_size: 1.3,
+      }),
+    );
   });
 
   it("offers the default face back only once a style is stored", async () => {

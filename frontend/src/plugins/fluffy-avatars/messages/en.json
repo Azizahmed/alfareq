@@ -19,7 +19,7 @@
     "save": "Save avatar",
     "characters": {
       "nexo": "Nexo",
-      "vila": "Vila",
+      "vita": "Vita",
       "cloe": "Cloe",
       "malu": "Malu",
       "yoshi": "Yoshi",
@@ -65,6 +65,17 @@
       "notification": "Notification",
       "asleep": "Asleep",
       "failed": "Failed"
-    }
+    },
+    "transition": "Body transition",
+    "transitionHint": "How the portrait moves when its body changes. A preview: it is not saved.",
+    "transitions": {
+      "flip": "Flip",
+      "pop": "Pop",
+      "warp": "Warp",
+      "dissolve": "Dissolve",
+      "cut": "Cut"
+    },
+    "eyeSize": "Eye size",
+    "eyeSizeValue": "{value, number, ::.00}"
   }
 }
