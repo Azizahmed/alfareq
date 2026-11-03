@@ -11,7 +11,7 @@
  * laid out in coordinates - takes `rtl-exempt: <reason>` on its line or the one
  * above, the same bargain `i18n-exempt` takes.
  */
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -57,6 +57,52 @@ export function offences(text: string): Offence[] {
   return found;
 }
 
+/** The exact logical utility for each physical one, as `--fix` writes it. */
+const FIXES: readonly [RegExp, string | ((match: string) => string)][] = [
+  [new RegExp(`${B}(-?)ml-${VAL}`, "g"), "$1ms-"],
+  [new RegExp(`${B}(-?)mr-${VAL}`, "g"), "$1me-"],
+  [new RegExp(`${B}pl-${VAL}`, "g"), "ps-"],
+  [new RegExp(`${B}pr-${VAL}`, "g"), "pe-"],
+  [new RegExp(`${B}(-?)left-(?!1/2\\b)${VAL}`, "g"), "$1start-"],
+  [new RegExp(`${B}(-?)right-(?!1/2\\b)${VAL}`, "g"), "$1end-"],
+  [new RegExp(`${B}text-left\\b(?!-)`, "g"), "text-start"],
+  [new RegExp(`${B}text-right\\b(?!-)`, "g"), "text-end"],
+  [new RegExp(`${B}float-left\\b`, "g"), "float-start"],
+  [new RegExp(`${B}float-right\\b`, "g"), "float-end"],
+  [
+    new RegExp(`${B}rounded-(?:tl|tr|bl|br|l|r)(?=\\b|-)`, "g"),
+    (match) =>
+      match.replace(
+        /(tl|tr|bl|br|l|r)$/,
+        (side) => ({ tl: "ss", tr: "se", bl: "es", br: "ee", l: "s", r: "e" })[side] ?? side,
+      ),
+  ],
+  [new RegExp(`${B}border-l(?=\\b|-)`, "g"), "border-s"],
+  [new RegExp(`${B}border-r(?=\\b|-)`, "g"), "border-e"],
+];
+
+/**
+ * `text` with every physical utility the check refuses written logically,
+ * skipping the lines an `rtl-exempt:` covers - so a merge from upstream that
+ * brings new physical classes is one command, and a deliberate exception (a
+ * dialog centred with `left-[50%]`) is never "fixed" into a bug.
+ */
+export function fix(text: string): string {
+  const lines = text.split("\n");
+  return lines
+    .map((line, index) => {
+      if (EXEMPT.test(line) || EXEMPT.test(lines[index - 1] ?? "")) return line;
+      return FIXES.reduce(
+        (current, [pattern, replacement]) =>
+          typeof replacement === "string"
+            ? current.replace(pattern, replacement)
+            : current.replace(pattern, replacement),
+        line,
+      );
+    })
+    .join("\n");
+}
+
 function sourceFiles(dir: string): string[] {
   return readdirSync(dir).flatMap((name) => {
     const path = join(dir, name);
@@ -66,6 +112,13 @@ function sourceFiles(dir: string): string[] {
 }
 
 function main(): number {
+  if (process.argv.includes("--fix")) {
+    for (const path of sourceFiles(SRC)) {
+      const before = readFileSync(path, "utf8");
+      const after = fix(before);
+      if (after !== before) writeFileSync(path, after);
+    }
+  }
   const report = sourceFiles(SRC).flatMap((path) =>
     offences(readFileSync(path, "utf8")).map(
       ({ line, found, instead }) =>
@@ -76,7 +129,9 @@ function main(): number {
     console.log("No physical direction classes in frontend/src.");
     return 0;
   }
-  console.log(`${report.length} physical direction class(es); write the logical one instead:`);
+  console.log(
+    `${report.length} physical direction class(es); write the logical one instead (or run with --fix):`,
+  );
   for (const line of report) console.log(`  ${line}`);
   return 1;
 }

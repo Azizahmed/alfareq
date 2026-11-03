@@ -79,7 +79,7 @@ export default function AdminUsersPage() {
       {
         key: "email",
         header: t("user"),
-        className: "ps-5",
+        className: "w-full max-w-0 ps-3 sm:ps-5",
         sortable: true,
         cell: (u) => (
           <div className="flex min-w-0 items-center gap-3">
@@ -149,6 +149,7 @@ export default function AdminUsersPage() {
       },
       {
         key: "actions",
+        hideBelow: "sm",
         header: "",
         align: "right",
         className: "w-0 pe-5",
