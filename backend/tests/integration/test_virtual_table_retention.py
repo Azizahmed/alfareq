@@ -562,7 +562,10 @@ async def test_an_organizations_active_member_count_reaches_the_sweep_budget(db,
     )
     await db.flush()
 
-    single_result, busy_result = await _sweep(db)
+    # By organization, not by position: the sweep walks organizations in no
+    # guaranteed order, and reading the list positionally failed in CI.
+    by_org = {result.organization_id: result for result in await _sweep(db)}
+    single_result, busy_result = by_org[single_member_org.id], by_org[busy_org.id]
 
     # One member: budget is 1 * 2 = 2 batches of 2 rows = 4, one of the five rows survives -
     # unchanged from before this fix, because this organization always had one member.
