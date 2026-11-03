@@ -19,6 +19,7 @@ from sqlalchemy.ext.asyncio import async_sessionmaker
 
 from app.core.config import settings
 from app.core.exceptions import AppException
+from app.core.plugins import default_app_name
 from app.db.models.announcement import Announcement
 from app.db.models.notification import Notification, NotificationEventType
 from app.db.models.notification_delivery import DeliveryStatus, NotificationDelivery
@@ -721,8 +722,9 @@ class TestRenderDispatch:
         assert context["reason"] == "cap"
         # Resolved at send time regardless of what render_context carried -
         # a queued send must reflect the deployment's current name, not a
-        # snapshot from whenever the alert was written.
-        assert context["app_name"] == "agenticos"
+        # snapshot from whenever the alert was written. The built-in name is
+        # `PROJECT_NAME`, unless a brand plugin names the deployment.
+        assert context["app_name"] == default_app_name()
 
     async def test_a_renamed_deployment_overrides_the_frozen_app_name(self, db):
         """A send queued before an admin renamed the deployment must not
