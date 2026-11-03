@@ -683,7 +683,10 @@ jobs:
         run: make ci-test-db-configure
 
       - name: Apply migrations
-        run: uv run --directory backend alembic upgrade head
+        # The platform's chain, then every installed plugin's - what each
+        # docker-compose file runs. `alembic upgrade head` alone left a plugin's
+        # tables missing, and the pages that read them failing the seed.
+        run: uv run --directory backend agenticos db upgrade
 
       - name: Seed an organization, a model and a published agent
         # Idempotent, and the fixture the whole suite asserts against: an owner
