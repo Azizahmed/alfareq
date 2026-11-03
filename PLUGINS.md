@@ -67,8 +67,13 @@ hand in the migration.
 |---|---|---|
 | `index.ts` | manifests | `catalogs` (a whole locale), `messages` (the plugin's own strings, under every locale), `rewriteMessages`, `brand` |
 | `locales.ts` | `LocaleMeta` rows | A new language: label, flag, `dir`, Open Graph and date tags. `<html dir>` follows it |
+| `locales.ts` | `HIDDEN_LOCALES` | Core languages the console stops offering and routing: gone from the switchers and the tour, and `/pl/...` answers 404. Their catalogs stay and keep updating with upstream; an account that saved one is left in English. English cannot be hidden |
 | `slots.ts` | components | Fills a named place (`src/lib/plugin-slots.ts`) |
 | `styles.css` | stylesheets | Imported after the console's own: fonts, a language's typography |
+
+The backend still accepts a hidden language: `ConsoleLocale` reads the
+installed plugins while the platform's own tests run, and they set Polish and
+German. Hiding is the console's, which is where a person chooses.
 
 The slots are `agent-face` (the face an agent wears without an uploaded
 picture) and `agent-avatar-tools` (controls beside the portrait on the agent

@@ -9,9 +9,11 @@
  * A locale is one row of facts rather than a code plus four parallel tables
  * (label, flag, Open Graph tag, date tag) that each had to learn about a new
  * locale on its own. The rows a plugin adds come from `src/plugins/locales.ts`,
- * imported relatively because `next.config.ts` does not resolve the `@/` alias.
+ * imported relatively because `next.config.ts` does not resolve the `@/` alias,
+ * and so do the codes a plugin hides: those keep their row, so a catalog and a
+ * `Locale` still type, but are neither offered nor routed.
  */
-import { PLUGIN_LOCALES } from "../plugins/locales";
+import { HIDDEN_LOCALES, PLUGIN_LOCALES } from "../plugins/locales";
 
 export interface LocaleMeta {
   /** The URL prefix and the `lang` attribute. */
@@ -37,9 +39,12 @@ const LOCALE_META = [...CORE_LOCALES, ...PLUGIN_LOCALES] as const;
 
 export type Locale = (typeof LOCALE_META)[number]["code"];
 
-export const locales: readonly Locale[] = LOCALE_META.map((meta) => meta.code);
-
 export const defaultLocale: Locale = "en";
+
+/** The locales the console offers and routes. English, the fallback under every catalog, cannot be hidden. */
+export const locales: readonly Locale[] = LOCALE_META.map((meta) => meta.code).filter(
+  (code) => code === defaultLocale || !HIDDEN_LOCALES.includes(code),
+);
 
 /** The facts about one locale. Total over `Locale`, so it never answers undefined. */
 export function localeMeta(locale: Locale): LocaleMeta {

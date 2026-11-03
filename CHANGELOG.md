@@ -37,6 +37,9 @@ Two things are versioned separately from this file and worth knowing about:
   every console message translated. The page mirrors as soon as the language
   is switched, without a reload.
 - The Alfareq brand (الفريق in Arabic), as a plugin: the built-in name and mark.
+  The console offers English and Arabic: the brand hides Polish and German
+  (`HIDDEN_LOCALES`), so `/pl/...` and `/de/...` are no longer served and an
+  account that had chosen one of them reads the console in English.
 - Furry character avatars for agents, as a plugin, with an avatar studio on the
   agent page: six characters, eleven shapes, sixteen expressions, twelve
   colours, an eye size, five body transitions to preview, and states that

@@ -2,7 +2,7 @@ import { expect, test } from "./fixtures";
 
 import type { Page } from "@playwright/test";
 
-import { AUTH_STATE, OWNER_EMAIL, OWNER_PASSWORD } from "./helpers";
+import { AUTH_STATE, OWNER_EMAIL, OWNER_PASSWORD, PREFIXED_LOCALE } from "./helpers";
 
 /**
  * The way out, at the foot of the sidebar.
@@ -37,9 +37,9 @@ test.describe("Authentication", () => {
 
   test("the root keeps the locale it was reached on", async ({ page }) => {
     await page.context().clearCookies();
-    await page.goto("/pl");
+    await page.goto(`/${PREFIXED_LOCALE}`);
 
-    await expect(page).toHaveURL(/\/pl\/login$/);
+    await expect(page).toHaveURL(new RegExp(`/${PREFIXED_LOCALE}/login$`));
   });
 
   test("a deep link survives the login round trip, fragment included", async ({ page }) => {
