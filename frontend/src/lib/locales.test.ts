@@ -11,14 +11,20 @@ vi.mock("@/plugins/locales", () => ({
       dateLocale: "ar-u-nu-latn",
     },
   ],
+  // English is listed to show it cannot be hidden: every catalog sits on it.
+  HIDDEN_LOCALES: ["de", "en"],
 }));
 
 const { defaultLocale, localeMeta, locales } = await import("./locales");
 
 describe("locales", () => {
-  it("are the core three, then each plugin's, with English the default", () => {
-    expect(locales).toEqual(["en", "pl", "de", "ar"]);
+  it("are the core three, then each plugin's, less the hidden ones, with English the default", () => {
+    expect(locales).toEqual(["en", "pl", "ar"]);
     expect(defaultLocale).toBe("en");
+  });
+
+  it("keep a hidden locale's facts, for a catalog or a stored code that names it", () => {
+    expect(localeMeta("de").label).toBe("Deutsch");
   });
 
   it("know which way each one is written", () => {

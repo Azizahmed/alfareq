@@ -1,4 +1,5 @@
 import { expect, test } from "./fixtures";
+import { PREFIXED_LOCALE } from "./helpers";
 
 test.describe("locale routing over HTTP", () => {
   for (const path of ["/login", "/dashboard", "/chat"]) {
@@ -26,13 +27,13 @@ test.describe("locale routing over HTTP", () => {
     expect(response.headers()["content-type"]).toContain("text/x-component");
   });
 
-  test("restores Polish on an unprefixed navigation", async ({ request }) => {
+  test("restores a picked locale on an unprefixed navigation", async ({ request }) => {
     const response = await request.get("/chat", {
-      headers: { Cookie: "NEXT_LOCALE=pl" },
+      headers: { Cookie: `NEXT_LOCALE=${PREFIXED_LOCALE}` },
       maxRedirects: 3,
     });
 
     expect(response.status()).toBe(200);
-    expect(new URL(response.url()).pathname).toBe("/pl/chat");
+    expect(new URL(response.url()).pathname).toBe(`/${PREFIXED_LOCALE}/chat`);
   });
 });

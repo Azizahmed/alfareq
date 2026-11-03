@@ -8,6 +8,7 @@ import {
 } from "@playwright/test";
 
 import en from "../messages/en.json";
+import { defaultLocale, locales } from "../src/lib/locales";
 import { rewriteWithPlugins, type Messages } from "../src/lib/plugins";
 
 /**
@@ -258,6 +259,17 @@ export function servedCopy(path: string): string {
   if (typeof value !== "string") throw new Error(`No English message at ${path}`);
   return value;
 }
+
+/**
+ * A locale the console serves under its own prefix: the first one after English.
+ * Polish where the platform ships as it is; a deployment's plugins can hide
+ * Polish and add another, so a spec about prefixed routing names this one.
+ */
+export const PREFIXED_LOCALE = (() => {
+  const locale = locales.find((code) => code !== defaultLocale);
+  if (!locale) throw new Error("The console serves no locale besides English");
+  return locale;
+})();
 
 export function pageHeading(page: Page, name?: string | RegExp): Locator {
   return page.getByRole("heading", { level: 1, name });

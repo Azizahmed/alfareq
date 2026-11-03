@@ -6,7 +6,7 @@ import { afterEach, vi } from "vitest";
 // locale, no brand, no slot filled. A plugin's tests import its modules directly,
 // and `src/plugins/**/*.test.ts` take the real lists back with `vi.importActual`.
 vi.mock("@/plugins", () => ({ PLUGINS: [] }));
-vi.mock("@/plugins/locales", () => ({ PLUGIN_LOCALES: [] }));
+vi.mock("@/plugins/locales", () => ({ PLUGIN_LOCALES: [], HIDDEN_LOCALES: [] }));
 vi.mock("@/plugins/slots", () => ({ PLUGIN_SLOTS: [] }));
 
 /**
