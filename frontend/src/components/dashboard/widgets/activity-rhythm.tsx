@@ -50,7 +50,7 @@ export function ActivityRhythmWidget({
       ) : (
         // One grid holds the labels, the cells and the axis, so a day name sits
         // on the row it names and an hour tick under the column it names -
-        // rather than three boxes lined up by a `pl-8` that was right at one
+        // rather than three boxes lined up by a `ps-8` that was right at one
         // card width. `min-h-40` is the floor a week of rectangles needs to
         // still be readable; above it the cells take whatever the card has.
         <div

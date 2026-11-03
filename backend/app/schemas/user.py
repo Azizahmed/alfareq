@@ -1,16 +1,42 @@
 """User schemas."""
 
 from datetime import datetime
-from typing import Literal
+from typing import Annotated
 from uuid import UUID
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
-from pydantic import EmailStr, Field, field_validator, model_validator
+from pydantic import (
+    AfterValidator,
+    EmailStr,
+    Field,
+    WithJsonSchema,
+    field_validator,
+    model_validator,
+)
 
+from app.core.plugins import console_locales
 from app.schemas.base import BaseSchema, TimestampSchema
 
-ConsoleLocale = Literal["en", "pl", "de"]
-"""The languages the console is translated into - `frontend/src/lib/locales.ts`."""
+
+def _console_locale(value: str) -> str:
+    if value not in console_locales():
+        raise ValueError(f"Choose one of: {', '.join(console_locales())}")
+    return value
+
+
+ConsoleLocale = Annotated[
+    str,
+    AfterValidator(_console_locale),
+    WithJsonSchema({"type": "string", "enum": list(console_locales())}),
+]
+"""The languages the console is translated into - `frontend/src/lib/locales.ts`.
+
+The core three and whatever a plugin adds (`app/core/plugins.py`), so it is a
+validated string rather than a `Literal`: a `Literal` is fixed when this module
+is written, and the Arabic plugin's `ar` is decided when the deployment starts.
+The schema still lists the values, so a client and a model reading the tool's
+parameters see the choice rather than a free-form string.
+"""
 
 
 _CLOCK = r"^([01]\d|2[0-3]):[0-5]\d$"

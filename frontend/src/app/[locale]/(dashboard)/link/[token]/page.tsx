@@ -18,6 +18,7 @@ const PLATFORM_LABEL: Record<string, string> = {
   telegram: "Telegram",
   slack: "Slack",
   mattermost: "Mattermost",
+  discord: "Discord",
 };
 
 /**
@@ -155,7 +156,7 @@ export default function ChannelLinkPage({ params }: { params: Promise<{ token: s
             <Button asChild variant="outline" className="w-full">
               <Link href={ROUTES.SETTINGS_PROFILE}>
                 {t("seeConnectedAccounts")}
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ms-2 h-4 w-4" />
               </Link>
             </Button>
           </CardContent>

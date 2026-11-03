@@ -153,7 +153,7 @@ function SharedProjectFiles({ project }: { project: Project }) {
   const writable =
     project.can_use && !["queued", "running"].includes(project.workspace_move?.status ?? "");
   const toolbar = writable ? (
-    <span className="mr-auto flex flex-wrap items-center gap-1.5" data-tour="project-files-add">
+    <span className="me-auto flex flex-wrap items-center gap-1.5" data-tour="project-files-add">
       <Button size="sm" onClick={() => filesInput.current?.click()} disabled={upload.isPending}>
         <Upload className="h-4 w-4" />
         {t("uploadFiles")}
@@ -248,7 +248,7 @@ function SharedProjectFiles({ project }: { project: Project }) {
         </p>
       </div>
       {toolbar && (
-        <div className="flex w-full max-w-sm justify-center sm:w-auto sm:max-w-none [&>span]:mr-0">
+        <div className="flex w-full max-w-sm justify-center sm:w-auto sm:max-w-none [&>span]:me-0">
           {toolbar}
         </div>
       )}

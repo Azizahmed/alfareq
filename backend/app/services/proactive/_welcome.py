@@ -20,6 +20,7 @@ import httpx
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
+from app.core.plugins import with_plugin_strings
 from app.db.models.channel_bot import ChannelBot
 from app.repositories import (
     channel_bot_repo,
@@ -35,20 +36,23 @@ from app.services.channels.exceptions import ChannelNotConfigured
 
 logger = logging.getLogger(__name__)
 
-GREETING = {
-    "en": (
-        "Welcome to {organization}! I'm {bot}, the AI assistant here. Ask me anything right "
-        "in this chat - or open the console: {url}"
-    ),
-    "pl": (
-        "Witaj w {organization}! Jestem {bot}, asystent AI w tej organizacji. Zapytaj mnie o "
-        "cokolwiek tutaj na czacie - albo otwórz konsolę: {url}"
-    ),
-    "de": (
-        "Willkommen bei {organization}! Ich bin {bot}, der KI-Assistent hier. Fragen Sie mich "
-        "alles direkt in diesem Chat - die Konsole finden Sie hier: {url}"
-    ),
-}
+GREETING = with_plugin_strings(
+    "proactive.welcome.greeting",
+    {
+        "en": (
+            "Welcome to {organization}! I'm {bot}, the AI assistant here. Ask me anything right "
+            "in this chat - or open the console: {url}"
+        ),
+        "pl": (
+            "Witaj w {organization}! Jestem {bot}, asystent AI w tej organizacji. Zapytaj mnie o "
+            "cokolwiek tutaj na czacie - albo otwórz konsolę: {url}"
+        ),
+        "de": (
+            "Willkommen bei {organization}! Ich bin {bot}, der KI-Assistent hier. Fragen Sie mich "
+            "alles direkt in diesem Chat - die Konsole finden Sie hier: {url}"
+        ),
+    },
+)
 
 PLATFORMS = ("slack", "mattermost", "teams")
 

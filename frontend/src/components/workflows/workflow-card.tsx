@@ -191,7 +191,7 @@ export function WorkflowCard({
               </span>
             )}
           </span>
-          <div className="ml-auto flex items-center gap-1">
+          <div className="ms-auto flex items-center gap-1">
             <CardAction
               href={ROUTES.WORKFLOW_RUNS(workflow.id)}
               label={t("runsFor", { name: workflow.name })}

@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { OG_LOCALE, SITE, pageMetadata, siteOrigin } from "./seo";
+import { ogLocale, SITE, pageMetadata, siteOrigin } from "./seo";
 
 /**
  * The metadata every public page is built from.
@@ -98,8 +98,8 @@ describe("pageMetadata", () => {
   it("says which locale a page is in, and which others exist", () => {
     const meta = pageMetadata({ title: "Regulamin", description: "…", locale: "pl" });
 
-    expect(meta.openGraph?.locale).toBe(OG_LOCALE.pl);
-    expect(meta.openGraph?.alternateLocale).toEqual([OG_LOCALE.en, OG_LOCALE.de]);
+    expect(meta.openGraph?.locale).toBe(ogLocale("pl"));
+    expect(meta.openGraph?.alternateLocale).toEqual([ogLocale("en"), ogLocale("de")]);
   });
 
   it("falls back to the dynamic OG image, and takes an override", () => {

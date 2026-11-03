@@ -107,7 +107,7 @@ export function ModelCombobox({
           aria-describedby={describedBy}
           disabled={disabled}
           className={cn(
-            "border-input bg-background flex h-9 w-full items-center gap-2 rounded-md border px-3 text-left text-sm",
+            "border-input bg-background flex h-9 w-full items-center gap-2 rounded-md border px-3 text-start text-sm",
             "disabled:cursor-not-allowed disabled:opacity-60",
             "aria-invalid:border-destructive",
           )}

@@ -1,0 +1,81 @@
+{
+  "fluffyAvatars": {
+    "open": "تصميم الصورة الرمزية",
+    "title": "استوديو الصورة الرمزية",
+    "description": "اختر شخصية، أو شكلًا بلون، والتعبير الذي يظهر على وجهها. يراها كل أعضاء المؤسسة أينما ظهر هذا الـ agent.",
+    "character": "الشخصية",
+    "shape": "الشكل",
+    "expression": "التعبير",
+    "colour": "اللون",
+    "colourHint": "تحتفظ الشخصية بلونها الخاص؛ اختر شكلًا لتلوينه.",
+    "state": "الحالة",
+    "stateHint": "معاينة فقط: تعرض لوحة التحكم الحالة الفعلية للـ agent.",
+    "inTheApp": "داخل التطبيق - مرّر المؤشر فوق صف",
+    "alwaysAnimate": "تحريك دائم",
+    "pixels": "{size} بكسل",
+    "swatch": "اللون {index}",
+    "reset": "العودة إلى الوجه الافتراضي",
+    "cancel": "إلغاء",
+    "save": "حفظ الصورة الرمزية",
+    "characters": {
+      "nexo": "نيكسو",
+      "vita": "فيتا",
+      "cloe": "كلوي",
+      "malu": "مالو",
+      "yoshi": "يوشي",
+      "fred": "فريد"
+    },
+    "shapes": {
+      "circle": "دائرة",
+      "pebble": "حصاة",
+      "squircle": "مربع دائري",
+      "capsule": "كبسولة",
+      "triangle": "مثلث",
+      "hexagon": "سداسي",
+      "cloud": "سحابة",
+      "droplet": "قطرة",
+      "square": "مربع",
+      "diamond": "معيّن",
+      "pentagon": "خماسي"
+    },
+    "expressions": {
+      "own": "الوجه الأصلي",
+      "neutral": "محايد",
+      "attentive": "منتبه",
+      "surprised": "مندهش",
+      "excited": "متحمس",
+      "happy": "سعيد",
+      "laughing": "يضحك",
+      "angry": "غاضب",
+      "sad": "حزين",
+      "scared": "خائف",
+      "suspicious": "مرتاب",
+      "confused": "محتار",
+      "curious": "فضولي",
+      "proud": "فخور",
+      "shy": "خجول",
+      "unimpressed": "غير مبالٍ",
+      "sleepy": "نعسان"
+    },
+    "states": {
+      "idle": "خامل",
+      "wink": "غمزة",
+      "wideEyes": "عينان واسعتان",
+      "thinking": "يفكّر",
+      "notification": "تنبيه",
+      "asleep": "نائم",
+      "failed": "فشل"
+    },
+    "transition": "انتقال الجسم",
+    "transitionHint": "كيف تتحرك الصورة حين يتغير جسمها. معاينة فقط: لا تُحفظ.",
+    "transitions": {
+      "flip": "قلب",
+      "pop": "قفزة",
+      "warp": "التواء",
+      "dissolve": "تلاشٍ",
+      "cut": "قطع"
+    },
+    "eyeSize": "حجم العينين",
+    "eyeSizeValue": "{value, number, ::.00}"
+  }
+}

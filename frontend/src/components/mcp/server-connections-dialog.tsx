@@ -102,7 +102,7 @@ export function ServerConnectionsDialog({
             <>
               {/* Left-aligned on a phone too: a centred title beside a logo reads
                   as two things that missed each other. */}
-              <DialogHeader className="min-w-0 text-left sm:text-left">
+              <DialogHeader className="min-w-0 text-start sm:text-start">
                 <div className="flex items-center gap-3">
                   {/* The service's own mark, on the white tile its card draws it on:
                       the logos are made for a light ground. */}
@@ -380,7 +380,7 @@ function Account({
         <span
           aria-hidden
           className={cn(
-            "ring-background absolute -right-0.5 -bottom-0.5 h-2.5 w-2.5 rounded-full ring-2",
+            "ring-background absolute -end-0.5 -bottom-0.5 h-2.5 w-2.5 rounded-full ring-2",
             state === "connected"
               ? "bg-success"
               : state === "error"

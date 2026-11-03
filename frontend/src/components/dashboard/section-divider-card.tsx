@@ -118,11 +118,11 @@ export function SectionDividerCard({
         onChange={(event) => onLabelChange(event.target.value)}
         aria-label={t("edit.sectionLabel")}
         placeholder={t("edit.sectionPlaceholder")}
-        className="h-8 max-w-64 min-w-32 flex-1 border-transparent bg-transparent text-sm font-semibold shadow-none focus-visible:bg-transparent"
+        className="h-8 max-w-64 min-w-32 flex-1 border-transparent bg-transparent text-base font-semibold shadow-none focus-visible:bg-transparent md:text-sm"
         maxLength={60}
       />
 
-      <div className="ml-auto flex items-center gap-1" data-no-drag>
+      <div className="ms-auto flex items-center gap-1" data-no-drag>
         <button
           type="button"
           aria-label={t("edit.accents.neutral")}
@@ -181,7 +181,7 @@ export function SectionDividerCard({
         <Button
           variant="outline"
           size="icon"
-          className="bg-card/90 text-muted-foreground hover:text-destructive ml-1 size-7"
+          className="bg-card/90 text-muted-foreground hover:text-destructive ms-1 size-7"
           aria-label={t("edit.removeSection")}
           onClick={onRemove}
         >

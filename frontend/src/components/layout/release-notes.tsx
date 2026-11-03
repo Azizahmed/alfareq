@@ -64,7 +64,7 @@ function AccountReleaseNotes({ userId }: { userId: string }) {
           <DialogTitle>{t("whatsNewTitle", { version })}</DialogTitle>
           <DialogDescription>{t("whatsNewDescription")}</DialogDescription>
         </DialogHeader>
-        <div className="min-h-0 flex-1 overflow-y-auto py-2 pr-2">
+        <div className="min-h-0 flex-1 overflow-y-auto py-2 pe-2">
           <MarkdownContent content={release.body} inertImages bareCode />
         </div>
         <DialogFooter>
@@ -72,7 +72,7 @@ function AccountReleaseNotes({ userId }: { userId: string }) {
             href={release.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground inline-flex min-h-9 items-center text-sm underline underline-offset-4 sm:mr-auto"
+            className="text-muted-foreground inline-flex min-h-9 items-center text-sm underline underline-offset-4 sm:me-auto"
           >
             {t("viewRelease")}
           </a>

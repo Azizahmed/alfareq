@@ -100,7 +100,7 @@ export function DataSourceMenu({
                     <span className="truncate font-mono text-xs">
                       {pathText(candidate, candidates) ?? t("dataSourceWhole")}
                     </span>
-                    <span className="text-muted-foreground ml-auto shrink-0 text-xs">
+                    <span className="text-muted-foreground ms-auto shrink-0 text-xs">
                       {t(`dataType.${plainType(candidate.typeToken)}`)}
                     </span>
                   </DropdownMenuItem>

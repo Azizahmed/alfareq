@@ -73,7 +73,7 @@ export function PendingMessages({
         type="button"
         aria-expanded={open}
         onClick={() => setOpen((was) => !was)}
-        className="hover:bg-foreground/[0.03] flex w-full items-center gap-2.5 px-3 py-2 text-left transition-colors"
+        className="hover:bg-foreground/[0.03] flex w-full items-center gap-2.5 px-3 py-2 text-start transition-colors"
       >
         <ListOrdered className="text-muted-foreground h-3.5 w-3.5 shrink-0" />
         <span className="text-foreground/85 min-w-0 flex-1 truncate text-[13px]">
@@ -136,7 +136,7 @@ export function PendingMessages({
                   }}
                   onDragEnd={endDrag}
                   className={cn(
-                    "group hover:bg-foreground/[0.04] flex items-center gap-1.5 rounded-lg py-1 pr-1 pl-0.5 transition-colors",
+                    "group hover:bg-foreground/[0.04] flex items-center gap-1.5 rounded-lg py-1 ps-0.5 pe-1 transition-colors",
                     dragging === message.id && "opacity-40",
                     over === index && dragging !== message.id && "bg-foreground/[0.06]",
                   )}

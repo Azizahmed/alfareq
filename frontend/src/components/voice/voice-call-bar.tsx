@@ -193,7 +193,7 @@ export function VoiceCallBar({
           aria-label={tView("bar")}
           tabIndex={-1}
           className={cn(
-            "bg-foreground text-background flex items-center gap-2 overflow-hidden rounded-full py-1.5 pr-1.5 pl-1.5 shadow-lg outline-none",
+            "bg-foreground text-background flex items-center gap-2 overflow-hidden rounded-full py-1.5 ps-1.5 pe-1.5 shadow-lg outline-none",
             call.approval !== null && "ring-warning ring-2",
           )}
         >
@@ -233,7 +233,7 @@ export function VoiceCallBar({
             aria-label={tView("bar")}
             tabIndex={-1}
             className={cn(
-              "panel relative rounded-[18px] py-2.5 pr-2 pl-3 transition-colors outline-none @xl:pr-2.5 @xl:pl-4",
+              "panel relative rounded-[18px] py-2.5 ps-3 pe-2 transition-colors outline-none @xl:ps-4 @xl:pe-2.5",
               hint !== null && "rounded-b-none",
               call.approval !== null && "border-warning/55",
             )}

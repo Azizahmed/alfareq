@@ -1,6 +1,13 @@
 import { getRequestConfig } from "next-intl/server";
 
-import { locales, defaultLocale, type Locale } from "./lib/locales";
+import { locales, defaultLocale, localeMeta, type Locale } from "./lib/locales";
+import {
+  mergeMessages,
+  pluginCatalog,
+  pluginMessages,
+  rewriteWithPlugins,
+  type Messages,
+} from "./lib/plugins";
 
 import en from "../messages/en.json";
 
@@ -8,8 +15,6 @@ import en from "../messages/en.json";
 // same list and cannot import this file, which drags in next-intl and the whole
 // English catalog. Fifty modules import these from `@/i18n`, so the name stays.
 export { locales, defaultLocale, type Locale };
-
-type Messages = { [key: string]: string | Messages };
 
 /**
  * One locale's catalog, with English underneath it.
@@ -25,20 +30,12 @@ type Messages = { [key: string]: string | Messages };
  * hundred English sentences to keep in step - and `frontend/scripts/check-i18n.ts`
  * only has to hold one catalog complete.
  */
-function withEnglishUnderneath(messages: Messages): Messages {
-  const merge = (base: Messages, over: Messages): Messages => {
-    const merged: Messages = { ...base };
-    for (const [key, value] of Object.entries(over)) {
-      const beneath = merged[key];
-      if (typeof value === "object" && typeof beneath === "object") {
-        merged[key] = merge(beneath, value);
-      } else {
-        merged[key] = value;
-      }
-    }
-    return merged;
-  };
-  return merge(en as Messages, messages);
+async function withEnglishUnderneath(messages: Messages, locale: string): Promise<Messages> {
+  // A plugin's own strings ride along at both levels: its English under every
+  // locale like the console's, and its translation over the locale's catalog.
+  const english = mergeMessages(en as Messages, await pluginMessages("en"));
+  if (locale === "en") return english;
+  return mergeMessages(english, mergeMessages(messages, await pluginMessages(locale)));
 }
 
 export default getRequestConfig(async ({ requestLocale }) => {
@@ -48,24 +45,22 @@ export default getRequestConfig(async ({ requestLocale }) => {
     locale = defaultLocale;
   }
 
-  const messages = (await import(`../messages/${locale}.json`)).default as Messages;
-  return { locale, messages: withEnglishUnderneath(messages) };
+  // A plugin's locale ships its catalog in the plugin's folder; the core three
+  // live in `messages/`. Either way English goes underneath, and then every
+  // plugin's rewrite runs over the finished catalog.
+  const messages =
+    (await pluginCatalog(locale)) ??
+    ((await import(`../messages/${locale}.json`)).default as Messages);
+  return {
+    locale,
+    messages: rewriteWithPlugins(await withEnglishUnderneath(messages, locale), locale),
+  };
 });
 
 export function getLocaleLabel(locale: Locale): string {
-  const labels: Record<Locale, string> = {
-    en: "English",
-    pl: "Polski",
-    de: "Deutsch",
-  };
-  return labels[locale];
+  return localeMeta(locale).label;
 }
 
 export function getLocaleFlag(locale: Locale): string {
-  const flags: Record<Locale, string> = {
-    en: "🇬🇧",
-    pl: "🇵🇱",
-    de: "🇩🇪",
-  };
-  return flags[locale];
+  return localeMeta(locale).flag;
 }

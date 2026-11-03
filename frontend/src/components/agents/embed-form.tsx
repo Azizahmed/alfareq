@@ -161,7 +161,7 @@ export function EmbedForm({
             onChange={(event) => setOrigins(event.target.value)}
             placeholder={"https://acme.com\nhttps://www.acme.com"}
             rows={3}
-            className="font-mono text-sm"
+            className="font-mono text-base md:text-sm"
           />
           <p className="text-muted-foreground text-xs">
             {kind === "socket" ? t("originsSocketHint") : t("onePerLineDifferent")}
@@ -181,7 +181,7 @@ export function EmbedForm({
                 <SelectItem
                   value="public"
                   trailing={
-                    <span className="text-muted-foreground ml-auto max-w-64 pl-3 text-xs">
+                    <span className="text-muted-foreground ms-auto max-w-64 ps-3 text-xs">
                       {t("noSignMarketingPage")}
                     </span>
                   }
@@ -191,7 +191,7 @@ export function EmbedForm({
                 <SelectItem
                   value="jwt"
                   trailing={
-                    <span className="text-muted-foreground ml-auto max-w-64 pl-3 text-xs">
+                    <span className="text-muted-foreground ms-auto max-w-64 ps-3 text-xs">
                       {t("yourBackendSignsToken")}
                     </span>
                   }

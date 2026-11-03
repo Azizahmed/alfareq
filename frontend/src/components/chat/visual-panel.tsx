@@ -302,7 +302,7 @@ function useVisualImages(
  * the rest of the time.
  */
 const ZOOM_CORNER =
-  "border-border bg-background/90 absolute right-2 bottom-2 rounded-full border shadow-sm backdrop-blur opacity-0 transition-opacity group-hover/visual:opacity-100 focus-within:opacity-100";
+  "border-border bg-background/90 absolute end-2 bottom-2 rounded-full border shadow-sm backdrop-blur opacity-0 transition-opacity group-hover/visual:opacity-100 focus-within:opacity-100";
 
 /** How many of a drawing's errors the panel lists; the first few say what broke. */
 const SHOWN_ERRORS = 3;
@@ -549,7 +549,7 @@ function VisualPanel({ call }: { call: ToolCall }) {
         )}
         {/* Shown on hover and focus where there is a pointer to hover with;
             always on a touch screen, where there is not. */}
-        <div className="ml-auto flex shrink-0 items-center transition-opacity focus-within:opacity-100 md:opacity-0 md:group-hover/visual:opacity-100">
+        <div className="ms-auto flex shrink-0 items-center transition-opacity focus-within:opacity-100 md:opacity-0 md:group-hover/visual:opacity-100">
           {actions}
         </div>
       </div>
@@ -600,7 +600,7 @@ function VisualPanel({ call }: { call: ToolCall }) {
       )}
       <Dialog open={full} onOpenChange={setFull}>
         <DialogContent className={DIALOG_WINDOW} aria-describedby={undefined}>
-          <DialogHeader className="gap-0 pr-10">
+          <DialogHeader className="gap-0 pe-10">
             <DialogTitle className="truncate text-base">{shown.title}</DialogTitle>
           </DialogHeader>
           <div className="group/visual relative min-h-0 flex-1 overflow-hidden rounded-xl">
@@ -730,7 +730,7 @@ function VisualCard({
         <Shapes className="text-muted-foreground size-4 shrink-0" aria-hidden />
         <span className="text-foreground min-w-0 truncate text-sm font-medium">{title}</span>
         {kind !== "svg" && (
-          <span className="text-muted-foreground ml-auto shrink-0 text-xs">
+          <span className="text-muted-foreground ms-auto shrink-0 text-xs">
             {t("openInConsole")}
           </span>
         )}

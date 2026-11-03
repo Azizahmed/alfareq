@@ -386,7 +386,7 @@ export function SchemaEditorDialog({
                       problemFor(index, "options") !== undefined
                     }
                   >
-                    <div className="space-y-1.5 pl-1">
+                    <div className="space-y-1.5 ps-1">
                       {row.options.map((option, optionIndex) => (
                         <div key={option.id ?? optionIndex} className="flex items-center gap-2">
                           <Input

@@ -65,7 +65,7 @@ export function FileTextView({
   switch (kind) {
     case "markdown":
       return bare ? (
-        <div className="px-6 py-5">
+        <div className="px-4 py-4 sm:px-6 sm:py-5">
           <MarkdownContent content={text} />
         </div>
       ) : (
@@ -262,15 +262,15 @@ function PlainText({
   if (wrap) {
     return (
       <div className={frame}>
-        <CopyButton text={text} className="absolute top-1 right-1 z-10" />
-        <div className="h-full overflow-auto py-3 pr-10 font-mono text-xs leading-[1.6]">
+        <CopyButton text={text} className="absolute end-1 top-1 z-10" />
+        <div className="h-full overflow-auto py-3 pe-10 font-mono text-xs leading-[1.6]">
           {numbered ? (
             <div className="grid grid-cols-[auto_minmax(0,1fr)]">
               {lines.map((line, index) => (
                 <div key={index} className="contents">
                   <span
                     aria-hidden
-                    className="text-muted-foreground px-3 text-right tabular-nums select-none"
+                    className="text-muted-foreground px-3 text-end tabular-nums select-none"
                   >
                     {index + 1}
                   </span>
@@ -290,7 +290,7 @@ function PlainText({
 
   return (
     <div className={frame}>
-      <CopyButton text={text} className="absolute top-2 right-2 z-10" />
+      <CopyButton text={text} className="absolute end-2 top-2 z-10" />
 
       <div className="h-full overflow-auto">
         <div className="flex min-h-full min-w-max font-mono text-[12.5px] leading-[1.7]">
@@ -299,12 +299,12 @@ function PlainText({
             // than showing through the numbers.
             <pre
               aria-hidden
-              className="text-muted-foreground/70 bg-muted/60 border-border/60 sticky left-0 min-w-12 shrink-0 border-r py-4 pr-3 pl-4 text-right tabular-nums select-none"
+              className="text-muted-foreground/70 bg-muted/60 border-border/60 sticky start-0 min-w-12 shrink-0 border-e py-4 ps-4 pe-3 text-end tabular-nums select-none"
             >
               {lines.map((_, index) => index + 1).join("\n")}
             </pre>
           )}
-          <pre className="hljs text-foreground/90 flex-1 py-4 pr-12 pl-4 whitespace-pre">
+          <pre className="hljs text-foreground/90 flex-1 py-4 ps-4 pe-12 whitespace-pre">
             {coloured ?? text}
           </pre>
         </div>
@@ -349,7 +349,7 @@ function DelimitedTable({ text }: { text: string }) {
               {header.map((cell, index) => (
                 <th
                   key={index}
-                  className="border-border border-b px-2.5 py-1.5 text-left font-mono text-xs font-semibold tracking-wider uppercase"
+                  className="border-border border-b px-2.5 py-1.5 text-start font-mono text-xs font-semibold tracking-wider uppercase"
                 >
                   {cell}
                 </th>

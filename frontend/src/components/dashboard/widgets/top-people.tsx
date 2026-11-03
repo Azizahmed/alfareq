@@ -63,10 +63,10 @@ export function TopPeopleWidget({ title, hint, period, seeAll, options }: Dashbo
             <table className="w-full text-sm">
               <thead>
                 <tr className="text-muted-foreground border-foreground/8 border-b text-xs">
-                  <th className="py-1.5 text-left font-medium">{t("columns.person")}</th>
-                  <th className="py-1.5 text-right font-medium">{t("columns.runs")}</th>
-                  <th className="py-1.5 text-right font-medium">{t("columns.cost")}</th>
-                  <th className="py-1.5 text-right font-medium">{t("columns.lastRun")}</th>
+                  <th className="py-1.5 text-start font-medium">{t("columns.person")}</th>
+                  <th className="py-1.5 text-end font-medium">{t("columns.runs")}</th>
+                  <th className="py-1.5 text-end font-medium">{t("columns.cost")}</th>
+                  <th className="py-1.5 text-end font-medium">{t("columns.lastRun")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -76,7 +76,7 @@ export function TopPeopleWidget({ title, hint, period, seeAll, options }: Dashbo
                         a face, the name, and the address under it when there is
                         one. A bare name cannot tell two colleagues apart, which
                         is the one thing a card of names owes its reader. */}
-                    <td className="max-w-0 py-1.5 pr-2">
+                    <td className="max-w-0 py-1.5 pe-2">
                       {/* The runs behind the count beside it. Every row on this
                           page can reach its own slice now that Activity's
                           facets travel in the URL (#768). */}
@@ -91,13 +91,11 @@ export function TopPeopleWidget({ title, hint, period, seeAll, options }: Dashbo
                         <MemberIdentity member={person} />
                       </Link>
                     </td>
-                    <td className="text-foreground py-1.5 text-right tabular-nums">
-                      {person.runs}
-                    </td>
-                    <td className="text-foreground py-1.5 text-right tabular-nums">
+                    <td className="text-foreground py-1.5 text-end tabular-nums">{person.runs}</td>
+                    <td className="text-foreground py-1.5 text-end tabular-nums">
                       {formatUsd(Number(person.cost_usd))}
                     </td>
-                    <td className="text-muted-foreground py-1.5 text-right">
+                    <td className="text-muted-foreground py-1.5 text-end">
                       {timeAgo(person.last_run_at, tTime, locale)}
                     </td>
                   </tr>

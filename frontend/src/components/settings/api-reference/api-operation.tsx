@@ -41,7 +41,7 @@ export function ApiOperation({
           {operation.summary}
         </span>
       </summary>
-      <div className="space-y-4 px-2 pt-1 pb-5 md:pl-[5.25rem]">
+      <div className="space-y-4 px-2 pt-1 pb-5 md:ps-[5.25rem]">
         <p className="text-sm font-medium md:hidden">{operation.summary}</p>
         {operation.description && (
           <div className="text-muted-foreground text-sm">

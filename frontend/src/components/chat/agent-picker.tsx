@@ -121,7 +121,7 @@ export function AgentPicker() {
           // `min-w-0` so the name inside can actually give way: the trigger is
           // in a row that runs out of room at 390px, and `max-w-[160px]` on the
           // name is a cap rather than permission to shrink.
-          className="bg-foreground/[0.06] hover:bg-foreground/[0.1] text-foreground touch:min-h-11 inline-flex min-w-0 touch-manipulation items-center gap-1.5 rounded-lg py-1 pr-2 pl-1 transition-colors"
+          className="bg-foreground/[0.06] hover:bg-foreground/[0.1] text-foreground touch:min-h-11 inline-flex min-w-0 touch-manipulation items-center gap-1.5 rounded-lg py-1 ps-1 pe-2 transition-colors"
         >
           {selectedWorkflow ? (
             <WorkflowMark />
@@ -257,7 +257,7 @@ function AgentOption({
   return (
     <div
       className={cn(
-        "group flex items-center rounded-lg pr-1 transition-colors",
+        "group flex items-center rounded-lg pe-1 transition-colors",
         selected ? "bg-accent" : "hover:bg-accent/60",
       )}
     >
@@ -266,7 +266,7 @@ function AgentOption({
         role="radio"
         aria-checked={selected}
         onClick={onSelect}
-        className="focus-visible:ring-ring flex min-w-0 flex-1 items-center gap-2.5 rounded-lg px-2 py-1.5 text-left outline-none focus-visible:ring-2 focus-visible:ring-inset"
+        className="focus-visible:ring-ring flex min-w-0 flex-1 items-center gap-2.5 rounded-lg px-2 py-1.5 text-start outline-none focus-visible:ring-2 focus-visible:ring-inset"
       >
         <AgentAvatar
           agentId={agent.id}
@@ -341,7 +341,7 @@ function WorkflowOption({
       aria-checked={selected}
       onClick={onSelect}
       className={cn(
-        "flex w-full min-w-0 items-center gap-2.5 rounded-lg px-2 py-1.5 text-left transition-colors",
+        "flex w-full min-w-0 items-center gap-2.5 rounded-lg px-2 py-1.5 text-start transition-colors",
         selected ? "bg-accent" : "hover:bg-accent/60",
       )}
     >

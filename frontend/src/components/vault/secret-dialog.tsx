@@ -304,7 +304,7 @@ export function AddSecretDialog({
                     aria-pressed={category === group.id}
                     title={t(`${group.words}Hint`)}
                     className={cn(
-                      "flex flex-col items-start gap-2 rounded-xl border p-3 text-left text-sm font-medium transition-colors",
+                      "flex flex-col items-start gap-2 rounded-xl border p-3 text-start text-sm font-medium transition-colors",
                       category === group.id
                         ? "border-foreground bg-accent text-foreground"
                         : "border-input text-muted-foreground hover:text-foreground hover:bg-accent/60",
@@ -576,7 +576,7 @@ export function RotateSecretDialog({
         </DialogHeader>
 
         {secret && info && (
-          <div className={cn("max-h-[60vh] space-y-4 overflow-y-auto pl-1", DIALOG_SCROLL_GUTTER)}>
+          <div className={cn("max-h-[60vh] space-y-4 overflow-y-auto ps-1", DIALOG_SCROLL_GUTTER)}>
             <p className="text-muted-foreground text-xs">
               {t("nameCurrentlyEnds", { name: info.name })}{" "}
               <span className="font-mono">····{secret.hint}</span>

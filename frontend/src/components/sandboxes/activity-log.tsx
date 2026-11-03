@@ -104,7 +104,7 @@ export function ActivityLog({ sessionId }: ActivityLogProps) {
       {
         key: "when",
         header: t("sessions.when"),
-        className: "pl-5",
+        className: "ps-5",
         cell: (row) => (
           <span className="text-muted-foreground font-mono text-xs whitespace-nowrap">
             {t("sessions.ago", { time: ago(row.at) })}
@@ -161,7 +161,7 @@ export function ActivityLog({ sessionId }: ActivityLogProps) {
         key: "duration",
         header: t("sessions.duration"),
         align: "right",
-        className: "pr-5",
+        className: "pe-5",
         cell: (row) => (
           <span className="text-muted-foreground text-xs">{`${row.duration_ms}ms`}</span>
         ),

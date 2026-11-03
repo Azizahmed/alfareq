@@ -31,7 +31,7 @@ export function SlashCommandPalette({
 
   if (commands.length === 0) {
     return (
-      <div className="border-foreground/10 bg-popover absolute bottom-full left-0 mb-2 w-full max-w-sm rounded-xl border p-3 shadow-lg">
+      <div className="border-foreground/10 bg-popover absolute start-0 bottom-full mb-2 w-full max-w-sm rounded-xl border p-3 shadow-lg">
         <p className="text-muted-foreground text-xs">
           {t.rich("noMatching", {
             key: (chunks) => <kbd className="font-mono">{chunks}</kbd>,
@@ -42,12 +42,15 @@ export function SlashCommandPalette({
   }
 
   return (
-    <div className="border-foreground/10 bg-popover absolute bottom-full left-0 mb-2 w-full max-w-md overflow-hidden rounded-xl border shadow-lg">
+    <div className="border-foreground/10 bg-popover absolute start-0 bottom-full mb-2 w-full max-w-md overflow-hidden rounded-xl border shadow-lg">
       <div className="border-foreground/8 text-muted-foreground flex items-center justify-between border-b px-3 py-1.5 font-mono text-xs tracking-wider uppercase">
         <span>{t("commands")}</span>
         <span className="hidden sm:inline">{t("hint")}</span>
       </div>
-      <ul ref={listRef} className="max-h-64 overflow-y-auto py-1">
+      <ul
+        ref={listRef}
+        className="max-h-[min(16rem,calc(var(--app-height,100dvh)*0.4))] overflow-y-auto py-1"
+      >
         {commands.map((cmd, i) => (
           <li
             key={cmd.name}

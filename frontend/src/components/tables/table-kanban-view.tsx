@@ -114,7 +114,7 @@ function KanbanCard({
           <button
             type="button"
             onClick={onOpen}
-            className="min-w-0 flex-1 text-left leading-5 font-medium break-words"
+            className="min-w-0 flex-1 text-start leading-5 font-medium break-words"
           >
             {title || record.id}
           </button>

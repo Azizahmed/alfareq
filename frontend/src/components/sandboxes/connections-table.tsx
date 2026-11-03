@@ -62,7 +62,7 @@ export function ConnectionsTable({
         // The room the other columns leave, which they take first: they keep to
         // one line (the address used to wrap while the name sat in a sea of
         // space), and the name truncates only when the row truly runs out.
-        className: "w-full max-w-0 pl-5",
+        className: "w-full max-w-0 ps-5",
         header: t("name"),
         sortable: true,
         sortValue: (connection) => connection.name,
@@ -139,7 +139,7 @@ export function ConnectionsTable({
       },
       {
         key: "actions",
-        className: "pr-5",
+        className: "pe-5",
         header: t("actions"),
         align: "right",
         cell: (connection) => (

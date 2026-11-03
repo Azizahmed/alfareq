@@ -83,7 +83,7 @@ export function DashboardPresetMenu({
           type="button"
           disabled={busy}
           onClick={() => run(onUseDefault, true)}
-          className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm"
+          className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-start text-sm"
         >
           <span
             className={cn("flex size-4 items-center justify-center", isCustom && "opacity-0")}
@@ -100,7 +100,7 @@ export function DashboardPresetMenu({
             onNewBlank();
             setOpen(false);
           }}
-          className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm"
+          className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-start text-sm"
         >
           <span className="flex size-4 items-center justify-center" aria-hidden>
             <Plus className="size-3.5" />
@@ -118,7 +118,7 @@ export function DashboardPresetMenu({
                   type="button"
                   disabled={busy}
                   onClick={() => run(() => onApply(preset), true)}
-                  className="hover:bg-accent flex min-w-0 flex-1 items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm"
+                  className="hover:bg-accent flex min-w-0 flex-1 items-center gap-2 rounded-md px-2 py-1.5 text-start text-sm"
                 >
                   <span className="size-4 shrink-0" aria-hidden />
                   <span className="truncate">{preset.name}</span>

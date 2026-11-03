@@ -95,7 +95,7 @@ export function ForgotPasswordForm() {
             required
             disabled={isLoading}
             autoComplete="email"
-            className="h-11 rounded-lg text-[15px]"
+            className="h-11 rounded-lg text-base md:text-[15px]"
           />
         </div>
 
@@ -114,7 +114,7 @@ export function ForgotPasswordForm() {
           ) : (
             <>
               {t("sendResetLink")}
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ms-2 h-4 w-4" />
             </>
           )}
         </Button>

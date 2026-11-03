@@ -109,7 +109,7 @@ export function AddToGroupDialog({
         </DialogHeader>
         <div className="relative">
           <Search
-            className="text-muted-foreground pointer-events-none absolute top-1/2 left-2.5 h-4 w-4 -translate-y-1/2"
+            className="text-muted-foreground pointer-events-none absolute start-2.5 top-1/2 h-4 w-4 -translate-y-1/2"
             aria-hidden
           />
           <Input
@@ -117,7 +117,7 @@ export function AddToGroupDialog({
             onChange={(event) => setQuery(event.target.value)}
             placeholder={t("addToGroupSearch")}
             aria-label={t("addToGroupSearch")}
-            className="pl-8"
+            className="ps-8"
           />
         </div>
         <div className={cn(DIALOG_BODY, "space-y-5")}>
@@ -146,7 +146,7 @@ export function AddToGroupDialog({
                     <button
                       type="button"
                       onClick={() => toggleAll(items, !allPicked)}
-                      className="text-muted-foreground hover:text-foreground ml-auto text-xs underline-offset-4 hover:underline"
+                      className="text-muted-foreground hover:text-foreground ms-auto text-xs underline-offset-4 hover:underline"
                     >
                       {allPicked ? t("addToGroupNone") : t("addToGroupAll")}
                     </button>
@@ -162,7 +162,7 @@ export function AddToGroupDialog({
                           aria-checked={on}
                           onClick={() => toggle(item)}
                           className={cn(
-                            "flex min-w-0 items-center gap-2.5 rounded-lg border px-3 py-2 text-left text-sm transition-colors",
+                            "flex min-w-0 items-center gap-2.5 rounded-lg border px-3 py-2 text-start text-sm transition-colors",
                             on
                               ? "border-foreground/40 bg-accent"
                               : "border-border hover:bg-accent/50",

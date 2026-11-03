@@ -101,13 +101,13 @@ export function McpToolChecklist({
     <div className="space-y-4">
       {tools.length > SEARCHABLE && (
         <div className="relative">
-          <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-2.5 h-3.5 w-3.5 -translate-y-1/2" />
+          <Search className="text-muted-foreground pointer-events-none absolute start-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2" />
           <Input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder={t("toolsSearch")}
             aria-label={t("toolsSearch")}
-            className="h-8 rounded-lg pl-8 md:text-[13px]"
+            className="h-8 rounded-lg ps-8 md:text-[13px]"
           />
         </div>
       )}
@@ -191,7 +191,7 @@ function ToolGroup({
         >
           <SelectTrigger
             size="sm"
-            className="ml-auto w-auto gap-1.5"
+            className="ms-auto w-auto gap-1.5"
             aria-label={t("approvalForGroup", { group: label })}
           >
             <SelectValue />

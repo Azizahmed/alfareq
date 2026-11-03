@@ -56,6 +56,9 @@ class Settings(BaseSettings):
     )
 
     PROJECT_NAME: str = "agenticos"
+    # Plugin ids under `backend/plugins/` not to load, as a JSON list:
+    # `PLUGINS_DISABLED='["fluffy-avatars"]'`. Every other plugin there loads.
+    PLUGINS_DISABLED: list[str] = []
     API_V1_STR: str = "/api/v1"
     UPDATE_AGENT_SOCKET: Path | None = None
     UPDATE_PIPELINE_URL: str | None = None

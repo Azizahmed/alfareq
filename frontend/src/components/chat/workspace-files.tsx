@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { AlertTriangle, FolderOpen, Info, X } from "lucide-react";
 
-import { FileCard, FileViewer } from "@/components/files";
+import { FileCard, FileViewer, FileIcon, PathTree } from "@/components/files";
 import { useConversationWorkspace } from "@/hooks";
 import { useWorkOnStore } from "@/stores/work-on-store";
 import { useShell } from "@/hooks/use-shell";
@@ -16,6 +16,8 @@ import { useFilePreviewStore } from "@/stores";
 import { getFileUrl } from "@/lib/file-api";
 import { cn, formatBytes } from "@/lib/utils";
 import { isRenderSafeImage } from "@/lib/file-kinds";
+import { treeOf, type WorkspaceTreeNode } from "@/lib/workspace-tree";
+import { suffixOf, resolveFileKind } from "@/lib/file-kinds";
 import { workspaceFileAccess, type FileSource } from "@/lib/workspace-files";
 import type { ConversationFile } from "@/lib/conversation-workspace-api";
 import type { ChatMessageFile } from "@/types";
@@ -163,7 +165,7 @@ export function WorkspaceFiles({
           >
             <FolderOpen className="size-4" aria-hidden />
             {count > 0 && (
-              <span className="bg-foreground text-background absolute -top-0.5 -right-0.5 flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px]">
+              <span className="bg-foreground text-background absolute -end-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px]">
                 {count}
               </span>
             )}
@@ -181,10 +183,10 @@ export function WorkspaceFiles({
             transition={{ duration: reduceMotion ? 0 : 0.2, ease: "easeOut" }}
             className={cn(
               "h-full shrink-0 overflow-hidden",
-              overlay && "bg-background shadow-card absolute inset-y-0 right-0 z-20 max-w-[85%]",
+              overlay && "bg-background shadow-card absolute inset-y-0 end-0 z-20 max-w-[85%]",
             )}
           >
-            <div className="border-border flex h-full min-h-0 w-72 flex-col border-l">
+            <div className="border-border flex h-full min-h-0 w-72 flex-col border-s">
               <div className="shrink-0 space-y-1 p-4 pb-3">
                 <div className="flex items-center justify-between gap-2">
                   <p className="flex items-center gap-2 text-sm font-medium">
@@ -245,22 +247,12 @@ export function WorkspaceFiles({
                 )}
 
                 {/* Full-width chips leave room for names in this narrow panel. */}
-                {files.length > 0 && (
-                  <ul className="rise-in space-y-2">
-                    {files.map((file) => (
-                      <li key={file.path}>
-                        <FileCard
-                          compact
-                          name={file.path.split("/").filter(Boolean).pop() ?? file.path}
-                          size={file.size}
-                          preview={file.preview}
-                          imageUrl={file.thumbnail}
-                          onOpen={() => setReading(file)}
-                          className="w-full"
-                        />
-                      </li>
-                    ))}
-                  </ul>
+                {(workspace?.items.length ?? 0) > 0 && (
+                  <WorkspaceTree
+                    files={workspace?.items ?? []}
+                    selectedPath={reading?.path ?? null}
+                    onOpen={setReading}
+                  />
                 )}
 
                 {/* What people attached and the agent has no copy of. Its own group, under its
@@ -317,5 +309,65 @@ export function WorkspaceFiles({
         )}
       </AnimatePresence>
     </>
+  );
+}
+
+function WorkspaceTree({
+  files,
+  selectedPath,
+  onOpen,
+}: {
+  files: ConversationFile[];
+  selectedPath: string | null;
+  onOpen: (file: ConversationFile) => void;
+}) {
+  const t = useTranslations("chat.files");
+  const tFiles = useTranslations("files");
+  const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
+  const nodes = treeOf(files);
+  const open = new Set<string>();
+  const visit = (items: WorkspaceTreeNode<ConversationFile>[]) => {
+    for (const node of items)
+      if (node.isDir) {
+        if (!collapsed.has(node.path)) open.add(node.path);
+        visit(node.children);
+      }
+  };
+  visit(nodes);
+  return (
+    <PathTree
+      nodes={nodes}
+      label={t("title")}
+      selectedPath={selectedPath}
+      openPaths={open}
+      onToggleFolder={(path) =>
+        setCollapsed((previous) => {
+          const next = new Set(previous);
+          if (next.has(path)) next.delete(path);
+          else next.add(path);
+          return next;
+        })
+      }
+      onSelect={(node) => {
+        if (node.file) onOpen(node.file);
+      }}
+      renderFile={(node) => (
+        <>
+          <FileIcon name={node.label} className="text-muted-foreground size-4 shrink-0" />
+          <span className="min-w-0">
+            <span className="block truncate text-xs font-medium">{node.label}</span>
+            <span className="text-muted-foreground block text-[11px]">
+              {[
+                suffixOf(node.label).toUpperCase() ||
+                  tFiles(`kinds.${resolveFileKind(node.label)}`),
+                node.file?.size == null ? null : formatBytes(node.file.size),
+              ]
+                .filter(Boolean)
+                .join(" · ")}
+            </span>
+          </span>
+        </>
+      )}
+    />
   );
 }

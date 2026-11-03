@@ -125,7 +125,8 @@ jobs:
         working-directory: backend
 
       - name: Apply migrations
-        run: uv run alembic upgrade head
+        # The platform's chain, then every installed plugin's, as a deployment does.
+        run: uv run agenticos db upgrade
         working-directory: backend
 
       - name: Run the whole suite

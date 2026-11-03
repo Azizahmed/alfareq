@@ -211,7 +211,7 @@ export function WatchDialog({
                     disabled={saving}
                     onClick={() => pick(key)}
                     className={cn(
-                      "rounded-xl border px-3 py-2 text-left text-sm transition-colors",
+                      "rounded-xl border px-3 py-2 text-start text-sm transition-colors",
                       draft.presetKey === key
                         ? "border-foreground bg-muted"
                         : "border-input hover:border-foreground/40",

@@ -56,7 +56,7 @@ export function SidebarUser({ compact = false }: { compact?: boolean }) {
           aria-label={compact ? user.full_name || user.email : undefined}
           title={compact ? user.email : undefined}
           className={cn(
-            "hover:bg-accent/60 focus-visible:ring-ring flex items-center rounded-md text-left transition-colors outline-none focus-visible:ring-1",
+            "hover:bg-accent/60 focus-visible:ring-ring flex items-center rounded-md text-start transition-colors outline-none focus-visible:ring-1",
             compact ? "h-9 w-9 justify-center" : "w-full gap-2.5 px-2 py-1.5",
           )}
         >
@@ -117,7 +117,7 @@ export function SidebarUser({ compact = false }: { compact?: boolean }) {
             until you click both. */}
         <DropdownMenuItem asChild>
           <Link href={ROUTES.SETTINGS_PROFILE}>
-            <UserCircle className="mr-2 h-4 w-4" />
+            <UserCircle className="me-2 h-4 w-4" />
             {t("profileAndSettings")}
           </Link>
         </DropdownMenuItem>
@@ -125,7 +125,7 @@ export function SidebarUser({ compact = false }: { compact?: boolean }) {
         <ServerSwitch />
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={logout} className="text-destructive focus:text-destructive">
-          <LogOut className="mr-2 h-4 w-4" />
+          <LogOut className="me-2 h-4 w-4" />
           {t("logout")}
         </DropdownMenuItem>
       </DropdownMenuContent>

@@ -198,7 +198,7 @@ function Table({
         <thead>
           <tr className="border-b">
             {cols.map((col) => (
-              <th key={col} className="px-3 py-2 first:pl-0">
+              <th key={col} className="px-3 py-2 first:ps-0">
                 <Bar className="h-3 w-16" />
               </th>
             ))}
@@ -208,7 +208,7 @@ function Table({
           {keys(rows).map((row) => (
             <tr key={row} className="border-b last:border-0">
               {cols.map((col) => (
-                <td key={col} className="px-3 py-3 first:pl-0">
+                <td key={col} className="px-3 py-3 first:ps-0">
                   <Bar
                     className={cn("bg-foreground/8 h-3", CELL_WIDTHS[col % CELL_WIDTHS.length])}
                   />

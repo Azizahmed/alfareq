@@ -1,0 +1,154 @@
+/*
+ * The avatars' motion: a breath and a blink on hover, all the time while the
+ * agent works (`data-animate="always"`), and nothing at all under reduced
+ * motion - the console's own `data-motion` switch or the system's.
+ */
+.ff-host svg {
+  overflow: visible;
+}
+.ff-body {
+  transform-origin: 50% 90%;
+  transform-box: view-box;
+}
+.ff-eye {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes ff-breathe {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.04, 0.96);
+  }
+}
+@keyframes ff-blink {
+  0%,
+  90%,
+  100% {
+    scale: 1 1;
+  }
+  95% {
+    scale: 1 0.1;
+  }
+}
+@keyframes ff-wink {
+  0%,
+  100% {
+    scale: 1 1;
+  }
+  30%,
+  60% {
+    scale: 1 0.15;
+  }
+}
+@keyframes ff-dots {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes ff-pop {
+  0% {
+    transform: scale(0.82, 1.14);
+  }
+  45% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.97, 1.03);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@keyframes ff-flip {
+  0% {
+    transform: scaleX(0);
+  }
+  60% {
+    transform: scaleX(1.08);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+@keyframes ff-warp {
+  0% {
+    transform: skewX(14deg) scale(0.9, 1.08);
+  }
+  40% {
+    transform: skewX(-8deg) scale(1.05, 0.95);
+  }
+  70% {
+    transform: skewX(3deg) scale(0.98, 1.02);
+  }
+  100% {
+    transform: skewX(0) scale(1, 1);
+  }
+}
+@keyframes ff-dissolve {
+  0% {
+    opacity: 0;
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@keyframes ff-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root:not([data-motion="reduce"]) .ff-host[data-animate="always"] .ff-body,
+  :root:not([data-motion="reduce"]) :hover > .ff-host .ff-body,
+  :root:not([data-motion="reduce"]) .ff-host:hover .ff-body {
+    animation: ff-breathe 2.4s ease-in-out infinite;
+  }
+  :root:not([data-motion="reduce"]) .ff-host[data-animate="always"] .ff-eye,
+  :root:not([data-motion="reduce"]) .ff-host:hover .ff-eye {
+    animation: ff-blink 3.2s ease-in-out infinite;
+  }
+  /* The wink: on hover, an idle face closes its right eye for a beat. */
+  :root:not([data-motion="reduce"]) .ff-host:hover svg[data-state="idle"] .ff-eye:last-child {
+    animation: ff-wink 1.6s ease-in-out 1;
+  }
+  :root:not([data-motion="reduce"]) .ff-host .ff-thinking circle {
+    animation: ff-dots 1.2s ease-in-out infinite;
+  }
+  :root:not([data-motion="reduce"]) .ff-host .ff-thinking circle:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  :root:not([data-motion="reduce"]) .ff-host .ff-thinking circle:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  :root:not([data-motion="reduce"]) .ff-host .ff-zzz {
+    animation: ff-float 2.6s ease-in-out infinite;
+  }
+  /* The studio's body transitions, replayed whenever the body changes; `cut` has none. */
+  :root:not([data-motion="reduce"]) .ff-enter-pop .ff-body {
+    animation: ff-pop 0.5s cubic-bezier(0.3, 1.4, 0.5, 1);
+  }
+  :root:not([data-motion="reduce"]) .ff-enter-flip .ff-body {
+    animation: ff-flip 0.55s cubic-bezier(0.3, 1.2, 0.5, 1);
+  }
+  :root:not([data-motion="reduce"]) .ff-enter-warp .ff-body {
+    animation: ff-warp 0.6s ease-out;
+  }
+  :root:not([data-motion="reduce"]) .ff-enter-dissolve .ff-body {
+    animation: ff-dissolve 0.5s ease-out;
+  }
+}

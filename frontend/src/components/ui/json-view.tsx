@@ -90,7 +90,7 @@ function Node({
         type="button"
         aria-expanded={open}
         onClick={() => setOpen((was) => !was)}
-        className="hover:text-foreground text-muted-foreground flex min-w-0 items-center gap-1 text-left"
+        className="hover:text-foreground text-muted-foreground flex min-w-0 items-center gap-1 text-start"
       >
         <ChevronRight
           className={cn("h-3 w-3 shrink-0 transition-transform", open && "rotate-90")}
@@ -101,7 +101,7 @@ function Node({
         </span>
       </button>
       {open && (
-        <div className="border-foreground/10 ml-[7px] border-l pl-3">
+        <div className="border-foreground/10 ms-[7px] border-s ps-3">
           {entries.map(([key, child]) => (
             <Node
               key={key}
@@ -113,7 +113,7 @@ function Node({
           ))}
         </div>
       )}
-      {open && <span className="text-muted-foreground ml-[7px] block pl-3">{closeBracket}</span>}
+      {open && <span className="text-muted-foreground ms-[7px] block ps-3">{closeBracket}</span>}
     </div>
   );
 }

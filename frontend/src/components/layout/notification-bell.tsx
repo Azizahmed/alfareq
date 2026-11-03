@@ -73,7 +73,7 @@ export function NotificationBell({ variant = "row" }: NotificationBellProps) {
                 count, and a badge orbiting the icon would sit on top of the
                 label between them. */}
         <RingingBell count={unread} className="h-4 w-4 shrink-0" />
-        <span className="flex-1 text-left">{t("notifications")}</span>
+        <span className="flex-1 text-start">{t("notifications")}</span>
         <UnreadBadge count={unread} />
       </button>
     ) : (
@@ -251,7 +251,7 @@ function NotificationPanel({
                 type="button"
                 onClick={loadMore}
                 disabled={isLoadingMore}
-                className="text-muted-foreground hover:text-foreground min-h-11 w-full py-2 text-center text-xs disabled:opacity-50"
+                className="text-muted-foreground hover:text-foreground touch:min-h-11 min-h-9 w-full py-2 text-center text-xs disabled:opacity-50"
               >
                 {t("loadMore")}
               </button>
@@ -294,7 +294,7 @@ function NotificationRow({
   const locale = useLocale();
   const unread = item.read_at === null;
   const rowClassName =
-    "hover:bg-muted/60 focus-visible:ring-ring flex w-full items-start gap-3 rounded-xl px-3 py-3 pr-12 text-left outline-none focus-visible:ring-2";
+    "hover:bg-muted/60 focus-visible:ring-ring flex w-full items-start gap-3 rounded-xl px-3 py-3 pe-12 text-start outline-none focus-visible:ring-2";
 
   // A row's own click is fire-and-forget: nothing here needs to know its
   // outcome, but an unhandled rejection (a row the read-time gate has since
@@ -383,7 +383,7 @@ function NotificationRow({
         // keyboard never reaches. `touch:` keeps it out permanently on a device
         // that cannot hover at all, where a tap produces no `focus-visible`
         // either and there would otherwise be no way to find it.
-        className="text-muted-foreground hover:text-foreground focus-visible:ring-ring touch:opacity-100 touch:min-h-11 touch:min-w-11 absolute top-1.5 right-1 flex size-11 items-center justify-center rounded-lg opacity-0 transition-opacity outline-none group-focus-within:opacity-100 group-hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-2 sm:size-7"
+        className="text-muted-foreground hover:text-foreground focus-visible:ring-ring touch:opacity-100 touch:min-h-11 touch:min-w-11 absolute end-1 top-1.5 flex size-11 items-center justify-center rounded-lg opacity-0 transition-opacity outline-none group-focus-within:opacity-100 group-hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-2 sm:size-7"
       >
         <X className="h-3 w-3" aria-hidden />
       </button>

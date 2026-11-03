@@ -4,9 +4,11 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
+import { LocaleBranding } from "@/components/branding/locale-branding";
+import { LocaleDirection } from "@/components/layout/locale-direction";
 import { CookieBanner } from "@/components/legal/cookie-banner";
 import { locales, type Locale } from "@/i18n";
-import { OG_LOCALE, SITE, siteOrigin } from "@/lib/seo";
+import { ogLocale, SITE, siteOrigin } from "@/lib/seo";
 
 import { Providers } from "../providers";
 
@@ -34,8 +36,8 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      locale: OG_LOCALE[safeLocale],
-      alternateLocale: SITE.locales.filter((l) => l !== safeLocale).map((l) => OG_LOCALE[l]),
+      locale: ogLocale(safeLocale),
+      alternateLocale: SITE.locales.filter((l) => l !== safeLocale).map((l) => ogLocale(l)),
     },
   };
 }
@@ -59,12 +61,16 @@ export default async function LocaleLayout({
   return (
     <Providers>
       <NextIntlClientProvider messages={messages}>
-        <a href="#main" className="skip-link">
-          {t("skipToContent")}
-        </a>
-        {children}
-        <DesktopAccessBridge />
-        <CookieBanner />
+        <LocaleDirection>
+          <LocaleBranding>
+            <a href="#main" className="skip-link">
+              {t("skipToContent")}
+            </a>
+            {children}
+            <DesktopAccessBridge />
+            <CookieBanner />
+          </LocaleBranding>
+        </LocaleDirection>
       </NextIntlClientProvider>
     </Providers>
   );

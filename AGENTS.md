@@ -245,12 +245,14 @@ retranslated is how a stale translation stops being visible.
 | Voice conversations: calls, realtime models, limits, hang-up | `docs/voice.md` |
 | Published pages: artifacts, versions, public links, isolation | `docs/artifacts.md` |
 | The desktop app: the console, blobby, quick ask, local work and the screen | `docs/desktop.md` |
+| macOS Gatekeeper warnings, install verification and release signing | `docs/howto/macos-warning.md` |
 | The phone app: live activities, widgets, push, offline | `docs/mobile.md` |
 | Upload, parsing, ingestion | `docs/file-processing.md` |
 | The console: dashboard widgets, chat, slash commands, the map | `docs/console.md` |
 | Every module, screenshotted in both themes | `docs/screens.md` |
 | The sandbox: sessions, runtimes, isolation, lifetimes | `docs/sandbox.md` |
 | Routes → services → repositories | `docs/architecture.md` |
+| Plugins: what this deployment adds without editing the platform, the seams, updating from upstream | `PLUGINS.md` (repo only) |
 | The Next.js console, for a contributor | `docs/frontend.md` |
 | Authenticating and calling the HTTP API | `docs/api.md` |
 | The ML services called without an agent, and what each one is | `docs/ml-services.md` |

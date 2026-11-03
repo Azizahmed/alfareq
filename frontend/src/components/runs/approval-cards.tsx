@@ -160,7 +160,7 @@ export function DecidedApproval({
         <button
           type="button"
           onClick={onOpenRun}
-          className="min-w-0 flex-1 text-left text-sm hover:underline"
+          className="min-w-0 flex-1 text-start text-sm hover:underline"
         >
           <span className="font-medium">{actor}</span>
           <span className="text-muted-foreground"> · </span>
@@ -176,11 +176,11 @@ export function DecidedApproval({
         </span>
       </div>
       {summary !== null && (
-        <p className="text-foreground/80 mt-1 truncate pl-10 text-sm" title={summary}>
+        <p className="text-foreground/80 mt-1 truncate ps-10 text-sm" title={summary}>
           {summary}
         </p>
       )}
-      <div className="text-muted-foreground mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 pl-10 text-xs">
+      <div className="text-muted-foreground mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 ps-10 text-xs">
         <AccountBadge account={approval.account} />
         {approval.triggered_by_email && (
           <span>{t("askedFor", { email: approval.triggered_by_email })}</span>

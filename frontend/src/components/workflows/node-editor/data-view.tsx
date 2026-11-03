@@ -118,7 +118,7 @@ function TableView({
                       field === null ? undefined : (event) => startFieldDrag(event, field)
                     }
                     className={cn(
-                      "px-2 py-1 text-left font-medium whitespace-nowrap",
+                      "px-2 py-1 text-start font-medium whitespace-nowrap",
                       field !== null && DRAGGABLE,
                     )}
                   >
@@ -233,7 +233,7 @@ function FieldRow({
     >
       <Icon aria-hidden="true" className="text-muted-foreground size-3.5 shrink-0" />
       <span className="truncate font-mono text-[11.5px]">{name}</span>
-      <span className="text-muted-foreground ml-auto shrink-0 text-xs">
+      <span className="text-muted-foreground ms-auto shrink-0 text-xs">
         {t(`dataType.${kind}`)}
       </span>
     </li>

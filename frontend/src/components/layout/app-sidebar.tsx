@@ -69,7 +69,7 @@ function NavLink({
         "touch:min-h-11 relative flex items-center rounded-xl text-sm font-medium transition-colors",
         // One row height in both states, so collapsing the column moves no icon
         // up or down - the rail is the same list with its words taken away.
-        collapsed ? "h-9 w-9 justify-center" : "h-9 gap-2.5 px-2.5",
+        collapsed ? "touch:min-w-11 h-8 w-8 justify-center" : "h-8 gap-2.5 px-2.5",
         // Selected is a neutral raised pill with a dark label. Section hues live
         // on the page's own tile, not here: a column of coloured pills competed
         // with the content it points at.
@@ -93,12 +93,12 @@ function InboxCount({ collapsed }: { collapsed: boolean }) {
   const label = t("inboxCount", { count: suggestions.length });
   return collapsed ? (
     <span
-      className="bg-muted-foreground absolute top-1 right-1 h-1.5 w-1.5 rounded-full"
+      className="bg-muted-foreground absolute end-1 top-1 h-1.5 w-1.5 rounded-full"
       aria-label={label}
     />
   ) : (
     <span
-      className="text-muted-foreground ml-auto px-1 text-xs font-medium tabular-nums"
+      className="text-muted-foreground ms-auto px-1 text-xs font-medium tabular-nums"
       aria-label={label}
     >
       {suggestions.length}
@@ -143,7 +143,7 @@ export function SidebarNav({
   return (
     <nav
       aria-label={t("primary")}
-      className={cn("flex flex-col gap-4 py-4", collapsed ? "items-center px-2" : "px-3")}
+      className={cn("flex flex-col gap-3 py-3", collapsed ? "items-center px-2" : "px-3")}
     >
       {groups.map((group) => (
         <NavGroupBlock
@@ -197,7 +197,7 @@ function NavGroupBlock({
               aria-expanded={open}
               aria-label={t(group.labelKey)}
               title={t(group.labelKey)}
-              className="text-muted-foreground hover:text-foreground flex h-6 w-9 items-center justify-center gap-0.5 rounded-md disabled:cursor-default"
+              className="text-muted-foreground hover:text-foreground touch:min-h-11 touch:min-w-11 flex h-6 w-8 items-center justify-center gap-0.5 rounded-md disabled:cursor-default"
             >
               <span aria-hidden className="bg-border h-px w-3" />
               <ChevronRight
@@ -216,7 +216,7 @@ function NavGroupBlock({
             onClick={() => toggleGroup(key)}
             disabled={holdsActive}
             aria-expanded={open}
-            className="text-muted-foreground hover:text-foreground disabled:hover:text-muted-foreground touch:min-h-11 flex h-7 items-center gap-1 rounded-md px-2.5 text-left text-xs font-medium transition-colors disabled:cursor-default"
+            className="text-muted-foreground hover:text-foreground disabled:hover:text-muted-foreground touch:min-h-11 flex h-7 items-center gap-1 rounded-md px-2.5 text-start text-xs font-medium transition-colors disabled:cursor-default"
           >
             <span className="flex-1">{t(group.labelKey)}</span>
             <ChevronRight
@@ -264,7 +264,7 @@ export function AppSidebar() {
     <aside
       data-collapsed={collapsed ? "" : undefined}
       className={cn(
-        "bg-sidebar hidden shrink-0 border-r md:flex md:flex-col",
+        "bg-sidebar hidden shrink-0 border-e md:flex md:flex-col",
         mounted && "transition-[width] duration-200",
         collapsed ? "w-14" : "w-[240px]",
       )}

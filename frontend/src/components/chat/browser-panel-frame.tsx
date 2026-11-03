@@ -2,6 +2,7 @@
 
 import { useId, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
+import { fromEnd, towardStart } from "@/lib/direction";
 import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 
@@ -35,7 +36,7 @@ export function BrowserPanelFrame({
       className={cn(
         "bg-background fixed inset-0 z-50 flex min-h-0 min-w-0 flex-col",
         !fullscreen &&
-          "@min-[900px]/browser-layout:relative @min-[900px]/browser-layout:inset-auto @min-[900px]/browser-layout:z-20 @min-[900px]/browser-layout:h-full @min-[900px]/browser-layout:w-(--browser-panel-width) @min-[900px]/browser-layout:shrink-0 @min-[900px]/browser-layout:border-l",
+          "@min-[900px]/browser-layout:relative @min-[900px]/browser-layout:inset-auto @min-[900px]/browser-layout:z-20 @min-[900px]/browser-layout:h-full @min-[900px]/browser-layout:w-(--browser-panel-width) @min-[900px]/browser-layout:shrink-0 @min-[900px]/browser-layout:border-s",
       )}
     >
       {!fullscreen && (
@@ -48,16 +49,18 @@ export function BrowserPanelFrame({
           aria-valuemin={MIN_WIDTH}
           aria-valuemax={MAX_WIDTH}
           aria-valuenow={Math.round(width)}
-          className="hover:bg-foreground/10 focus-visible:bg-foreground/10 absolute inset-y-0 left-0 z-30 hidden w-3 -translate-x-1/2 cursor-col-resize touch-none bg-transparent focus-visible:outline-none @min-[900px]/browser-layout:block"
+          className="hover:bg-foreground/10 focus-visible:bg-foreground/10 absolute inset-y-0 start-0 z-30 hidden w-3 -translate-x-1/2 cursor-col-resize touch-none bg-transparent focus-visible:outline-none @min-[900px]/browser-layout:block rtl:translate-x-1/2"
           onKeyDown={(event) => {
             if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
             event.preventDefault();
+            // Read before the updater runs: React clears `currentTarget` after the handler.
+            const grows = towardStart(event.currentTarget);
             setWidth((current) =>
               event.key === "Home"
                 ? MIN_WIDTH
                 : event.key === "End"
                   ? MAX_WIDTH
-                  : bounded(current + (event.key === "ArrowLeft" ? 2 : -2)),
+                  : bounded(current + (event.key === grows ? 2 : -2)),
             );
           }}
           onPointerDown={(event) => {
@@ -70,7 +73,9 @@ export function BrowserPanelFrame({
             if (!dragging) return;
             const bounds = panel.current?.parentElement?.getBoundingClientRect();
             if (bounds && bounds.width > 0)
-              setWidth(bounded(((bounds.right - event.clientX) / bounds.width) * 100));
+              setWidth(
+                bounded((fromEnd(bounds, event.clientX, event.currentTarget) / bounds.width) * 100),
+              );
           }}
           onPointerUp={() => setDragging(false)}
           onPointerCancel={() => setDragging(false)}

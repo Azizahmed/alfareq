@@ -1,5 +1,7 @@
 "use client";
 
+import { isRendered } from "@/lib/rendered";
+
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { usePathname, useRouter } from "next/navigation";
@@ -346,7 +348,10 @@ export function OnboardingCoach() {
         router.push(step.page);
         return; // this effect re-runs once the navigation lands
       }
-      if (step.activate) {
+      const targetIsVisible = step.target
+        ? [...document.querySelectorAll(`[data-tour="${step.target}"]`)].some(isRendered)
+        : false;
+      if (step.activate && !targetIsVisible) {
         const trigger = await waitForElement(`[data-tour="${step.activate}"]`, signal);
         if (signal.aborted) return;
         if (trigger instanceof HTMLElement) activateTab(trigger);
@@ -649,14 +654,10 @@ export function OnboardingCoach() {
               `onboarding-coach-card panel-strong text-popover-foreground pointer-events-auto fixed left-1/2 z-[1000000002] w-[min(28rem,calc(100vw-2rem))] -translate-x-1/2 rounded-xl p-4 outline-none ${cardAtTop ? "top-6" : "bottom-6"}`
         }
       >
-        <IconButton
-          aria-label={t("coachClose")}
-          onClick={finish}
-          className="absolute top-2 right-2"
-        >
+        <IconButton aria-label={t("coachClose")} onClick={finish} className="absolute end-2 top-2">
           <X className="h-4 w-4" />
         </IconButton>
-        <h2 className="pr-6 text-sm font-semibold">{t(`steps.${step.id}.title`)}</h2>
+        <h2 className="pe-6 text-sm font-semibold">{t(`steps.${step.id}.title`)}</h2>
         <p className="text-muted-foreground mt-1 text-sm">{t(`steps.${step.id}.body`)}</p>
         {isQuestion ? (
           <div className="mt-3 flex items-center justify-end gap-2">

@@ -50,7 +50,7 @@ export function AgentSteps({ children, showAll = false, done = false }: AgentSte
   const folded = !showAll && !opened && earlier.length >= 2;
 
   return (
-    <div className="border-foreground/10 space-y-0.5 border-l pl-3.5">
+    <div className="border-foreground/10 space-y-0.5 border-s ps-3.5">
       {folded ? (
         <button
           type="button"
@@ -141,7 +141,7 @@ export function AgentStep({
         // flight. A pulsing icon said "busy"; an orb that scans, braids or wires
         // itself says which kind of busy, which is the difference between waiting
         // and following along. The mark comes back the moment the call lands.
-        <ThinkingOrb state={STEP_ORBS[kind]} size={20} className="-my-2 -ml-1 h-7 w-7" />
+        <ThinkingOrb state={STEP_ORBS[kind]} size={20} className="-my-2 -ms-1 h-7 w-7" />
       ) : mark !== undefined && state !== "parked" ? (
         mark
       ) : brand !== null ? (
@@ -194,7 +194,7 @@ export function AgentStep({
             type="button"
             onClick={onToggle}
             aria-expanded={expanded}
-            className="hover:text-foreground flex max-w-full min-w-0 items-center gap-2 rounded-md text-left"
+            className="hover:text-foreground flex max-w-full min-w-0 items-center gap-2 rounded-md text-start"
           >
             {line}
             <ChevronDown

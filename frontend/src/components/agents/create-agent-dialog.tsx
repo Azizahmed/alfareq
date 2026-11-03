@@ -242,7 +242,7 @@ export function CreateAgentDialog({ open, onOpenChange, onCreated }: CreateAgent
           </MoreOptions>
         </div>
         <DialogFooter className="items-center">
-          <p className="text-muted-foreground mr-auto hidden text-xs sm:block">
+          <p className="text-muted-foreground me-auto hidden text-xs sm:block">
             {t("startsWithRecommended", { count: starter.length })}
           </p>
           <Button variant="outline" onClick={() => onOpenChange(false)}>

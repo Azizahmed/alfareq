@@ -56,7 +56,7 @@ export function RunPill({
     <span
       data-run-state={state}
       className={cn(
-        "absolute -top-2.5 right-2.5 z-10 inline-flex items-center gap-1 rounded-full border px-2 text-[0.6875rem] leading-[1.125rem] font-semibold whitespace-nowrap",
+        "absolute end-2.5 -top-2.5 z-10 inline-flex items-center gap-1 rounded-full border px-2 text-[0.6875rem] leading-[1.125rem] font-semibold whitespace-nowrap",
         LOOK[state],
       )}
     >

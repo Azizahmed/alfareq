@@ -106,9 +106,19 @@ export function SchemaForm({
     // A choice that depended on this field and is no longer offered goes,
     // rather than staying selected where the form cannot show it.
     for (const [other, property] of Object.entries(schema.properties ?? {})) {
+      if (property["x-visible-when"]?.field === key && !visible(property, schema, next)) {
+        next[other] = undefined;
+        continue;
+      }
       const when = property["x-enum-when"];
-      if (when?.field !== key || next[other] === undefined) continue;
-      if (!(when.choices[String(fieldValue)] ?? []).includes(String(next[other]))) {
+      if (
+        when === undefined ||
+        (when.field !== key && when.unless?.field !== key) ||
+        next[other] === undefined
+      )
+        continue;
+      const allowed = conditionalChoices(property, schema, next);
+      if (allowed !== undefined && !allowed.includes(String(next[other]))) {
         next[other] = undefined;
       }
     }
@@ -158,10 +168,9 @@ function narrowed(
   schema: JsonSchema,
   value: Record<string, unknown>,
 ): JsonSchemaProperty {
-  const when = property["x-enum-when"];
-  if (when === undefined) return property;
-  const current = value[when.field] ?? schema.properties?.[when.field]?.default;
-  const allowed = new Set(when.choices[String(current)] ?? []);
+  const choices = conditionalChoices(property, schema, value);
+  if (choices === undefined) return property;
+  const allowed = new Set(choices);
   const keep = (values: unknown[] | undefined) =>
     values?.filter((choice) => allowed.has(String(choice)));
   return {
@@ -171,6 +180,18 @@ function narrowed(
       branch.enum ? { ...branch, enum: keep(branch.enum) } : branch,
     ),
   };
+}
+
+function conditionalChoices(
+  property: JsonSchemaProperty,
+  schema: JsonSchema,
+  value: Record<string, unknown>,
+): string[] | undefined {
+  const when = property["x-enum-when"];
+  if (when === undefined) return undefined;
+  const read = (field: string) => value[field] ?? schema.properties?.[field]?.default;
+  if (when.unless?.equals.includes(String(read(when.unless.field)))) return undefined;
+  return when.choices[String(read(when.field))] ?? [];
 }
 
 /**
@@ -238,7 +259,9 @@ function SchemaField({
   const label = copy?.title ?? property.title ?? humanise(name);
 
   const computerEnvironment = property["x-widget"] === "computer-environment";
-  const tiled = computerEnvironment || property["x-widget"] === "browser-connection";
+  const codingEnvironment = property["x-widget"] === "coding-environment";
+  const tiled =
+    computerEnvironment || codingEnvironment || property["x-widget"] === "browser-connection";
   const choices =
     enumChoices(property)?.filter((choice) => !computerEnvironment || choice !== "auto") ?? null;
   const kind = resolveKind(property);
@@ -375,14 +398,17 @@ function SchemaField({
                 disabled={disabled}
                 onClick={() => onChange(choice)}
                 className={cn(
-                  "flex min-h-14 flex-col items-start gap-1.5 rounded-xl border px-3 py-3 text-left text-sm transition-colors disabled:opacity-50",
+                  "flex min-h-14 flex-col items-start gap-1.5 rounded-xl border px-3 py-3 text-start text-sm transition-colors disabled:opacity-50",
                   selected === choice
                     ? "border-foreground/40 bg-foreground/5"
                     : "border-border hover:bg-muted",
                 )}
               >
                 <span className="flex items-center gap-2 font-medium">
-                  {choiceMark(choice, computerEnvironment ? "desktop" : "browser-connection")}
+                  {choiceMark(
+                    choice,
+                    computerEnvironment || codingEnvironment ? "desktop" : "browser-connection",
+                  )}
                   {enumLabel(property, choice, copy)}
                 </span>
                 {copy?.options?.[choice]?.summary && (
@@ -520,8 +546,8 @@ function SchemaField({
             disabled={disabled}
             spellCheck={false}
             className={cn(
-              "font-mono text-xs",
-              masked && "pr-10",
+              "font-mono text-base md:text-xs",
+              masked && "pe-10",
               // No `type="password"` on a textarea, so the masking is the font.
               // It hides the value from a shoulder and from a screenshot, which
               // is what this masking is for, and the reveal beside it is how the
@@ -542,7 +568,7 @@ function SchemaField({
                 revealed ? t("hideNamed", { name: label }) : t("showNamed", { name: label })
               }
               aria-pressed={revealed}
-              className="text-muted-foreground hover:text-foreground absolute top-1 right-1 rounded-md p-2 disabled:pointer-events-none disabled:opacity-50"
+              className="text-muted-foreground hover:text-foreground absolute end-1 top-1 rounded-md p-2 disabled:pointer-events-none disabled:opacity-50"
             >
               {revealed ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             </button>
@@ -566,7 +592,7 @@ function SchemaField({
             onChange={(event) =>
               onChange(event.target.value === "" ? undefined : event.target.value)
             }
-            className={cn(masked && "pr-10 font-mono")}
+            className={cn(masked && "pe-10 font-mono")}
             {...invalid}
           />
           {/* A key is pasted, and a paste that went wrong is invisible behind
@@ -582,7 +608,7 @@ function SchemaField({
                 revealed ? t("hideNamed", { name: label }) : t("showNamed", { name: label })
               }
               aria-pressed={revealed}
-              className="text-muted-foreground hover:text-foreground absolute top-1/2 right-1 -translate-y-1/2 rounded-md p-2 disabled:pointer-events-none disabled:opacity-50"
+              className="text-muted-foreground hover:text-foreground absolute end-1 top-1/2 -translate-y-1/2 rounded-md p-2 disabled:pointer-events-none disabled:opacity-50"
             >
               {revealed ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             </button>
@@ -779,6 +805,7 @@ function choiceMark(choice: string, field: string) {
         );
       case "sandbox":
         return <Container className={className} aria-hidden />;
+      case "this_computer":
       case "local":
         return <Laptop className={className} aria-hidden />;
       case "daemon":

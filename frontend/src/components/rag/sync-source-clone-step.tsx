@@ -36,7 +36,7 @@ export function CloneStep({
                 type="button"
                 onClick={() => setCloneSourceId(src.id)}
                 className={cn(
-                  "flex w-full items-center gap-3 rounded-xl border p-3.5 text-left transition-colors",
+                  "flex w-full items-center gap-3 rounded-xl border p-3.5 text-start transition-colors",
                   isSelected
                     ? "border-brand bg-brand/[0.06]"
                     : "border-foreground/10 bg-card hover:border-foreground/30",

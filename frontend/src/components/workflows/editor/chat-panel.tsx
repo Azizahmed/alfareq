@@ -110,11 +110,11 @@ export function ChatPanel({
         )}
         {turns.map((turn) => (
           <li key={turn.runId} className="space-y-2">
-            <p className="bg-muted ml-8 flex gap-2 rounded-lg px-3 py-2 text-sm">
+            <p className="bg-muted ms-8 flex gap-2 rounded-lg px-3 py-2 text-sm">
               <User aria-hidden className="mt-0.5 size-3.5 shrink-0" />
               <span className="whitespace-pre-wrap">{turn.prompt}</span>
             </p>
-            <div className="mr-8 flex gap-2 rounded-lg border px-3 py-2">
+            <div className="me-8 flex gap-2 rounded-lg border px-3 py-2">
               <Bot aria-hidden className="mt-0.5 size-3.5 shrink-0" />
               <Answer runId={turn.runId} />
             </div>

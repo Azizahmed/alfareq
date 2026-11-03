@@ -15,6 +15,7 @@ const PLATFORM_LABEL: Record<string, string> = {
   telegram: "Telegram",
   slack: "Slack",
   mattermost: "Mattermost",
+  discord: "Discord",
 };
 
 /**
@@ -102,7 +103,7 @@ export function ChatAccounts() {
               <p className="text-muted-foreground text-xs">{t("chatAccountNotUsedYet")}</p>
             ) : (
               account.places.map((place) => (
-                <div key={place.bot_id} className="border-l pl-3 text-xs">
+                <div key={place.bot_id} className="border-s ps-3 text-xs">
                   <p className="truncate">
                     {place.host ? `${place.bot_name} · ${place.host}` : place.bot_name}
                   </p>

@@ -25,6 +25,7 @@ import {
 } from "@/lib/dashboard/layouts";
 import { resolvePreset, type Period } from "@/lib/dashboard/period";
 import type { Rows, Span } from "@/lib/dashboard/registry";
+import { inlineSign } from "@/lib/direction";
 import { cn } from "@/lib/utils";
 import { hasOptions, WidgetOptionsMenu } from "./widget-options-menu";
 import { WIDGET_COMPONENTS } from "./widgets";
@@ -74,37 +75,37 @@ const RESIZE_HANDLES: ResizeHandle[] = [
   {
     hx: -1,
     hy: 0,
-    wrap: "top-1/2 left-0 h-10 w-3 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize",
+    wrap: "top-1/2 start-0 h-10 w-3 -translate-x-1/2 rtl:translate-x-1/2 -translate-y-1/2 cursor-ew-resize",
     corner: false,
   },
   {
     hx: 1,
     hy: 0,
-    wrap: "top-1/2 right-0 h-10 w-3 translate-x-1/2 -translate-y-1/2 cursor-ew-resize",
+    wrap: "top-1/2 end-0 h-10 w-3 translate-x-1/2 rtl:-translate-x-1/2 -translate-y-1/2 cursor-ew-resize",
     corner: false,
   },
   {
     hx: -1,
     hy: -1,
-    wrap: "top-0 left-0 size-5 -translate-x-1/2 -translate-y-1/2 cursor-nwse-resize",
+    wrap: "top-0 start-0 size-5 -translate-x-1/2 rtl:translate-x-1/2 -translate-y-1/2 cursor-nwse-resize",
     corner: true,
   },
   {
     hx: 1,
     hy: -1,
-    wrap: "top-0 right-0 size-5 translate-x-1/2 -translate-y-1/2 cursor-nesw-resize",
+    wrap: "top-0 end-0 size-5 translate-x-1/2 rtl:-translate-x-1/2 -translate-y-1/2 cursor-nesw-resize",
     corner: true,
   },
   {
     hx: -1,
     hy: 1,
-    wrap: "bottom-0 left-0 size-5 -translate-x-1/2 translate-y-1/2 cursor-nesw-resize",
+    wrap: "bottom-0 start-0 size-5 -translate-x-1/2 rtl:translate-x-1/2 translate-y-1/2 cursor-nesw-resize",
     corner: true,
   },
   {
     hx: 1,
     hy: 1,
-    wrap: "bottom-0 right-0 size-5 translate-x-1/2 translate-y-1/2 cursor-nwse-resize",
+    wrap: "bottom-0 end-0 size-5 translate-x-1/2 rtl:-translate-x-1/2 translate-y-1/2 cursor-nwse-resize",
     corner: true,
   },
 ];
@@ -167,12 +168,14 @@ export function WidgetEditCard({
     const rowPx = rect.height / rowCount(rows);
     const startX = event.clientX;
     const startY = event.clientY;
+    // A grip's `hx` is written for left to right; mirrored, the start grip is on the right.
+    const sx = hx * inlineSign(box);
 
     const move = (moveEvent: PointerEvent) => {
       const cols =
         hx === 0
           ? spanCols(entry.span)
-          : Math.round((rect.width + hx * (moveEvent.clientX - startX)) / colPx);
+          : Math.round((rect.width + sx * (moveEvent.clientX - startX)) / colPx);
       const rowUnits =
         hy === 0
           ? rowCount(rows)
@@ -228,7 +231,7 @@ export function WidgetEditCard({
             reorder up/down and a width/height stepper, each a real button. */}
         <div
           data-no-drag
-          className="border-border bg-card/90 pointer-events-auto absolute top-2 left-2 flex items-center gap-0.5 rounded-md border p-0.5 opacity-0 shadow-sm transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
+          className="border-border bg-card/90 pointer-events-auto absolute start-2 top-2 flex items-center gap-0.5 rounded-md border p-0.5 opacity-0 shadow-sm transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
         >
           <Button
             variant="ghost"
@@ -302,7 +305,7 @@ export function WidgetEditCard({
           variant="outline"
           size="icon"
           data-no-drag
-          className="bg-card/90 text-muted-foreground hover:text-destructive pointer-events-auto absolute top-2 right-2 size-7 opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100"
+          className="bg-card/90 text-muted-foreground hover:text-destructive pointer-events-auto absolute end-2 top-2 size-7 opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100"
           aria-label={t("edit.hide", { title })}
           onClick={onRemove}
         >
@@ -311,7 +314,7 @@ export function WidgetEditCard({
 
         {/* The size a live resize will snap to, shown only while a grip is held. */}
         {resizingTo ? (
-          <span className="bg-brand text-brand-foreground pointer-events-none absolute bottom-2 left-2 rounded-md px-2 py-0.5 text-xs font-medium tabular-nums shadow-sm">
+          <span className="bg-brand text-brand-foreground pointer-events-none absolute start-2 bottom-2 rounded-md px-2 py-0.5 text-xs font-medium tabular-nums shadow-sm">
             {t("edit.sizeBadge", {
               cols: spanCols(resizingTo.span),
               rows: rowCount(resizingTo.rows),

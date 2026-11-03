@@ -199,7 +199,7 @@ export default function ContextPage() {
 
   if (!isBusy && !can(Perm.contextView)) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4">
         {header}
         <EmptyState
           icon={Lock}
@@ -212,7 +212,7 @@ export default function ContextPage() {
 
   if (isBusy) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4">
         {header}
         <ListCard layout="grid" namedByPage title={t("contextFiles")} counted={null}>
           <LoadingState variant="skeleton-cards" rows={3} />
@@ -242,7 +242,7 @@ export default function ContextPage() {
                 setPage(0);
               }}
             />
-            <div className="flex flex-wrap items-center gap-1.5 sm:ml-auto">
+            <div className="flex flex-wrap items-center gap-1.5 sm:ms-auto">
               <span className="text-muted-foreground text-xs">{t("sort")}</span>
               <Chip
                 active={sort === "name"}
@@ -269,7 +269,7 @@ export default function ContextPage() {
     ) : undefined;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {header}
 
       <ListCard
@@ -344,7 +344,9 @@ export default function ContextPage() {
           <DialogContent className={cn(DIALOG_FILL, DIALOG_BROAD)}>
             <DialogHeader>
               <DialogTitle className="font-mono">{selected.name}</DialogTitle>
-              <DialogDescription>{t("nameHowItIsReferred")}</DialogDescription>
+              <DialogDescription className="max-md:sr-only">
+                {t("nameHowItIsReferred")}
+              </DialogDescription>
             </DialogHeader>
             {fileError ? (
               <ErrorState

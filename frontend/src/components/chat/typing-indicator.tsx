@@ -42,7 +42,7 @@ export function TypingIndicator({
               <PersonFace
                 key={person.user_id}
                 person={person}
-                className={cn("ring-background h-5 w-5 text-[8px] ring-2", index > 0 && "-ml-1.5")}
+                className={cn("ring-background h-5 w-5 text-[8px] ring-2", index > 0 && "-ms-1.5")}
               />
             ))}
           </span>

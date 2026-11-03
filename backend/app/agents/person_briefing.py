@@ -13,10 +13,15 @@ from dataclasses import dataclass
 
 from app.agents.prompt_variables import flattened
 from app.agents.spec import AgentSpec
+from app.core.plugins import language_names
 from app.schemas.user import WorkingHours
 
-LANGUAGE_NAMES = {"en": "English", "pl": "Polish", "de": "German"}
-"""The console's languages - `ConsoleLocale` - by the name a model reads best."""
+LANGUAGE_NAMES = language_names({"en": "English", "pl": "Polish", "de": "German"})
+"""The console's languages - `ConsoleLocale` - by the name a model reads best.
+
+A plugin's locale names itself (`app/core/plugins.py`), so an Arabic console's
+agents are told the person reads Arabic.
+"""
 
 _WEEKDAYS = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 

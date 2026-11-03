@@ -244,7 +244,7 @@ function ConnectionForm({
         onBlur={probe}
         placeholder="https://example.com/mcp"
         maxLength={2048}
-        className="mt-1.5 font-mono text-sm"
+        className="mt-1.5 font-mono text-base md:text-sm"
       />
       {signIn !== null && (
         <p className="text-muted-foreground mt-1 text-xs" role="status">
@@ -340,7 +340,7 @@ function ConnectionForm({
                     disabled={draft.existing !== null}
                     onClick={() => setScope(option)}
                     className={cn(
-                      "flex flex-col items-start gap-1 rounded-lg border p-3 text-left text-sm transition-colors",
+                      "flex flex-col items-start gap-1 rounded-lg border p-3 text-start text-sm transition-colors",
                       scope === option
                         ? "border-foreground/30 bg-accent text-foreground"
                         : "border-input text-muted-foreground hover:text-foreground",
@@ -407,7 +407,7 @@ function ConnectionForm({
               draft.existing?.has_auth_token ? "•••••• (stored - type to replace)" : t("pasteHere")
             }
             maxLength={4096}
-            className="mt-1.5 font-mono text-sm"
+            className="mt-1.5 font-mono text-base md:text-sm"
           />
           <p className="text-muted-foreground mt-1 text-xs">
             {scope === "organization"

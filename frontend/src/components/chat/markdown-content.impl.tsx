@@ -9,7 +9,7 @@ import { ExternalLink, ImageOff, PanelsTopLeft } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { BrandIcon } from "@/components/icons/brand-icon";
-import { brandForUrl, consolePageIcon, isAppLink } from "@/lib/link-brands";
+import { brandForUrl, consolePageIcon, isAppLink, offsiteUrl } from "@/lib/link-brands";
 import { rehypeStreamWords } from "@/lib/stream-words";
 import { cn } from "@/lib/utils";
 
@@ -42,10 +42,10 @@ function languageLabel(className: string | undefined): string | null {
 function orderedIndent(children: React.ReactNode, start: unknown): string {
   const items = Children.toArray(children).filter(isValidElement).length;
   const last = (typeof start === "number" ? start : 1) + Math.max(items - 1, 0);
-  if (last >= 1000) return "pl-12";
-  if (last >= 100) return "pl-10";
-  if (last >= 10) return "pl-8";
-  return "pl-6";
+  if (last >= 1000) return "ps-12";
+  if (last >= 100) return "ps-10";
+  if (last >= 10) return "ps-8";
+  return "ps-6";
 }
 
 /**
@@ -263,8 +263,17 @@ export const MarkdownContent = memo(function MarkdownContent({
         // name rather than the forty characters of its address; a page on a
         // service the reader knows leads with that service's logo.
         const app = !!href && isAppLink(href, window.location.origin);
-        const isExternal = !app && !!href && /^https?:\/\//i.test(href);
-        const brand = isExternal ? brandForUrl(href) : null;
+        // Off-site by where the browser resolves it (#2550): `//host`, and
+        // `https:host` on an `http:` console, leave it without starting
+        // `https://`, and with no target they leave in this tab. An absolute `http(s)://` address on this
+        // console still opens in a new tab, as before.
+        const external =
+          app || !href
+            ? null
+            : (offsiteUrl(href, window.location.origin) ??
+              (/^https?:\/\//i.test(href) ? href : null));
+        const isExternal = external !== null;
+        const brand = external ? brandForUrl(external) : null;
         // A console page the agent points at wears the sidebar's mark for it.
         const PageIcon = !app && href ? consolePageIcon(href, window.location.origin) : null;
         const label = app && textOf(children) === href ? t("openApp") : children;
@@ -312,7 +321,7 @@ export const MarkdownContent = memo(function MarkdownContent({
       ul({ children, ...props }) {
         return (
           <ul
-            className="marker:text-muted-foreground mb-3 list-disc space-y-1 pl-5 last:mb-0"
+            className="marker:text-muted-foreground mb-3 list-disc space-y-1 ps-5 last:mb-0"
             {...props}
           >
             {children}
@@ -387,7 +396,7 @@ export const MarkdownContent = memo(function MarkdownContent({
         return (
           <th
             className={cn(
-              "border-foreground/10 text-muted-foreground border-b px-3 py-2 text-left align-bottom text-xs font-medium",
+              "border-foreground/10 text-muted-foreground border-b px-3 py-2 text-start align-bottom text-xs font-medium",
               textOf(children).length <= SHORT_HEADER ? "whitespace-nowrap" : "min-w-[9rem]",
             )}
             {...props}

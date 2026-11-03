@@ -229,7 +229,7 @@ export function VersionHistory({
             <li
               key={version.id}
               className={cn(
-                "relative flex items-center gap-3 py-2.5 pr-3 pl-11 text-sm",
+                "relative flex items-center gap-3 py-2.5 ps-11 pe-3 text-sm",
                 index > 0 && "border-t",
                 live && "bg-brand-subtle/40",
               )}
@@ -240,7 +240,7 @@ export function VersionHistory({
               <span
                 aria-hidden
                 className={cn(
-                  "bg-border absolute top-0 left-[1.35rem] w-px",
+                  "bg-border absolute start-[1.35rem] top-0 w-px",
                   index === 0 ? "top-1/2" : "top-0",
                   index === versions.length - 1 ? "h-1/2" : "h-full",
                 )}
@@ -248,7 +248,7 @@ export function VersionHistory({
               <span
                 aria-hidden
                 className={cn(
-                  "absolute left-4 h-2.5 w-2.5 rounded-full border-2",
+                  "absolute start-4 h-2.5 w-2.5 rounded-full border-2",
                   live ? "border-brand bg-brand" : "border-border bg-card",
                 )}
               />

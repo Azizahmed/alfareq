@@ -150,7 +150,7 @@ export function RecordFiltersPopover({
                 key={index}
                 className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] items-start gap-2 rounded-lg border p-3 sm:flex sm:border-0 sm:p-0"
               >
-                <span className="text-muted-foreground col-span-3 text-xs sm:w-10 sm:shrink-0 sm:pt-2 sm:text-right">
+                <span className="text-muted-foreground col-span-3 text-xs sm:w-10 sm:shrink-0 sm:pt-2 sm:text-end">
                   {index === 0 ? t("where") : t("and")}
                 </span>
                 <Select

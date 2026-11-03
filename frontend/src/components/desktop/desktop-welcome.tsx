@@ -114,7 +114,7 @@ function Steps({ state, step }: { state: DesktopState; step: Step }) {
           title={t("loop.title")}
           body={t("loop.body")}
         >
-          <div className="border-border bg-card mx-auto max-w-md space-y-4 rounded-xl border p-4 text-left">
+          <div className="border-border bg-card mx-auto max-w-md space-y-4 rounded-xl border p-4 text-start">
             <DesktopSetting id="welcome-login" label={t("loop.login")}>
               <Switch
                 aria-labelledby="welcome-login"

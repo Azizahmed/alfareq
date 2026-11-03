@@ -145,7 +145,7 @@ export function VoiceCaptions({
               <div className="flex max-w-[85%] flex-col items-end gap-1.5">
                 <p
                   className={cn(
-                    "bg-secondary rounded-2xl rounded-tr-sm border px-3.5 py-2 text-[14.5px] leading-relaxed break-words",
+                    "bg-secondary rounded-2xl rounded-se-sm border px-3.5 py-2 text-[14.5px] leading-relaxed break-words",
                     turn.live ? "border-foreground/30" : "border-border/60",
                   )}
                 >

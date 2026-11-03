@@ -1,0 +1,3 @@
+/* Plugin stylesheets, imported by `src/app/layout.tsx` after the console's own. */
+@import "./arabic/arabic.css";
+@import "./fluffy-avatars/fluffy.css";

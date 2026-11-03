@@ -108,10 +108,10 @@ function HostCapacity({ connection }: { connection: SandboxConnectionRecord }) {
  */
 function CapacityTrack({ percent }: { percent: number }) {
   return (
-    <div className={cn("h-1.5 overflow-hidden rounded-r-sm", QUIET_SURFACE)}>
+    <div className={cn("h-1.5 overflow-hidden rounded-e-sm", QUIET_SURFACE)}>
       <div
         className={cn(
-          "h-full rounded-r-sm",
+          "h-full rounded-e-sm",
           percent >= 90 ? "bg-destructive" : percent >= 70 ? "bg-warning" : MARK_CLASS,
         )}
         style={{ width: `${percent}%` }}

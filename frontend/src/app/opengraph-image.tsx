@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { ImageResponse } from "next/og";
 
-import { LOGO_DATA_URI } from "@/lib/logo.generated";
+import { BUILT_IN_LOGO_DATA_URI } from "@/lib/branding";
 import { readBranding } from "@/lib/branding-server";
 import { SITE } from "@/lib/seo";
 
@@ -44,7 +44,7 @@ export default async function OpengraphImage() {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
           {/* The same mark as the favicon and the sidebar, from the same data URI. */}
-          <img src={LOGO_DATA_URI} alt="" width={44} height={44} />
+          <img src={BUILT_IN_LOGO_DATA_URI} alt="" width={44} height={44} />
           <span style={{ fontSize: 26, fontWeight: 700, letterSpacing: "-0.01em" }}>{appName}</span>
         </div>
         <span
@@ -83,7 +83,7 @@ export default async function OpengraphImage() {
           })}
         </div>
         {/* The mark, large: what the link is a link to, before anybody reads it. */}
-        <img src={LOGO_DATA_URI} alt="" width={210} height={210} />
+        <img src={BUILT_IN_LOGO_DATA_URI} alt="" width={210} height={210} />
       </div>
 
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>

@@ -93,7 +93,7 @@ export function RunDetailPanel({
           resizeBy(event.key === "ArrowLeft" ? KEYBOARD_STEP : -KEYBOARD_STEP);
         }}
         className={cn(
-          "group absolute top-0 left-0 z-20 hidden h-full w-1.5 cursor-col-resize lg:block",
+          "group absolute start-0 top-0 z-20 hidden h-full w-1.5 cursor-col-resize lg:block",
           "focus-visible:bg-primary/40 focus-visible:outline-none",
           isDragging && "bg-foreground/20",
         )}

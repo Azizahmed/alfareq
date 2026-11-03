@@ -151,7 +151,7 @@ export function ArtifactThumbnail({
             bridge.onLoad();
           }}
           data-loaded={loaded}
-          className="peek-frame pointer-events-none absolute top-0 left-0 origin-top-left border-0 bg-white"
+          className="peek-frame pointer-events-none absolute start-0 top-0 origin-top-left border-0 bg-white"
           style={{
             width: VIEWPORT_WIDTH,
             height: VIEWPORT_HEIGHT,

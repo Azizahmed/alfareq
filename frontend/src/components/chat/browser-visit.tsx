@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { LinkFavicon } from "./link-favicon";
 
 const surface =
-  "group border-border/70 bg-background hover:border-foreground/20 hover:bg-muted/40 focus-visible:ring-ring flex w-full max-w-sm min-w-0 flex-col gap-2 rounded-xl border p-3 text-left outline-none transition-colors focus-visible:ring-2";
+  "group border-border/70 bg-background hover:border-foreground/20 hover:bg-muted/40 focus-visible:ring-ring flex w-full max-w-sm min-w-0 flex-col gap-2 rounded-xl border p-3 text-start outline-none transition-colors focus-visible:ring-2";
 
 /** A visited page keeps its identity in the transcript, even after its live view closes. */
 export function BrowserVisit({

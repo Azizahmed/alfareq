@@ -402,7 +402,7 @@ export function ConnectOwnButton({
           </Button>
         )}
         <Button type="button" size="sm" disabled={disabled} onClick={() => connect(entry)}>
-          <Plug className="mr-1 h-3.5 w-3.5" />
+          <Plug className="me-1 h-3.5 w-3.5" />
           {label}
         </Button>
       </span>

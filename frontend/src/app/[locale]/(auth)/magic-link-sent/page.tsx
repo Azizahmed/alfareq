@@ -55,7 +55,7 @@ export default async function MagicLinkSentPage({ searchParams }: PageProps) {
         </p>
       </div>
 
-      <div className="border-foreground/10 bg-foreground/[0.03] rounded-2xl border px-5 py-4 text-left">
+      <div className="border-foreground/10 bg-foreground/[0.03] rounded-2xl border px-5 py-4 text-start">
         <p className="text-foreground/70 text-xs leading-relaxed">
           {t.rich("checkSpamFolder", {
             link: (chunks) => (

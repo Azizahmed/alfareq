@@ -169,7 +169,7 @@ function PathTreeRow<N extends PathTreeNode>({
           title={node.path}
           style={{ paddingLeft: `${depth * 0.875 + 1.75}rem` }}
           className={cn(
-            "touch:min-h-11 flex min-h-9 min-w-0 flex-1 items-center gap-1.5 rounded-lg py-2 pr-2 text-left",
+            "touch:min-h-11 flex min-h-9 min-w-0 flex-1 items-center gap-1.5 rounded-lg py-2 pe-2 text-start",
             "focus-visible:outline-offset-[-2px]",
           )}
         >
@@ -193,7 +193,7 @@ function PathTreeRow<N extends PathTreeNode>({
           type="button"
           onClick={() => onToggle(node.path)}
           style={indent}
-          className="touch:min-h-11 flex min-h-9 min-w-0 flex-1 items-center gap-1.5 rounded-lg py-2 pr-2 text-left focus-visible:outline-offset-[-2px]"
+          className="touch:min-h-11 flex min-h-9 min-w-0 flex-1 items-center gap-1.5 rounded-lg py-2 pe-2 text-start focus-visible:outline-offset-[-2px]"
         >
           <ChevronRight
             className={cn(

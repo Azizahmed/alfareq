@@ -262,6 +262,6 @@ describe("where the panel opens", () => {
   it("stays at the page's right edge on the chat page", () => {
     const { container } = open([web(1)]);
 
-    expect(container.firstElementChild).toHaveClass("fixed", "right-0");
+    expect(container.firstElementChild).toHaveClass("fixed", "end-0");
   });
 });

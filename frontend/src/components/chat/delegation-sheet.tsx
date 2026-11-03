@@ -105,7 +105,7 @@ export function DelegationSheet({
               <h3 className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
                 {tTools("delegationBrief")}
               </h3>
-              <p className="text-foreground/75 border-foreground/15 border-l-2 pl-3 text-[13px] leading-relaxed whitespace-pre-line">
+              <p className="text-foreground/75 border-foreground/15 border-s-2 ps-3 text-[13px] leading-relaxed whitespace-pre-line">
                 {item.brief}
               </p>
             </section>

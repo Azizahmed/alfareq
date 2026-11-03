@@ -54,7 +54,7 @@ export function SlackTransport({
             aria-checked={webhookMode === option.webhook}
             onClick={() => onChange(option.webhook)}
             className={cn(
-              "flex flex-col items-start gap-1 rounded-lg border p-3 text-left transition-colors",
+              "flex flex-col items-start gap-1 rounded-lg border p-3 text-start transition-colors",
               webhookMode === option.webhook
                 ? "border-foreground/40 bg-accent"
                 : "hover:bg-accent/50",

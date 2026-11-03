@@ -32,17 +32,17 @@ export function TopOrgsWidget({ title, hint, seeAll, options }: DashboardWidgetP
             <col className="w-[4rem]" />
           </colgroup>
           <thead>
-            <tr className="text-muted-foreground text-left text-xs">
+            <tr className="text-muted-foreground text-start text-xs">
               <th className="pb-2 font-normal">{t("organization")}</th>
               <th className="pb-2 font-normal">{t("owner")}</th>
-              <th className="pb-2 text-right font-normal">{t("members")}</th>
-              <th className="pb-2 text-right font-normal">{t("agents")}</th>
+              <th className="pb-2 text-end font-normal">{t("members")}</th>
+              <th className="pb-2 text-end font-normal">{t("agents")}</th>
             </tr>
           </thead>
           <tbody>
             {organizations.map((organization) => (
               <tr key={organization.id} className="border-foreground/8 border-t">
-                <td className="text-foreground max-w-0 truncate py-1.5 pr-2">
+                <td className="text-foreground max-w-0 truncate py-1.5 pe-2">
                   {organization.name}
                 </td>
                 {/* Who to ask about this tenant. A list of counts says how big
@@ -50,7 +50,7 @@ export function TopOrgsWidget({ title, hint, seeAll, options }: DashboardWidgetP
                     which is the first thing a deployment admin needs. An
                     organization with no owner left says so rather than showing
                     an empty cell that reads as a rendering bug. */}
-                <td className="max-w-0 py-1.5 pr-2">
+                <td className="max-w-0 py-1.5 pe-2">
                   {organization.owner_user_id && organization.owner_email ? (
                     <MemberIdentity
                       member={{
@@ -63,8 +63,8 @@ export function TopOrgsWidget({ title, hint, seeAll, options }: DashboardWidgetP
                     <span className="text-muted-foreground text-xs">{t("noOwner")}</span>
                   )}
                 </td>
-                <td className="py-1.5 text-right tabular-nums">{organization.member_count}</td>
-                <td className="py-1.5 text-right tabular-nums">{organization.agent_count}</td>
+                <td className="py-1.5 text-end tabular-nums">{organization.member_count}</td>
+                <td className="py-1.5 text-end tabular-nums">{organization.agent_count}</td>
               </tr>
             ))}
           </tbody>

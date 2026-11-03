@@ -365,6 +365,7 @@ lint-frontend:
 	cd frontend && bunx prettier --check "scripts/**/*.ts" "src/**/*.{ts,tsx}" "e2e/**/*.ts"
 	cd frontend && bun run type-check
 	cd frontend && bun run check:i18n
+	cd frontend && bun run check:rtl
 	cd frontend && bun run lint:deps
 
 # Spelling, over every tracked file rather than the ones a commit happens to

@@ -163,7 +163,7 @@ export function PublicForm({ page, token, onSubmitValues, preview = false }: Pub
           />
         ))}
       </fieldset>
-      <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+      <div aria-hidden="true" className="absolute -start-[9999px] h-px w-px overflow-hidden">
         <label htmlFor="form-website">{t("trapLabel")}</label>
         <input
           id="form-website"

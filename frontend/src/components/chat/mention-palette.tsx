@@ -49,7 +49,7 @@ export function MentionPalette({
       aria-label={t("menu")}
       className={cn(
         "border-foreground/10 bg-popover z-20 w-full overflow-hidden rounded-xl border shadow-lg",
-        placement === "inline" ? "relative shrink-0" : "absolute bottom-full left-0 mb-2 max-w-md",
+        placement === "inline" ? "relative shrink-0" : "absolute start-0 bottom-full mb-2 max-w-md",
       )}
     >
       {full !== undefined ? (
@@ -59,7 +59,10 @@ export function MentionPalette({
           {failed ? t("failed") : isLoading ? t("loading") : t("nothing")}
         </p>
       ) : (
-        <ul ref={listRef} className="max-h-72 overflow-y-auto py-1">
+        <ul
+          ref={listRef}
+          className="max-h-[min(18rem,calc(var(--app-height,100dvh)*0.4))] overflow-y-auto py-1"
+        >
           {items.map((item, index) => {
             const heading = index === 0 || items[index - 1]?.kind !== item.kind;
             return (

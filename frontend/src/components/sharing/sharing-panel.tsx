@@ -216,7 +216,7 @@ export function SharingPanel({
             >
               <SelectTrigger
                 aria-label={t("generalAccess")}
-                className="-ml-2.5 h-8 w-auto gap-1.5 border-transparent bg-transparent px-2.5 font-medium shadow-none"
+                className="-ms-2.5 h-8 w-auto gap-1.5 border-transparent bg-transparent px-2.5 font-medium shadow-none"
               >
                 <SelectValue />
               </SelectTrigger>

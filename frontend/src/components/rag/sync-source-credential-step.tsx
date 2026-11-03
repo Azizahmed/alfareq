@@ -90,7 +90,7 @@ export function CredentialStep({
       <div className="space-y-1.5">
         <Label htmlFor="sync-credential">
           {t("credentialLabel")}
-          <span className="text-destructive ml-0.5">*</span>
+          <span className="text-destructive ms-0.5">*</span>
         </Label>
         <Select
           value={chosen}

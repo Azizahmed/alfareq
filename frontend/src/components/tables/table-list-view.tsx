@@ -21,11 +21,13 @@ export function TableListView({
   records,
   isLoading,
   onOpenRecord,
+  onAddRecord,
 }: {
   columns: ColumnDef[];
   records: RecordRead[];
   isLoading: boolean;
   onOpenRecord: (record: RecordRead) => void;
+  onAddRecord?: () => void;
 }) {
   const t = useTranslations("tables.cells");
   const locale = useLocale();
@@ -48,7 +50,15 @@ export function TableListView({
   }
 
   if (records.length === 0) {
-    return <EmptyState title={tEmpty("title")} description={tEmpty("description")} />;
+    return (
+      <div className="text-muted-foreground px-4 py-12 text-center text-sm [&>*]:border-0 [&>*]:bg-transparent">
+        <EmptyState
+          title={tEmpty("title")}
+          description={tEmpty("description")}
+          cta={onAddRecord ? { label: tEmpty("add"), onClick: onAddRecord } : undefined}
+        />
+      </div>
+    );
   }
 
   return (
@@ -58,7 +68,7 @@ export function TableListView({
           <button
             type="button"
             onClick={() => onOpenRecord(record)}
-            className="hover:bg-accent/50 focus-visible:ring-ring flex w-full flex-col gap-2 px-5 py-4 text-left transition-colors outline-none focus-visible:ring-2 focus-visible:ring-inset"
+            className="hover:bg-accent/50 focus-visible:ring-ring flex w-full flex-col gap-2 px-5 py-4 text-start transition-colors outline-none focus-visible:ring-2 focus-visible:ring-inset"
           >
             <span className="text-foreground flex min-w-0 items-center gap-2 text-sm font-medium">
               <FileText className="text-muted-foreground size-4 shrink-0" aria-hidden />

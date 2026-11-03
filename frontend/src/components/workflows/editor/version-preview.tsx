@@ -79,6 +79,9 @@ export function VersionPreview({ graph, catalog, changes }: VersionPreviewProps)
       <ReactFlowProvider>
         <CanvasInteractionProvider value={interaction}>
           <ReactFlow
+            // A graph is laid out in coordinates, not in reading order: it keeps
+            // running left to right inside a right-to-left console.
+            dir="ltr"
             nodes={nodes}
             edges={edges}
             nodeTypes={nodeTypes}

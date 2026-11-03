@@ -48,7 +48,7 @@ export function StackedMeter({
           <Tooltip key={segment.label}>
             <TooltipTrigger asChild>
               <span
-                className="h-full first:rounded-l-full last:rounded-r-full"
+                className="h-full first:rounded-s-full last:rounded-e-full"
                 style={{
                   background: segment.color,
                   width: `${Math.max(2, (segment.value / total) * 100)}%`,
@@ -74,7 +74,7 @@ export function StackedMeter({
             <span className="text-muted-foreground shrink-0 tabular-nums">
               {formatShare(total > 0 ? segment.value / total : 0, locale)}
             </span>
-            <span className="text-foreground w-8 shrink-0 text-right font-medium tabular-nums">
+            <span className="text-foreground w-8 shrink-0 text-end font-medium tabular-nums">
               {segment.value.toLocaleString(locale)}
             </span>
           </li>

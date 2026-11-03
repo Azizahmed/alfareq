@@ -230,7 +230,7 @@ export function McpBindingDialog({
               disabled={disabled}
               onCheckedChange={enable}
               aria-label={t("useServerInAgent", { name })}
-              className="mr-8 shrink-0"
+              className="me-8 shrink-0"
             />
           </div>
         </DialogHeader>
@@ -309,7 +309,7 @@ export function McpBindingDialog({
                           disabled={disabled}
                           onClick={onConnectOwn}
                         >
-                          <Plug className="mr-1 h-3.5 w-3.5" />
+                          <Plug className="me-1 h-3.5 w-3.5" />
                           {t("connectYours")}
                         </Button>
                       </>
@@ -338,7 +338,7 @@ export function McpBindingDialog({
                         disabled={disabled}
                         onClick={onConnect}
                       >
-                        <Plug className="mr-1 h-3.5 w-3.5" />
+                        <Plug className="me-1 h-3.5 w-3.5" />
                         {t("connectForOrganization")}
                       </Button>
                     </>
@@ -436,7 +436,7 @@ export function McpBindingDialog({
                   disabled={disabled}
                   onClick={() => primary && onTools(primary, listedBy, name)}
                 >
-                  <Wrench className="mr-1 h-3.5 w-3.5" />
+                  <Wrench className="me-1 h-3.5 w-3.5" />
                   {t("loadTools")}
                 </Button>
               ) : (
@@ -753,7 +753,7 @@ function AccountBlock({
               <SelectItem key={option.id} value={option.id}>
                 {option.label ?? option.name}
                 {option.label !== null && (
-                  <span className="text-muted-foreground ml-2 font-mono">{option.name}</span>
+                  <span className="text-muted-foreground ms-2 font-mono">{option.name}</span>
                 )}
               </SelectItem>
             ))}
@@ -767,7 +767,7 @@ function AccountBlock({
           <p className="text-sm">
             {connection.label ?? connection.name}
             {connection.label !== null && (
-              <span className="text-muted-foreground ml-2 font-mono text-xs">
+              <span className="text-muted-foreground ms-2 font-mono text-xs">
                 {connection.name}
               </span>
             )}

@@ -33,7 +33,7 @@ export function CacheBustsCard({ rows }: { rows: readonly CacheByAgentModel[] })
     {
       key: "agent",
       header: t("agentAndModel"),
-      className: "pl-5",
+      className: "ps-5",
       cell: (row) => (
         <span className="flex items-center gap-2">
           <span aria-hidden>
@@ -73,7 +73,7 @@ export function CacheBustsCard({ rows }: { rows: readonly CacheByAgentModel[] })
       key: "missed",
       header: t("missedTokens"),
       align: "right",
-      className: "pr-5",
+      className: "pe-5",
       cell: (row) => (
         <span className="font-mono text-xs tabular-nums">{number(row.missed_tokens)}</span>
       ),

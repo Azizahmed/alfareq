@@ -56,7 +56,7 @@ export function QuickLogControl({ instance, outputs, name, readOnly }: QuickLogP
             // A button on the card, not a click on the node: xyflow would select it.
             onClick={(event) => event.stopPropagation()}
             className={cn(
-              "nodrag nopan bg-background text-muted-foreground hover:text-foreground hover:border-foreground/40 focus-visible:ring-ring absolute top-1 left-full flex h-5 items-center justify-center gap-px rounded-full border px-1 shadow-sm transition-opacity outline-none focus-visible:ring-2",
+              "nodrag nopan bg-background text-muted-foreground hover:text-foreground hover:border-foreground/40 focus-visible:ring-ring absolute start-full top-1 flex h-5 items-center justify-center gap-px rounded-full border px-1 shadow-sm transition-opacity outline-none focus-visible:ring-2",
               open ? "opacity-100" : "opacity-0 group-hover:opacity-100 focus-visible:opacity-100",
             )}
           >
@@ -71,7 +71,7 @@ export function QuickLogControl({ instance, outputs, name, readOnly }: QuickLogP
             // Over the card's border at top and bottom, so its edge runs on into the strip.
             // Only the word is turned: vertical writing on the strip itself would make its
             // logical insets horizontal and fold the strip into the card's corner.
-            className="nodrag nopan bg-card text-primary focus-visible:ring-ring group/log absolute -top-px -bottom-px left-full flex w-5 items-start justify-center overflow-hidden rounded-r-xl border border-l-0 pt-2 text-[10px] leading-none font-semibold tracking-wider uppercase outline-none focus-visible:ring-2 focus-visible:ring-inset"
+            className="nodrag nopan bg-card text-primary focus-visible:ring-ring group/log absolute start-full -top-px -bottom-px flex w-5 items-start justify-center overflow-hidden rounded-e-xl border border-s-0 pt-2 text-[10px] leading-none font-semibold tracking-wider uppercase outline-none focus-visible:ring-2 focus-visible:ring-inset"
           >
             <span
               aria-hidden="true"
@@ -142,7 +142,7 @@ function QuickLogForm({
           maxLength={QUICK_LOG_MESSAGE_MAX}
           disabled={readOnly}
           onChange={(event) => setMessage(event.target.value)}
-          className="font-mono text-xs"
+          className="font-mono text-base md:text-xs"
         />
       </div>
       {outputs.length === 0 ? (

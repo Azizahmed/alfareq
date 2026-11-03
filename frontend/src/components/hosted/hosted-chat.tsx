@@ -1070,7 +1070,7 @@ function HostedTurn({
             the turn's cost, which web chat prints here and which is the operator's
             business rather than the visitor's - see `docs/channels.md`. */}
         {turn.at !== undefined && turn.live !== true && (
-          <span className={cn("text-muted-foreground block text-xs", isUser && "text-right")}>
+          <span className={cn("text-muted-foreground block text-xs", isUser && "text-end")}>
             {new Date(turn.at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
           </span>
         )}

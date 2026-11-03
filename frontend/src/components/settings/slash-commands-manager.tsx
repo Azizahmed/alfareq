@@ -180,7 +180,7 @@ export function SlashCommandsManager() {
             </p>
           </div>
           <Button size="sm" onClick={openCreate}>
-            <Plus className="mr-1 h-3.5 w-3.5" />
+            <Plus className="me-1 h-3.5 w-3.5" />
             {t("newCommand")}
           </Button>
         </div>
@@ -262,7 +262,7 @@ export function SlashCommandsManager() {
                 placeholder={t("summarizeConversationAsChecklist")}
                 rows={6}
                 maxLength={10_000}
-                className="mt-1.5 font-mono text-sm"
+                className="mt-1.5 font-mono text-base md:text-sm"
               />
               <p className="text-muted-foreground mt-1 text-xs">
                 {t.rich("sentAsRegularUserMessage", {

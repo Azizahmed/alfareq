@@ -98,7 +98,7 @@ export function AudienceSearch({
       )}
       <div className="relative">
         <Search
-          className="text-muted-foreground pointer-events-none absolute top-1/2 left-2.5 h-4 w-4 -translate-y-1/2"
+          className="text-muted-foreground pointer-events-none absolute start-2.5 top-1/2 h-4 w-4 -translate-y-1/2"
           aria-hidden
         />
         <Input
@@ -107,7 +107,7 @@ export function AudienceSearch({
           placeholder={t("searchPlaceholder")}
           aria-label={t("search")}
           disabled={disabled}
-          className="pl-8"
+          className="ps-8"
         />
       </div>
       {suggestions.length > 0 ? (
@@ -122,7 +122,7 @@ export function AudienceSearch({
                   set([...value.group_ids, suggestion.group.id], value.user_ids);
                   setQuery("");
                 }}
-                className="hover:bg-accent/50 flex items-center gap-1.5 rounded-full border py-0.5 pr-3 pl-0.5 text-xs"
+                className="hover:bg-accent/50 flex items-center gap-1.5 rounded-full border py-0.5 ps-0.5 pe-3 text-xs"
               >
                 <GroupIcon
                   icon={suggestion.group.icon}
@@ -170,7 +170,7 @@ function Chip({
   children: React.ReactNode;
 }) {
   return (
-    <li className="border-foreground/40 bg-accent flex items-center gap-1 rounded-full border py-0.5 pr-1 pl-0.5 text-xs font-medium">
+    <li className="border-foreground/40 bg-accent flex items-center gap-1 rounded-full border py-0.5 ps-0.5 pe-1 text-xs font-medium">
       {children}
       {label}
       <button

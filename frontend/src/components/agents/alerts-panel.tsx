@@ -221,7 +221,7 @@ function AlertRow({
       </div>
 
       {alert.enabled && (
-        <div className="mt-4 space-y-4 pl-12">
+        <div className="mt-4 space-y-4 ps-12">
           {/* Checkboxes with real labels rather than a row of pills. Four pills
               with their hints hidden in `title` attributes was the odd one out in
               this app - nothing else picks several things that way - and a
@@ -319,7 +319,7 @@ function AlertRow({
             // `div` inside a `p` is invalid HTML that React resolves by
             // restructuring the DOM - which shows up as a hydration error.
             <p className="text-destructive text-xs">
-              <span className="mr-1.5 font-medium">{t("refusedAtSave")}</span>
+              <span className="me-1.5 font-medium">{t("refusedAtSave")}</span>
               {problem}
             </p>
           )}

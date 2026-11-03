@@ -77,12 +77,12 @@ export function DesktopInstallPrompt() {
           }
           window.dispatchEvent(new Event(CHANGED));
         }}
-        className="text-muted-foreground hover:bg-accent hover:text-foreground absolute top-1.5 right-1.5 rounded-md p-1.5"
+        className="text-muted-foreground hover:bg-accent hover:text-foreground absolute end-1.5 top-1.5 rounded-md p-1.5"
       >
         <X className="size-3.5" aria-hidden />
       </button>
       <MonitorDown className="mb-2 size-5" aria-hidden />
-      <p className="pr-4 text-sm font-medium">{t("title")}</p>
+      <p className="pe-4 text-sm font-medium">{t("title")}</p>
       <p className="text-muted-foreground mt-1 text-xs leading-relaxed">{t("description")}</p>
       <a
         href="https://github.com/vstorm-co/agenticos/releases/latest"

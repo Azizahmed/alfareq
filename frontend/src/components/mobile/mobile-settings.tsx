@@ -37,7 +37,7 @@ function Settings({ platform }: { platform: string }) {
           <p role="status">{t("checking")}</p>
         ) : settings.isError ? (
           <Button variant="outline" onClick={() => settings.refetch()}>
-            <RefreshCw className="mr-2 size-4" />
+            <RefreshCw className="me-2 size-4" />
             {t("retry")}
           </Button>
         ) : (

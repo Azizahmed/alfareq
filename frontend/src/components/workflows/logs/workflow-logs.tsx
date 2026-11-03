@@ -418,13 +418,13 @@ function RunFilter({
           aria-invalid={problem !== undefined}
           aria-describedby={problem === undefined ? undefined : "log-run-problem"}
           maxLength={36}
-          className="border-foreground/12 h-8 rounded-lg border pr-8 font-mono md:text-[13px]"
+          className="border-foreground/12 h-8 rounded-lg border pe-8 font-mono md:text-[13px]"
         />
         {value !== "" && (
           <button
             type="button"
             aria-label={t("logClearRun")}
-            className="text-muted-foreground hover:text-foreground absolute top-1/2 right-2 -translate-y-1/2"
+            className="text-muted-foreground hover:text-foreground absolute end-2 top-1/2 -translate-y-1/2"
             onClick={() => onChange("", true)}
           >
             <X className="h-3.5 w-3.5" />

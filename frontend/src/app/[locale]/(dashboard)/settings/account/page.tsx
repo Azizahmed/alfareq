@@ -136,7 +136,7 @@ export default function AccountSettingsPage() {
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button variant="outline" size="sm">
-              <Lock className="mr-2 h-3.5 w-3.5" />
+              <Lock className="me-2 h-3.5 w-3.5" />
               {t("signOutEverywhere")}
             </Button>
           </AlertDialogTrigger>

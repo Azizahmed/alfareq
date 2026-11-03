@@ -161,7 +161,7 @@ export function ProblemsFooter({
               ) : (
                 <button
                   type="button"
-                  className="hover:text-foreground text-muted-foreground flex items-start gap-1.5 text-left"
+                  className="hover:text-foreground text-muted-foreground flex items-start gap-1.5 text-start"
                   onClick={() => onSelectNode(problem.nodeId as Uuid)}
                 >
                   <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" />

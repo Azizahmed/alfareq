@@ -14,6 +14,8 @@ from app.commands import register_commands
 from app.main import app
 from app.core.exceptions import AlreadyExistsError
 from app.core.logging import setup_logging
+from app.core.plugin_migrations import plugin_alembic_config, upgrade_plugins
+from app.core.plugins import plugin_by_id
 from app.db.session import async_session_maker
 from app.schemas.user import UserCreate
 from app.services.user import UserService
@@ -86,10 +88,23 @@ def db_migrate(message: str):
 @db_cli.command("upgrade")
 @click.option("--revision", default="head", help="Revision to upgrade to")
 def db_upgrade(revision: str):
-    """Run database migrations."""
+    """Run database migrations: the platform's, then every plugin's at its head."""
     alembic_cfg = Config("alembic.ini")
     command.upgrade(alembic_cfg, revision)
     click.secho(f"Upgraded to: {revision}", fg="green")
+    if revision == "head":
+        for plugin_id in upgrade_plugins():
+            click.secho(f"Upgraded plugin {plugin_id} to: head", fg="green")
+
+
+@db_cli.command("plugin-migrate")
+@click.option("--plugin", "plugin_id", required=True, help="The plugin's id")
+@click.option("-m", "--message", required=True, help="Migration message")
+def db_plugin_migrate(plugin_id: str, message: str):
+    """Autogenerate a migration in a plugin's own history."""
+    config = plugin_alembic_config(plugin_by_id(plugin_id))
+    command.revision(config, message=message, autogenerate=True)
+    click.secho(f"Plugin {plugin_id} migration created: {message}", fg="green")
 
 
 @db_cli.command("downgrade")

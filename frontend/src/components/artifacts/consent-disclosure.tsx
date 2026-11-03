@@ -154,7 +154,7 @@ export function QueryInWords({ name, query }: { name: string; query: AnyBindingP
       <p className="text-muted-foreground">
         {t("sortAndLimit", { sort: order(t, query.sort), limit: query.limit })}
       </p>
-      <ul className="list-disc pl-5">
+      <ul className="list-disc ps-5">
         {query.fields.map((item) => (
           <li key={item.name}>{fieldInWords(t, types, item)}</li>
         ))}
@@ -179,7 +179,7 @@ function Audience({ disclosure }: { disclosure: ArtifactDisclosure }) {
   return (
     <div className="space-y-1">
       <p className="font-medium">{t("audienceTitle")}</p>
-      <ul className="text-muted-foreground list-disc space-y-0.5 pl-5">
+      <ul className="text-muted-foreground list-disc space-y-0.5 ps-5">
         <li>
           {t("audienceRoles", { roles: disclosure.roles.map((role) => roles(role)).join(", ") })}
         </li>

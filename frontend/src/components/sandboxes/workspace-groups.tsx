@@ -260,7 +260,7 @@ function FileRow({
         type="button"
         onClick={onOpen}
         aria-label={tc("openNamed", { name })}
-        className="flex min-w-0 flex-1 items-center gap-3 text-left"
+        className="flex min-w-0 flex-1 items-center gap-3 text-start"
       >
         <span className="bg-muted relative grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-lg">
           {thumbnail !== null ? (

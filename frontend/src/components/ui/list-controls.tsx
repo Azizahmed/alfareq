@@ -130,7 +130,7 @@ export function SearchInput({
   const input = useRef<HTMLInputElement>(null);
   return (
     <div className={cn("relative w-full sm:w-64", className)}>
-      <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-2.5 h-3.5 w-3.5 -translate-y-1/2" />
+      <Search className="text-muted-foreground pointer-events-none absolute start-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2" />
       {/* The height of the filters beside it; still 16px on a phone, where iOS
           zooms into anything smaller. */}
       <Input
@@ -154,8 +154,8 @@ export function SearchInput({
           }
         }}
         className={cn(
-          "border-foreground/12 h-9 rounded-xl border pl-8 md:text-[13px] [&::-webkit-search-cancel-button]:appearance-none",
-          value ? "pr-11" : "pr-3",
+          "border-foreground/12 h-9 rounded-xl border ps-8 md:text-[13px] [&::-webkit-search-cancel-button]:appearance-none",
+          value ? "pe-11" : "pe-3",
         )}
       />
       {value && (
@@ -166,7 +166,7 @@ export function SearchInput({
             onChange("");
             input.current?.focus();
           }}
-          className="text-muted-foreground hover:text-foreground focus-visible:outline-ring absolute inset-y-0 right-0 flex w-11 touch-manipulation items-center justify-center rounded-r-xl focus-visible:outline-2 focus-visible:-outline-offset-2"
+          className="text-muted-foreground hover:text-foreground focus-visible:outline-ring absolute inset-y-0 end-0 flex w-11 touch-manipulation items-center justify-center rounded-e-xl focus-visible:outline-2 focus-visible:-outline-offset-2"
         >
           <X className="size-4" aria-hidden />
         </button>

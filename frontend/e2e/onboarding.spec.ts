@@ -1,6 +1,8 @@
 import { expect, test } from "./fixtures";
 
-import { AUTH_STATE, DASHBOARD_GREETING, pageHeading } from "./helpers";
+import { AUTH_STATE, DASHBOARD_GREETING, pageHeading, servedCopy } from "./helpers";
+
+const WELCOME_TITLE = servedCopy("onboarding.steps.welcome.title");
 
 /**
  * The walkthrough, which every other spec in this suite spends its life avoiding.
@@ -51,12 +53,12 @@ test.describe("Onboarding", () => {
 
     // Data-borne in the only way this feature can be: the copy is the catalog's,
     // and it is on screen because the *server* said this user has not finished.
-    await expect(page.locator(TITLE)).toHaveText("Welcome to AgenticOS");
+    await expect(page.locator(TITLE)).toHaveText(WELCOME_TITLE);
     await expect(page.locator(POPOVER)).toContainText("Step 1 of");
 
     // Next walks it, which is the whole of the interaction.
     await page.locator(NEXT).click();
-    await expect(page.locator(TITLE)).not.toHaveText("Welcome to AgenticOS");
+    await expect(page.locator(TITLE)).not.toHaveText(WELCOME_TITLE);
 
     // Closing writes `onboarding_completed_at` through PATCH /users/me. Waiting on
     // the write rather than on the overlay disappearing: the overlay goes the
@@ -93,7 +95,7 @@ test.describe("Onboarding", () => {
     });
     expect(reset.ok(), `resetting onboarding answered ${reset.status()}`).toBe(true);
     await page.goto("/dashboard");
-    await expect(page.locator(TITLE)).toHaveText("Welcome to AgenticOS");
+    await expect(page.locator(TITLE)).toHaveText(WELCOME_TITLE);
 
     await page.evaluate(() => {
       const host = document.createElement("extension-prompt");

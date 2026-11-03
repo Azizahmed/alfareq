@@ -28,8 +28,9 @@ import pytest
 from pydantic import ValidationError
 
 from app.core import background
-from app.core.config import Settings, settings
+from app.core.config import Settings
 from app.core.exceptions import BadRequestError
+from app.core.plugins import default_app_name
 from app.db.models.deployment_settings import DeploymentSettings
 from app.repositories import deployment_settings_repo
 from app.schemas.deployment_settings import DeploymentSettingsUpdate
@@ -662,14 +663,15 @@ class TestTheNameTheBackendUsesItself:
     async def test_it_falls_back_to_the_built_in_when_nothing_is_set(self, mock_db_session, repo):
         name = await DeploymentSettingsService(mock_db_session).effective_app_name()
 
-        assert name == settings.PROJECT_NAME
+        # The built-in: `PROJECT_NAME`, unless a brand plugin names the deployment.
+        assert name == default_app_name()
 
     async def test_a_row_with_no_override_falls_back_too(self, mock_db_session, repo):
         repo.get.return_value = a_row(app_name=None)
 
         assert (
             await DeploymentSettingsService(mock_db_session).effective_app_name()
-            == settings.PROJECT_NAME
+            == default_app_name()
         )
 
     async def test_it_answers_the_name_the_administrator_set(self, mock_db_session, repo):

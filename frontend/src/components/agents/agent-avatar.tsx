@@ -3,6 +3,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui";
 import { ArchitectMark } from "@/components/assistant/architect-mark";
 import { AvatarFace } from "@/components/ui/avatar-face";
+import { pluginSlot } from "@/lib/plugin-slots";
 import { cn } from "@/lib/utils";
 import { useArchitectMarkStore } from "@/stores/architect-mark-store";
 
@@ -12,6 +13,9 @@ const SIZES = {
   lg: "h-14 w-14 text-base",
   xl: "h-20 w-20 text-lg",
 } as const;
+
+/** A plugin's face, when one fills the slot; the generated blob otherwise. */
+const PluginFace = pluginSlot("agent-face");
 
 /** How long an uploaded picture has to load before the generated face stands in. */
 const FALLBACK_DELAY_MS = 600;
@@ -99,13 +103,23 @@ export function AgentAvatar({
         className="bg-transparent"
         delayMs={hasAvatar ? FALLBACK_DELAY_MS : undefined}
       >
-        <AvatarFace
-          seed={slug}
-          colorSlot={colorSlot}
-          thinking={thinking}
-          background={!unframed}
-          className={unframed ? "scale-110" : undefined}
-        />
+        {PluginFace ? (
+          <PluginFace
+            agentId={agentId}
+            slug={slug}
+            colorSlot={colorSlot}
+            thinking={thinking}
+            framed={!unframed}
+          />
+        ) : (
+          <AvatarFace
+            seed={slug}
+            colorSlot={colorSlot}
+            thinking={thinking}
+            background={!unframed}
+            className={unframed ? "scale-110" : undefined}
+          />
+        )}
       </AvatarFallback>
     </Avatar>
   );

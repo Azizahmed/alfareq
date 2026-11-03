@@ -93,7 +93,7 @@ export function TriggerRow({ trigger, showAgent = false }: TriggerRowProps) {
         type="button"
         onClick={openRuns}
         aria-label={t("viewRuns")}
-        className="hover:bg-muted/40 -m-1 flex min-w-0 flex-1 basis-full items-center gap-3 rounded-lg p-1 text-left transition-colors sm:basis-auto"
+        className="hover:bg-muted/40 -m-1 flex min-w-0 flex-1 basis-full items-center gap-3 rounded-lg p-1 text-start transition-colors sm:basis-auto"
       >
         {/* The kind of routine in a tile, with the agent that runs it tucked into
             its corner - one mark to scan down the list rather than two loose icons. */}
@@ -106,7 +106,7 @@ export function TriggerRow({ trigger, showAgent = false }: TriggerRowProps) {
               hasAvatar={trigger.agent_has_avatar ?? false}
               colorSlot={trigger.agent_avatar_color}
               size="sm"
-              className="ring-card absolute -right-1.5 -bottom-1.5 h-5 w-5 ring-2"
+              className="ring-card absolute -end-1.5 -bottom-1.5 h-5 w-5 ring-2"
             />
           )}
         </span>
@@ -133,7 +133,7 @@ export function TriggerRow({ trigger, showAgent = false }: TriggerRowProps) {
       {trigger.runs_as_creator && <Badge variant="outline">{t("actsAsCreator")}</Badge>}
       {!trigger.is_active && <Badge variant="secondary">{t("paused")}</Badge>}
       {trigger.can_manage && (
-        <div className="ml-auto flex shrink-0 items-center gap-0.5 sm:ml-0">
+        <div className="ms-auto flex shrink-0 items-center gap-0.5 sm:ms-0">
           <Button
             variant="ghost"
             size="icon"

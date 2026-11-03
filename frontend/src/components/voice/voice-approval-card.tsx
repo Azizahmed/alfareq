@@ -123,7 +123,7 @@ export function VoiceApprovalCard({
       <div className="flex items-center gap-2 text-[13px] font-semibold">
         <ShieldAlert className="text-warning h-4 w-4 shrink-0" aria-hidden />
         <span>{t("needed")}</span>
-        <span className="text-muted-foreground ml-auto font-mono text-xs font-medium whitespace-nowrap tabular-nums">
+        <span className="text-muted-foreground ms-auto font-mono text-xs font-medium whitespace-nowrap tabular-nums">
           {t("autoDeny", { time: clock(left) })}
         </span>
       </div>

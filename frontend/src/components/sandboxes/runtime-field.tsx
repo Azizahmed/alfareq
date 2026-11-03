@@ -116,7 +116,7 @@ export function RuntimeField({
                   // field instead, about the alias actually chosen.
                   trailing={
                     (runtime.builds || missing) && (
-                      <span className="ml-auto flex shrink-0 items-center gap-2 pl-3">
+                      <span className="ms-auto flex shrink-0 items-center gap-2 ps-3">
                         {runtime.builds && (
                           <span className="text-muted-foreground text-xs uppercase">
                             {t("builds")}

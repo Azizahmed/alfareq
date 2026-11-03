@@ -350,7 +350,7 @@ function ProfileRow({
         disabled={disabled || !selectable}
         onClick={onSelect}
         className={cn(
-          "flex min-w-0 flex-1 items-center gap-3 rounded-xl border px-3 py-2.5 text-left transition-colors",
+          "flex min-w-0 flex-1 items-center gap-3 rounded-xl border px-3 py-2.5 text-start transition-colors",
           selected ? "border-brand bg-brand/5" : "border-border hover:border-foreground/20",
           (disabled || !selectable) && "cursor-not-allowed opacity-60",
         )}

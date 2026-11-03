@@ -128,7 +128,7 @@ export default function DashboardPage() {
           ? "deployment"
           : "me";
     return (
-      <div className="space-y-6">
+      <div className="space-y-4">
         <PageHeader title={t("title")} />
         <DashboardSkeleton
           sections={
@@ -238,7 +238,7 @@ export default function DashboardPage() {
 
   if (editing) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4">
         <PageHeader title={t("title")} description={t("edit.subtitle")} />
         <DashboardEditor
           initialEntries={initialItems}
@@ -293,7 +293,7 @@ export default function DashboardPage() {
   // to keep arranging, never a blank page that reads as broken.
   if (visible.length === 0) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4">
         <PageHeader title={t("title")} description={t(`views.${view}.description`)} />
         <EmptyState
           icon={LayoutGrid}
@@ -346,7 +346,7 @@ export default function DashboardPage() {
                       ? t("edit.expand", { title: heading })
                       : t("edit.collapse", { title: heading })
                   }
-                  className="text-muted-foreground hover:text-foreground -ml-1 flex size-5 shrink-0 items-center justify-center"
+                  className="text-muted-foreground hover:text-foreground -ms-1 flex size-5 shrink-0 items-center justify-center"
                 >
                   {collapsed ? (
                     <ChevronRight className="size-4" aria-hidden />
@@ -415,6 +415,7 @@ export default function DashboardPage() {
         <MeHeader period={period} canRun={can(Perm.agentsRun)} actions={headerActions} />
       ) : (
         <PageHeader
+          className="mb-4"
           title={t("title")}
           description={t(`views.${view}.description`)}
           actions={headerActions}

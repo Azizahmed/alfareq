@@ -81,8 +81,8 @@ export function ReplyQuote({
           // A fill rather than an outline, and above the reply rather than under
           // it: a bubble pulled over the quote let the quote's edge show through
           // its translucent fill.
-          "bg-foreground/[0.04] text-muted-foreground hover:bg-foreground/[0.07] mb-1 line-clamp-2 rounded-2xl px-3.5 py-2 text-left text-[13px] leading-snug transition-colors",
-          align === "end" ? "rounded-br-md" : "rounded-bl-md",
+          "bg-foreground/[0.04] text-muted-foreground hover:bg-foreground/[0.07] mb-1 line-clamp-2 rounded-2xl px-3.5 py-2 text-start text-[13px] leading-snug transition-colors",
+          align === "end" ? "rounded-ee-md" : "rounded-es-md",
         )}
       >
         {reply.excerpt}
@@ -116,7 +116,7 @@ export function ReplyingTo({ reply, onCancel }: { reply: MessageReply; onCancel:
         onClick={onCancel}
         aria-label={t("cancel")}
         title={t("cancel")}
-        className="text-muted-foreground hover:text-foreground hover:bg-accent/60 -mr-1 shrink-0 rounded-full p-1"
+        className="text-muted-foreground hover:text-foreground hover:bg-accent/60 -me-1 shrink-0 rounded-full p-1"
       >
         <X className="h-3.5 w-3.5" aria-hidden />
       </button>

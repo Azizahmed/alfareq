@@ -159,7 +159,7 @@ export function SearchTab({ kbs, onCreate }: SearchTabProps) {
               disabled={status === "searching" || !query.trim()}
               className="rounded-xl"
             >
-              <Search className="mr-2 h-4 w-4" />
+              <Search className="me-2 h-4 w-4" />
               {status === "searching" ? t("searching") : t("button")}
             </Button>
           </div>
@@ -257,7 +257,7 @@ export function SearchTab({ kbs, onCreate }: SearchTabProps) {
                       {source.name}
                     </Link>
                   )}
-                  <Badge variant="secondary" className="ml-auto font-mono text-xs">
+                  <Badge variant="secondary" className="ms-auto font-mono text-xs">
                     {result.score.toFixed(3)}
                   </Badge>
                 </div>

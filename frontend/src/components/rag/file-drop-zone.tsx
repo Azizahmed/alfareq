@@ -124,7 +124,7 @@ export function FileDropZone({
           data-testid="project-file-drop-overlay"
           className="border-foreground/30 bg-foreground/[0.025] pointer-events-none absolute inset-0 z-20 rounded-xl border-2 border-dashed"
         >
-          <div className="bg-popover text-foreground animate-in fade-in-0 absolute bottom-3 left-3 flex max-w-[calc(100%-1.5rem)] items-center gap-2 rounded-lg border px-3 py-2 shadow-sm">
+          <div className="bg-popover text-foreground animate-in fade-in-0 absolute start-3 bottom-3 flex max-w-[calc(100%-1.5rem)] items-center gap-2 rounded-lg border px-3 py-2 shadow-sm">
             <Upload className="size-4 shrink-0" />
             <span className="min-w-0 truncate text-xs font-medium">
               {t("dropUpload")} · {collectionName}

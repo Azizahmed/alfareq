@@ -111,7 +111,7 @@ export function AddWidgetDialog({
           onFocus={() => setActive(def.id)}
           onClick={() => pick(def.id)}
           className={cn(
-            "border-border hover:border-brand-line hover:bg-brand-subtle/40 flex w-full items-start justify-between gap-3 rounded-lg border p-3 text-left transition-colors",
+            "border-border hover:border-brand-line hover:bg-brand-subtle/40 flex w-full items-start justify-between gap-3 rounded-lg border p-3 text-start transition-colors",
             // A card already on the page reads a step darker than the rest,
             // NEUTRAL rather than accent: the accent tint means "you are
             // pointing at this one" here, and a row that wore both meanings
@@ -160,7 +160,7 @@ export function AddWidgetDialog({
         </DialogHeader>
         <div className="relative">
           <Search
-            className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2"
+            className="text-muted-foreground pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2"
             aria-hidden
           />
           <Input
@@ -169,7 +169,7 @@ export function AddWidgetDialog({
             onChange={(event) => setQuery(event.target.value)}
             aria-label={t("edit.searchLabel")}
             placeholder={t("edit.searchPlaceholder")}
-            className="pl-9"
+            className="ps-9"
           />
         </div>
         <div className="grid min-h-0 flex-1 gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">

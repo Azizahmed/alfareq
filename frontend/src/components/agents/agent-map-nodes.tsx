@@ -152,7 +152,7 @@ export function CapabilityNode({
         onFocus();
       }}
       className={cn(
-        "bg-card block w-full rounded-xl border p-3.5 text-left transition",
+        "bg-card block w-full rounded-xl border p-3.5 text-start transition",
         "focus-visible:ring-brand focus-visible:ring-2 focus-visible:outline-none",
         isEmpty && "border-dashed",
         focused && "ring-brand ring-2",
@@ -162,7 +162,7 @@ export function CapabilityNode({
       <p className="text-muted-foreground flex items-center gap-1.5 text-xs font-medium tracking-wide uppercase">
         <Icon className="h-3.5 w-3.5" />
         {node.title}
-        {!isEmpty && <span className="ml-auto normal-case">{node.items.length}</span>}
+        {!isEmpty && <span className="ms-auto normal-case">{node.items.length}</span>}
       </p>
       {isEmpty ? (
         <p className="text-muted-foreground mt-2.5 text-sm">{node.empty}</p>
@@ -251,7 +251,7 @@ export function DelegateNode({
         onFocus();
       }}
       className={cn(
-        "bg-card flex w-full items-center gap-2.5 rounded-full border py-1.5 pr-3 pl-1.5 text-left transition",
+        "bg-card flex w-full items-center gap-2.5 rounded-full border py-1.5 ps-1.5 pe-3 text-start transition",
         "focus-visible:ring-brand focus-visible:ring-2 focus-visible:outline-none",
         focused && "ring-brand ring-2",
         dimmed && "opacity-40",
@@ -305,7 +305,7 @@ interface DelegateBranchProps {
  */
 export function DelegateBranch({ nodes, icons, focused, onFocus }: DelegateBranchProps) {
   return (
-    <ul className="border-brand/30 mt-1 ml-4 space-y-1 border-l pl-3">
+    <ul className="border-brand/30 ms-4 mt-1 space-y-1 border-s ps-3">
       {nodes.map((node) => (
         <li key={node.key}>
           <DelegateNode

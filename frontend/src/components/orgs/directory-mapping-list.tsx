@@ -34,7 +34,7 @@ export function DirectoryMappingList({
   const columns: Column<DirectoryMapping>[] = [
     {
       key: "external",
-      className: "pl-5",
+      className: "ps-5",
       header: t("externalGroup"),
       cell: (mapping) => (
         <span className="text-foreground font-mono text-xs break-all">
@@ -68,7 +68,7 @@ export function DirectoryMappingList({
       key: "actions",
       header: "",
       align: "right",
-      className: "w-0 pr-5",
+      className: "w-0 pe-5",
       cell: (mapping) => (
         <Button
           variant="ghost"

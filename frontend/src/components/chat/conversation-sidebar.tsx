@@ -8,6 +8,7 @@ import { ConversationSearchDialog } from "@/components/chat/conversation-search-
 import { Button, Skeleton } from "@/components/ui";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetClose } from "@/components/ui";
 import { IconButton } from "@/components/ui";
+import { useConversationAgentLabel } from "@/hooks/use-conversation-agent-label";
 import { ConversationAgents } from "@/components/agents/conversation-agents";
 import { cn, setUrlParam, timeAgo } from "@/lib/utils";
 import {
@@ -77,7 +78,6 @@ function ConversationItem({
 }: ConversationItemProps) {
   const t = useTranslations("chat");
   const tTime = useTranslations("time");
-  const tAgents = useTranslations("agents");
   const locale = useLocale();
   const [showMenu, setShowMenu] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -133,12 +133,7 @@ function ConversationItem({
     const timer = setTimeout(() => settleWorking(conversation.id), HANDOFF_GRACE_MS);
     return () => clearTimeout(timer);
   }, [handedOff, listed, conversation.id, settleWorking]);
-  const agentLabel =
-    agents.length === 0
-      ? null
-      : agents.length === 1
-        ? agents[0]!.name
-        : tAgents("agentCount", { count: agents.length });
+  const agentLabel = useConversationAgentLabel(agents, conversation.coding_agents ?? []);
 
   return (
     <div
@@ -153,8 +148,14 @@ function ConversationItem({
       {/* Which agent the thread is with leads the row - the face people pick a
           thread by. */}
       <span className="relative shrink-0">
-        {agents.length > 0 ? (
-          <ConversationAgents agents={agents} showName={false} size="md" unframed />
+        {agents.length > 0 || conversation.coding_agents?.length ? (
+          <ConversationAgents
+            agents={agents}
+            codingAgents={conversation.coding_agents}
+            showName={false}
+            size="md"
+            unframed
+          />
         ) : (
           // A box the size of a face, so every title starts at the same x.
           <span className="block size-9" aria-hidden />
@@ -167,7 +168,7 @@ function ConversationItem({
           <span
             role="status"
             aria-label={t("sidebar.unread")}
-            className="unread-dot ring-background absolute -top-px -right-px h-2 w-2 rounded-full ring-2"
+            className="unread-dot ring-background absolute -end-px -top-px h-2 w-2 rounded-full ring-2"
           />
         )}
       </span>
@@ -181,7 +182,7 @@ function ConversationItem({
             if (e.key === "Enter") handleRename();
             if (e.key === "Escape") setIsEditing(false);
           }}
-          className="text-foreground min-w-0 flex-1 bg-transparent text-[13px] font-medium outline-none"
+          className="text-foreground min-w-0 flex-1 bg-transparent text-base font-medium outline-none md:text-[13px]"
           autoFocus
           onClick={(e) => e.stopPropagation()}
         />
@@ -265,9 +266,9 @@ function ConversationItem({
             <div className="fixed inset-0 z-10" onClick={() => setShowMenu(false)} />
             {/* Drawn like every other menu in the console: one line per item,
                 read from the left, as wide as its longest label. */}
-            <div className="panel absolute top-8 right-0 z-20 w-max min-w-44 rounded-xl p-1 shadow-lg">
+            <div className="panel absolute end-0 top-8 z-20 w-max min-w-44 rounded-xl p-1 shadow-lg">
               <button
-                className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm whitespace-nowrap max-md:min-h-11 [&_svg]:shrink-0"
+                className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-start text-sm whitespace-nowrap max-md:min-h-11 [&_svg]:shrink-0"
                 onClick={(e) => {
                   e.stopPropagation();
                   setIsEditing(true);
@@ -281,7 +282,7 @@ function ConversationItem({
                   and the server refuses a share of one. */}
               {!conversation.project_id && (
                 <button
-                  className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm whitespace-nowrap max-md:min-h-11 [&_svg]:shrink-0"
+                  className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-start text-sm whitespace-nowrap max-md:min-h-11 [&_svg]:shrink-0"
                   onClick={(e) => {
                     e.stopPropagation();
                     onShare();
@@ -295,7 +296,7 @@ function ConversationItem({
               {/* In the menu as well as on the row: the hover control does not
                   exist on a touch screen until something is long-pressed. */}
               <button
-                className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm whitespace-nowrap max-md:min-h-11 [&_svg]:shrink-0"
+                className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-start text-sm whitespace-nowrap max-md:min-h-11 [&_svg]:shrink-0"
                 onClick={(e) => {
                   e.stopPropagation();
                   onFavourite(conversation.is_favourite !== true);
@@ -312,7 +313,7 @@ function ConversationItem({
               </button>
               {conversation.is_archived ? (
                 <button
-                  className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm whitespace-nowrap max-md:min-h-11 [&_svg]:shrink-0"
+                  className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-start text-sm whitespace-nowrap max-md:min-h-11 [&_svg]:shrink-0"
                   onClick={(e) => {
                     e.stopPropagation();
                     onUnarchive();
@@ -324,7 +325,7 @@ function ConversationItem({
                 </button>
               ) : (
                 <button
-                  className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm whitespace-nowrap max-md:min-h-11 [&_svg]:shrink-0"
+                  className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-start text-sm whitespace-nowrap max-md:min-h-11 [&_svg]:shrink-0"
                   onClick={(e) => {
                     e.stopPropagation();
                     onArchive();
@@ -336,7 +337,7 @@ function ConversationItem({
                 </button>
               )}
               <button
-                className="text-destructive hover:bg-destructive/10 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm whitespace-nowrap max-md:min-h-11 [&_svg]:shrink-0"
+                className="text-destructive hover:bg-destructive/10 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-start text-sm whitespace-nowrap max-md:min-h-11 [&_svg]:shrink-0"
                 onClick={(e) => {
                   e.stopPropagation();
                   onDelete();
@@ -740,7 +741,7 @@ function ConversationList({
                     type="button"
                     aria-expanded={!isFolded(key)}
                     onClick={() => flip(key)}
-                    className="group/band text-muted-foreground hover:text-foreground flex w-full items-center gap-1.5 rounded-md px-2 pt-3 pb-1 text-left text-xs font-medium transition-colors"
+                    className="group/band text-muted-foreground hover:text-foreground flex w-full items-center gap-1.5 rounded-md px-2 pt-3 pb-1 text-start text-xs font-medium transition-colors"
                   >
                     {icon === "star" && <Star className="h-3.5 w-3.5" aria-hidden />}
                     {icon === "unread" && <Inbox className="h-3.5 w-3.5" aria-hidden />}
@@ -751,7 +752,7 @@ function ConversationList({
                     )}
                     <ChevronDown
                       className={cn(
-                        "ml-auto h-3.5 w-3.5 opacity-0 transition-[transform,opacity] group-hover/band:opacity-100 group-focus-visible/band:opacity-100",
+                        "ms-auto h-3.5 w-3.5 opacity-0 transition-[transform,opacity] group-hover/band:opacity-100 group-focus-visible/band:opacity-100",
                         isFolded(key) && "-rotate-90 opacity-100",
                       )}
                       aria-hidden
@@ -975,12 +976,12 @@ export function ConversationSidebar({ className }: ConversationSidebarProps) {
     <>
       <aside
         className={cn(
-          "bg-sidebar hidden min-h-0 w-64 shrink-0 flex-col border-r md:flex",
+          "bg-sidebar hidden min-h-0 w-64 shrink-0 flex-col border-e md:flex",
           className,
         )}
       >
         <div
-          className="flex h-12 shrink-0 items-center gap-1 border-b pr-2 pl-4"
+          className="flex h-12 shrink-0 items-center gap-1 border-b ps-4 pe-2"
           data-tauri-drag-region="deep"
         >
           <h2 data-tauri-drag-region className="min-w-0 flex-1 truncate text-sm font-semibold">
@@ -1062,7 +1063,7 @@ function CollapsedSidebar({
   const { isFolded, flip } = useBandFolds(bands, conversations.length);
 
   return (
-    <div className={cn("bg-sidebar hidden w-12 shrink-0 flex-col border-r md:flex", className)}>
+    <div className={cn("bg-sidebar hidden w-12 shrink-0 flex-col border-e md:flex", className)}>
       {/* The same 48px header the list has, with its chevron where the list's is. */}
       <div
         className="flex h-12 shrink-0 items-center justify-center border-b"
@@ -1152,9 +1153,10 @@ function CollapsedSidebar({
                       )}
                     >
                       <span className="relative">
-                        {conversation.agents && conversation.agents.length > 0 ? (
+                        {conversation.agents?.length || conversation.coding_agents?.length ? (
                           <ConversationAgents
                             agents={conversation.agents}
+                            codingAgents={conversation.coding_agents}
                             showName={false}
                             size="md"
                             compact
@@ -1169,7 +1171,7 @@ function CollapsedSidebar({
                           <span
                             role="status"
                             aria-label={ts("unread")}
-                            className="unread-dot ring-sidebar absolute -top-px -right-px h-2 w-2 rounded-full ring-2"
+                            className="unread-dot ring-sidebar absolute -end-px -top-px h-2 w-2 rounded-full ring-2"
                           />
                         )}
                       </span>

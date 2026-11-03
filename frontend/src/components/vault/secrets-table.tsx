@@ -72,7 +72,7 @@ export function SecretsTable({
         header: t("key"),
         // The column that gives way: it takes what the others leave and cuts a
         // long name short, rather than pushing the actions off a phone.
-        className: "w-full max-w-0 pl-5",
+        className: "w-full max-w-0 ps-5",
         sortable: true,
         sortValue: (secret) => secret.name,
         cell: (secret) => (
@@ -113,7 +113,7 @@ export function SecretsTable({
           return (
             <div className="flex flex-col items-start gap-1">
               <Badge variant={secret.visibility === "private" ? "outline" : "secondary"}>
-                {secret.visibility === "private" && <Lock className="mr-1 h-3 w-3" />}
+                {secret.visibility === "private" && <Lock className="me-1 h-3 w-3" />}
                 {access.label}
               </Badge>
               {access.detail && (
@@ -152,7 +152,7 @@ export function SecretsTable({
       {
         key: "usedBy",
         header: t("usedBy"),
-        className: hasActions ? undefined : "pr-5",
+        className: hasActions ? undefined : "pe-5",
         hideBelow: "sm",
         cell: (secret) => {
           const used = secret.used_by ?? [];
@@ -175,7 +175,7 @@ export function SecretsTable({
         key: "actions",
         header: t("actions"),
         align: "right",
-        className: "w-32 pr-5",
+        className: "w-32 pe-5",
         cell: (secret) =>
           secret.can_edit === true ? (
             <div className="flex justify-end gap-1">

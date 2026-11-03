@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { readBranding } from "@/lib/branding-server";
-import { LOGO_VERSION } from "@/lib/logo.generated";
+import { BUILT_IN_LOGO_VERSION } from "@/lib/branding";
 import { SITE } from "@/lib/seo";
 
 /**
@@ -24,9 +24,14 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
     theme_color: SITE.themeColor,
     categories: ["productivity", "business", "ai"],
     icons: [
-      { src: `/icon?v=${LOGO_VERSION}`, sizes: "32x32", type: "image/png", purpose: "any" },
       {
-        src: `/apple-icon?v=${LOGO_VERSION}`,
+        src: `/icon?v=${BUILT_IN_LOGO_VERSION}`,
+        sizes: "32x32",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: `/apple-icon?v=${BUILT_IN_LOGO_VERSION}`,
         sizes: "180x180",
         type: "image/png",
         purpose: "maskable",

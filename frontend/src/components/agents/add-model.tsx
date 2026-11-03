@@ -508,7 +508,7 @@ export function AddModel({
                     // than "this provider already has a key".
                     trailing={
                       keyed && (
-                        <Check className="text-muted-foreground ml-auto h-3.5 w-3.5 shrink-0" />
+                        <Check className="text-muted-foreground ms-auto h-3.5 w-3.5 shrink-0" />
                       )
                     }
                   >

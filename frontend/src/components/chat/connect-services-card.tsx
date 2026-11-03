@@ -97,7 +97,7 @@ export function ConnectServicesCard({ gaps }: { gaps: PersonalServiceGap[] }) {
                   variant="outline"
                   onClick={() => router.push(ROUTES.MCP_SERVERS)}
                 >
-                  <ExternalLink className="mr-1 h-3.5 w-3.5" />
+                  <ExternalLink className="me-1 h-3.5 w-3.5" />
                   {t("openServers")}
                 </Button>
               )}

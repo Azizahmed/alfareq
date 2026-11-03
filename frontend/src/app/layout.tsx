@@ -2,12 +2,15 @@ import type { Metadata, Viewport } from "next";
 import { getLocale } from "next-intl/server";
 import localFont from "next/font/local";
 import "./globals.css";
+// After the console's own stylesheet, so a plugin's typography layers over it.
+import "../plugins/styles.css";
 import { BrandingProvider } from "@/components/branding/branding-provider";
 import { PublicConfigProvider } from "@/components/public-config/public-config-provider";
 import { AppearanceScript } from "@/components/theme/appearance-script";
 import { MotionScript } from "@/components/theme/motion-script";
 import { readBranding } from "@/lib/branding-server";
-import { LOGO_VERSION } from "@/lib/logo.generated";
+import { BUILT_IN_LOGO_VERSION } from "@/lib/branding";
+import { localeMeta, type Locale } from "@/lib/locales";
 import { readPublicConfig } from "@/lib/public-config";
 import { SITE, siteOrigin } from "@/lib/seo";
 
@@ -184,8 +187,10 @@ export async function generateMetadata(): Promise<Metadata> {
       // old one in every tab that ever opened the console.
       icon: faviconUrl
         ? [{ url: faviconUrl }]
-        : [{ url: `/icon?v=${LOGO_VERSION}`, sizes: "32x32", type: "image/png" }],
-      apple: [{ url: `/apple-icon?v=${LOGO_VERSION}`, sizes: "180x180", type: "image/png" }],
+        : [{ url: `/icon?v=${BUILT_IN_LOGO_VERSION}`, sizes: "32x32", type: "image/png" }],
+      apple: [
+        { url: `/apple-icon?v=${BUILT_IN_LOGO_VERSION}`, sizes: "180x180", type: "image/png" },
+      ],
     },
     manifest: "/manifest.webmanifest",
   };
@@ -222,6 +227,9 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
+      // A right-to-left locale mirrors the whole console: the layout is written
+      // in logical properties (`ms-`, `start-`, `text-start`), which follow this.
+      dir={localeMeta(locale as Locale).dir}
       suppressHydrationWarning
       className={`${display.variable} ${displayExt.variable} ${body.variable} ${bodyExt.variable} ${mono.variable} ${monoExt.variable}`}
     >

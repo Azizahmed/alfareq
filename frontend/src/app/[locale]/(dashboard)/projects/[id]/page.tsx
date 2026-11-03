@@ -44,7 +44,7 @@ export default function ProjectPage({ params }: { params: Promise<{ id: string }
   }
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col gap-6 overflow-hidden pb-4">
+    <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-hidden pb-4 sm:gap-4">
       <PageHeader
         className="mb-0 shrink-0 md:mb-0"
         breadcrumbs={[
@@ -72,15 +72,19 @@ export default function ProjectPage({ params }: { params: Promise<{ id: string }
             <Skeleton className="h-5 w-20" />
           )
         }
+        secondaryActions={
+          project && (
+            <ShareResourceButton
+              resourceType="project"
+              resourceId={project.id}
+              name={project.name}
+              canManage={project.can_edit}
+            />
+          )
+        }
         actions={
           project ? (
             <>
-              <ShareResourceButton
-                resourceType="project"
-                resourceId={project.id}
-                name={project.name}
-                canManage={project.can_edit}
-              />
               {project.can_use &&
                 !["queued", "running"].includes(project.workspace_move?.status ?? "") && (
                   <Button asChild>
@@ -104,19 +108,19 @@ export default function ProjectPage({ params }: { params: Promise<{ id: string }
       >
         <TabsList data-tour="project-tabs" className="shrink-0">
           <TabsTrigger disabled={isLoading} value="files">
-            <Files className="mr-1.5 size-4 shrink-0" aria-hidden />
+            <Files className="me-1.5 size-4 shrink-0" aria-hidden />
             {t("files")}
           </TabsTrigger>
           <TabsTrigger disabled={isLoading} value="chats">
-            <MessageSquare className="mr-1.5 size-4 shrink-0" aria-hidden />
+            <MessageSquare className="me-1.5 size-4 shrink-0" aria-hidden />
             {t("chats")}
           </TabsTrigger>
           <TabsTrigger disabled={isLoading} value="apps">
-            <AppWindow className="mr-1.5 size-4 shrink-0" aria-hidden />
+            <AppWindow className="me-1.5 size-4 shrink-0" aria-hidden />
             {t("apps")}
           </TabsTrigger>
           <TabsTrigger disabled={isLoading} value="instructions">
-            <FileText className="mr-1.5 size-4 shrink-0" aria-hidden />
+            <FileText className="me-1.5 size-4 shrink-0" aria-hidden />
             {t("instructions")}
           </TabsTrigger>
         </TabsList>

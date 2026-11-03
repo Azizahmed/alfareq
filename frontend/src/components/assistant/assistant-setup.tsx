@@ -103,7 +103,7 @@ export function AssistantSetup({
             setOpen(true);
             setEverOpened(true);
           }}
-          className="bg-background border-border fixed right-4 bottom-[calc(9rem+env(safe-area-inset-bottom))] z-50 max-w-[17rem] rounded-2xl rounded-br-sm border px-4 py-3 text-left text-sm leading-snug shadow-lg md:right-6 md:bottom-24"
+          className="bg-background border-border fixed end-4 bottom-[calc(9rem+env(safe-area-inset-bottom))] z-50 hidden max-w-[17rem] rounded-2xl rounded-ee-sm border px-4 py-3 text-start text-sm leading-snug shadow-lg md:end-6 md:bottom-24 md:block"
         >
           {t("setup.bubble")}
         </button>
@@ -150,7 +150,7 @@ function Walkthrough({
       {steps.slice(0, shown).map((step) => (
         <p
           key={step}
-          className="bg-muted max-w-[90%] rounded-2xl rounded-tl-sm px-4 py-2.5 text-sm leading-relaxed"
+          className="bg-muted max-w-[90%] rounded-2xl rounded-ss-sm px-4 py-2.5 text-sm leading-relaxed"
         >
           {t.rich(`setup.steps.${step}`, { name, b: (chunks) => <strong>{chunks}</strong> })}
         </p>

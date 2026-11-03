@@ -116,7 +116,7 @@ interface DataTableProps<T> {
 /** Rows drawn beyond each edge of the viewport, so a fast scroll never shows a gap. */
 const OVERSCAN = 8;
 
-const alignClass = { left: "text-left", right: "text-right", center: "text-center" } as const;
+const alignClass = { left: "text-start", right: "text-end", center: "text-center" } as const;
 
 function compare(a: string | number | null, b: string | number | null, dir: "asc" | "desc") {
   if (a === null || b === null) return a === b ? 0 : a === null ? 1 : -1;
@@ -354,7 +354,7 @@ export function DataTable<T>({
         </table>
 
         {showError && (
-          <div className="text-destructive px-4 py-12 text-center text-sm" role="alert">
+          <div className="text-destructive px-4 py-6 text-center text-sm" role="alert">
             {error}
           </div>
         )}
@@ -362,7 +362,12 @@ export function DataTable<T>({
         {showEmpty && (
           // The table is the frame: an empty state that brings its own border and
           // fill is drawn without them here.
-          <div className="text-muted-foreground px-4 py-12 text-center text-sm [&>*]:border-0 [&>*]:bg-transparent">
+          <div
+            className={cn(
+              "text-muted-foreground text-center text-sm [&>*]:border-0 [&>*]:bg-transparent",
+              !empty && "px-4 py-6",
+            )}
+          >
             {empty ?? t("noResults")}
           </div>
         )}

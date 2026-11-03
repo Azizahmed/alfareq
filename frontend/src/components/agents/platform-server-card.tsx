@@ -175,7 +175,7 @@ function PlatformBindingDialog({
                       onClick={() => setApproval(mode)}
                       disabled={disabled}
                       className={cn(
-                        "w-full rounded-lg border px-3 py-2 text-left text-sm transition-colors",
+                        "w-full rounded-lg border px-3 py-2 text-start text-sm transition-colors",
                         chosen ? "border-foreground/40 bg-accent" : "hover:bg-accent/60",
                       )}
                     >
@@ -238,7 +238,7 @@ function PlatformBindingDialog({
           {binding !== null && (
             <Button
               variant="outline"
-              className="mr-auto"
+              className="me-auto"
               onClick={() => {
                 onChange(null);
                 onOpenChange(false);

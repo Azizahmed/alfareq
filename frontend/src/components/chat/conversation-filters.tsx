@@ -108,7 +108,7 @@ export function ConversationFilters({
           {narrowed && (
             <span
               aria-hidden
-              className="bg-foreground absolute top-1.5 right-1.5 size-1.5 rounded-full"
+              className="bg-foreground absolute end-1.5 top-1.5 size-1.5 rounded-full"
             />
           )}
         </button>

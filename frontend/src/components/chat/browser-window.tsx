@@ -144,7 +144,7 @@ export function AgentCursor({ pointer }: { pointer: { x: number; y: number; step
     >
       <span
         key={pointer.step}
-        className="absolute -top-5 -left-5 size-10 rounded-full border-2 border-sky-500 opacity-0 motion-safe:animate-[agent-click_650ms_ease-out_1_forwards]"
+        className="absolute -start-5 -top-5 size-10 rounded-full border-2 border-sky-500 opacity-0 motion-safe:animate-[agent-click_650ms_ease-out_1_forwards]"
       />
       <svg
         width="18"
@@ -160,7 +160,7 @@ export function AgentCursor({ pointer }: { pointer: { x: number; y: number; step
           strokeLinejoin="round"
         />
       </svg>
-      <span className="absolute top-4 left-3 rounded-full bg-sky-500 px-2 py-0.5 text-[11px] font-medium whitespace-nowrap text-white shadow-md">
+      <span className="absolute start-3 top-4 rounded-full bg-sky-500 px-2 py-0.5 text-[11px] font-medium whitespace-nowrap text-white shadow-md">
         {t("browserAgentCursor")}
       </span>
     </span>
@@ -173,7 +173,7 @@ function OutcomeBadge({ outcome }: { outcome: BrowseOutcome }) {
   return (
     <span
       className={cn(
-        "bg-foreground/[0.04] mr-1 rounded-md px-2 py-1 text-[11px] font-medium",
+        "bg-foreground/[0.04] me-1 rounded-md px-2 py-1 text-[11px] font-medium",
         OUTCOME_TONE[outcome],
       )}
       data-testid="browse-outcome"
@@ -361,7 +361,7 @@ export function BrowserWindow({
             </div>
           )}
         </div>
-        <div className="ml-auto flex shrink-0 items-center gap-0.5">
+        <div className="ms-auto flex shrink-0 items-center gap-0.5">
           {browse.outcome && <OutcomeBadge outcome={browse.outcome} />}
           {canDrive &&
             (hold.holding ? (
@@ -413,7 +413,7 @@ export function BrowserWindow({
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuCheckboxItem checked={showSteps} onCheckedChange={setShowSteps}>
-                <ListChecks className="mr-2 size-4" aria-hidden />
+                <ListChecks className="me-2 size-4" aria-hidden />
                 {t("browserShowSteps", { count: browse.steps.length })}
               </DropdownMenuCheckboxItem>
               {newTabHref && (

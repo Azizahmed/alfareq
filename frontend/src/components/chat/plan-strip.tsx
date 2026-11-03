@@ -42,7 +42,7 @@ export function PlanStrip({ plan, live }: { plan: PlanProgress | null; live: boo
         type="button"
         aria-expanded={open}
         onClick={() => setChoice(!open)}
-        className="hover:bg-foreground/[0.03] flex w-full items-center gap-2.5 px-3 py-2 text-left transition-colors"
+        className="hover:bg-foreground/[0.03] flex w-full items-center gap-2.5 px-3 py-2 text-start transition-colors"
       >
         <ListChecks className="text-muted-foreground h-3.5 w-3.5 shrink-0" />
         <span className="text-foreground/85 min-w-0 flex-1 truncate text-[13px]">{headline}</span>

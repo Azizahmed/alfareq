@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n";
 import { readBranding } from "@/lib/branding-server";
 import { ROUTES } from "@/lib/constants";
+import { localeMeta } from "@/lib/locales";
 
 interface LegalPageProps {
   title: string;
@@ -74,23 +75,10 @@ export async function LegalPage({ title, summary, lastUpdated, locale, children 
   );
 }
 
-/**
- * The regional tag each locale formats dates with.
- *
- * `Record<Locale, string>` rather than a ternary with a default: a fourth locale
- * is then a type error here instead of a German page quietly printing
- * `May 8, 2026`.
- */
-const DATE_LOCALE: Record<Locale, string> = {
-  en: "en-US",
-  pl: "pl-PL",
-  de: "de-DE",
-};
-
 function formatDate(iso: string, locale: Locale): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return iso;
-  return d.toLocaleDateString(DATE_LOCALE[locale], {
+  return d.toLocaleDateString(localeMeta(locale).dateLocale, {
     year: "numeric",
     month: "long",
     day: "numeric",

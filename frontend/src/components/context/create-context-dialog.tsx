@@ -215,7 +215,7 @@ export function CreateContextDialog({
 
         <DialogFooter>
           {remaining > 0 && (
-            <p className="text-muted-foreground mr-auto self-center text-xs">
+            <p className="text-muted-foreground me-auto self-center text-xs">
               {t("moreFilesWaiting", { count: remaining })}
             </p>
           )}

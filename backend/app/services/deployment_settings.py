@@ -35,9 +35,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.audit import record_audit
 from app.core.background import spawn_after_commit
-from app.core.config import settings
 from app.core.exceptions import BadRequestError
 from app.core.maintenance import publish as publish_maintenance
+from app.core.plugins import default_app_name
 from app.core.vault import VaultScope, current_key_version, seal
 from app.db.models.deployment_settings import DeploymentSettings
 from app.db.updates import writable
@@ -409,10 +409,11 @@ class DeploymentSettingsService:
         The one place this side resolves the default, so an email cannot greet
         somebody in the name of a product the console stopped showing. Its built-in
         is `settings.PROJECT_NAME`, and `tests/test_deployment_branding.py` pins that
-        equal to the frontend's `APP_NAME`.
+        equal to the frontend's `APP_NAME`; a brand plugin replaces the built-in
+        (`default_app_name`), never an administrator's choice.
         """
         row = await deployment_settings_repo.get(self.db)
-        return (row.app_name if row else None) or settings.PROJECT_NAME
+        return (row.app_name if row else None) or default_app_name()
 
 
 async def _delete_quietly(path: str) -> None:

@@ -120,7 +120,7 @@ function ShareCell({ cost, total }: { cost: string; total: number }) {
           style={{ width: `${Math.min(100, share)}%` }}
         />
       </span>
-      <span className="text-muted-foreground w-10 text-right text-xs tabular-nums">
+      <span className="text-muted-foreground w-10 text-end text-xs tabular-nums">
         {Math.round(share)}%
       </span>
     </span>
@@ -191,7 +191,7 @@ export function SpendTab({
     {
       key: "agent",
       header: t("agentColumn"),
-      className: "pl-5",
+      className: "ps-5",
       cell: (row) => (
         <span className="flex items-center gap-2">
           <span aria-hidden>
@@ -234,7 +234,7 @@ export function SpendTab({
       key: "cost",
       header: t("cost"),
       align: "right",
-      className: "pr-5",
+      className: "pe-5",
       cell: (row) => (
         <CostCell
           cost={row.cost_usd}
@@ -251,7 +251,7 @@ export function SpendTab({
     {
       key: "provider",
       header: t("providerColumn"),
-      className: "pl-5",
+      className: "ps-5",
       cell: (row) =>
         row.provider === null ? (
           <span className="text-muted-foreground italic">{t("notRecorded")}</span>
@@ -274,7 +274,7 @@ export function SpendTab({
       key: "cost",
       header: t("cost"),
       align: "right",
-      className: "pr-5",
+      className: "pe-5",
       cell: (row) => <CostCell cost={row.cost_usd} title={t("theCostIsAFloor")} />,
     },
   ];
@@ -283,7 +283,7 @@ export function SpendTab({
     {
       key: "key",
       header: t("keyColumn"),
-      className: "pl-5",
+      className: "ps-5",
       cell: (row) =>
         row.label === null ? (
           <span className="text-muted-foreground italic">{t("deletedKey")}</span>
@@ -306,7 +306,7 @@ export function SpendTab({
       key: "cost",
       header: t("cost"),
       align: "right",
-      className: "pr-5",
+      className: "pe-5",
       cell: (row) => <CostCell cost={row.cost_usd} title={t("theCostIsAFloor")} />,
     },
   ];

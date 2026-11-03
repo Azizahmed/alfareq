@@ -491,15 +491,15 @@ describe("a node card by family", () => {
     expect(tile("n6")).toHaveClass("text-destructive");
     expect(screen.getByText("AI · Agent")).toHaveClass("text-muted-foreground");
     expect(screen.getByText("Data · Map")).toHaveClass("text-muted-foreground");
-    expect(family(container, "n0")).toHaveClass("rounded-l-[2rem]");
+    expect(family(container, "n0")).toHaveClass("rounded-s-[2rem]");
   });
 
   it("caps a start's left end, and no other step's", () => {
     seed([instance("t", "trigger.manual"), instance("a", "agent.run")]);
     const { container } = render(<WorkflowCanvas workflow={WORKFLOW} catalog={CATALOG} />);
 
-    expect(family(container, "t")).toHaveClass("rounded-l-[2rem]");
-    expect(family(container, "a")).not.toHaveClass("rounded-l-[2rem]");
+    expect(family(container, "t")).toHaveClass("rounded-s-[2rem]");
+    expect(family(container, "a")).not.toHaveClass("rounded-s-[2rem]");
   });
 
   it("keeps a brand trigger on the white tile in colour only", () => {
@@ -620,7 +620,7 @@ describe("a node card's waits band", () => {
     ]);
 
     expect(band(container, "h")?.className).toContain("rounded-t-[11px]");
-    expect(band(container, "l")?.className).toContain("rounded-tl-[11px]");
+    expect(band(container, "l")?.className).toContain("rounded-ss-[11px]");
     expect(band(container, "l")?.className).not.toContain("rounded-t-[11px]");
   });
 
@@ -1028,7 +1028,7 @@ describe("a resizable node card", () => {
     expect(card(container, "a").className).not.toContain("ring-primary");
     expect(overlay.className).toContain("ring-primary");
     expect(overlay.className).toContain("pointer-events-none");
-    expect(overlay.className).toContain("-right-5");
+    expect(overlay.className).toContain("-end-5");
   });
 
   it("shows handles on the right edge, the bottom edge and the corner of a selected step", () => {

@@ -18,14 +18,11 @@
  * this build ships with, and says so in the log rather than in the page.
  */
 
+import { getLocale } from "next-intl/server";
 import { cache } from "react";
 
-import {
-  BUILT_IN_BRANDING,
-  resolveBranding,
-  type Branding,
-  type BrandingResponse,
-} from "@/lib/branding";
+import { resolveBranding, type Branding, type BrandingResponse } from "@/lib/branding";
+import { pluginBrand } from "@/lib/plugins";
 import { backendFetch } from "@/lib/server-api";
 
 /** The data-cache tag the branding read is kept under; a settings save expires it. */
@@ -42,6 +39,10 @@ const BRANDING_REVALIDATE_SECONDS = 300;
  * caller.
  */
 export const readBranding = cache(async (): Promise<Branding> => {
+  // Only a brand plugin that spells the name per language needs the locale.
+  // Outside the `[locale]` tree (the manifest, the icons) next-intl answers the
+  // default locale, whose name is the brand's default one.
+  const locale = pluginBrand()?.localizedNames ? await getLocale() : null;
   try {
     const data = await backendFetch<BrandingResponse>("/api/v1/branding", {
       // Kept in Next's data cache rather than read on every render: it is the
@@ -52,9 +53,9 @@ export const readBranding = cache(async (): Promise<Branding> => {
       // made some other way, through the API or on another frontend instance.
       next: { revalidate: BRANDING_REVALIDATE_SECONDS, tags: [BRANDING_TAG] },
     });
-    return resolveBranding(data);
+    return resolveBranding(data, locale);
   } catch (error) {
     console.warn("branding_read_failed", error);
-    return BUILT_IN_BRANDING;
+    return resolveBranding(null, locale);
   }
 });

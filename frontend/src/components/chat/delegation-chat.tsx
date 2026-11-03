@@ -63,7 +63,7 @@ export function DelegationChat({
                 <p className="text-muted-foreground text-[11px]">
                   {t("askedBy", { from: asker.name, to: item.delegate.name })}
                 </p>
-                <p className="bg-foreground/[0.05] text-foreground/85 line-clamp-2 max-w-xl rounded-[4px_14px_14px_14px] px-3 py-1.5 text-[13px] leading-relaxed">
+                <p className="bg-foreground/[0.05] text-foreground/85 max-w-xl min-w-0 rounded-[4px_14px_14px_14px] px-3 py-1.5 text-[13px] leading-relaxed [overflow-wrap:anywhere] break-words whitespace-pre-wrap">
                   {item.brief}
                 </p>
               </div>
@@ -71,7 +71,7 @@ export function DelegationChat({
             <button
               type="button"
               onClick={() => setOpened(item.key)}
-              className="group/reply flex max-w-full items-start gap-2 pl-6 text-left"
+              className="group/reply flex max-w-full items-start gap-2 ps-6 text-start"
             >
               <span
                 className={cn("relative shrink-0", working && "blob-hop")}
@@ -79,7 +79,7 @@ export function DelegationChat({
               >
                 <Face who={item.delegate} thinking={working} className="h-6 w-6" />
                 {item.status === "completed" && (
-                  <span className="bg-success ring-background absolute -right-0.5 -bottom-0.5 grid size-3 place-items-center rounded-full ring-2">
+                  <span className="bg-success ring-background absolute -end-0.5 -bottom-0.5 grid size-3 place-items-center rounded-full ring-2">
                     <Check className="text-background h-2 w-2" strokeWidth={3} aria-hidden />
                   </span>
                 )}

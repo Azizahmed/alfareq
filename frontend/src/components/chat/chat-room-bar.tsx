@@ -56,13 +56,13 @@ export function ChatRoomBar({
     >
       <span className="flex shrink-0 items-center" aria-hidden>
         {shown.map((person, index) => (
-          <span key={person.user_id} className={cn("relative", index > 0 && "-ml-1.5")}>
+          <span key={person.user_id} className={cn("relative", index > 0 && "-ms-1.5")}>
             <PersonFace person={person} className="ring-background h-6 w-6 text-[9px] ring-2" />
-            <span className="bg-success ring-background absolute -right-px -bottom-px h-2 w-2 rounded-full ring-2" />
+            <span className="bg-success ring-background absolute -end-px -bottom-px h-2 w-2 rounded-full ring-2" />
           </span>
         ))}
         {more > 0 && (
-          <span className="bg-muted text-muted-foreground ring-background -ml-1.5 grid h-6 min-w-6 place-items-center rounded-full px-1 text-[10px] font-medium ring-2">
+          <span className="bg-muted text-muted-foreground ring-background -ms-1.5 grid h-6 min-w-6 place-items-center rounded-full px-1 text-[10px] font-medium ring-2">
             {t("more", { count: more })}
           </span>
         )}

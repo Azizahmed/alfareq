@@ -153,7 +153,7 @@ export function WidgetEmptyBody({
       >
         <Icon className="size-4" />
       </span>
-      <div className="max-w-64 min-w-0 space-y-1 text-left">
+      <div className="max-w-64 min-w-0 space-y-1 text-start">
         <p className="text-foreground text-sm font-medium">{title}</p>
         {description ? (
           <p className="text-muted-foreground text-xs leading-relaxed">{description}</p>

@@ -67,7 +67,7 @@ export function MessageSources({
         type="button"
         onClick={() => setExpanded(!expanded)}
         aria-expanded={expanded}
-        className="group/stack border-foreground/12 bg-background hover:border-foreground/25 hover:bg-foreground/[0.03] inline-flex items-center gap-2 rounded-full border py-1 pr-2.5 pl-1 transition-colors"
+        className="group/stack border-foreground/12 bg-background hover:border-foreground/25 hover:bg-foreground/[0.03] inline-flex items-center gap-2 rounded-full border py-1 ps-1 pe-2.5 transition-colors"
       >
         <span className="flex">
           {shown.map((doc, i) => (
@@ -78,7 +78,7 @@ export function MessageSources({
               url={doc.url}
               className={cn(
                 "transition-[margin] duration-200 ease-out motion-reduce:transition-none",
-                i > 0 && ["-ml-1.5", "group-hover/stack:ml-0.5"],
+                i > 0 && ["-ms-1.5", "group-hover/stack:ms-0.5"],
               )}
             />
           ))}
@@ -135,7 +135,7 @@ function SourceRow({
   return (
     <li className="hover:bg-foreground/[0.03] flex items-center gap-2.5 px-3 py-2 transition-colors">
       <SourceMark type={doc.type} title={doc.title} url={doc.url} />
-      <button type="button" onClick={onShow} className="min-w-0 flex-1 text-left">
+      <button type="button" onClick={onShow} className="min-w-0 flex-1 text-start">
         <p className="text-foreground truncate text-[13px] font-medium" title={doc.title}>
           {doc.title}
         </p>

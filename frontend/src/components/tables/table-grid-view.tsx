@@ -266,7 +266,7 @@ export function TableGridView({
         aria-label={tGrid("editCell", { column: column.label })}
         className={cn(
           "hover:bg-accent/60 focus-visible:ring-ring -mx-4 -my-3 block min-h-11 w-[calc(100%+2rem)] px-4 py-3 focus-visible:ring-1 focus-visible:outline-none focus-visible:ring-inset",
-          isNumeric(column.type) ? "text-right" : "text-left",
+          isNumeric(column.type) ? "text-end" : "text-start",
         )}
         onClick={(event) => {
           event.stopPropagation();
@@ -323,7 +323,7 @@ export function TableGridView({
   if (canEdit) {
     tableColumns.unshift({
       key: "__select",
-      className: "bg-card sticky left-0 z-20 w-12 min-w-12 px-3 sm:px-3",
+      className: "bg-card sticky start-0 z-20 w-12 min-w-12 px-3 sm:px-3",
       header: (
         <Checkbox
           aria-label={tGrid("selectAll")}
@@ -344,7 +344,7 @@ export function TableGridView({
     });
     tableColumns.splice(1, 0, {
       key: "__open",
-      className: "bg-card sticky left-12 z-20 w-10 min-w-10 px-1 sm:px-1",
+      className: "bg-card sticky start-12 z-20 w-10 min-w-10 px-1 sm:px-1",
       header: <span className="sr-only">{tGrid("openRecord")}</span>,
       cell: (record) => (
         <Button
@@ -394,7 +394,7 @@ export function TableGridView({
           <Button
             variant="outline"
             size="sm"
-            className="text-destructive ml-auto"
+            className="text-destructive ms-auto"
             onClick={() => setConfirming(true)}
           >
             <Trash2 className="size-3.5" /> {tGrid("delete")}
@@ -422,7 +422,7 @@ export function TableGridView({
         }
         // Every row is one height, so only the rows in view are drawn.
         className={cn(
-          "rounded-none border-0",
+          "rounded-none border-0 bg-transparent",
           preferences.wrap_text ? "[&_tbody_td]:whitespace-normal" : "[&_tbody_td]:h-[52px]",
         )}
         rowHeight={preferences.wrap_text ? undefined : ROW_HEIGHT}

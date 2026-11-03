@@ -69,7 +69,7 @@ export function SuggestionRows({
                       >
                         {suggestion.title}
                         <ExternalLink
-                          className="text-muted-foreground ml-1.5 inline size-3"
+                          className="text-muted-foreground ms-1.5 inline size-3"
                           aria-hidden
                         />
                       </a>

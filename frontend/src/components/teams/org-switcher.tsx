@@ -78,10 +78,10 @@ export function OrganizationMenuItems() {
           />
           <span className="truncate">{org.name}</span>
           {org.id === activeId ? (
-            <Check className="text-muted-foreground ml-auto h-3.5 w-3.5 shrink-0" aria-hidden />
+            <Check className="text-muted-foreground ms-auto h-3.5 w-3.5 shrink-0" aria-hidden />
           ) : (
             org.is_personal && (
-              <span className="text-muted-foreground ml-auto text-xs">{t("personal")}</span>
+              <span className="text-muted-foreground ms-auto text-xs">{t("personal")}</span>
             )
           )}
         </DropdownMenuItem>

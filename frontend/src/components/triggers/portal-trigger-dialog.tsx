@@ -275,7 +275,7 @@ export function PortalTriggerDialog({
                     onClick={() => choosePreset(entry.key)}
                     aria-pressed={active}
                     className={cn(
-                      "flex w-full items-start gap-3 rounded-md border p-3 text-left transition-colors",
+                      "flex w-full items-start gap-3 rounded-md border p-3 text-start transition-colors",
                       active
                         ? "border-foreground/30 bg-accent"
                         : "border-input hover:border-foreground/30",
@@ -497,7 +497,12 @@ function WebhookField({ url }: { url: string }) {
     <div className="space-y-1">
       <Label htmlFor="portal-webhook">{t("webhookUrl")}</Label>
       <div className="flex gap-2">
-        <Input id="portal-webhook" value={url} readOnly className="flex-1 font-mono text-xs" />
+        <Input
+          id="portal-webhook"
+          value={url}
+          readOnly
+          className="flex-1 font-mono text-base md:text-xs"
+        />
         <Button type="button" variant="outline" onClick={copy}>
           {copied ? t("copied") : t("copy")}
         </Button>

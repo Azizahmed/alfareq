@@ -265,7 +265,7 @@ describe("DelegationPanels - nesting", () => {
     );
 
     fireEvent.click(screen.getByRole("button", { name: /Researcher/ }));
-    const parent = screen.getByText("Researcher").closest("div.border-l");
+    const parent = screen.getByText("Researcher").closest("div.border-s");
     expect(parent).not.toBeNull();
     expect(parent!).toContainElement(screen.getByText("Assistant"));
   });
@@ -349,3 +349,13 @@ describe("DelegationPanels - while the turn runs", () => {
     expect(screen.queryByRole("button", { expanded: false })).toBeNull();
   });
 });
+
+it.each(["completed", "failed", "cancelled"] as const)(
+  "does not duplicate a settled %s coding task beneath the transcript",
+  (status) => {
+    const { container } = render(
+      <DelegationPanels settled delegations={[delegation({ status, harness: "claude_code" })]} />,
+    );
+    expect(container).toBeEmptyDOMElement();
+  },
+);

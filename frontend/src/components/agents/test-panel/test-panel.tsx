@@ -167,11 +167,11 @@ export function TestPanel({
         aria-orientation="vertical"
         aria-label={t("testPanelResize")}
         onPointerDown={startResize}
-        className="hover:bg-border absolute inset-y-0 -left-1.5 hidden w-3 cursor-col-resize rounded lg:block"
+        className="hover:bg-border absolute inset-y-0 -start-1.5 hidden w-3 cursor-col-resize rounded lg:block"
       />
       <header className="flex flex-col gap-2 border-b px-3 py-2.5">
         <div className="flex items-center gap-1.5">
-          <h2 className="mr-1 text-sm font-semibold">{t("testPanel")}</h2>
+          <h2 className="me-1 text-sm font-semibold">{t("testPanel")}</h2>
           {picker(mode, (value) => update({ mode: value }), t("testPanelWhatAnswers"))}
           {compare !== null &&
             picker(compare, (value) => update({ compare: value }), t("testPanelComparedWith"))}

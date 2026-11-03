@@ -277,7 +277,7 @@ function Checklist({
                 <li key={step.id}>
                   <StepLink
                     step={step}
-                    className="group hover:bg-muted/50 flex w-full items-center gap-3 rounded-lg px-2 py-2 text-left transition-colors"
+                    className="group hover:bg-muted/50 flex w-full items-center gap-3 rounded-lg px-2 py-2 text-start transition-colors"
                   >
                     <span className="bg-muted flex h-7 w-7 shrink-0 items-center justify-center rounded-lg">
                       <Icon className="h-3.5 w-3.5" aria-hidden />
@@ -314,7 +314,7 @@ function Checklist({
                 <li key={step.id}>
                   <StepLink
                     step={step}
-                    className="bg-muted/60 text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 rounded-full py-1 pr-2.5 pl-1.5 text-xs transition-colors"
+                    className="bg-muted/60 text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 rounded-full py-1 ps-1.5 pe-2.5 text-xs transition-colors"
                   >
                     <span className="bg-success flex h-3.5 w-3.5 items-center justify-center rounded-full text-white">
                       <Check className="h-2.5 w-2.5" aria-hidden />

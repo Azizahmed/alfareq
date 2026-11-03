@@ -50,7 +50,7 @@ export function SurfacePicker({ onPick }: { onPick: (choice: SurfaceChoice) => v
             key={choice}
             type="button"
             onClick={() => onPick(choice)}
-            className="border-border hover:border-primary hover:bg-accent/40 rounded-lg border p-3 text-left transition-colors"
+            className="border-border hover:border-primary hover:bg-accent/40 rounded-lg border p-3 text-start transition-colors"
           >
             <span className="flex items-center gap-2 text-sm font-medium">
               <Icon className="h-4 w-4 shrink-0" />

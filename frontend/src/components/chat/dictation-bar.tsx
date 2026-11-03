@@ -230,7 +230,7 @@ export function DictationBar({
 }
 
 const PILL =
-  "bg-foreground text-background flex items-center gap-2 overflow-hidden rounded-full py-1.5 pr-1.5 pl-1.5 shadow-lg";
+  "bg-foreground text-background flex items-center gap-2 overflow-hidden rounded-full py-1.5 pe-1.5 ps-1.5 shadow-lg";
 /** What changes inside a pill crosses over while the pill eases to its new width. */
 const SWAP = {
   initial: { opacity: 0, filter: "blur(4px)" },
@@ -328,7 +328,7 @@ export function DictationPill({
             key="transcribing"
             {...SWAP}
             transition={swap}
-            className="flex min-w-0 items-center gap-1.5 pr-3 text-[13px]"
+            className="flex min-w-0 items-center gap-1.5 pe-3 text-[13px]"
           >
             <Loader2
               className="h-3.5 w-3.5 shrink-0 opacity-70 motion-safe:animate-spin"
@@ -387,7 +387,7 @@ export function BrowserDictationPill({ level, onDone }: { level: number; onDone:
   const t = useTranslations("chat.dictation");
   const reduced = useReducedMotion();
   return (
-    <div role="group" aria-label={t("pill")} className={cn(PILL, "pl-4")}>
+    <div role="group" aria-label={t("pill")} className={cn(PILL, "ps-4")}>
       <span className="inline-flex items-center gap-1.5 text-[13px] font-medium">
         <span
           aria-hidden="true"

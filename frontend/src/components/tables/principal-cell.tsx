@@ -99,7 +99,7 @@ export function PrincipalCell({
           role="combobox"
           aria-expanded={open}
           aria-label={label}
-          className="h-auto min-h-9 w-full justify-between py-2 text-left font-normal"
+          className="h-auto min-h-9 w-full justify-between py-2 text-start font-normal"
         >
           {selected.length ? (
             <Chosen ids={selected} items={items} kind={kind} />
@@ -169,12 +169,12 @@ export function PrincipalCell({
                 aria-selected={selected.includes(item.id ?? "")}
                 type="button"
                 onClick={() => choose(item)}
-                className="hover:bg-accent flex w-full items-center justify-between gap-2 rounded-md px-2 py-2 text-left disabled:opacity-50"
+                className="hover:bg-accent flex w-full items-center justify-between gap-2 rounded-md px-2 py-2 text-start disabled:opacity-50"
               >
                 <span className="min-w-0">
                   <RecordSourceBadge source={item} />
                   {item.detail && (
-                    <span className="text-muted-foreground ml-8 block truncate text-xs">
+                    <span className="text-muted-foreground ms-8 block truncate text-xs">
                       {item.detail}
                     </span>
                   )}
