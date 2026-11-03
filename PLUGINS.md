@@ -124,28 +124,50 @@ git fetch upstream
 git merge upstream/main
 ```
 
-Conflicts can only be in the seam files. They are few, and each is small:
+Conflicts come from two places:
 
-- backend: `app/core/config.py` (`PLUGINS_DISABLED`), `app/main.py` (mounting
-  routers), `app/schemas/user.py` and `app/schemas/voice.py` (`ConsoleLocale`),
-  the four string tables (`agents/person_briefing.py`,
-  `services/proactive/_briefing.py`, `_welcome.py`, `services/voice/preview.py`),
-  `services/deployment_settings.py` and `services/notifications.py` (the
-  built-in name), `alembic/env.py`, `cli/commands.py`, `pyproject.toml`
-- frontend: `src/lib/locales.ts`, `src/i18n.ts`, `src/lib/branding.ts`,
-  `src/lib/branding-server.ts`, `src/lib/seo.ts`, `src/app/layout.tsx`,
-  `src/components/agents/agent-avatar.tsx`, the agent page, `vitest.setup.ts`,
-  `scripts/check-i18n.ts`
-- `docker-compose.override.yml` (mounting `backend/plugins` in dev)
+- **The seam files** - few, and each change in them small:
+  - backend: `app/core/config.py` (`PLUGINS_DISABLED`), `app/main.py` (mounting
+    routers), `app/schemas/user.py` and `app/schemas/voice.py` (`ConsoleLocale`),
+    the four string tables (`agents/person_briefing.py`,
+    `services/proactive/_briefing.py`, `_welcome.py`, `services/voice/preview.py`),
+    `services/deployment_settings.py` and `services/notifications.py` (the
+    built-in name), `alembic/env.py`, `cli/commands.py`, `pyproject.toml`
+  - frontend: `src/lib/locales.ts`, `src/i18n.ts`, `src/lib/branding.ts`,
+    `src/lib/branding-server.ts`, `src/lib/seo.ts`, `src/app/layout.tsx`,
+    `src/app/[locale]/layout.tsx`, `src/components/agents/agent-avatar.tsx`, the
+    agent page, `vitest.setup.ts`, `scripts/check-i18n.ts`
+  - `docker-compose.override.yml` (mounting `backend/plugins` in dev) and the
+    e2e migration step in `.github/workflows/ci.yml`
+- **Components made right to left.** The console's direction classes are
+  logical (`ms-`, `pe-`, `text-start`), so a component upstream changed conflicts
+  even though only its classes differ here. Merging 1.38.1 hit 28 such files.
 
-After a merge, run `bun run check:rtl` - a new upstream component written with
-`ml-`/`pl-` is the one thing that silently undoes right to left - and the
-plugins' own tests:
+A file whose only difference here is its direction classes takes upstream's
+version, and the RTL check writes the classes back:
 
 ```bash
-cd backend && uv run pytest plugins tests/test_plugins.py -q
-cd frontend && bunx vitest run src/plugins src/lib/plugins.test.ts
+git checkout --theirs -- <file>                # upstream's version
+cd frontend && bun run check:rtl --fix         # physical classes -> logical
 ```
+
+`--fix` skips any line an `rtl-exempt:` comment covers - a dialog centred with
+`left-[50%]` stays centred. A file with other changes here (a slot, an exempt
+dialog, an `rtl:` variant) is merged by hand.
+
+After the merge:
+
+```bash
+cd frontend && bun run check:rtl --fix && bun install --frozen-lockfile
+cd frontend && bunx vitest run src/plugins src/lib/plugins.test.ts
+cd backend && uv run pytest plugins tests/test_plugins.py -q
+```
+
+The Arabic catalog test fails while any English message upstream added has no
+Arabic translation: translate those into
+`frontend/src/plugins/arabic/messages/ar.json` (and drop the keys upstream
+removed) before merging. Then `agenticos db upgrade` applies the platform's
+migrations and the plugins' after them.
 
 The logical-properties change and the locale and slot seams are written to be
 proposed upstream; once accepted there, these merges stop conflicting at all.

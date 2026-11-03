@@ -54,6 +54,13 @@ describe.each(CATALOGS)("the Arabic catalog of %s", (_, arabic, english) => {
     expect(strays.map(([path]) => path)).toEqual([]);
   });
 
+  it("translates every message English has, so no Arabic page falls back to English", () => {
+    const untranslated = leaves(english)
+      .map(([path]) => path)
+      .filter((path) => typeof lookup(arabic, path) !== "string");
+    expect(untranslated).toEqual([]);
+  });
+
   it("renders every message under Arabic plural rules, without an ICU error", () => {
     const errors: string[] = [];
     const t = createTranslator({
