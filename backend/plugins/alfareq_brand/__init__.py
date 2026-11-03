@@ -1,1 +1,1 @@
-"""The deployment's identity: Alfareq, الفريق in Arabic."""
+"""The deployment's identity: Alfareeq, الفريق in Arabic."""

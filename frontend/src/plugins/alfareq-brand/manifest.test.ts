@@ -6,9 +6,9 @@ import { describe, expect, it } from "vitest";
 import { markModule } from "./gen-mark";
 import { alfareqBrand } from "./manifest";
 
-describe("the Alfareq brand", () => {
-  it("names the deployment Alfareq, and الفريق in Arabic", () => {
-    expect(alfareqBrand.brand?.appName).toBe("Alfareq");
+describe("the Alfareeq brand", () => {
+  it("names the deployment Alfareeq, and الفريق in Arabic", () => {
+    expect(alfareqBrand.brand?.appName).toBe("Alfareeq");
     expect(alfareqBrand.brand?.localizedNames?.ar).toBe("الفريق");
   });
 
@@ -19,7 +19,7 @@ describe("the Alfareq brand", () => {
       a: "Discover الفريق",
       b: "Set window.AgenticOSContext first",
     });
-    expect(rewrite?.(messages, "en")?.a).toBe("Discover Alfareq");
+    expect(rewrite?.(messages, "en")?.a).toBe("Discover Alfareeq");
   });
 
   it("ships the mark generated from the SVG beside it", () => {

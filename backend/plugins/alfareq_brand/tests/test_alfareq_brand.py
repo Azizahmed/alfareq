@@ -1,4 +1,4 @@
-"""The deployment's built-in name is Alfareq; an administrator's choice still wins."""
+"""The deployment's built-in name is Alfareeq; an administrator's choice still wins."""
 
 from unittest.mock import AsyncMock
 
@@ -12,7 +12,7 @@ pytestmark = pytest.mark.anyio
 
 
 def test_the_built_in_name_is_alfareq() -> None:
-    assert default_app_name() == "Alfareq"
+    assert default_app_name() == "Alfareeq"
 
 
 async def test_mail_names_alfareq_when_nobody_renamed_the_deployment(
@@ -20,7 +20,7 @@ async def test_mail_names_alfareq_when_nobody_renamed_the_deployment(
 ) -> None:
     monkeypatch.setattr(deployment_settings_repo, "get", AsyncMock(return_value=None))
 
-    assert await DeploymentSettingsService(AsyncMock()).effective_app_name() == "Alfareq"
+    assert await DeploymentSettingsService(AsyncMock()).effective_app_name() == "Alfareeq"
 
 
 async def test_an_administrators_name_overrides_the_brand(monkeypatch: pytest.MonkeyPatch) -> None:

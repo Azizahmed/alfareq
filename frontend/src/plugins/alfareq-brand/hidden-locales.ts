@@ -1,5 +1,5 @@
 /**
- * The platform's languages Alfareq does not offer: the console is English and
+ * The platform's languages Alfareeq does not offer: the console is English and
  * Arabic. Polish and German stay in the platform, translated and updated with
  * it, and come back by removing them from this list.
  *

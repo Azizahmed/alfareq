@@ -16,7 +16,7 @@ vi.mock("@/lib/locale-navigation", () => ({
   useRouter: () => ({ replace }),
 }));
 
-describe("the languages Alfareq offers", () => {
+describe("the languages Alfareeq offers", () => {
   it("are English and Arabic: Polish and German are neither offered nor routed", () => {
     expect(locales).toEqual(["en", "ar"]);
   });
