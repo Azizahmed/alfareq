@@ -208,18 +208,38 @@ const EYE_SCALE = 1.4;
 export const EYE_SIZE_MIN = 0.7;
 export const EYE_SIZE_MAX = 1.6;
 
+/**
+ * An eye turned about its own centre. The turn sits on a wrapping group, not on
+ * the eye: `.ff-eye` carries a CSS `transform-origin` for its blink, and a CSS
+ * origin moves the pivot of a `transform` attribute on the same element - which
+ * threw every slanted eye off the body.
+ */
+function turned(markup: string, rot: number | undefined, x: number, y: number): string {
+  return rot ? `<g transform="rotate(${rot} ${x} ${y})">${markup}</g>` : markup;
+}
+
 function eyeMarkup(eye: Eye, cx: number, cy: number, size: number): string {
   const k = EYE_SCALE * size;
   if (eye.kind === "pill") {
     const x = cx + (eye.dx ?? 0) * k;
     const y = cy + (eye.dy ?? 0) * k;
     const [w, h] = [eye.w * k, eye.h * k];
-    return `<rect class="ff-eye" x="${x - w / 2}" y="${y - h / 2}" width="${w}" height="${h}" rx="${w / 2}" stroke="none" transform="rotate(${eye.rot ?? 0} ${x} ${y})"/>`;
+    return turned(
+      `<rect class="ff-eye" x="${x - w / 2}" y="${y - h / 2}" width="${w}" height="${h}" rx="${w / 2}" stroke="none"/>`,
+      eye.rot,
+      x,
+      y,
+    );
   }
   if (eye.kind === "line") {
     const y = cy + (eye.dy ?? 0) * k;
     const w = eye.w * k;
-    return `<rect class="ff-eye" x="${cx - w / 2}" y="${y - 3.2 * size}" width="${w}" height="${6.4 * size}" rx="${3.2 * size}" stroke="none" transform="rotate(${eye.rot ?? 0} ${cx} ${y})"/>`;
+    return turned(
+      `<rect class="ff-eye" x="${cx - w / 2}" y="${y - 3.2 * size}" width="${w}" height="${6.4 * size}" rx="${3.2 * size}" stroke="none"/>`,
+      eye.rot,
+      cx,
+      y,
+    );
   }
   const y = cy + (eye.dy ?? 0) * k + (eye.up ? 3 : -3);
   const half = (eye.w * k) / 2;

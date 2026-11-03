@@ -86,6 +86,14 @@ describe("the eyes and the body", () => {
     expect(height(malu(0.1))).toBeCloseTo(height(malu()) * 0.7);
   });
 
+  it("turns a slanted eye on a group, clear of the blink's CSS transform origin", () => {
+    const nexo = fluffySvg(resolveStyle({ ...BASE, character: "nexo" }, "#000000"), { id: "n" });
+    expect(
+      nexo.match(/<g transform="rotate\(-?\d+ [\d.]+ [\d.]+\)"><rect class="ff-eye"/g),
+    ).toHaveLength(2);
+    expect(nexo).not.toMatch(/class="ff-eye"[^>]*transform=/);
+  });
+
   it("stands Vita's hexagon on a corner and leaves the bare shape flat", () => {
     expect(
       fluffySvg(resolveStyle({ ...BASE, character: "vita" }, "#000000"), { id: "v" }),
